@@ -63,6 +63,7 @@
     "prettier": "^2.6.2",
     "sass": "^1.55.0",
     "storybook": "7.6.18",
+    "storybook-zeplin": "^2.0.3",
     "tailwindcss": "3.2.7",
     "ts-jest": "^29.1.0",
     "ts-node": "10.9.1",
