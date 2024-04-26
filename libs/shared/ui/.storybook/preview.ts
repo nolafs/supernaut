@@ -1,3 +1,3 @@
 export const parameters = {
-  zeplinLink: "zpl://project?pid=662115e653f1d6e473dc1b35",
+  zeplinLink: "zpl://project?pid=662b6f544a37c6849a1b0f52",
 };
