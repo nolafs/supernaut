@@ -1,0 +1,9 @@
+{
+  "name": "supernaut-e2e",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/supernaut-e2e/src",
+  "tags": [],
+  "implicitDependencies": ["supernaut"],
+  "// targets": "to see all targets run: nx show project supernaut-e2e --web",
+  "targets": {}
+}
