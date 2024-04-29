@@ -9,8 +9,8 @@ export default function Index() {
    * Note: The corresponding styles are in the ./index.css file.
    */
   return (
-    <div className={cn(styles.page, 'bg-black')}>
-      <h1 className={'font-bold text-6xl'}>Welcome to page!</h1>
+    <div className={cn(styles.page, 'bg-accent')}>
+      <h1 className={'font-bold text-accent text-6xl'}>Welcome to page!</h1>
     </div>
   );
 }

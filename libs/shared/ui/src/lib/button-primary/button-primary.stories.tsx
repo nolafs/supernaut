@@ -12,6 +12,10 @@ const meta: Meta<typeof ButtonPrimary> = {
         type: 'text',
       },
     },
+    size: {
+        control: {type: 'radio'},
+        options: ['sm', 'md', 'lg'],
+    },
     onClick: {
       action: 'clicked',
     },
@@ -21,14 +25,30 @@ export default meta;
 
 type Story = StoryObj<typeof ButtonPrimary>;
 
+const Default = {
+  args: {
+    label: 'Button label',
+    size: 'md',
+    hasIcon: false,
+    isDisabled: false,
+
+  },
+}
+
 export const Primary = {
   args: {
-    label: 'Button label'
+    ...Default.args,
+    label: 'Button label',
+    size: 'md',
+    hasIcon: true
   },
 };
 
-export const IconButton = {
+export const Standard = {
   args: {
-    label: 'Button Icon'
+    ...Default.args,
+    label: 'Button Click',
+    hasIcon: false,
+    size: 'lg',
   },
 };
