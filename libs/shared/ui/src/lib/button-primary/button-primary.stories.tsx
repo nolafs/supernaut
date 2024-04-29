@@ -38,7 +38,7 @@ const Default = {
 export const Primary = {
   args: {
     ...Default.args,
-    label: 'Button label',
+    label: 'Button label.',
     size: 'md',
     hasIcon: true
   },
