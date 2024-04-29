@@ -20,7 +20,7 @@ export function ButtonPrimary({label, size, isDisabled = true, hasIcon = false, 
       styles.container)} disabled={isDisabled}>
       <div className={'flex flex-col'}>
         <span>{label}</span>
-        <div className={cn("max-w-xs h-[2px] mt-1 group-hover:bg-secondary group-hover:mt-0 ease-in duration-300", (isDisabled) ? 'bg-secondary' : 'bg-white', (size === 'lg') && 'lg:mt-2')}></div>
+        <div className={cn("max-w-xs h-[2px] md:mt-1 group-hover:bg-secondary group-hover:mt-0 ease-in duration-300", (isDisabled) ? 'bg-secondary' : 'bg-white', (size === 'lg') && 'lg:mt-2')}></div>
       </div>
       {hasIcon && (
         <div className={cn('w-8 h-8 md:w-9 md:h-9', (size === 'lg') && 'lg:w-12 lg:h-12')}>
