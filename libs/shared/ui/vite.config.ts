@@ -2,13 +2,20 @@
 /// <reference types="vite/client" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
+//import vue from "@vitejs/plugin-vue";
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
+
+
+
 
 export default defineConfig({
   root: __dirname,
   cacheDir: '../../../node_modules/.vite/libs/shared/ui',
 
-  plugins: [react(), nxViteTsPaths()],
+  plugins: [ react(), nxViteTsPaths() ],
+  resolve: {
+    extensions: ['.mjs', '.js', '.ts', '.jsx', '.tsx', '.json'],
+  },
 
   // Uncomment this if you are using workers.
   // worker: {

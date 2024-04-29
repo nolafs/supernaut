@@ -1,15 +1,13 @@
 import type { StorybookConfig } from '@storybook/react-vite';
-
-//import {initialize} from 'storybook-tailwind-foundations';
-//import * as path from 'path';
-
-//const tailwindConfigPath = path.join(__dirname, '../../../tailwind.config.js'); // or your own config file
-//initialize.default(tailwindConfigPath);
+import {join} from 'path';
+//const tailwindConfigPath = join(__dirname, '../tailwind.config.js') // or your own config file
+// eslint-disable-next-line @typescript-eslint/no-var-requires
+//require('storybook-tailwind-foundations/initialize.js').default(tailwindConfigPath);
 
 const config: StorybookConfig = {
   stories: [
     '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-   // path.join(__dirname,'../../../node_modules/storybook-tailwind-foundations/**/*.stories.js')
+   //join(__dirname,'../../../../node_modules/storybook-tailwind-foundations/**/*.stories.js')
   ],
   addons: [
     '@storybook/addon-essentials',

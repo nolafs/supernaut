@@ -2183,7 +2183,7 @@
 
 "@nrwl/vite@18.3.4":
   version "18.3.4"
-  resolved "https://registry.npmjs.org/@nrwl/vite/-/vite-18.3.4.tgz"
+  resolved "https://registry.yarnpkg.com/@nrwl/vite/-/vite-18.3.4.tgz#bf1e6ddd9bfebf4b5dbd292038511e1e5db69b58"
   integrity sha512-0lUQqgui2oWFLUK9bT5XwyyC321tmiKetRxuSvzv+hJZQbMBz6LrYLAWXyEHtLkSVszBqeh8rt8hcrXcIxDfCA==
   dependencies:
     "@nx/vite" "18.3.4"
@@ -2436,7 +2436,7 @@
 
 "@nx/vite@18.3.4":
   version "18.3.4"
-  resolved "https://registry.npmjs.org/@nx/vite/-/vite-18.3.4.tgz"
+  resolved "https://registry.yarnpkg.com/@nx/vite/-/vite-18.3.4.tgz#65dcf816c0c27d02483f0e3cc782c9269a083a01"
   integrity sha512-ZEynabx+GVjUF7t3I4VlY5ivXA2mOTQ4t+pjN9SNs9JdnLTMK/b/rErkNV7Bn2oQK56Ks74Tfbx9r7Dc5S4exg==
   dependencies:
     "@nrwl/vite" "18.3.4"
