@@ -1,5 +1,5 @@
 import styles from './button-primary.module.scss';
-import React, {ReactNode} from 'react';
+import cn from 'classnames';
 
 /* eslint-disable-next-line */
 export interface ButtonPrimaryProps {
@@ -11,7 +11,7 @@ export interface ButtonPrimaryProps {
 
 export function ButtonPrimary({label}: ButtonPrimaryProps) {
   return (
-    <button className={styles['container']}>
+    <button className={cn('w-full font-bold text-4xl bg-white', styles)}>
       {label}
     </button>
   );

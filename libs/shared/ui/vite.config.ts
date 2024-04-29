@@ -1,3 +1,5 @@
+/// <reference types="vitest" />
+/// <reference types="vite/client" />
 import { defineConfig } from 'vite';
 import react from '@vitejs/plugin-react';
 import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
@@ -12,7 +14,7 @@ export default defineConfig({
   // worker: {
   //  plugins: [ nxViteTsPaths() ],
   // },
-
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   test: {
     globals: true,
     cache: { dir: '../../../node_modules/.vitest' },

@@ -18,5 +18,5 @@
       "@supernaut/shared-ui": ["libs/shared/ui/src/index.ts"]
     }
   },
-  "exclude": ["node_modules", "tmp"]
+  "exclude": ["node_modules", "tmp", "**/vite.config.ts"]
 }

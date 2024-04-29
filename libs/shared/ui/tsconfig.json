@@ -8,6 +8,11 @@
   },
   "files": [],
   "include": [],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "coverage",
+    "tmp"],
   "references": [
     {
       "path": "./tsconfig.lib.json"
