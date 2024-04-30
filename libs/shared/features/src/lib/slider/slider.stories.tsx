@@ -6,7 +6,8 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Slider> = {
   component: Slider,
-  title: 'Slider',
+  title: 'Features/Slider',
+
 };
 export default meta;
 type Story = StoryObj<typeof Slider>;

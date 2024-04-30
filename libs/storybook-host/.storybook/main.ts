@@ -7,6 +7,7 @@
 const config: StorybookConfig = {
   stories: [
     '../../shared/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
     //join(__dirname, '../../../node_modules/storybook-tailwind-foundations/**/*.stories.js')
   ],
   addons: [

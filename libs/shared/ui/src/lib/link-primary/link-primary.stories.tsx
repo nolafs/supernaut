@@ -8,7 +8,8 @@ import { LinkPrimary } from './link-primary';
 
 const meta: Meta<typeof LinkPrimary> = {
   component: LinkPrimary,
-  title: 'Link',
+  title: 'UI/Link',
+  tags: ['autodocs'],
   argTypes: {
     children: {
       control: {

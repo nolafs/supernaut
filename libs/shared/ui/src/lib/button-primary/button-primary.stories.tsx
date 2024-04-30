@@ -5,7 +5,8 @@ import { ButtonPrimary } from './button-primary';
 
 const meta: Meta<typeof ButtonPrimary> = {
   component: ButtonPrimary,
-  title: 'Button',
+  title: 'UI/Button',
+  tags: ['autodocs'],
   argTypes: {
     label: {
       control: {
