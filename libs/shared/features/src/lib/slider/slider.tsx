@@ -6,7 +6,7 @@ export interface SliderProps {}
 export function Slider(props: SliderProps) {
   return (
     <div className={styles['container']}>
-      <h1>Welcome to Slider!</h1>
+      <h1 className={'text-primary'}>Welcome to Slider!</h1>
     </div>
   );
 }
