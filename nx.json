@@ -84,5 +84,8 @@
       }
     }
   },
+  "cli": {
+    "packageManager": "yarn"
+  },
   "nxCloudAccessToken": "YjAxYzRkYTUtZGJkZS00ZGQ2LWEzM2YtN2E4MDAzMWY2ZTNmfHJlYWQtd3JpdGU="
 }
