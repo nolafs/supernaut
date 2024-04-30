@@ -1,12 +1,7 @@
-import type { StorybookConfig } from '@storybook/react-vite';
-
-import { nxViteTsPaths } from '@nx/vite/plugins/nx-tsconfig-paths.plugin';
-import { mergeConfig } from 'vite';
-
-import {join} from 'path';
-const tailwindConfigPath = join(__dirname, '../tailwind.config.js') // or your own config file
+// import {join} from 'path';
+// const tailwindConfigPath = join(__dirname, '../tailwind.config.js') // or your own config file
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-require('storybook-tailwind-foundations/initialize.js').default(tailwindConfigPath);
+// require('storybook-tailwind-foundations/initialize.js').default(tailwindConfigPath);
 
 
 const config: StorybookConfig = {
@@ -17,17 +12,13 @@ const config: StorybookConfig = {
   addons: [
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
-    'storybook-zeplin/register'
+    'storybook-zeplin/register',
   ],
   framework: {
-    name: '@storybook/react-vite',
+    //name: '@storybook/react-vite',
+    name: '@storybook/nextjs',
     options: {},
   },
-
-  viteFinal: async (config) =>
-    mergeConfig(config, {
-      plugins: [nxViteTsPaths()],
-    }),
 };
 
 export default config;
