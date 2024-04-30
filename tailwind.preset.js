@@ -23,8 +23,9 @@ module.exports = {
       red: colors.red,
       'primary': colors.white,
       'secondary': "#acacac",
-      'accent': "#FFA500",
-      'neutral': "#191919"
+      'accent': "#E62997",
+      'neutral': "#191919",
+      'base': "#000000",
     },
   },
   safelist: [
