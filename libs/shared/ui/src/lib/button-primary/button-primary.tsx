@@ -13,8 +13,7 @@ export interface ButtonPrimaryProps {
 
 export function ButtonPrimary({label, size, isDisabled = true, hasIcon = false, onClick}: ButtonPrimaryProps) {
   return (
-    <button onClick={onClick} className={cn('font-medium',
-
+    <button onClick={onClick} className={cn('font-medium cursor-pointer',
       styles.container)} disabled={isDisabled}>
       <Label size={size} hasIcon={hasIcon} isDisabled={isDisabled}>{label}</Label>
     </button>

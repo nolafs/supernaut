@@ -14,7 +14,7 @@ export function LinkPrimary({children, url, size ='md', hasIcon = false}: LinkPr
   return (
     <Link href={{
       pathname: url,
-    }}>
+    }} className={'cursor-pointer'}>
       <Label size={size} hasIcon={hasIcon} >{children}</Label>
     </Link>
   );

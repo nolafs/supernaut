@@ -5,7 +5,7 @@ import { ButtonPrimary } from './button-primary';
 
 const meta: Meta<typeof ButtonPrimary> = {
   component: ButtonPrimary,
-  title: 'ButtonPrimary',
+  title: 'Button',
   argTypes: {
     label: {
       control: {
