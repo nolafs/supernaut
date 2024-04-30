@@ -45,7 +45,7 @@ $speed : .8s;
   &:hover {
 
     .icon {
-      animation: slide $speed ease-in-out infinite;
+      animation: slide $speed ease-in-out;
     }
 
     .decorLine {

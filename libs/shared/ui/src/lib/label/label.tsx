@@ -14,7 +14,7 @@ export function Label({children, size, hasIcon, isDisabled}: LabelProps) {
 
   return (
     <div className={cn('flex item-center space-x-2 group',
-      (isDisabled) ? 'text-secondary cursor-not-allowed' : 'text-primary cursor-pointer',
+      (isDisabled) ? 'text-secondary cursor-not-allowed' : 'text-primary',
       (size === 'sm') && 'text-normal md:text-lg',
       (size === 'md') && 'text-xl md:text-2xl',
       (size === 'lg') && 'text-3xl md:text-4xl lg:text-5xl',
