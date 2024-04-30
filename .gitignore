@@ -49,3 +49,5 @@ out
 
 
 storybook-static
+# Local Netlify folder
+.netlify

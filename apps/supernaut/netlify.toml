@@ -1,25 +1,14 @@
-[build]
-command = "npm run build"
-publish = ".next"
 
-
-[build.environment]
-# cache Cypress binary in local "node_modules" folder
-# so Netlify caches it
-CYPRESS_CACHE_FOLDER = "./node_modules/CypressBinary"
-# set TERM variable for terminal output
-TERM = "xterm"
-
-[[headers]]
+# [[headers]]
   # Apply headers to all paths
-  for = "/*"
-  [headers.values]
-  X-Frame-Options = "DENY"
-  X-XSS-Protection = "1; mode=block"
-  X-Content-Type-Options = "nosniff"
-  Referrer-Policy = "no-referrer-when-downgrade"
-  Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';"
-  Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
+  #for = "/*"
+  #[headers.values]
+  #X-Frame-Options = "DENY"
+  #X-XSS-Protection = "1; mode=block"
+  #X-Content-Type-Options = "nosniff"
+  #Referrer-Policy = "no-referrer-when-downgrade"
+  #Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-eval' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data:; font-src 'self';"
+  #Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
 
 [[headers]]
   for = "/images/*"
@@ -53,10 +42,3 @@ TERM = "xterm"
     no-cache,
     no-store,
     must-revalidate'''
-
-
-[[plugins]]
-  package = "netlify-plugin-cypress"
-  [plugins.inputs]
-    record = true
-    group = "Testing Built Site"

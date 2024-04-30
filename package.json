@@ -11,6 +11,7 @@
     "react-dom": "18.2.0",
     "react-lottie": "^1.2.4",
     "storybook-tailwind-foundations": "^1.1.2",
+    "swiper": "^11.1.1",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
@@ -49,6 +50,7 @@
     "@types/react": "18.2.33",
     "@types/react-dom": "18.2.14",
     "@types/react-lottie": "^1.2.10",
+    "@types/swiper": "^6.0.0",
     "@typescript-eslint/eslint-plugin": "^7.3.0",
     "@typescript-eslint/parser": "^7.3.0",
     "@vitejs/plugin-react": "^4.2.0",
