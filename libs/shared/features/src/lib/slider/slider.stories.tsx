@@ -13,5 +13,28 @@ export default meta;
 type Story = StoryObj<typeof Slider>;
 
 export const Home = {
-  args: {},
+  args: {
+    slides: [
+      {
+        title: 'Neonhive',
+        description: 'Creating a personal brand identity for leaders in the indie games marketing scene.',
+        image: 'https://via.placeholder.com/1920x1000',
+      },
+      {
+        title: 'Slide 2',
+        description: 'Slide 2 description',
+        image: 'https://via.placeholder.com/1920x1000',
+      },
+      {
+        title: 'Slide 3',
+        description: 'Slide 3 description',
+        image: 'https://via.placeholder.com/1920x1000',
+      },
+      {
+        title: 'Slide 4',
+        description: 'Slide 4 description',
+        image: 'https://via.placeholder.com/1920x1000',
+      }
+    ],
+  },
 };

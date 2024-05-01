@@ -1,4 +1,4 @@
-import './global.css';
+import './global.scss';
 import {Preview} from '@storybook/react';
 
 export const parameters = {
