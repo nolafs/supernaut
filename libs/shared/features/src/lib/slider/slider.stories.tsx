@@ -7,6 +7,9 @@ import { expect } from '@storybook/jest';
 const meta: Meta<typeof Slider> = {
   component: Slider,
   title: 'Features/Slider',
+  argTypes: {
+
+  }
 
 };
 export default meta;
@@ -14,6 +17,7 @@ type Story = StoryObj<typeof Slider>;
 
 export const Home = {
   args: {
+    strapline: 'ELEVATION THROUGH CONNECTIVITY.',
     slides: [
       {
         title: 'Neonhive',

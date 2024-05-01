@@ -16,15 +16,21 @@ type Slide = {
 /* eslint-disable-next-line */
 export interface SliderProps {
   slides?: Slide[];
+  strapline?: string;
 }
 
-export function Slider({slides}: SliderProps) {
+export function Slider({slides, strapline}: SliderProps) {
 
   if(!slides) {
     return;
   }
 
-  return (<div className={'container mx-auto'}>
+  return (<div className={'relative container mx-auto'}>
+      { strapline &&
+        <div className={'hidden md:block absolute top-0 mx-14 mt-32 z-20 text-white max-w-2xl'}>
+          <h1 className={'text-6xl font-bold tracking-tight'}>{strapline}</h1>
+        </div>
+      }
     <Swiper
       spaceBetween={50}
       slidesPerView={1}
