@@ -1,7 +1,9 @@
 'use client';
+import styles from './slider-controls.module.scss';
 import {ReactNode, useEffect, useRef, useState} from 'react';
 import {useMousePosition, useIsTouchDevice} from '@supernaut/hooks';
 import {useCursor} from '@supernaut/context';
+import cn from 'classnames';
 
 
 
@@ -46,7 +48,7 @@ export function SliderControls({children}: SliderControlsProps) {
   }
 
   return (<>
-    <div ref={ref} className={'relative container max-w-[1920px] mx-auto p-0 m-0'}>
+    <div ref={ref} className={cn('relative container max-w-[1920px] mx-auto p-0 m-0', styles['container'])}>
       {children}
       <div className={'controls'}>
         <div className={'swiper-button-next-custom absolute right-0 top-0 w-[20%] h-full bg-transparent z-20'}
@@ -89,7 +91,8 @@ export function SliderControls({children}: SliderControlsProps) {
               left: clientX,
               top: clientY,
               zIndex: 1000,
-              transform: "translate(-50%, -50%)",
+              transition: "opacity 0.5s",
+              transform: "translate(-100%, -50%)",
               opacity: isVisible && clientX > 1 ? 1 : 0,
             }}>
               Next
@@ -101,8 +104,9 @@ export function SliderControls({children}: SliderControlsProps) {
               left: clientX,
               top: clientY,
               zIndex: 1000,
+              transition: "opacity 0.5s",
               opacity: isVisible && clientX > 1 ? 1 : 0,
-              transform: "translate(-50%, -50%)",
+              transform: "translate(0%, -50%)",
             }}>
               Prev
             </div>

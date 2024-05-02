@@ -38,7 +38,7 @@ export function Slider({slides, strapline}: SliderProps) {
   return (
     <CursorContextProvider>
       <SliderControls>
-      <div className={'relative container max-w-[1920px] mx-auto p-0 m-0'}>
+      <div className={'relative container max-w-[1920px] mx-auto p-0 m-0 overflow-hidden'}>
 
           {strapline &&
             <div className={'hidden md:block absolute top-0 mx-14 mt-32 z-20 text-white max-w-2xl'}>

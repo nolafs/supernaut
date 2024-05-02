@@ -32,7 +32,7 @@ export const Home = {
       {
         title: 'Slide 3',
         description: 'Slide 3 description',
-        video: 'https://temp.media/video/create/?height=479&width=640&length=10&load=yes0',
+        image: 'https://picsum.photos/id/50/1920/1000',
       },
       {
         title: 'Slide 4',
