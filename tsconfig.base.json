@@ -24,7 +24,8 @@
       "@supernaut/hooks": ["libs/shared/hooks/src/index.ts"],
       "@supernaut/hooks/server": ["libs/shared/hooks/src/server.ts"],
       "@supernaut/shared-ui": ["libs/shared/ui/src/index.ts"],
-      "@supernaut/storybook-host": ["libs/storybook-host/src/index.ts"]
+      "@supernaut/storybook-host": ["libs/storybook-host/src/index.ts"],
+      "@supernaut/types": ["libs/shared/types/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp", "**/vite.config.ts"]

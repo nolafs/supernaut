@@ -17,6 +17,9 @@ export const parameters = {
   zeplinLink: "zpl://project?pid=662b6f544a37c6849a1b0f52",
   actions: {argTypesRegex: '^on[A-Z].*'},
   layout: 'fullscreen',
+  nextjs: {
+    appDirectory: true,
+  },
   controls: {
     matchers: {
       color: /(background|color)$/i,

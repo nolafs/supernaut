@@ -9,10 +9,11 @@ export interface SliderItemProps {
   title: string;
   description: string;
   image: string;
+  video?: string;
   url?: string;
 }
 
-const SliderItem = forwardRef( ({title, description, image, url}: SliderItemProps, ref) => {
+const SliderItem = forwardRef( ({title, description, image, video, url}: SliderItemProps, ref) => {
 
   const router = useRouter();
 
@@ -25,18 +26,23 @@ const SliderItem = forwardRef( ({title, description, image, url}: SliderItemProp
 
   return (
      <div className={'relative  text-primary'} onClick={handleClick}>
-       <figure>
+       <div className={'sr-only'}>
+         <h1>{title}</h1>
+          <p>{description}</p>
+       </div>
+       {(video) ?
+       <video autoPlay muted loop playsInline className={'bottom-0 left-0 right-0 top-0 h-full w-full object-cover object-center'}>
+          <source src={video} type="video/mp4"/>
+        </video> :
+       <picture>
          <div className={'hidden md:block w-full h-screen max-h-[1000px]'}>
            <Image src={image} alt={title} width={1920} height={1000} className={'object-cover object-center w-full h-full'}/>
          </div>
          <div className={'block md:hidden  w-full h-screen max-h-[400px]'}>
            <Image src={image} alt={title} width={390} height={400} className={'object-cover object-center  w-full h-full'}/>
          </div>
-         <figcaption className={'absolute bottom-0 mx-6 md:mx-12 mb-6 md:mb-14 flex flex-col md:space-y-7'}>
-           <h2 className={'text-3xl md:text-[48px] font-medium tracking-tighter'}>{title}</h2>
-           <p className={'text-2xl lg:text-3xl font-medium hidden md:block'}>{description}</p>
-         </figcaption>
-       </figure>
+       </picture>
+       }
      </div>
   );
 });

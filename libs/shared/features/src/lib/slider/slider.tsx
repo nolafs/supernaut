@@ -9,13 +9,14 @@ import 'swiper/css/pagination';
 import { useState} from 'react';
 import SliderControls from './slider-controls/slider-controls';
 import {CursorContextProvider} from '@supernaut/context';
+import SliderDescription from './slider-description/slider-description';
 
 
 type Slide = {
   title: string;
   description: string;
   image: string;
-
+  video?: string;
 }
 
 /* eslint-disable-next-line */
@@ -28,7 +29,7 @@ export function Slider({slides, strapline}: SliderProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(slides?.length || 0);
-
+  const [currentSlide, setCurrentSlide] = useState<Slide | null>(slides?.length ? slides[0] : null);
 
   if(!slides) {
     return;
@@ -48,10 +49,11 @@ export function Slider({slides, strapline}: SliderProps) {
             modules={[Navigation]}
             onSlideChange={(e) => {
               setCurrentIndex(e.activeIndex);
+              setCurrentSlide(slides[e.activeIndex]);
             }}
             spaceBetween={50}
             slidesPerView={1}
-            loop={true}
+            loop={false}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
@@ -67,6 +69,8 @@ export function Slider({slides, strapline}: SliderProps) {
           <div className={'absolute bottom-0 right-0 text-white text-xl md:text-4xl z-20 mr-6 md:mr-12 mb-6 md:mb-14'}>
             {((currentIndex + 1) >= 10) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10) ? numberSlides : `0${numberSlides}`}
           </div>
+
+          <SliderDescription id={currentIndex} title={currentSlide?.title} description={currentSlide?.description}  />
 
       </div>
       </SliderControls>

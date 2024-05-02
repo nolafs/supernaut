@@ -87,5 +87,12 @@
   "cli": {
     "packageManager": "yarn"
   },
-  "nxCloudAccessToken": "YjAxYzRkYTUtZGJkZS00ZGQ2LWEzM2YtN2E4MDAzMWY2ZTNmfHJlYWQtd3JpdGU="
+  "nxCloudAccessToken": "YjAxYzRkYTUtZGJkZS00ZGQ2LWEzM2YtN2E4MDAzMWY2ZTNmfHJlYWQtd3JpdGU=",
+  "targetDefaults": {
+    "@nx/js:tsc": {
+      "cache": true,
+      "dependsOn": ["^build"],
+      "inputs": ["production", "^production"]
+    }
+  }
 }
