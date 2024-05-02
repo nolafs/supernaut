@@ -1,10 +1,12 @@
 'use client';
-import {Swiper, SwiperSlide} from 'swiper/react';
+import {Controller} from 'swiper/modules';
+import {Swiper, SwiperSlide, useSwiperSlide} from 'swiper/react';
 import SliderItem from './slider-item/slider-item';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import 'swiper/css/navigation';
 import 'swiper/css/pagination';
+import {useState} from 'react';
 
 type Slide = {
   title: string;
@@ -21,6 +23,9 @@ export interface SliderProps {
 
 export function Slider({slides, strapline}: SliderProps) {
 
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const [numberSlides, setNumberSlides] = useState(slides?.length || 0);
+
   if(!slides) {
     return;
   }
@@ -32,10 +37,12 @@ export function Slider({slides, strapline}: SliderProps) {
         </div>
       }
     <Swiper
+      onSlideChange={(e) => {
+        console.log('slide change', e);
+        setCurrentIndex(e.activeIndex);
+      }}
       spaceBetween={50}
       slidesPerView={1}
-      pagination={{clickable: true}}
-      scrollbar={{draggable: true}}
       loop={true}
       navigation={{
         nextEl: '.swiper-button-next-custom',
@@ -51,6 +58,9 @@ export function Slider({slides, strapline}: SliderProps) {
         </SwiperSlide>
       ))}
     </Swiper>
+      <div className={'absolute bottom-0 right-0 text-white text-4xl z-20 mr-12 mb-14'}>
+        {((currentIndex + 1) >= 10 ) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10 ) ? numberSlides : `0${numberSlides}`}
+      </div>
     </div>
   );
 }

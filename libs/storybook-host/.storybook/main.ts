@@ -15,6 +15,16 @@ const config: StorybookConfig = {
     '@storybook/addon-interactions',
     'storybook-zeplin/register',
   ],
+  staticDirs: [
+    {
+      from: "../../../node_modules/geist/dist/fonts/geist-sans",
+      to: "/fonts/geist-sans",
+    },
+    {
+      from: "../../../node_modules/geist/dist/fonts/geist-mono",
+      to: "/fonts/geist-mono",
+    },
+  ],
   framework: {
     //name: '@storybook/react-vite',
     name: '@storybook/nextjs',

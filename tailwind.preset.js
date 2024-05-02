@@ -3,6 +3,7 @@ const colors = require('tailwindcss/colors');
 //tailwind.preset.js
 
 module.exports = {
+  darkMode: 'class',
   theme: {
     screens: {
       xs: "320px",
@@ -12,8 +13,8 @@ module.exports = {
       xxl: "1920px",
     },
     fontFamily: {
-      sans: ["var(--font-inter)"],
-      "body": "var(--font-inter)",
+      sans: ['var(--font-geist-sans)'],
+      mono: ['var(--font-geist-mono)'],
     },
     colors: {
       transparent: 'transparent',

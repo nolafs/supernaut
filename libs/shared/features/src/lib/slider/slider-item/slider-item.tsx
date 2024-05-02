@@ -20,7 +20,7 @@ const SliderItem = forwardRef( ({title, description, image}: SliderItemProps, re
          <div className={'block md:hidden'}>
            <Image src={image} alt={title} width={600} height={500}/>
          </div>
-         <figcaption className={'absolute bottom-0 mx-12 mb-14 flex flex-col space-y-5'}>
+         <figcaption className={'absolute bottom-0 mx-12 mb-14 flex flex-col space-y-7'}>
            <h2 className={'text-[48px] font-medium tracking-tighter'}>{title}</h2>
            <p className={'text-2xl lg:text-3xl font-medium'}>{description}</p>
          </figcaption>
