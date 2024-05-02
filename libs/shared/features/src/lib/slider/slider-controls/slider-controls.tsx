@@ -24,7 +24,7 @@ export function SliderControls({children}: SliderControlsProps) {
     }
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
-    console.log('cursor', cursor);
+
     ref.current.addEventListener("mouseenter", handleMouseEnter);
     ref.current.addEventListener("mouseleave", handleMouseLeave);
 
