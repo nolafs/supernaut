@@ -1,6 +1,6 @@
 'use client';
 import styles from './slider-controls.module.scss';
-import {ReactNode, useEffect} from 'react';
+import {ReactNode, useEffect, useRef, useState} from 'react';
 import {useMousePosition} from '@supernaut/hooks';
 import {useCursor} from '@supernaut/context';
 
@@ -14,21 +14,35 @@ export function SliderControls({children}: SliderControlsProps) {
 
   const {clientX, clientY} = useMousePosition();
   const {cursor, setCursor} = useCursor();
-
+  const ref = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
 
+    if(!ref.current) {
+      return;
+    }
+    const handleMouseEnter = () => setIsVisible(true);
+    const handleMouseLeave = () => setIsVisible(false);
     console.log('cursor', cursor);
+    ref.current.addEventListener("mouseenter", handleMouseEnter);
+    ref.current.addEventListener("mouseleave", handleMouseLeave);
 
+    return () => {
+      ref.current?.removeEventListener("mouseenter", handleMouseEnter);
+      ref.current?.removeEventListener("mouseleave", handleMouseLeave);
+    }
     }, [cursor]);
 
   const handleCursor = (type: string) => {
     setCursor({...cursor, active: true, type: type});
   }
 
+  //calculate position releative to parent container
 
-  return (
-    <div className={styles['container']}>
+
+  return (<>
+    <div ref={ref} className={'relative container max-w-[1920px] mx-auto p-0 m-0'}>
       {children}
       <div className={'controls'}>
         <div className={'swiper-button-next-custom absolute right-0 top-0 w-[20%] h-full bg-transparent z-20'}
@@ -40,6 +54,7 @@ export function SliderControls({children}: SliderControlsProps) {
         >
         </div>
       </div>
+    </div>
       {(cursor.active) &&
         <div className={'pointer-events-none text-primary text-6xl'}>
           {(cursor.type === 'default') &&
@@ -49,6 +64,7 @@ export function SliderControls({children}: SliderControlsProps) {
               top: clientY,
               zIndex: 1000,
               transform: "translate(-50%, -50%)",
+              opacity: isVisible && clientX > 1 ? 1 : 0,
             }}>
               <svg
                 width="157"
@@ -70,6 +86,7 @@ export function SliderControls({children}: SliderControlsProps) {
               top: clientY,
               zIndex: 1000,
               transform: "translate(-50%, -50%)",
+              opacity: isVisible && clientX > 1 ? 1 : 0,
             }}>
               Next
             </div>
@@ -80,6 +97,7 @@ export function SliderControls({children}: SliderControlsProps) {
               left: clientX,
               top: clientY,
               zIndex: 1000,
+              opacity: isVisible && clientX > 1 ? 1 : 0,
               transform: "translate(-50%, -50%)",
             }}>
               Prev
@@ -87,7 +105,8 @@ export function SliderControls({children}: SliderControlsProps) {
           }
         </div>
       }
-    </div>
+
+    </>
   );
 }
 
