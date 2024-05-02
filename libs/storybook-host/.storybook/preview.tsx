@@ -16,6 +16,7 @@ const GeistMono = localFont({
 export const parameters = {
   zeplinLink: "zpl://project?pid=662b6f544a37c6849a1b0f52",
   actions: {argTypesRegex: '^on[A-Z].*'},
+  layout: 'fullscreen',
   controls: {
     matchers: {
       color: /(background|color)$/i,

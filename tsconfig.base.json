@@ -19,6 +19,8 @@
     "paths": {
       "@supernaut/features": ["libs/shared/features/src/index.ts"],
       "@supernaut/features/server": ["libs/shared/features/src/server.ts"],
+      "@supernaut/hooks": ["libs/shared/hooks/src/index.ts"],
+      "@supernaut/hooks/server": ["libs/shared/hooks/src/server.ts"],
       "@supernaut/shared-ui": ["libs/shared/ui/src/index.ts"],
       "@supernaut/storybook-host": ["libs/storybook-host/src/index.ts"]
     }
