@@ -1,8 +1,8 @@
 'use client';
-import styles from './slider-controls.module.scss';
 import {ReactNode, useEffect, useRef, useState} from 'react';
-import {useMousePosition} from '@supernaut/hooks';
+import {useMousePosition, useIsTouchDevice} from '@supernaut/hooks';
 import {useCursor} from '@supernaut/context';
+
 
 
 /* eslint-disable-next-line */
@@ -14,14 +14,21 @@ export function SliderControls({children}: SliderControlsProps) {
 
   const {clientX, clientY} = useMousePosition();
   const {cursor, setCursor} = useCursor();
+  const {touch} = useIsTouchDevice();
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
 
   useEffect(() => {
-
     if(!ref.current) {
       return;
     }
+
+    if(touch) {
+      setCursor({active: false, type: 'default'});
+      setIsVisible(false)
+      return;
+    }
+
     const handleMouseEnter = () => setIsVisible(true);
     const handleMouseLeave = () => setIsVisible(false);
 
@@ -38,9 +45,6 @@ export function SliderControls({children}: SliderControlsProps) {
     setCursor({...cursor, active: true, type: type});
   }
 
-  //calculate position releative to parent container
-
-
   return (<>
     <div ref={ref} className={'relative container max-w-[1920px] mx-auto p-0 m-0'}>
       {children}
@@ -56,14 +60,14 @@ export function SliderControls({children}: SliderControlsProps) {
       </div>
     </div>
       {(cursor.active) &&
-        <div className={'pointer-events-none text-primary text-6xl'}>
+        <div className={'pointer-events-none text-primary text-6xl hidden  lg:block'}>
           {(cursor.type === 'default') &&
             <div style={{
               position: "absolute",
               left: clientX,
               top: clientY,
               zIndex: 1000,
-              transform: "translate(-50%, -50%)",
+              transform: "translate(-75%, -30px)",
               opacity: isVisible && clientX > 1 ? 1 : 0,
             }}>
               <svg
