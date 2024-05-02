@@ -1,6 +1,7 @@
 
 import {forwardRef} from 'react';
 import Image from 'next/image';
+import {useRouter} from 'next/navigation';
 
 
 /* eslint-disable-next-line */
@@ -8,11 +9,22 @@ export interface SliderItemProps {
   title: string;
   description: string;
   image: string;
+  url?: string;
 }
 
-const SliderItem = forwardRef( ({title, description, image}: SliderItemProps, ref) => {
+const SliderItem = forwardRef( ({title, description, image, url}: SliderItemProps, ref) => {
+
+  const router = useRouter();
+
+  const handleClick = () => {
+    //next router
+    if(url) {
+      router.push(url)
+    }
+  };
+
   return (
-     <div className={'relative  text-primary'}>
+     <div className={'relative  text-primary'} onClick={handleClick}>
        <figure>
          <div className={'hidden md:block w-full h-screen max-h-[1000px]'}>
            <Image src={image} alt={title} width={1920} height={1000} className={'object-cover object-center w-full h-full'}/>

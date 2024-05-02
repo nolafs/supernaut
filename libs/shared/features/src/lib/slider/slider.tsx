@@ -47,7 +47,6 @@ export function Slider({slides, strapline}: SliderProps) {
           <Swiper
             modules={[Navigation]}
             onSlideChange={(e) => {
-              console.log('slide change', e);
               setCurrentIndex(e.activeIndex);
             }}
             spaceBetween={50}
