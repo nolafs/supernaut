@@ -1,14 +1,8 @@
-// import {join} from 'path';
-// const tailwindConfigPath = join(__dirname, '../tailwind.config.js') // or your own config file
-// eslint-disable-next-line @typescript-eslint/no-var-requires
-// require('storybook-tailwind-foundations/initialize.js').default(tailwindConfigPath);
-
 
 const config: StorybookConfig = {
   stories: [
     '../../shared/**/src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)',
-    //join(__dirname, '../../../node_modules/storybook-tailwind-foundations/**/*.stories.js')
+    '../src/lib/**/*.stories.@(js|jsx|ts|tsx|mdx)'
   ],
   addons: [
     '@storybook/addon-essentials',
@@ -29,6 +23,27 @@ const config: StorybookConfig = {
     //name: '@storybook/react-vite',
     name: '@storybook/nextjs',
     options: {},
+  },
+  webpackFinal: async (config) => {
+    config.module = config.module || {};
+    config.module.rules = config.module.rules || [];
+
+    // This modifies the existing image rule to exclude .svg files
+    // since you want to handle those files with @svgr/webpack
+    const imageRule = config.module.rules.find((rule) => rule?.['test']?.test('.svg'));
+    if (imageRule) {
+      imageRule['exclude'] = /\.svg$/;
+    }
+
+    // Configure .svg files to be loaded with @svgr/webpack
+    config.module.rules.push({
+      test: /\.svg$/,
+      use: ['@svgr/webpack'],
+    });
+
+
+
+    return config;
   },
 };
 
