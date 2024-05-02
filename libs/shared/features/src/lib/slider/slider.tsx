@@ -61,7 +61,7 @@ export function Slider({slides, strapline}: SliderProps) {
           >
             {slides?.map((slide, index) => (
               <SwiperSlide key={index}>
-                <SliderItem title={slide.title} description={slide.description} image={slide.image}/>
+                <SliderItem title={slide.title} description={slide.description} image={slide?.image} video={slide?.video}/>
               </SwiperSlide>
             ))}
 
