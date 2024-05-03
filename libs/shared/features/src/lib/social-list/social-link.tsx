@@ -56,8 +56,9 @@ export const SocialLink = ({item}: SocialLinkProps) => {
   }
 
   return (
-    <button className={'w-[30px] h-[30px]'} onClick={() => openSocialMediaLink(item?.url as string)} rel="noopener noreferrer">
-      <SocialIcons type={item?.internalName} url={item?.url} props="" />
+    <button className={'w-[26px] h-[26px]'} onClick={() => openSocialMediaLink(item?.url as string)} rel="noopener noreferrer">
+      <SocialIcons type={item?.type} url={item?.url} props="" />
+      <span className={'sr-only'}>{item.name}</span>
     </button>
   );
 };

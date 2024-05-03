@@ -1,5 +1,13 @@
 .navbar {
-  @apply bg-accent text-white flex justify-between items-center;
+  @apply bg-accent text-white flex justify-between items-center py-8 pl-12 pr-11;
+
+  &.dark {
+    @apply bg-base text-white fill-primary;
+  }
+
+  &.light {
+    @apply bg-primary text-black fill-base;
+  }
 
   .mobile {
     display: flex;

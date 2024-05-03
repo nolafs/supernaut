@@ -12,10 +12,10 @@ export interface SocialListProps {
 export function SocialList({items, className}: SocialListProps) {
   return (
     <div className={styles['container']}>
-      <ul className={cn((className) ? className : 'flex space-x-5 justify-center items-center')}>
+      <ul className={cn((className) ? className : 'flex space-x-6 justify-center items-center')}>
         {items.map(item => {
           return ((item?.url) &&
-            <li key={item?.id}>
+            <li key={item?.id} className={'flex'}>
               <SocialLink item={item}/>
             </li>
           )
