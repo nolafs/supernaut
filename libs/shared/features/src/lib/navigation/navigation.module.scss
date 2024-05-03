@@ -1,5 +1,5 @@
 .navbar {
-  @apply bg-accent text-white flex justify-between items-center py-8 pl-12 pr-11;
+  @apply fixed w-full z-50 bg-accent text-white flex justify-between items-center py-5 md:py-8 pl-5 pr-5 md:pl-12 md:pr-11;
 
   &.dark {
     @apply bg-base text-white fill-primary;
@@ -9,9 +9,15 @@
     @apply bg-primary text-black fill-base;
   }
 
+  .logo{
+    img, svg {
+      @apply w-auto h-full max-h-[40px] md:max-h-full;
+    }
+  }
+
   .mobile {
     display: flex;
-    @screen md {
+    @screen lg {
       display: none;
     }
 
@@ -19,7 +25,7 @@
 
   .desktop {
     display: none;
-    @screen md {
+    @screen lg {
       display: flex;
     }
   }

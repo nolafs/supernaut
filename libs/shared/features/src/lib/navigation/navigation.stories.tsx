@@ -28,7 +28,15 @@ const meta: Meta<typeof Navigation> = {
         type: 'object',
       },
     },
-  }
+  },
+  decorators: [
+    (Story) => (
+      <div style={{height: '200vh'}}>
+        {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
+        <Story/>
+      </div>
+    ),
+  ],
 };
 export default meta;
 type Story = StoryObj<typeof Navigation>;
@@ -72,11 +80,14 @@ export const Primary = {
   args: {
     ...defaultArgs
   },
+
 };
 
-export const Mobile: Story = {
+export const Mobile = {
   args: {
+    ...defaultArgs
   },
+
   parameters: {
     viewport: {
       defaultViewport: 'mobile1',

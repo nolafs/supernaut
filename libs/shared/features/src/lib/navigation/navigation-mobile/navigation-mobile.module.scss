@@ -1,0 +1,51 @@
+@keyframes crossAnimationTop {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+  20% {
+    transform: rotate(0deg) translateY(10px);
+  }
+  100% {
+    transform: rotate(45deg) translateY(10px);
+  }
+}
+
+@keyframes crossAnimationBottom {
+  0% {
+    transform: rotate(0deg) translateY(0);
+  }
+
+  20% {
+    transform: rotate(0deg) translateY(-10px);
+  }
+
+  100% {
+    transform: rotate(-45deg) translateY(-10px);
+  }
+}
+
+.menuButton {
+  &.open {
+    .menuBarTop {
+      //background: blue;
+      animation: crossAnimationTop 0.3s forwards ease-in-out;
+    }
+
+    .menuBarBottom {
+      //background: red;
+      animation: crossAnimationBottom 0.3s forwards ease-in-out;
+    }
+  }
+
+  &.close {
+    .menuBarTop {
+      //background: blue;
+      //animation: crossAnimationTop 2s backwards;
+    }
+
+    .menuBarBottom {
+      //background: red;
+      //animation: crossAnimationBottom 2s backwards;
+    }
+  }
+}
