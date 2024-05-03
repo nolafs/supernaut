@@ -10,6 +10,7 @@ const config: StorybookConfig = {
     'storybook-zeplin/register',
   ],
   staticDirs: [
+     '../../../apps/supernaut/public/',
     {
       from: "../../../node_modules/geist/dist/fonts/geist-sans",
       to: "/fonts/geist-sans",

@@ -10,6 +10,7 @@ import { useState} from 'react';
 import SliderControls from './slider-controls/slider-controls';
 import {CursorContextProvider} from '@supernaut/context';
 import SliderDescription from './slider-description/slider-description';
+import SliderStrapline from './slider-strapline/slider-strapline';
 
 
 type Slide = {
@@ -41,9 +42,7 @@ export function Slider({slides, strapline}: SliderProps) {
       <div className={'relative container max-w-[1920px] mx-auto p-0 m-0 overflow-hidden'}>
 
           {strapline &&
-            <div className={'hidden md:block absolute top-0 mx-14 mt-32 z-20 text-white max-w-2xl'}>
-              <h1 className={'text-6xl font-medium tracking-tight uppercase'}>{strapline}</h1>
-            </div>
+            <SliderStrapline strapline={strapline} />
           }
           <Swiper
             modules={[Navigation]}

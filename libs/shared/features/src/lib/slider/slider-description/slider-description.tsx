@@ -1,6 +1,8 @@
 import {useEffect, useRef, useState} from 'react';
-import gsap from 'gsap';
+
 import cn from 'classnames';
+
+import gsap from 'gsap';
 import {useGSAP} from '@gsap/react';
 import {SplitText} from 'gsap/SplitText';
 gsap.registerPlugin(useGSAP, SplitText);

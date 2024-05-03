@@ -1,7 +1,18 @@
-/*
- * Replace this with your own classes
- *
- * e.g.
- * .container {
- * }
-*/
+.navbar {
+  @apply bg-accent text-white flex justify-between items-center;
+
+  .mobile {
+    display: flex;
+    @screen md {
+      display: none;
+    }
+
+  }
+
+  .desktop {
+    display: none;
+    @screen md {
+      display: flex;
+    }
+  }
+}
