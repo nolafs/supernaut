@@ -2,13 +2,16 @@
 import React from 'react';
 
 import SocialIcons from './social-icons';
+import {ButtonPrimary} from '@supernaut/shared-ui';
+import {SocialLinkItemType} from '@supernaut/types';
 
 interface SocialLinkProps {
-  item: any;
+  item: SocialLinkItemType;
   className?: string;
+  icons?: boolean;
 }
 
-export const SocialLink = ({item, className}: SocialLinkProps) => {
+export const SocialLink = ({item, className, icons}: SocialLinkProps) => {
 
   const openSocialMediaLink = (url: string) => {
     const userAgent = navigator.userAgent || navigator.vendor;
@@ -56,12 +59,16 @@ export const SocialLink = ({item, className}: SocialLinkProps) => {
 
   }
 
-  return (
-    <button className={'w-[26px] h-[26px]'} onClick={() => openSocialMediaLink(item?.url as string)} rel="noopener noreferrer">
-      <SocialIcons type={item?.type} url={item?.url} props={className} />
-      <span className={'sr-only'}>{item.name}</span>
-    </button>
-  );
+  if(icons) {
+    return (
+      <button className={'w-[26px] h-[26px]'} onClick={() => openSocialMediaLink(item?.url as string)}
+              rel="noopener noreferrer">
+        <SocialIcons type={item?.type} url={item?.url} props={className}/>
+      </button>
+    );
+  } else {
+    return <ButtonPrimary onClick={() => openSocialMediaLink(item?.url as string)} isDisabled={false} hasIcon={false} size={'lg'}  label={item.name} />
+  }
 };
 
 export default SocialLink;

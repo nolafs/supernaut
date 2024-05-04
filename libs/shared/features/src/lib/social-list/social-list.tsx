@@ -7,9 +7,10 @@ import cn from 'classnames';
 export interface SocialListProps {
   items: SocialLinkItemType[];
   className?: string;
+  icons?: boolean;
 }
 
-export function SocialList({items, className}: SocialListProps) {
+export function SocialList({items, className, icons=true}: SocialListProps) {
 
   if(!items) return null;
 
@@ -19,7 +20,7 @@ export function SocialList({items, className}: SocialListProps) {
         {items.map(item => {
           return ((item?.url) &&
             <li key={item?.id} className={'flex'}>
-              <SocialLink item={item}/>
+              <SocialLink item={item} icons={icons}/>
             </li>
           )
         })}

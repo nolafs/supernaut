@@ -18,16 +18,19 @@ export const Primary = {
       {
         id: '1',
         url: 'https://www.facebook.com',
+        name: 'Facebook',
         type: 'facebook',
       },
       {
         id: '2',
         url: 'https://www.instagram.com',
+        name: 'Instagram',
         type: 'instagram',
       },
       {
         id: '3',
         url: 'https://www.twitter.com',
+        name: 'Twitter',
         type: 'twitter',
       },
     ],
