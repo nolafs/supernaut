@@ -36,7 +36,7 @@ export function SliderDescription({id, title, description}: SliderDescriptionPro
 
 
   return (
-    <div ref={main} className={cn('main absolute text-primary bottom-0 mx-6 md:mx-12 mb-6 md:mb-14 flex flex-col md:space-y-7 z-20 ', (!show) ? 'opacity-0' : 'opacity-1')}>
+    <div ref={main} className={cn('main absolute text-primary bottom-0 mx-6 md:mx-12 mb-6 md:mb-14 flex flex-col md:space-y-7 z-20 max-w-6xl', (!show) ? 'opacity-0' : 'opacity-1')}>
       <h2 className={'header text-3xl md:text-[48px] font-medium tracking-tighter overflow-hidden py-1'}>{title}</h2>
       <p className={'body text-2xl lg:text-3xl font-medium hidden md:block'}>{description}</p>
     </div>
