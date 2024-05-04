@@ -5,14 +5,14 @@ import cn from 'classnames';
 
 /* eslint-disable-next-line */
 export interface SocialListProps {
-  items: SocialLinkItemType[];
+  items?: SocialLinkItemType[];
   className?: string;
   icons?: boolean;
 }
 
 export function SocialList({items, className, icons=true}: SocialListProps) {
 
-  if(!items) return null;
+  if(!items?.length) return null;
 
   return (
     <div className={styles['container']}>

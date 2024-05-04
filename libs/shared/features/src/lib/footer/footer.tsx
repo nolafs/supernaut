@@ -1,13 +1,54 @@
-import styles from './footer.module.css';
+
 
 /* eslint-disable-next-line */
-export interface FooterProps {}
+import {NavigationItem, SocialLinkItemType} from '@supernaut/types';
+import cn from 'classnames';
+import {ButtonPrimary} from '@supernaut/shared-ui';
+import {SocialList} from '@supernaut/features';
+import NavigationButton from '../navigation/navigation-button';
 
-export function Footer(props: FooterProps) {
+export interface FooterProps {
+  mode: 'light' | 'dark';
+  copyright: string;
+  strapline: string;
+  contactButtonLabel: string;
+  social?: SocialLinkItemType[];
+  legal: NavigationItem[];
+}
+
+export function Footer({mode, legal, contactButtonLabel, copyright, strapline, social}: FooterProps) {
   return (
-    <div className={styles['container']}>
-      <h1>Welcome to Footer!</h1>
+   <footer>
+    <div className={'container max-w-8xl pt-16 mb:pt-24 pb-10 border-t border-primary/50'}>
+      <div className={cn('flex flex-col', (mode === 'light') ? 'text-base' : 'text-primary')}>
+        <div className={'mb-8'}>
+          <h1 className={'font-normal text-4xl  md:text-6xl'}>{strapline}</h1>
+        </div>
+        <div className={'flex flex-col md:flex-row space-y-10 md:space-x-10'}>
+          <ButtonPrimary label={contactButtonLabel} isDisabled={false} size={'lg'} />
+          <SocialList items={social} icons={false} className={'flex flex-col md:flex-row space-y-10 md:space-x-10'} />
+        </div>
+      </div>
+      <div  className={cn('flex flex-col md:flex-row md:justify-between md:space-x-10 mt-20 md:mt-24', 'text-secondary')}>
+        <div className={'text-sm md:text-base'}>
+          {copyright}
+        </div>
+        <div>
+          <ul className={cn('flex space-x-6 mt-5 md:mt-0  items-center')}>
+{legal.map(item => {
+              return (
+                <li key={item.id} className={'flex'}>
+                  <NavigationButton item={item} className={'underline'} />
+                </li>
+              )
+            })}
+          </ul>
+
+        </div>
+      </div>
     </div>
+
+    </footer>
   );
 }
 

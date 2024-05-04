@@ -7,10 +7,11 @@ import {useNavigation} from '@supernaut/hooks';
 import {useEffect, useState} from 'react';
 
 export interface NavigationButtonProps {
-  item: NavigationItem;
+  item: NavigationItem,
+  className?: string;
 }
 
-export function NavigationButton({item}: NavigationButtonProps) {
+export function NavigationButton({item, className}: NavigationButtonProps) {
 
   const route = useNavigation({})
   const [currentRoute, setCurrentRoute] = useState({pathname: ''});
@@ -27,7 +28,10 @@ export function NavigationButton({item}: NavigationButtonProps) {
     <Link href={{
       pathname: item?.slug
     }}
-          className={cn('cursor-pointer', ((`/${item.slug}`) === currentRoute.pathname) ? 'text-secondary' : 'text-white', 'hover:text-secondary')}
+    className={
+      cn('cursor-pointer',
+        ((`/${item.slug}`) === currentRoute.pathname) ? 'text-secondary' : 'text-white', 'hover:text-secondary',
+        className)}
     >{item.pageName}</Link>
   );
 }

@@ -13,7 +13,7 @@ type Story = StoryObj<typeof Footer>;
 
 
 const defaultArgs = {
-  strapline: 'Say hello.',
+  strapline: 'Say Hello.',
   mode: 'dark',
   copyright: '© 2021 Supernaut Ltd. All rights reserved.',
   contactButtonLabel: 'info@supernaut.com',
@@ -46,9 +46,19 @@ const defaultArgs = {
 };
 
 export const Primary = {
-  args: {},
+  args: {
+    ...defaultArgs
+  },
 };
 
-export const Mobile: Story = {
-  args: {},
+export const Mobile = {
+  args: {
+    ...defaultArgs
+  },
+
+  parameters: {
+    viewport: {
+      defaultViewport: 'mobile1',
+    },
+  },
 };

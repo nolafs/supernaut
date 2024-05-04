@@ -10,7 +10,17 @@ module.exports = {
       md: "768px",
       lg: "1024px",
       xl: "1440px",
-      xxl: "1920px",
+     '2xl': "1920px",
+    },
+    container: {
+      center: true,
+      padding: {
+        DEFAULT: '0.5rem',
+        sm: '1rem',
+        lg: '2rem',
+        xl: '3rem',
+        '2xl': '4rem',
+      },
     },
     fontFamily: {
       sans: ['var(--font-geist-sans)'],

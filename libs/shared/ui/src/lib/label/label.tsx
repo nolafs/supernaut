@@ -22,7 +22,7 @@ export function Label({children, size, hasIcon, isDisabled}: LabelProps) {
       <div className={'flex flex-col'}>
         <span>{children}</span>
         <div
-          className={cn("max-w-xs h-[2px] md:mt-1", (isDisabled) ? 'bg-secondary' : styles.decorLine, (size === 'lg') && 'lg:mt-2')}></div>
+          className={cn("max-w-full h-[2px] md:mt-1", (isDisabled) ? 'bg-secondary' : styles.decorLine, (size === 'lg') && 'lg:mt-1 h-3', (size === 'lg') && styles.large )}></div>
       </div>
       {hasIcon && (
         <div
