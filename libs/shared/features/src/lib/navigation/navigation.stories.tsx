@@ -64,11 +64,13 @@ const defaultArgs = {
   ],
   social: [
     {
+      id: '1',
       name: 'instagram',
       url: 'https://twitter.com/supernaut',
       type: 'instagram',
     },
     {
+      id: '2',
       name: 'linkedin',
       url: 'https://facebook.com/supernaut',
       type: 'linkedin',

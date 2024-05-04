@@ -3,10 +3,16 @@
 import styles from './navigation-mobile.module.scss';
 import {NavigationItem} from '@supernaut/types';
 import {Dialog, Transition} from '@headlessui/react';
-import {Fragment, useState} from 'react';
+import {Fragment, useEffect, useRef, useState} from 'react';
 import {useNavigation} from '@supernaut/hooks';
 import Link from 'next/link';
 import cn from 'classnames';
+import gsap from 'gsap';
+import {useGSAP} from '@gsap/react';
+import {SplitText} from 'gsap/SplitText';
+import NavigationMobileMenu from './navigation-mobile-menu';
+
+gsap.registerPlugin(useGSAP, SplitText);
 
 export interface NavigationMobileProps {
   siteTitle?: string;
@@ -21,15 +27,36 @@ export function NavigationMobile({items, mode, logo, siteTitle}: NavigationMobil
   const [currentRoute, setCurrentRoute] = useState({pathname: ''});
   const route = useNavigation({});
 
+
+
+
+
+
+
+  useEffect(() => {
+    if (route?.route.pathname !== currentRoute.pathname) {
+      setCurrentRoute({
+        pathname: route.route.pathname,
+
+      });
+
+      setMobileMenuOpen(false);
+      setTimeout(() => {
+        window.scrollTo(0, 0);
+      }, 500);
+    }
+
+  }, [route, currentRoute.pathname]);
+
   const handleClick = () => {
     setMobileMenuOpen((prev) => !prev);
   }
 
   return (<>
 
-      <div className={cn(styles['menuButton'], (mobileMenuOpen) ? styles['open'] : styles['close'],'relative flex flex-col space-y-3 cursor-pointer bg-transparent z-20')} onClick={handleClick}>
-        <div className={cn('w-12 h-1', (mode == 'light') ? 'bg-base' : 'bg-primary', styles['menuBarTop'])}></div>
-        <div className={cn('w-12 h-1', (mode == 'light') ? 'bg-base' : 'bg-primary', styles['menuBarBottom'])}></div>
+      <div className={cn(styles['menuButton'], (mobileMenuOpen) ? styles['open'] : styles['close'],'relative flex flex-col space-y-3 cursor-pointer bg-transparent z-90')} onClick={handleClick}>
+        <div className={cn('w-12 h-1', (mode == 'light') ? 'bg-base' : 'bg-primary', (mobileMenuOpen) && 'bg-base', styles['menuBarTop'])}></div>
+        <div className={cn('w-12 h-1', (mode == 'light') ? 'bg-base' : 'bg-primary', (mobileMenuOpen) && 'bg-base', styles['menuBarBottom'])}></div>
       </div>
 
       <Transition
@@ -49,17 +76,7 @@ export function NavigationMobile({items, mode, logo, siteTitle}: NavigationMobil
             <div className="relative w-full h-screen flex justify-end">
               <div className={'flex justify-end w-full'}>
                 <nav className="flex flex-col bg-primary w-[80%] h-screen p-10">
-                  <ul className={'flex flex-col space-y-6'}>
-                    {items.map((item: NavigationItem, index) => {
-                      return (
-                        <li key={item.id}>
-                          <Link href={{
-                            pathname: item?.slug
-                          }} className={'text-2xl tracking-wider uppercase border-0 hover:text-secondary focused:border-0 transition ease-in-out  delay-150'}><span className={'text-sm font-medium text-secondary mr-3 '}>{`0${index + 1}.`}</span>{item.pageName}</Link>
-                        </li>
-                      )
-                    })}
-                </ul>
+                  <NavigationMobileMenu items={items} open={mobileMenuOpen} />
                 </nav>
               </div>
             </div>
