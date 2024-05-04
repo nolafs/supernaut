@@ -10,6 +10,9 @@ export interface SocialListProps {
 }
 
 export function SocialList({items, className}: SocialListProps) {
+
+  if(!items) return null;
+
   return (
     <div className={styles['container']}>
       <ul className={cn((className) ? className : 'flex space-x-6 justify-center items-center')}>

@@ -5,9 +5,10 @@ import SocialIcons from './social-icons';
 
 interface SocialLinkProps {
   item: any;
+  className?: string;
 }
 
-export const SocialLink = ({item}: SocialLinkProps) => {
+export const SocialLink = ({item, className}: SocialLinkProps) => {
 
   const openSocialMediaLink = (url: string) => {
     const userAgent = navigator.userAgent || navigator.vendor;
@@ -57,7 +58,7 @@ export const SocialLink = ({item}: SocialLinkProps) => {
 
   return (
     <button className={'w-[26px] h-[26px]'} onClick={() => openSocialMediaLink(item?.url as string)} rel="noopener noreferrer">
-      <SocialIcons type={item?.type} url={item?.url} props="" />
+      <SocialIcons type={item?.type} url={item?.url} props={className} />
       <span className={'sr-only'}>{item.name}</span>
     </button>
   );

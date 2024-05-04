@@ -4,7 +4,7 @@ import SocialList from './social-list';
 
 describe('SocialList', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SocialList />);
+    const { baseElement } = render(<SocialList items={[]} />);
     expect(baseElement).toBeTruthy();
   });
 });
