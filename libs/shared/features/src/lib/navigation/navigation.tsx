@@ -5,6 +5,7 @@ import SocialList from '../social-list/social-list';
 import cn from 'classnames';
 import {ReactSVG} from 'react-svg'
 import NavigationMobile from './navigation-mobile/navigation-mobile';
+import NavigationButton from './navigation-button';
 
 
 /* eslint-disable-next-line */
@@ -42,9 +43,7 @@ export function Navigation({siteTitle, items, logo, mode='dark', social}: Naviga
             {items.map((item:NavigationItem) => {
               return (
                 <li key={item.id}>
-                  <Link href={{
-                    pathname: item?.slug
-                  }}>{item.pageName}</Link>
+                  <NavigationButton item={item} />
                 </li>
               )})}
             </ul>

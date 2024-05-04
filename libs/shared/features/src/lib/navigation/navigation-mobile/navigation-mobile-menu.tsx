@@ -53,8 +53,8 @@ export function NavigationMobileMenu({items, open}: NavigationMobileMenuProps) {
               pathname: item?.slug
             }}
                   className={'text-2xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150'}><span
-              className={'num text-sm font-medium text-secondary mr-3 '}>{`0${index + 1}.`}</span><span
-              className={'label'}>{item.pageName}</span></Link>
+                  className={'num text-sm font-medium text-secondary mr-3 '}>{`0${index + 1}.`}</span><span
+                  className={'label'}>{item.pageName}</span></Link>
           </li>
         )
       })}
