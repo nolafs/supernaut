@@ -32,8 +32,9 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
         <Swiper
           loop={true}
           onSlideChange={(e) => {
-            setCurrentIndex(e.activeIndex);
-            setCurrentSlide(items[e.activeIndex]);
+            console.log(e, items[e.realIndex])
+            setCurrentIndex(e.realIndex);
+            setCurrentSlide(items[e.realIndex]);
           }}
           spaceBetween={20}
           slidesPerView={1}
