@@ -1,5 +1,5 @@
 'use client';
-import {Navigation} from 'swiper/modules';
+import {Navigation, Autoplay} from 'swiper/modules';
 import {Swiper, SwiperSlide} from 'swiper/react';
 import SliderItem from './slider-item/slider-item';
 import 'swiper/css';
@@ -24,9 +24,10 @@ type Slide = {
 export interface SliderProps {
   slides?: Slide[];
   strapline?: string;
+  autoplay?: boolean;
 }
 
-export function Slider({slides, strapline}: SliderProps) {
+export function Slider({slides, strapline, autoplay}: SliderProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(slides?.length || 0);
@@ -45,11 +46,12 @@ export function Slider({slides, strapline}: SliderProps) {
             <SliderStrapline strapline={strapline} />
           }
           <Swiper
-            modules={[Navigation]}
+            modules={[Navigation, Autoplay]}
             onSlideChange={(e) => {
-              setCurrentIndex(e.activeIndex);
-              setCurrentSlide(slides[e.activeIndex]);
+              setCurrentIndex(e.realIndex);
+              setCurrentSlide(slides[e.realIndex]);
             }}
+            autoplay={autoplay}
             spaceBetween={50}
             slidesPerView={1}
             loop={false}

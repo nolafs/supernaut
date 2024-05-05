@@ -32,7 +32,6 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
         <Swiper
           loop={true}
           onSlideChange={(e) => {
-            console.log(e, items[e.realIndex])
             setCurrentIndex(e.realIndex);
             setCurrentSlide(items[e.realIndex]);
           }}
@@ -46,11 +45,11 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
         >
           {items.map((quote) => (
             <SwiperSlide key={quote?.id}>
-              <div className="flex flex-col justify-center items-start max-w-7xl mx-auto">
-                <blockquote className="font-medium text-xl tracking-tight md:text-3xl lg:text-6xl">
-                  "{quote?.quote}"
-                  <div className={'!outline-none'}>
-                    <cite className="mt-10 mb-10 lg:text-2xl not-italic font-normal">
+              <div className="flex flex-col justify-center items-start  mx-auto">
+                <blockquote className="container max-w-7xl font-medium text-xl tracking-tight md:text-3xl lg:text-6xl flex flex-col">
+                  <div>"{quote?.quote}"</div>
+                  <div className={'!outline-none mt-4'}>
+                    <cite className="text-xl lg:text-3xl not-italic font-normal">
                       {quote?.author} / {quote?.position}
                     </cite>
                   </div>
@@ -59,8 +58,12 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
               </div>
             </SwiperSlide>
           ))}
-          <div className={'absolute bottom-0 right-0 text-white text-xl md:text-2xl z-20'}>
-            {((currentIndex + 1) >= 10) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10) ? numberSlides : `0${numberSlides}`}
+          <div className={'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl z-20'}>
+             <div className={'container mx-auto flex justify-end items-center pb-1'}>
+               <div>
+                {((currentIndex + 1) >= 10) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10) ? numberSlides : `0${numberSlides}`}
+               </div>
+             </div>
           </div>
         </Swiper>
       </div>
