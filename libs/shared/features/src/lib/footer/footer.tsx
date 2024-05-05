@@ -24,13 +24,13 @@ export function Footer({mode, legal, contactButtonLabel, copyright, strapline, s
         <div className={'mb-8'}>
           <h1 className={'font-normal text-4xl  md:text-6xl'}>{strapline}</h1>
         </div>
-        <div className={'flex flex-col md:flex-row space-y-10 md:space-x-10'}>
+        <div className={'flex flex-col md:flex-row space-y-10 md:space-y-0  md:space-x-10'}>
           <ButtonPrimary label={contactButtonLabel} isDisabled={false} size={'lg'} />
-          <SocialList items={social} icons={false} className={'flex flex-col md:flex-row space-y-10 md:space-x-10'} />
+          <SocialList items={social} icons={false} className={'flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10'} />
         </div>
       </div>
       <div  className={cn('flex flex-col md:flex-row md:justify-between md:space-x-10 mt-20 md:mt-24', 'text-secondary')}>
-        <div className={'text-sm md:text-base'}>
+        <div className={'text-sm md:text-normal'}>
           {copyright}
         </div>
         <div>

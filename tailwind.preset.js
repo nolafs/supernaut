@@ -27,6 +27,10 @@ module.exports = {
       sans: ['var(--font-geist-sans)'],
       mono: ['var(--font-geist-mono)'],
     },
+    fontSize: {
+      ...defaultTheme.fontSize,
+      'normal': '1.1rem',
+    },
     colors: {
       transparent: 'transparent',
       current: 'currentColor',
