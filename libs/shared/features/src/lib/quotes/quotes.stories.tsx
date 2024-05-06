@@ -6,7 +6,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Quotes> = {
   component: Quotes,
-  title: 'Features/Quotes',
+  title: 'Features/Blocks/Quotes',
 };
 export default meta;
 type Story = StoryObj<typeof Quotes>;

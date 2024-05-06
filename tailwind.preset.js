@@ -21,7 +21,7 @@ module.exports = {
         md: '2rem',
         lg: '3rem',
         xl: '3rem',
-        '2xl': '4rem',
+        '2xl': '3rem',
       },
     },
     fontFamily: {
