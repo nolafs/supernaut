@@ -2,7 +2,7 @@
 import {ReactNode} from 'react';
 
 export interface SectionProps {
-  id: string;
+  internalName: string;
   children: ReactNode;
   marginTop?: boolean;
   marginBottom?: boolean;
@@ -18,9 +18,9 @@ export interface SectionProps {
   lineBottom?: boolean;
 }
 
-export function Section({id, children}: SectionProps) {
+export function Section({internalName, children}: SectionProps) {
   return (
-    <section id={id}>
+    <section id={internalName}>
       {children}
     </section>
   );

@@ -45,6 +45,7 @@ const defaultArgs = {
   siteTitle: 'Supernaut',
   logo: '/images/logo.svg',
   mode: 'dark',
+  sticky: true,
   items: [
     {
       id: '1',

@@ -13,9 +13,10 @@ export interface QuotesProps {
   mode: 'dark' | 'light';
   internalName: string;
   items: Quote[]
+  autoplay?: boolean;
 }
 
-export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
+export function Quotes({items, internalName, mode = 'dark', autoplay=false}: QuotesProps) {
 
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(items?.length || 0);
@@ -28,7 +29,7 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
     <section id={'quote' + internalName} className={cn('relative overflow-hidden', (mode === 'light') ? 'text-base' : 'text-primary')}>
 
       <div
-        className="quotes relative z-1 w-full h-auto min-h-fit overflow-hidden flex flex-col justify-center items-center py-24 sm:py-32 px-5">
+        className="quotes relative z-1 w-full h-auto min-h-fit overflow-hidden flex flex-col justify-center items-center py-24 sm:py-32">
         <Swiper
           loop={true}
           onSlideChange={(e) => {
@@ -37,7 +38,7 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
           }}
           spaceBetween={20}
           slidesPerView={1}
-          autoplay={true}
+          autoplay={autoplay}
           pagination={true}
           className={'w-full'}
           speed={1000}
@@ -45,11 +46,11 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
         >
           {items.map((quote) => (
             <SwiperSlide key={quote?.id}>
-              <div className="flex flex-col justify-center items-start  mx-auto">
-                <blockquote className="container max-w-7xl font-medium text-xl tracking-tight md:text-3xl lg:text-6xl flex flex-col">
+              <div className="flex flex-col justify-center items-start mx-auto">
+                <blockquote className="container font-medium text-3xl tracking-tight  lg:text-6xl flex flex-col">
                   <div>"{quote?.quote}"</div>
                   <div className={'!outline-none mt-4'}>
-                    <cite className="text-xl lg:text-3xl not-italic font-normal">
+                    <cite className="text-normal lg:text-3xl not-italic font-normal leading-[0]">
                       {quote?.author} / {quote?.position}
                     </cite>
                   </div>
@@ -58,11 +59,9 @@ export function Quotes({items, internalName, mode = 'dark'}: QuotesProps) {
               </div>
             </SwiperSlide>
           ))}
-          <div className={'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl z-20'}>
+          <div className={'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl  z-20'}>
              <div className={'container mx-auto flex justify-end items-center pb-1'}>
-               <div>
                 {((currentIndex + 1) >= 10) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10) ? numberSlides : `0${numberSlides}`}
-               </div>
              </div>
           </div>
         </Swiper>

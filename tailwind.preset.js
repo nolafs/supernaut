@@ -17,8 +17,9 @@ module.exports = {
       center: true,
       padding: {
         DEFAULT: '0.5rem',
-        sm: '1rem',
-        lg: '2rem',
+        sm: '2rem',
+        md: '2rem',
+        lg: '3rem',
         xl: '3rem',
         '2xl': '4rem',
       },
@@ -43,6 +44,13 @@ module.exports = {
       'neutral': "#191919",
       'base': "#000000",
     },
+    extend: {
+      maxWidth: {
+        ...defaultTheme.maxWidth,
+        '8xl': '90rem',
+        '9xl': '120rem',
+      },
+    }
   },
   safelist: [
   ],

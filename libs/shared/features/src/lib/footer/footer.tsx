@@ -19,7 +19,7 @@ export interface FooterProps {
 export function Footer({mode, legal, contactButtonLabel, copyright, strapline, social}: FooterProps) {
   return (
    <footer>
-    <div className={'container max-w-8xl pt-16 mb:pt-24 pb-10 border-t border-primary/50'}>
+    <div className={'container max-w-8xl pt-16 mb:pt-24 pb-10'}>
       <div className={cn('flex flex-col', (mode === 'light') ? 'text-base' : 'text-primary')}>
         <div className={'mb-8'}>
           <h1 className={'font-normal text-4xl  md:text-6xl'}>{strapline}</h1>

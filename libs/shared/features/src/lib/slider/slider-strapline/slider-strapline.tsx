@@ -25,7 +25,7 @@ export function SliderStrapline({strapline}: SliderStraplineProps) {
 
 
   return (
-    <div  className={cn(styles['container'],'hidden md:block absolute top-0 mx-14 mt-32 z-20 text-white max-w-2xl')}>
+    <div  className={cn(styles['container'],'hidden md:block absolute top-0 mx-12 mt-32 z-20 text-white max-w-2xl')}>
       <h1 className={'strapline text-6xl font-medium tracking-tight uppercase overflow-hidden'}>{strapline}</h1>
     </div>
   );

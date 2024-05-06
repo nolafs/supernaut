@@ -1,19 +1,5 @@
 .navbar {
-  @apply fixed w-full z-20 bg-accent text-white flex justify-between items-center py-5 md:py-8 pl-5 pr-5 md:pl-12 md:pr-11;
-
-  &.dark {
-    @apply bg-base text-white fill-primary;
-  }
-
-  &.light {
-    @apply bg-primary text-black fill-base;
-  }
-
-  .logo{
-    img, svg {
-      @apply w-auto h-full max-h-[40px] md:max-h-full;
-    }
-  }
+  @apply max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8 ;
 
   .mobile {
     display: flex;
@@ -28,5 +14,24 @@
     @screen lg {
       display: flex;
     }
+  }
+}
+
+.dark {
+  @apply bg-transparent text-white fill-primary transition ease-in-out duration-300;
+
+  &.scrolled {
+    @apply bg-base;
+
+  }
+}
+
+.light {
+  @apply bg-primary text-black fill-base;
+}
+
+.logo {
+  img, svg {
+    @apply w-auto h-full max-h-[40px] md:max-h-full;
   }
 }
