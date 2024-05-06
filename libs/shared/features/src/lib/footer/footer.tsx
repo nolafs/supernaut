@@ -4,7 +4,7 @@
 import {NavigationItem, SocialLinkItemType} from '@supernaut/types';
 import cn from 'classnames';
 import {ButtonPrimary} from '@supernaut/shared-ui';
-import {SocialList} from '@supernaut/features';
+import {SocialList} from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 
 export interface FooterProps {
