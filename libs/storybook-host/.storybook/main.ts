@@ -8,6 +8,7 @@ const config: StorybookConfig = {
     '@storybook/addon-essentials',
     '@storybook/addon-interactions',
     'storybook-zeplin/register',
+    '@stackbit/storybook-addon',
   ],
   staticDirs: [
      '../../../apps/supernaut/public/',

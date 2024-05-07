@@ -2,3 +2,7 @@
 /dist
 /coverage
 /.nx/cache
+/.storybook
+/.cache
+**/mode_modules/.cache
+**/.storybook
