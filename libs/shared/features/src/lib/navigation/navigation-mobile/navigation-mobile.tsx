@@ -50,58 +50,61 @@ export function NavigationMobile({
 
   return (
     <>
-      <div
-        className={cn(
-          styles['menuButton'],
-          mobileMenuOpen ? styles['open'] : styles['close'],
-          'relative flex flex-col space-y-3 cursor-pointer bg-transparent z-90'
-        )}
-        onClick={handleClick}
-      >
-        <div
+      <div className={cn('fixed z-20 right-0 top-0', styles['menuButton'])}>
+        <button
           className={cn(
-            'w-12 h-1',
-            mode == 'light' ? 'bg-base' : 'bg-primary',
-            mobileMenuOpen && 'bg-base',
-            styles['menuBarTop']
+            'relative px-6 py-6 flex flex-col space-y-3 cursor-pointer bg-transparent pointer-events-auto z-20'
           )}
-        ></div>
-        <div
-          className={cn(
-            'w-12 h-1',
-            mode == 'light' ? 'bg-base' : 'bg-primary',
-            mobileMenuOpen && 'bg-base',
-            styles['menuBarBottom']
-          )}
-        ></div>
+          onClick={handleClick}
+        >
+          <div className={cn(styles[mode], mobileMenuOpen ? styles['open'] : styles['close'])}></div>
+        </button>
       </div>
 
-      <Transition
-        show={mobileMenuOpen}
-        enter="transition duration-500 ease-out"
-        enterFrom="transform translate-x-full"
-        enterTo="transform translate-x-0"
-        leave="transition duration-500 ease-out"
-        leaveFrom="transform translate-x-0"
-        leaveTo="transform translate-x-full"
-        as={Fragment}
-      >
-        <Dialog
-          as="div"
-          className="fixed top-20 w-full h-screen inset-0 z-10 overflow-y-auto lg:hidden"
-          onClose={setMobileMenuOpen}
-        >
-          <Dialog.Panel>
-            <div className="relative w-full h-screen flex justify-end">
-              <div className={'flex justify-end w-full'}>
-                <nav className="flex flex-col bg-primary w-[80%] h-screen p-10">
-                  <NavigationMobileMenu items={items} open={mobileMenuOpen} />
-                </nav>
+      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+          <Dialog className="relative z-10" onClose={setMobileMenuOpen}>
+            <div className="fixed inset-0"/>
+
+            <Transition.Child
+              as={Fragment}
+              enter="ease-in-out duration-500"
+              enterFrom="opacity-0"
+              enterTo="opacity-100"
+              leave="ease-in-out duration-500"
+              leaveFrom="opacity-100"
+              leaveTo="opacity-0"
+            >
+              <div className="fixed inset-0 bg-base/40 bg-opacity-75 transition-opacity"/>
+            </Transition.Child>
+
+
+            <div className="fixed inset-0  overflow-hidden">
+              <div className="absolute inset-0 overflow-hidden">
+                <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-20">
+                  <Transition.Child
+                    as={Fragment}
+                    enter="transform transition ease-in-out duration-500 sm:duration-700"
+                    enterFrom="translate-x-full"
+                    enterTo="translate-x-0"
+                    leave="transform transition ease-in-out duration-500 sm:duration-700"
+                    leaveFrom="translate-x-0"
+                    leaveTo="translate-x-full"
+                  >
+                      <Dialog.Panel className="pointer-events-none w-screen max-w-md">
+                        <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
+                          <div className={'pt-20 px-5'}>
+                            <nav className={'pointer-events-auto'}>
+                              <NavigationMobileMenu items={items} open={mobileMenuOpen} />
+                            </nav>
+                          </div>
+                        </div>
+                    </Dialog.Panel>
+                  </Transition.Child>
+                </div>
               </div>
             </div>
-          </Dialog.Panel>
-        </Dialog>
-      </Transition>
+          </Dialog>
+      </Transition.Root>
     </>
   );
 }

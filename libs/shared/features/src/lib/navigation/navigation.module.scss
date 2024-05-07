@@ -1,13 +1,6 @@
 .navbar {
   @apply max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8;
 
-  .mobile {
-    display: flex;
-    @screen lg {
-      display: none;
-    }
-  }
-
   .desktop {
     display: none;
     @screen lg {

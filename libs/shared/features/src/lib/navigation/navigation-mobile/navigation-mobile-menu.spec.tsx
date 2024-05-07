@@ -4,7 +4,7 @@ import NavigationMobileMenu from './navigation-mobile-menu';
 
 describe('NavigationMobileMenu', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<NavigationMobileMenu />);
+    const { baseElement } = render(<NavigationMobileMenu items={[]} open={false} />);
     expect(baseElement).toBeTruthy();
   });
 });

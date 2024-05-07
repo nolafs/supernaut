@@ -30,7 +30,7 @@ export function NavigationWrapper({
     <div
       className={cn(
         sticky ? 'fixed' : 'absolute',
-        'w-full z-[99]',
+        'w-full inset-0',
         styles[mode],
         state ? styles['scrolled'] : ''
       )}
