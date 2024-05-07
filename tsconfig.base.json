@@ -17,6 +17,7 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
+      "@supernaut/contentful": ["libs/contentful/src/index.ts"],
       "@supernaut/context": ["libs/shared/context/src/index.ts"],
       "@supernaut/context/server": ["libs/shared/context/src/server.ts"],
       "@supernaut/features": ["libs/shared/features/src/index.ts"],
