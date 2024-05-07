@@ -31,9 +31,9 @@ const meta: Meta<typeof Navigation> = {
   },
   decorators: [
     (Story) => (
-      <div style={{height: '200vh'}}>
+      <div style={{ height: '200vh' }}>
         {/* 👇 Decorators in Storybook also accept a function. Replace <Story/> with Story() to enable it  */}
-        <Story/>
+        <Story />
       </div>
     ),
   ],
@@ -81,14 +81,13 @@ const defaultArgs = {
 
 export const Primary = {
   args: {
-    ...defaultArgs
+    ...defaultArgs,
   },
-
 };
 
 export const Mobile = {
   args: {
-    ...defaultArgs
+    ...defaultArgs,
   },
 
   parameters: {

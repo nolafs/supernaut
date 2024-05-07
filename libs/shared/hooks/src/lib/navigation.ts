@@ -11,9 +11,9 @@ export const usePrevious = <T>(value: T) => {
 
 interface NavigationEvents {
   routeChanged?: ({
-                    pathname,
-                    searchParams,
-                  }: {
+    pathname,
+    searchParams,
+  }: {
     pathname: string | null;
     searchParams: URLSearchParams | null;
   }) => void;
@@ -30,7 +30,10 @@ export const useNavigation = ({ on }: { on?: NavigationEvents }) => {
   const [route, setRoute] = useState({ pathname, searchParams });
 
   useEffect(() => {
-    if (searchParams?.toString() !== prevSearchParams?.toString() || pathname !== prevPathname) {
+    if (
+      searchParams?.toString() !== prevSearchParams?.toString() ||
+      pathname !== prevPathname
+    ) {
       setRoute({ pathname, searchParams });
       routeChanged?.({ pathname, searchParams });
     }

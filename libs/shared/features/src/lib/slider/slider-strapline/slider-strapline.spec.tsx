@@ -4,7 +4,7 @@ import SliderStrapline from './slider-strapline';
 
 describe('SliderStrapline', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<SliderStrapline strapline={'test'}/>);
+    const { baseElement } = render(<SliderStrapline strapline={'test'} />);
     expect(baseElement).toBeTruthy();
   });
 });

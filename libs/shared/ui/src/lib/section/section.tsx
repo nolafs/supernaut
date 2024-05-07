@@ -1,5 +1,5 @@
 /* eslint-disable-next-line */
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 import cn from 'classnames';
 
 export interface SectionProps {
@@ -19,10 +19,26 @@ export interface SectionProps {
   lineBottom?: boolean;
 }
 
-export function Section({internalName, children, color, mode, backgroundColor, lineBottom, lineTop, paddingTop = false, marginBottom, marginTop, paddingBottom = false, height='auto' , width = 'full', align = 'left'}: SectionProps) {
+export function Section({
+  internalName,
+  children,
+  color,
+  mode,
+  backgroundColor,
+  lineBottom,
+  lineTop,
+  paddingTop = false,
+  marginBottom,
+  marginTop,
+  paddingBottom = false,
+  height = 'auto',
+  width = 'full',
+  align = 'left',
+}: SectionProps) {
   return (
-    <section id={internalName} className={
-      cn(
+    <section
+      id={internalName}
+      className={cn(
         'relative overflow-hidden',
         'flex',
         'flex-col',
@@ -48,11 +64,12 @@ export function Section({internalName, children, color, mode, backgroundColor, l
           'border-white': mode === 'light',
           'border-black': mode === 'dark',
         }
-      )
-    } style={{
-      backgroundColor: backgroundColor ? backgroundColor : undefined,
-      color: color ? color : undefined
-    }}>
+      )}
+      style={{
+        backgroundColor: backgroundColor ? backgroundColor : undefined,
+        color: color ? color : undefined,
+      }}
+    >
       {children}
     </section>
   );

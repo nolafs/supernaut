@@ -11,7 +11,6 @@ const meta: Meta<typeof Footer> = {
 export default meta;
 type Story = StoryObj<typeof Footer>;
 
-
 const defaultArgs = {
   strapline: 'Say Hello.',
   mode: 'dark',
@@ -47,13 +46,13 @@ const defaultArgs = {
 
 export const Primary = {
   args: {
-    ...defaultArgs
+    ...defaultArgs,
   },
 };
 
 export const Mobile = {
   args: {
-    ...defaultArgs
+    ...defaultArgs,
   },
 
   parameters: {

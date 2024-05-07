@@ -3,8 +3,8 @@
 @tailwind utilities;
 
 @layer base {
-
-  html, body {
+  html,
+  body {
     @apply bg-base text-primary;
   }
 

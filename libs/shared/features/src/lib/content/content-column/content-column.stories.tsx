@@ -11,10 +11,10 @@ const meta: Meta<typeof ContentColumn> = {
 export default meta;
 type Story = StoryObj<typeof ContentColumn>;
 
-
 export const Intro = {
   args: {
-    title: 'We\'re a full service independent brand and design studio traversing the worlds of entertainment and technology.',
+    title:
+      "We're a full service independent brand and design studio traversing the worlds of entertainment and technology.",
     body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
     label: 'See our work',
     url: '/',

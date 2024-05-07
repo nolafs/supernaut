@@ -2,8 +2,8 @@
 import React from 'react';
 
 import SocialIcons from './social-icons';
-import {ButtonPrimary} from '@supernaut/shared-ui';
-import {SocialLinkItemType} from '@supernaut/types';
+import { ButtonPrimary } from '@supernaut/shared-ui';
+import { SocialLinkItemType } from '@supernaut/types';
 
 interface SocialLinkProps {
   item: SocialLinkItemType;
@@ -11,28 +11,33 @@ interface SocialLinkProps {
   icons?: boolean;
 }
 
-export const SocialLink = ({item, className, icons}: SocialLinkProps) => {
-
+export const SocialLink = ({ item, className, icons }: SocialLinkProps) => {
   const openSocialMediaLink = (url: string) => {
     const userAgent = navigator.userAgent || navigator.vendor;
     let appUrl: any = url; // Default to the provided URL as a fallback.
 
-    if(/iPad|iPhone|iPod|android/i.test(userAgent)){
+    if (/iPad|iPhone|iPod|android/i.test(userAgent)) {
       // Detect the platform based on the URL
-      if (url.includes("twitter.com")) {
+      if (url.includes('twitter.com')) {
         if (/iPad|iPhone|iPod/.test(userAgent)) {
-          appUrl = url.replace("https://twitter.com", "twitter://user?screen_name");
+          appUrl = url.replace(
+            'https://twitter.com',
+            'twitter://user?screen_name'
+          );
         } else if (/android/i.test(userAgent)) {
-          appUrl = url.replace("https://twitter.com", "twitter://user?screen_name");
+          appUrl = url.replace(
+            'https://twitter.com',
+            'twitter://user?screen_name'
+          );
         }
-      } else if (url.includes("facebook.com")) {
+      } else if (url.includes('facebook.com')) {
         // Extract page id or username from the URL for Facebook as needed
         if (/iPad|iPhone|iPod/.test(userAgent)) {
-          appUrl = "fb://facewebmodal/f?href=" + url;
+          appUrl = 'fb://facewebmodal/f?href=' + url;
         } else if (/android/i.test(userAgent)) {
-          appUrl = "fb://facewebmodal/f?href=" + url;
+          appUrl = 'fb://facewebmodal/f?href=' + url;
         }
-      } else if (url.includes("tiktok.com")) {
+      } else if (url.includes('tiktok.com')) {
         /* TODO: Implement TikTok deep linking
         // TikTok's scheme may vary and often requires specific paths; adjust as needed
         if (/iPad|iPhone|iPod/.test(userAgent)) {
@@ -43,31 +48,45 @@ export const SocialLink = ({item, className, icons}: SocialLinkProps) => {
         }
 
          */
-      } else if (url.includes("instagram.com")) {
+      } else if (url.includes('instagram.com')) {
         if (/iPad|iPhone|iPod/.test(userAgent)) {
-          appUrl = url.replace("https://www.instagram.com", "instagram://user?username");
+          appUrl = url.replace(
+            'https://www.instagram.com',
+            'instagram://user?username'
+          );
         } else if (/android/i.test(userAgent)) {
-          appUrl = url.replace("https://www.instagram.com", "instagram://user?username");
+          appUrl = url.replace(
+            'https://www.instagram.com',
+            'instagram://user?username'
+          );
         }
       }
     }
 
-
-
     // Attempt to open the app-specific URL
     window.location = appUrl;
+  };
 
-  }
-
-  if(icons) {
+  if (icons) {
     return (
-      <button className={'w-[26px] h-[26px]'} onClick={() => openSocialMediaLink(item?.url as string)}
-              rel="noopener noreferrer">
-        <SocialIcons type={item?.type} url={item?.url} props={className}/>
+      <button
+        className={'w-[26px] h-[26px]'}
+        onClick={() => openSocialMediaLink(item?.url as string)}
+        rel="noopener noreferrer"
+      >
+        <SocialIcons type={item?.type} url={item?.url} props={className} />
       </button>
     );
   } else {
-    return <ButtonPrimary onClick={() => openSocialMediaLink(item?.url as string)} isDisabled={false} hasIcon={false} size={'lg'}  label={item.name} />
+    return (
+      <ButtonPrimary
+        onClick={() => openSocialMediaLink(item?.url as string)}
+        isDisabled={false}
+        hasIcon={false}
+        size={'lg'}
+        label={item.name}
+      />
+    );
   }
 };
 

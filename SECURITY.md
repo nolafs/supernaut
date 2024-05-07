@@ -1,6 +1,6 @@
 # Security Policy
 
-## Security at My elemental being 
+## Security at My elemental being
 
 Security is a top priority at Supernaut We are committed to providing a secure environment for our users.
 
@@ -19,12 +19,12 @@ Please report any security vulnerabilities to us via olaf@biffnewmedia.com.
 
 When reporting a vulnerability, please provide as much information as possible. This includes:
 
-* The type of vulnerability (e.g., buffer overflow, SQL injection, cross-site scripting, etc.)
-* The location of the affected source code (tag/branch/commit or direct URL)
-* Any special configuration required to reproduce the issue
-* Step-by-step instructions to reproduce the issue
-* Proof-of-concept or exploit code (if possible)
-* Impact of the issue, including how an attacker might exploit the issue
+- The type of vulnerability (e.g., buffer overflow, SQL injection, cross-site scripting, etc.)
+- The location of the affected source code (tag/branch/commit or direct URL)
+- Any special configuration required to reproduce the issue
+- Step-by-step instructions to reproduce the issue
+- Proof-of-concept or exploit code (if possible)
+- Impact of the issue, including how an attacker might exploit the issue
 
 This information will help us understand and fix the issue more quickly.
 

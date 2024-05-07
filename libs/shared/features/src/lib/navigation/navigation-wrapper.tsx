@@ -1,8 +1,8 @@
 /* eslint-disable-next-line */
-import {ReactNode, useEffect, useState} from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 import cn from 'classnames';
 import styles from './navigation.module.scss';
-import {useScroll} from '@supernaut/hooks';
+import { useScroll } from '@supernaut/hooks';
 
 export interface NavigationWrapperProps {
   children: ReactNode;
@@ -10,8 +10,11 @@ export interface NavigationWrapperProps {
   mode: 'light' | 'dark';
 }
 
-export function NavigationWrapper({children, sticky = true, mode}: NavigationWrapperProps) {
-
+export function NavigationWrapper({
+  children,
+  sticky = true,
+  mode,
+}: NavigationWrapperProps) {
   const scroll = useScroll();
   const [state, setState] = useState(false);
 
@@ -23,9 +26,15 @@ export function NavigationWrapper({children, sticky = true, mode}: NavigationWra
     }
   }, [scroll]);
 
-
   return (
-    <div className={cn((sticky) ? 'fixed' : 'absolute', 'w-full z-[99]' , styles[mode], (state) ? styles['scrolled']: '')}>
+    <div
+      className={cn(
+        sticky ? 'fixed' : 'absolute',
+        'w-full z-[99]',
+        styles[mode],
+        state ? styles['scrolled'] : ''
+      )}
+    >
       {children}
     </div>
   );

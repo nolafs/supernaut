@@ -22,11 +22,11 @@ const meta: Meta<typeof LinkPrimary> = {
       },
     },
     size: {
-      control: {type: 'radio'},
+      control: { type: 'radio' },
       options: ['sm', 'md', 'lg'],
     },
     hasIcon: {
-      control: {type: 'boolean'},
+      control: { type: 'boolean' },
     },
   },
 };
@@ -42,14 +42,13 @@ const Default = {
     url: '/',
     hasIcon: false,
     isDisabled: false,
-
   },
-}
+};
 
 export const Primary = {
   args: {
     ...Default.args,
     size: 'md',
-    hasIcon: true
+    hasIcon: true,
   },
 };

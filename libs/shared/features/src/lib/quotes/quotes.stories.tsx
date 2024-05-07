@@ -38,7 +38,7 @@ const defaultArgs = {
       author: 'Alan Kay',
       position: 'Computer Scientist',
     },
-  ]
+  ],
 };
 
 export const Primary = {

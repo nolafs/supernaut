@@ -14,9 +14,9 @@ const meta: Meta<typeof Header> = {
     description: { control: 'text' },
     columnLayout: { control: 'boolean' },
     mode: { control: 'radio', options: ['light', 'dark'] },
-    marginTop: { control: 'boolean', defaultValue: true},
-    marginBottom: { control: 'boolean' }
-  }
+    marginTop: { control: 'boolean', defaultValue: true },
+    marginBottom: { control: 'boolean' },
+  },
 };
 export default meta;
 type Story = StoryObj<typeof Header>;
@@ -32,7 +32,8 @@ export const PageHeader = {
 export const PageDescription = {
   args: {
     pageName: 'Work',
-    title: 'We\'ve built brands that are beloved by communities all over the world..',
+    title:
+      "We've built brands that are beloved by communities all over the world..",
     mode: 'dark',
   },
 };
@@ -41,9 +42,11 @@ export const PageSubtitleDescription = {
   args: {
     pageName: 'Neonhive',
     title: 'Neonhive',
-    subtitle: 'Creating a personal brand identity for the marketing leaders in the indie games scene.',
-    description: '<ul><li>Brand Identity</li><li>Web Design</li><li>Illustration</li></ul>',
+    subtitle:
+      'Creating a personal brand identity for the marketing leaders in the indie games scene.',
+    description:
+      '<ul><li>Brand Identity</li><li>Web Design</li><li>Illustration</li></ul>',
     mode: 'dark',
-    columnLayout: true
+    columnLayout: true,
   },
 };

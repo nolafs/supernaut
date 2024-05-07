@@ -1,12 +1,11 @@
 .navbar {
-  @apply max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8 ;
+  @apply max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8;
 
   .mobile {
     display: flex;
     @screen lg {
       display: none;
     }
-
   }
 
   .desktop {
@@ -22,7 +21,6 @@
 
   &.scrolled {
     @apply bg-base;
-
   }
 }
 
@@ -31,7 +29,8 @@
 }
 
 .logo {
-  img, svg {
+  img,
+  svg {
     @apply w-auto h-full max-h-[40px] md:max-h-full;
   }
 }

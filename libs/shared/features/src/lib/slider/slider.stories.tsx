@@ -7,10 +7,7 @@ import { expect } from '@storybook/jest';
 const meta: Meta<typeof Slider> = {
   component: Slider,
   title: 'Features/Slider',
-  argTypes: {
-
-  }
-
+  argTypes: {},
 };
 export default meta;
 type Story = StoryObj<typeof Slider>;
@@ -21,7 +18,8 @@ export const Home = {
     slides: [
       {
         title: 'Neonhive',
-        description: 'Creating a personal brand identity for leaders in the indie games marketing scene.',
+        description:
+          'Creating a personal brand identity for leaders in the indie games marketing scene.',
         image: 'https://picsum.photos/id/1/1920/1000',
       },
       {
@@ -38,7 +36,7 @@ export const Home = {
         title: 'Slide 4',
         description: 'Slide 4 description',
         image: 'https://picsum.photos/id/8/1920/1000',
-      }
+      },
     ],
   },
 };

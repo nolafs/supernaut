@@ -14,13 +14,13 @@ const meta: Meta<typeof ButtonPrimary> = {
       },
     },
     size: {
-        control: {type: 'radio'},
-        options: ['sm', 'md', 'lg'],
+      control: { type: 'radio' },
+      options: ['sm', 'md', 'lg'],
     },
     onClick: {
       action: 'clicked',
     },
-  }
+  },
 };
 export default meta;
 
@@ -32,16 +32,15 @@ const Default = {
     size: 'md',
     hasIcon: false,
     isDisabled: false,
-
   },
-}
+};
 
 export const Primary = {
   args: {
     ...Default.args,
     label: 'Button label.',
     size: 'md',
-    hasIcon: true
+    hasIcon: true,
   },
 };
 

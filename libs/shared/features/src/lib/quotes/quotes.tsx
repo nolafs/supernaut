@@ -1,35 +1,44 @@
 /* eslint-disable-next-line */
 'use client';
-import {Quote} from '@supernaut/types';
+import { Quote } from '@supernaut/types';
 
-import {Swiper, SwiperSlide} from 'swiper/react';
-import {Autoplay} from 'swiper/modules';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Autoplay } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import cn from 'classnames';
-import {useState} from 'react';
+import { useState } from 'react';
 
 export interface QuotesProps {
   mode: 'dark' | 'light';
   internalName: string;
-  items: Quote[]
+  items: Quote[];
   autoplay?: boolean;
 }
 
-export function Quotes({items, internalName, mode = 'dark', autoplay=false}: QuotesProps) {
-
+export function Quotes({
+  items,
+  internalName,
+  mode = 'dark',
+  autoplay = false,
+}: QuotesProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(items?.length || 0);
-  const [currentSlide, setCurrentSlide] = useState<Quote | null>(items?.length ? items[0] : null);
+  const [currentSlide, setCurrentSlide] = useState<Quote | null>(
+    items?.length ? items[0] : null
+  );
 
-
-  if(!items || !items.length) return null;
+  if (!items || !items.length) return null;
 
   return (
-    <section id={'quote' + internalName} className={cn('relative overflow-hidden', (mode === 'light') ? 'text-base' : 'text-primary')}>
-
-      <div
-        className="quotes relative z-1 w-full h-auto min-h-fit overflow-hidden flex flex-col justify-center items-center py-24 sm:py-32">
+    <section
+      id={'quote' + internalName}
+      className={cn(
+        'relative overflow-hidden',
+        mode === 'light' ? 'text-base' : 'text-primary'
+      )}
+    >
+      <div className="quotes relative z-1 w-full h-auto min-h-fit overflow-hidden flex flex-col justify-center items-center py-24 sm:py-32">
         <Swiper
           loop={true}
           onSlideChange={(e) => {
@@ -55,14 +64,22 @@ export function Quotes({items, internalName, mode = 'dark', autoplay=false}: Quo
                     </cite>
                   </div>
                 </blockquote>
-
               </div>
             </SwiperSlide>
           ))}
-          <div className={'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl  z-20'}>
-             <div className={'container mx-auto flex justify-end items-center pb-1'}>
-                {((currentIndex + 1) >= 10) ? currentIndex + 1 : `0${currentIndex + 1}`}/{(numberSlides >= 10) ? numberSlides : `0${numberSlides}`}
-             </div>
+          <div
+            className={
+              'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl  z-20'
+            }
+          >
+            <div
+              className={'container mx-auto flex justify-end items-center pb-1'}
+            >
+              {currentIndex + 1 >= 10
+                ? currentIndex + 1
+                : `0${currentIndex + 1}`}
+              /{numberSlides >= 10 ? numberSlides : `0${numberSlides}`}
+            </div>
           </div>
         </Swiper>
       </div>

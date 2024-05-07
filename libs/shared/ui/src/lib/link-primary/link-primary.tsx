@@ -1,4 +1,4 @@
-import {ReactNode} from 'react';
+import { ReactNode } from 'react';
 import Link from 'next/link';
 import Label from '../label/label';
 
@@ -10,12 +10,22 @@ export interface LinkPrimaryProps {
   hasIcon?: boolean;
 }
 
-export function LinkPrimary({children, url, size ='md', hasIcon = false}: LinkPrimaryProps) {
+export function LinkPrimary({
+  children,
+  url,
+  size = 'md',
+  hasIcon = false,
+}: LinkPrimaryProps) {
   return (
-    <Link href={{
-      pathname: url,
-    }} className={'cursor-pointer'}>
-      <Label size={size} hasIcon={hasIcon} >{children}</Label>
+    <Link
+      href={{
+        pathname: url,
+      }}
+      className={'cursor-pointer'}
+    >
+      <Label size={size} hasIcon={hasIcon}>
+        {children}
+      </Label>
     </Link>
   );
 }
