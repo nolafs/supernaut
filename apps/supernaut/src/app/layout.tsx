@@ -3,6 +3,8 @@ import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
 import { ReactNode } from 'react';
 import cn from 'classnames';
+import {CookieBanner} from '@supernaut/features';
+import {GoogleAnalytics} from '@supernaut/utils';
 
 export const metadata = {
   title: 'Welcome to Supernaut',
@@ -15,7 +17,11 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`, 'dark')}
     >
-      <body>{children}</body>
+
+      <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+      <body>{children}
+      <CookieBanner />
+      </body>
     </html>
   );
 }
