@@ -1,3 +1,4 @@
+export * from './lib/skeleton/skeleton';
 export * from './lib/header/header';
 export * from './lib/section/section';
 export * from './lib/picture/picture';

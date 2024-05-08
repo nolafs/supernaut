@@ -2,10 +2,10 @@ import styles from './navigation.module.scss';
 import { NavigationItem, SocialLinkItemType } from '@supernaut/types';
 import SocialList from '../social-list/social-list';
 import cn from 'classnames';
-import { ReactSVG } from 'react-svg';
 import NavigationMobile from './navigation-mobile/navigation-mobile';
 import NavigationButton from './navigation-button';
 import NavigationWrapper from './navigation-wrapper';
+import Image from 'next/image';
 
 /* eslint-disable-next-line */
 export interface NavigationProps {
@@ -36,7 +36,7 @@ export function Navigation({
               <div className="sr-only">{siteTitle}</div>
 
               {logo && isSvg && (
-                <ReactSVG src={logo} className={styles['logo']}/>
+                <Image src={logo} className={styles['logo']} alt={'logo'} fill={true}/>
               )}
               {logo && !isSvg && (
                 <img src={logo} alt="logo" className={styles['logo']}/>

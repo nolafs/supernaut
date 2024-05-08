@@ -1,3 +1,4 @@
+'use client'
 /* eslint-disable-next-line */
 import { ReactNode, useEffect, useState } from 'react';
 import cn from 'classnames';

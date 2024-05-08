@@ -18,13 +18,22 @@ export const Intro = {
     body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
     label: 'See our work',
     url: '/',
+    mode: 'dark'
   },
 };
 
 export const Left = {
-  args: {},
+  args: {
+    body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
+    mode: 'dark',
+    align: 'left',
+  },
 };
 
 export const Right = {
-  args: {},
+  args: {
+    body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
+    mode: 'dark',
+    align: 'right',
+  },
 };
