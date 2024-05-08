@@ -1,7 +1,7 @@
 import './global.scss';
 import { GeistSans } from 'geist/font/sans';
 import { GeistMono } from 'geist/font/mono';
-import { ReactNode } from 'react';
+import {ReactNode, Suspense} from 'react';
 import cn from 'classnames';
 import {CookieBanner} from '@supernaut/features';
 import {GoogleAnalytics} from '@supernaut/utils';
@@ -26,7 +26,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`, 'dark')}
     >
-      <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+      <Suspense>
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+      </Suspense>
+
       <body>
       {children}
       <CookieBanner />
