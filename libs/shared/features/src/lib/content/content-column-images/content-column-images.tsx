@@ -7,7 +7,7 @@ import ContentColumn from '../content-column/content-column';
 export interface ContentColumnImagesProps {
   title: string;
   items: ImageLink[];
-  columnsSm: number;
+  columnsSm?: number;
   columnsMd?: number;
   columnsLg?: number;
   itemWidth?: number;

@@ -1,5 +1,5 @@
 .navbar {
-  @apply max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8;
+  @apply  max-w-9xl mx-auto px-8 lg:px-12 flex justify-between items-center py-5 md:py-8;
 
   .desktop {
     display: none;
@@ -12,6 +12,10 @@
 .dark {
   @apply bg-transparent text-white fill-primary transition ease-in-out duration-300;
 
+  img {
+    filter: invert(1);
+  }
+
   &.scrolled {
     @apply bg-base;
   }
@@ -19,11 +23,16 @@
 
 .light {
   @apply bg-primary text-black fill-base;
+
+  img{
+    filter: invert(0);
+  }
 }
 
 .logo {
   img,
   svg {
     @apply w-auto h-full max-h-[40px] md:max-h-full;
+
   }
 }

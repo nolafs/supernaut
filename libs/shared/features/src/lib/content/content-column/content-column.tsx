@@ -33,7 +33,7 @@ export function ContentColumn({
     return (
       <div
         className={cn(
-          'container flex flex-row',
+          'w-full max-w-8xl flex flex-row',
           align === 'left' && 'justify-start',
           align === 'right' && 'justify-end',
           mode === 'dark' && 'text-white',

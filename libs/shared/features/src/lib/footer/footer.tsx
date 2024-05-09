@@ -6,7 +6,6 @@ import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 
 export interface FooterProps {
-  mode: 'light' | 'dark';
   copyright: string;
   strapline: string;
   contactButtonLabel: string;
@@ -15,7 +14,6 @@ export interface FooterProps {
 }
 
 export function Footer({
-  mode,
   legal,
   contactButtonLabel,
   copyright,
@@ -24,13 +22,8 @@ export function Footer({
 }: FooterProps) {
   return (
     <footer>
-      <div className={'max-w-9xl mx-auto px-8 lg:px-12 pt-16 mb:pt-24 pb-10'}>
-        <div
-          className={cn(
-            'flex flex-col',
-            mode === 'light' ? 'text-base' : 'text-primary'
-          )}
-        >
+      <div className={cn('max-w-9xl mx-auto px-8 lg:px-12 pt-16 mb:pt-24 pb-10 text-primary')}>
+        <div className={'flex flex-col'}>
           <div className={'mb-8'}>
             <h1 className={'font-normal text-4xl  md:text-6xl'}>{strapline}</h1>
           </div>
@@ -48,6 +41,7 @@ export function Footer({
               items={social}
               icons={false}
               variantList={1}
+              variantButton={2}
             />
           </div>
         </div>

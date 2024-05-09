@@ -13,7 +13,6 @@ type Story = StoryObj<typeof Footer>;
 
 const defaultArgs = {
   strapline: 'Say Hello.',
-  mode: 'dark',
   copyright: '© 2021 Supernaut Ltd. All rights reserved.',
   contactButtonLabel: 'info@supernaut.com',
   legal: [

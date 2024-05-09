@@ -32,11 +32,10 @@ export function Navigation({
       <NavigationWrapper mode={mode} sticky={sticky}>
         <div className={cn(styles['navbar'])}>
           <div className="navbar-start">
-            <h1 className={'text-white'}>
+            <h1 className={'text-primary'}>
               <div className="sr-only">{siteTitle}</div>
-
               {logo && isSvg && (
-                <Image src={logo} className={styles['logo']} alt={'logo'} fill={true}/>
+                <Image src={logo} className={styles['logo']} alt={'logo'} width={162} height={47} />
               )}
               {logo && !isSvg && (
                 <img src={logo} alt="logo" className={styles['logo']}/>

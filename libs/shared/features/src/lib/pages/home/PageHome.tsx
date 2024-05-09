@@ -2,6 +2,7 @@
 import { Navigation, Footer, Slider, Quotes } from '@supernaut/features';
 import { Section } from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
+import ContentColumnImages from '../../content/content-column-images/content-column-images';
 
 export interface PageHomeProps {
   navigation: any;
@@ -9,6 +10,7 @@ export interface PageHomeProps {
   slider: any;
   quotes: any;
   contentColumn: any;
+  contentColumnImages: any;
 }
 
 export function PageHome({
@@ -17,9 +19,10 @@ export function PageHome({
   slider,
   quotes,
   contentColumn,
+  contentColumnImages
 }: PageHomeProps) {
   return (
-    <div>
+    <div className={'flex flex-col'}>
       <Navigation
         items={navigation?.items}
         mode={navigation.mode}
@@ -44,14 +47,25 @@ export function PageHome({
           label={contentColumn.label}
           url={contentColumn.url}
         />
+
       </Section>
+        <Section
+          internalName={'partners'}
+          marginTop={true}
+          marginBottom={true}
+
+          mode={'dark'}
+        >
+        <ContentColumnImages title={contentColumnImages.title} items={contentColumnImages.items}  />
+      </Section>
+
       <Quotes
         mode={quotes?.mode}
         items={quotes?.items}
         internalName={'quotes'}
       />
+
       <Footer
-        mode={footer?.mode}
         copyright={footer?.copyright}
         strapline={footer?.strapline}
         contactButtonLabel={footer?.contactButtonLabel}
