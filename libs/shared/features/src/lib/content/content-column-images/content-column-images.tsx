@@ -17,8 +17,8 @@ export interface ContentColumnImagesProps {
 
 export function ContentColumnImages({title, items, mode, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight }: ContentColumnImagesProps) {
   return (
-    <ContentColumn title={title} type={'3/9'} mode={mode}>
-        <GridImages items={items} columnsSm={columnsSm} columnsMd={columnsMd} columnsLg={columnsLg} itemWidth={425}
+    <ContentColumn title={title} hTag={'h2'} type={'3/9'} mode={mode}>
+        <GridImages items={items}  columnsSm={columnsSm} columnsMd={columnsMd} columnsLg={columnsLg} itemWidth={425}
                     itemHeight={250}/>
     </ContentColumn>
   );

@@ -18,7 +18,7 @@ export interface ContentColumnProps {
 
 export function ContentColumn({
   type = '1/2',
-  hTag,
+  hTag = 'h1',
   title,
   body,
   align,
@@ -33,7 +33,7 @@ export function ContentColumn({
     return (
       <div
         className={cn(
-          'w-full max-w-8xl flex flex-row',
+          'w-full max-w-9xl mx-auto px-5 px-10 flex flex-row',
           align === 'left' && 'justify-start',
           align === 'right' && 'justify-end',
           mode === 'dark' && 'text-white',
@@ -61,12 +61,17 @@ export function ContentColumn({
   }
   else {
     return (
-      <div className={cn('flex flex-col md:flex-row w-full gap-10',
+      <div className={cn('w-full max-w-9xl mx-auto  px-5 px-10 flex flex-col md:flex-row w-full gap-10',
         mode === 'dark' && 'text-white',
         mode === 'light' && 'text-black bg-white'
       )}>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-3/12')}>
-          <h2>{title}</h2>
+          { hTag === 'h1' && <h1>{title}</h1>}
+          { hTag === 'h2' && <h2>{title}</h2>}
+          { hTag === 'h3' && <h3>{title}</h3>}
+          { hTag === 'h4' && <h4>{title}</h4>}
+          { hTag === 'h5' && <h5>{title}</h5>}
+          { hTag === 'h6' && <h6>{title}</h6>}
         </div>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-9/12')}>
           {children}

@@ -4,7 +4,7 @@ import cn from 'classnames';
 /* eslint-disable-next-line */
 export interface GridImagesProps {
  items: ImageLink[];
- columnsSm: number;
+ columnsSm?: number;
  columnsMd?: number;
  columnsLg?: number;
  girdClass?: string;

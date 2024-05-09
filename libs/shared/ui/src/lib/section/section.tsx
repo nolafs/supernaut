@@ -43,7 +43,6 @@ export function Section({
         'flex',
         'flex-col',
         'justify-center',
-        'px-5 px-10',
         mode === 'dark' && 'text-white',
         mode === 'light' && 'text-black bg-white',
         {
