@@ -53,7 +53,10 @@ const COLUMNS_LG = [
 ];
 
 
-export function GridImages({items, columnsSm = 1, columnsMd = 2, columnsLg = 2, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-10 py-10 md:px-10 md:py-10 lg:px-20 lg:py-[75px]'}: GridImagesProps) {
+export function GridImages({items, columnsSm = 1, columnsMd = 2, columnsLg = 2, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 py-5 md:px-10 md:py-10 lg:px-20 lg:py-[75px]'}: GridImagesProps) {
+
+  if(!items || !items.length) return <div>No items</div>;
+
   return (
     <div>
       <div className={cn('grid', COLUMNS_SM[columnsSm], COLUMNS_MD[columnsMd], COLUMNS_LG[columnsLg], girdClass )}>

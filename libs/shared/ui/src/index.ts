@@ -4,3 +4,4 @@ export * from './lib/section/section';
 export * from './lib/picture/picture';
 export * from './lib/button-primary/button-primary';
 export * from './lib/link-primary/link-primary';
+export * from './lib/grid-images/grid-images';

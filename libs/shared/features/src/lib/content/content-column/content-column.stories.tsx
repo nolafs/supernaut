@@ -13,6 +13,7 @@ type Story = StoryObj<typeof ContentColumn>;
 
 export const Intro = {
   args: {
+    type: 'intro',
     title:
       "We're a full service independent brand and design studio traversing the worlds of entertainment and technology.",
     body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
@@ -24,6 +25,7 @@ export const Intro = {
 
 export const Left = {
   args: {
+    type: 'text',
     body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
     mode: 'dark',
     align: 'left',
@@ -32,6 +34,7 @@ export const Left = {
 
 export const Right = {
   args: {
+    type: 'text',
     body: '<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>',
     mode: 'dark',
     align: 'right',
