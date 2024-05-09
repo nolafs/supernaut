@@ -45,6 +45,39 @@ module.exports = {
       base: '#000000',
     },
     extend: {
+      typography: (theme) => ({
+        DEFAULT: {
+          css:{
+            color: theme('colors.secondary'),
+
+          },
+        },
+        sm: {
+          css: {
+            lineHeight: '1rem',
+          }
+        },
+        base: {
+          css: {
+            lineHeight: '1.4rem',
+          }
+        },
+        lg: {
+          css: {
+            lineHeight: '1.25rem',
+          }
+        },
+        xl: {
+          css: {
+            lineHeight: '1.5rem',
+          }
+        },
+        '2xl': {
+          css: {
+            lineHeight: '1.75rem',
+          }
+        },
+      }),
       maxWidth: {
         ...defaultTheme.maxWidth,
         '8xl': '90rem',
@@ -57,6 +90,7 @@ module.exports = {
     // Your variant configurations
   },
   plugins: [
-    // Your custom plugins
+    require('@tailwindcss/typography'),
+    require('@tailwindcss/forms'),
   ],
 };
