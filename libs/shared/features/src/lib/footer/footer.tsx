@@ -47,9 +47,7 @@ export function Footer({
             <SocialList
               items={social}
               icons={false}
-              className={
-                'flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10'
-              }
+              variantList={1}
             />
           </div>
         </div>

@@ -49,7 +49,6 @@ module.exports = {
         DEFAULT: {
           css:{
             color: theme('colors.secondary'),
-
           },
         },
         sm: {

@@ -4,14 +4,16 @@ import React from 'react';
 import SocialIcons from './social-icons';
 import { ButtonPrimary } from '@supernaut/shared-ui';
 import { SocialLinkItemType } from '@supernaut/types';
+import cn from 'classnames';
 
 interface SocialLinkProps {
   item: SocialLinkItemType;
   className?: string;
+  iconsClass?: string;
   icons?: boolean;
 }
 
-export const SocialLink = ({ item, className, icons }: SocialLinkProps) => {
+export const SocialLink = ({ item, className, icons, iconsClass }: SocialLinkProps) => {
   const openSocialMediaLink = (url: string) => {
     const userAgent = navigator.userAgent || navigator.vendor;
     let appUrl: any = url; // Default to the provided URL as a fallback.
@@ -70,11 +72,11 @@ export const SocialLink = ({ item, className, icons }: SocialLinkProps) => {
   if (icons) {
     return (
       <button
-        className={'w-[26px] h-[26px]'}
+        className={cn(className)}
         onClick={() => openSocialMediaLink(item?.url as string)}
         rel="noopener noreferrer"
       >
-        <SocialIcons type={item?.type} url={item?.url} props={className} />
+        <SocialIcons type={item?.type} url={item?.url} props={iconsClass} />
       </button>
     );
   } else {
@@ -85,6 +87,7 @@ export const SocialLink = ({ item, className, icons }: SocialLinkProps) => {
         hasIcon={false}
         size={'lg'}
         label={item.name}
+        classNames={className}
       />
     );
   }
