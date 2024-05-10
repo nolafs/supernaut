@@ -1,3 +1,5 @@
+export * from './lib/content/content-images/content-images';
+export * from './lib/content/content-video/content-video';
 export * from './lib/contact-form/contact-form';
 export * from './lib/content/content-list/content-list';
 export * from './lib/content/content-column-images/content-column-images';
@@ -9,3 +11,4 @@ export * from './lib/slider/slider';
 export { CookieBanner } from './lib/cookiebanner/cookiebanner';
 export { LogoAnimated } from './lib/logo/logo-animated';
 export * from './lib/content/content-profile-list/content-profile-list';
+//export * from './lib/assets/**/*.webp';

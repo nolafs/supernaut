@@ -72,7 +72,7 @@ export function ContactForm() {
   }
 
   return (
-    <div className="form-control w-full max-w-xl mx-auto text-primary">
+    <div className="form-control w-full max-w-3xl text-primary">
       <form onSubmit={handleSubmit(onSubmit)} noValidate data-netlify="true" method="post" className="space-y-4">
         <input type="hidden" name="form-name" value="contact"/>
         <input
@@ -117,7 +117,7 @@ export function ContactForm() {
         {errors.message && <p className="text-error">{errors.message.message}</p>}
 
 
-        <div className="flex items-center gap-2">
+        <div className="flex items-center pt-6">
           <div className="grow w-full">
             <div className="flex items-center  gap-2">
               <input
@@ -134,7 +134,7 @@ export function ContactForm() {
 
           <div className="shrink flex w-full justify-end">
             {/* Submit Button */}
-            <ButtonPrimary type="submit" hasIcon={true} label={isSubmitting ? 'Sending...' : 'Send Message'} className={`${isSubmitting ? 'loading' : ''}`}
+            <ButtonPrimary type="submit" size={'md'} hasIcon={true} label={isSubmitting ? 'Sending...' : 'Submit'} className={`${isSubmitting ? 'loading' : ''}`}
                     disabled={isSubmitting}>
 
             </ButtonPrimary>

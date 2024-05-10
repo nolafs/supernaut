@@ -6,6 +6,7 @@ import { Section } from './section';
 const meta: Meta<typeof Section> = {
   component: Section,
   title: 'UI/Section',
+  tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof Section>;

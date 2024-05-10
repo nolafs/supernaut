@@ -8,6 +8,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof Card> = {
   component: Card,
+  tags: ['autodocs'],
   title: 'UI/Card',
 };
 export default meta;

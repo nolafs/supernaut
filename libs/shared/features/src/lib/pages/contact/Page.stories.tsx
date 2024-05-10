@@ -5,16 +5,18 @@ import * as Footer from '../../footer/footer.stories';
 import * as ContentProfileList from '../../content/content-profile-list/content-profile-list.stories';
 import * as ContentList from '../../content/content-list/content-list.stories';
 
+import { within } from '@storybook/testing-library';
+import { expect } from '@storybook/jest';
 
 
 const meta: Meta<typeof Page> = {
   component: Page,
-  title: 'Pages/Test',
+  title: 'Pages/test',
 };
 export default meta;
 type Story = StoryObj<typeof Page>;
 
-export const About = {
+export const Contact = {
   args: {
     navigation: Navigation.Primary.args,
     profile: ContentProfileList.Primary.args,

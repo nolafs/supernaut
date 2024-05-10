@@ -6,6 +6,7 @@ import { GridImages } from './grid-images';
 const meta: Meta<typeof GridImages> = {
   component: GridImages,
   title: 'UI/Grid Images',
+  tags: ['autodocs'],
 };
 export default meta;
 type Story = StoryObj<typeof GridImages>;

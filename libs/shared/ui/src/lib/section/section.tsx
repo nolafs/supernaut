@@ -1,6 +1,7 @@
 /* eslint-disable-next-line */
 import { ReactNode } from 'react';
 import cn from 'classnames';
+import {classNames} from '@headlessui/react/dist/utils/class-names';
 
 export interface SectionProps {
   internalName?: string;
@@ -17,6 +18,7 @@ export interface SectionProps {
   height?: 'auto' | 'half' | 'full';
   lineTop?: boolean;
   lineBottom?: boolean;
+  className?: string;
 }
 
 export function Section({
@@ -34,6 +36,7 @@ export function Section({
   height = 'auto',
   width = 'full',
   align = 'left',
+  className,
 }: SectionProps) {
   return (
     <section
@@ -63,7 +66,8 @@ export function Section({
           'border-b-2': lineBottom,
           'border-white': mode === 'light',
           'border-black': mode === 'dark',
-        }
+        },
+        className
       )}
       style={{
         backgroundColor: backgroundColor ? backgroundColor : undefined,

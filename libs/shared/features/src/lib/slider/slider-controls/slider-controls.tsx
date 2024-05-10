@@ -1,9 +1,10 @@
 'use client';
 import styles from './slider-controls.module.scss';
 import { ReactNode, useEffect, useRef, useState } from 'react';
-import { useMousePosition, useIsTouchDevice } from '@supernaut/hooks';
+import {useMousePosition, useIsTouchDevice, useScrollDetection} from '@supernaut/hooks';
 import { useCursor } from '@supernaut/context';
 import cn from 'classnames';
+
 
 /* eslint-disable-next-line */
 export interface SliderControlsProps {
@@ -16,6 +17,19 @@ export function SliderControls({ children }: SliderControlsProps) {
   const { touch } = useIsTouchDevice();
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
+
+
+
+  useScrollDetection(
+    () => {
+      setIsVisible(false);
+    },
+    () => {
+      setTimeout(() => {
+        setIsVisible(true);
+      }, 1000);
+    }
+  );
 
   useEffect(() => {
     if (!ref.current) {
@@ -40,6 +54,7 @@ export function SliderControls({ children }: SliderControlsProps) {
     };
   }, [cursor]);
 
+
   const handleCursor = (type: string) => {
     setCursor({ ...cursor, active: true, type: type });
   };
@@ -50,7 +65,8 @@ export function SliderControls({ children }: SliderControlsProps) {
         ref={ref}
         className={cn(
           'relative container max-w-[1920px] mx-auto p-0 m-0',
-          styles['container']
+          styles['container'],
+
         )}
       >
         {children}
@@ -73,8 +89,9 @@ export function SliderControls({ children }: SliderControlsProps) {
       </div>
       {cursor.active && (
         <div
-          className={
-            'pointer-events-none text-primary text-6xl hidden  lg:block'
+          className={cn(
+            'pointer-events-none text-primary text-6xl hidden  lg:block',
+          )
           }
         >
           {cursor.type === 'default' && (

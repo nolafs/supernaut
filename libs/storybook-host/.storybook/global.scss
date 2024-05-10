@@ -59,4 +59,10 @@
     }
   }
 
+  form {
+    .label-text{
+      @apply text-secondary;
+    }
+  }
+
 }

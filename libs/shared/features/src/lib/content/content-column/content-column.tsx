@@ -73,7 +73,9 @@ export function ContentColumn({
         padding === 'none' && 'px-0',
         padding === 'small' && 'px-5 md:px-10',
         padding === 'medium' && 'px-10 md:px-20',
-        padding === 'large' && 'px-20 md:px-40'
+        padding === 'large' && 'px-20 md:px-40',
+        align === 'left' && 'justify-start',
+        align === 'right' && 'justify-end',
 
       )}>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-3/12')}>

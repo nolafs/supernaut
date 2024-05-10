@@ -14,7 +14,7 @@ const meta: Meta<typeof Page> = {
 export default meta;
 type Story = StoryObj<typeof Page>;
 
-export const About = {
+export const Work = {
   args: {
     navigation: Navigation.Primary.args,
     profile: ContentProfileList.Primary.args,
