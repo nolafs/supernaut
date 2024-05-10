@@ -1,10 +1,10 @@
-import {SocialLinkItemType} from './socialLinkItem.type';
+import {TSocialLinkItemType} from './TSocialLinkItemType';
 
-export type ProfileItem = {
+export type TProfileItem = {
   id: string | number;
   name: string;
   title: string;
   description: string;
   image: string;
-  socials: SocialLinkItemType[];
+  socials: TSocialLinkItemType[];
 }

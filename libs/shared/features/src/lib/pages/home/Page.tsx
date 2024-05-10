@@ -3,6 +3,7 @@ import { Navigation, Footer, Slider, Quotes } from '@supernaut/features';
 import { Section } from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
 import ContentColumnImages from '../../content/content-column-images/content-column-images';
+import ContentList from '../../content/content-list/content-list';
 
 export interface PageHomeProps {
   navigation: any;
@@ -11,15 +12,17 @@ export interface PageHomeProps {
   quotes: any;
   contentColumn: any;
   contentColumnImages: any;
+  contentList: any;
 }
 
-export function PageHome({
+export function Page({
   navigation,
   footer,
   slider,
   quotes,
   contentColumn,
-  contentColumnImages
+  contentColumnImages,
+  contentList
 }: PageHomeProps) {
   return (
     <div className={'flex flex-col'}>
@@ -38,7 +41,7 @@ export function PageHome({
       <Section
         internalName={'intro'}
         marginTop={true}
-        marginBottom={true}
+        marginBottom={false}
         mode={'dark'}
       >
         <ContentColumn
@@ -49,11 +52,21 @@ export function PageHome({
         />
 
       </Section>
+
+        <Section
+          internalName={'services'}
+
+          marginTop={true}
+          marginBottom={false}
+          mode={'dark'}
+        >
+          <ContentList title={contentList.title} items={contentList.items} />
+        </Section>
+
         <Section
           internalName={'partners'}
           marginTop={true}
           marginBottom={true}
-
           mode={'dark'}
         >
         <ContentColumnImages title={contentColumnImages.title} items={contentColumnImages.items}  />
@@ -76,4 +89,4 @@ export function PageHome({
   );
 }
 
-export default PageHome;
+export default Page;

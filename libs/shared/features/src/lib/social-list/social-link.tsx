@@ -3,11 +3,11 @@ import React from 'react';
 
 import SocialIcons from './social-icons';
 import { ButtonPrimary } from '@supernaut/shared-ui';
-import { SocialLinkItemType } from '@supernaut/types';
+import { TSocialLinkItemType } from '@supernaut/types';
 import cn from 'classnames';
 
 interface SocialLinkProps {
-  item: SocialLinkItemType;
+  item: TSocialLinkItemType;
   className?: string;
   iconsClass?: string;
   icons?: boolean;

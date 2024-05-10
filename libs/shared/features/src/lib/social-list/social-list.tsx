@@ -1,11 +1,11 @@
 import styles from './social-list.module.scss';
-import { SocialLinkItemType } from '@supernaut/types';
+import { TSocialLinkItemType } from '@supernaut/types';
 import SocialLink from './social-link';
 import cn from 'classnames';
 
 /* eslint-disable-next-line */
 export interface SocialListProps {
-  items?: SocialLinkItemType[];
+  items?: TSocialLinkItemType[];
   className?: string;
   icons?: boolean;
   variantButton?: number;

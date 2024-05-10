@@ -1,5 +1,5 @@
 import styles from './navigation.module.scss';
-import { NavigationItem, SocialLinkItemType } from '@supernaut/types';
+import { TNavigationItem, TSocialLinkItemType } from '@supernaut/types';
 import SocialList from '../social-list/social-list';
 import cn from 'classnames';
 import NavigationMobile from './navigation-mobile/navigation-mobile';
@@ -11,9 +11,9 @@ import Image from 'next/image';
 export interface NavigationProps {
   siteTitle?: string;
   logo?: string;
-  items: NavigationItem[];
+  items: TNavigationItem[];
   mode: 'light' | 'dark';
-  social?: SocialLinkItemType[];
+  social?: TSocialLinkItemType[];
   sticky?: boolean;
 }
 
@@ -50,7 +50,7 @@ export function Navigation({
                     'flex justify-center font-medium space-x-12 text-lg tracking-wider uppercase items-center'
                   }
                 >
-                  {items.map((item: NavigationItem) => {
+                  {items.map((item: TNavigationItem) => {
                     return (
                       <li key={item.id}>
                         <NavigationButton item={item}/>

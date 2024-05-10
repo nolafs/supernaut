@@ -1,5 +1,5 @@
 /* eslint-disable-next-line */
-import { NavigationItem } from '@supernaut/types';
+import { TNavigationItem } from '@supernaut/types';
 import { useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
@@ -7,7 +7,7 @@ import { SplitText } from 'gsap/SplitText';
 import Link from 'next/link';
 
 export interface NavigationMobileMenuProps {
-  items: NavigationItem[];
+  items: TNavigationItem[];
   open: boolean;
 }
 
@@ -59,7 +59,7 @@ export function NavigationMobileMenu({
 
   return (
     <ul ref={menu} className={' flex flex-col space-y-6'}>
-      {items.map((item: NavigationItem, index) => {
+      {items.map((item: TNavigationItem, index) => {
         return (
           <li key={item.id} className={'menu-button overflow-hidden'}>
             <Link

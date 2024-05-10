@@ -1,7 +1,7 @@
 'use client';
 /* eslint-disable-next-line */
 import styles from './navigation-mobile.module.scss';
-import { NavigationItem } from '@supernaut/types';
+import { TNavigationItem } from '@supernaut/types';
 import { Dialog, Transition } from '@headlessui/react';
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { useNavigation } from '@supernaut/hooks';
@@ -18,7 +18,7 @@ export interface NavigationMobileProps {
   siteTitle?: string;
   logo?: string;
   mode: 'light' | 'dark';
-  items: NavigationItem[];
+  items: TNavigationItem[];
 }
 
 export function NavigationMobile({

@@ -1,4 +1,4 @@
-export type Quote = {
+export type TQuote = {
   id: string;
   quote: string;
   author: string;

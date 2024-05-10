@@ -20,8 +20,28 @@
     @apply text-xl md:text-2xl lg:text-[28px] font-normal;
   }
 
-  html {
-    //font-size: 18px;
+  .input {
+    @apply bg-base;
+
+    &.input-bordered{
+      @apply border-2 border-primary;
+    }
+  }
+
+  .select {
+    @apply bg-base;
+
+    &.select-bordered {
+      @apply border-2 border-primary;
+    }
+  }
+
+  .textarea {
+    @apply bg-base;
+
+    &.textarea-bordered {
+      @apply border-2 border-primary;
+    }
   }
 
 

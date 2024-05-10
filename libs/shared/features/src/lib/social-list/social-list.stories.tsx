@@ -6,7 +6,7 @@ import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof SocialList> = {
   component: SocialList,
-  title: 'ui/Social List',
+  title: 'Features/Social Links',
 };
 export default meta;
 type Story = StoryObj<typeof SocialList>;

@@ -1,9 +1,9 @@
 import Image from 'next/image';
-import {ImageLink} from '@supernaut/types';
+import {TImageLink} from '@supernaut/types';
 import cn from 'classnames';
 /* eslint-disable-next-line */
 export interface GridImagesProps {
- items: ImageLink[];
+ items: TImageLink[];
  columnsSm?: number;
  columnsMd?: number;
  columnsLg?: number;

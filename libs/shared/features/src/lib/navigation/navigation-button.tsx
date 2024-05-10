@@ -2,12 +2,12 @@
 'use client';
 import cn from 'classnames';
 import Link from 'next/link';
-import { NavigationItem } from '@supernaut/types';
+import { TNavigationItem } from '@supernaut/types';
 import { useNavigation } from '@supernaut/hooks';
 import { useEffect, useState } from 'react';
 
 export interface NavigationButtonProps {
-  item: NavigationItem;
+  item: TNavigationItem;
   className?: string;
 }
 

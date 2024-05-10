@@ -1,12 +1,12 @@
 /* eslint-disable-next-line */
-import {ImageLink} from '@supernaut/types';
+import {TImageLink} from '@supernaut/types';
 import cn from 'classnames';
 import {GridImages} from '@supernaut/shared-ui';
 import ContentColumn from '../content-column/content-column';
 
 export interface ContentColumnImagesProps {
   title: string;
-  items: ImageLink[];
+  items: TImageLink[];
   columnsSm?: number;
   columnsMd?: number;
   columnsLg?: number;

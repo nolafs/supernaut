@@ -1,5 +1,5 @@
 /* eslint-disable-next-line */
-import { NavigationItem, SocialLinkItemType } from '@supernaut/types';
+import { TNavigationItem, TSocialLinkItemType } from '@supernaut/types';
 import cn from 'classnames';
 import { ButtonPrimary } from '@supernaut/shared-ui';
 import { SocialList } from '../social-list/social-list';
@@ -9,8 +9,8 @@ export interface FooterProps {
   copyright: string;
   strapline: string;
   contactButtonLabel: string;
-  social?: SocialLinkItemType[];
-  legal: NavigationItem[];
+  social?: TSocialLinkItemType[];
+  legal: TNavigationItem[];
 }
 
 export function Footer({

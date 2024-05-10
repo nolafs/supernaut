@@ -29,9 +29,9 @@ export function Header({
     <header>
       <div
         className={cn(
-          'container mx-auto',
-          marginTop && 'mt-[210px] lg:mt-[300px]',
-          marginBottom && 'mb-[210px] lg:mb-[300px]'
+          'w-full max-w-9xl mx-auto px-5 md:px-10',
+          marginTop && 'mt-[130px] lg:mt-[220px]',
+          marginBottom && 'mb-[110px] lg:mb-[160px]'
         )}
       >
         <div

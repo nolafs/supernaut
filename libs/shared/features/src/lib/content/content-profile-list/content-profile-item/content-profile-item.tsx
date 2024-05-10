@@ -1,12 +1,12 @@
 
 
 /* eslint-disable-next-line */
-import {ProfileItem} from '@supernaut/types';
+import {TProfileItem} from '@supernaut/types';
 import Image from 'next/image';
 import {SocialList} from '@supernaut/features';
 
 export interface ContentProfileItemProps {
-  item: ProfileItem,
+  item: TProfileItem,
 }
 
 export function ContentProfileItem({item}: ContentProfileItemProps) {

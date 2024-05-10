@@ -1,6 +1,6 @@
 /* eslint-disable-next-line */
 'use client';
-import { Quote } from '@supernaut/types';
+import { TQuote } from '@supernaut/types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Autoplay } from 'swiper/modules';
@@ -12,7 +12,7 @@ import { useState } from 'react';
 export interface QuotesProps {
   mode: 'dark' | 'light';
   internalName: string;
-  items: Quote[];
+  items: TQuote[];
   autoplay?: boolean;
 }
 
@@ -24,7 +24,7 @@ export function Quotes({
 }: QuotesProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(items?.length || 0);
-  const [currentSlide, setCurrentSlide] = useState<Quote | null>(
+  const [currentSlide, setCurrentSlide] = useState<TQuote | null>(
     items?.length ? items[0] : null
   );
 
