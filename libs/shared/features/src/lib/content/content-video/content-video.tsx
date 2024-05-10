@@ -1,6 +1,7 @@
 
 /* eslint-disable-next-line */
 import dynamic from 'next/dynamic';
+import Vimeo from './vimeo';
 
 
 
@@ -10,6 +11,7 @@ export interface ContentVideoProps {
   src: string;
   title: string;
   poster?: string;
+  mode?: 'light' | 'dark';
 }
 
 export function ContentVideo({id, type, title, src, poster}: ContentVideoProps) {
@@ -32,7 +34,7 @@ export function ContentVideo({id, type, title, src, poster}: ContentVideoProps) 
 
     return (
       <div className={'flex w-full max-w-9xl mx-auto'}>
-        <h1>Welcome to ContentVideo!</h1>
+        <Vimeo id={id} title={title} poster={poster} src={src}/>
       </div>
     );
   }

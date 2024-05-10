@@ -1,5 +1,6 @@
 import Image from 'next/image';
 import placeholder from '../../assets/placeholder.webp';
+import placeholder_white from '../../assets/placeholder-white.webp';
 
 /* eslint-disable-next-line */
 export interface VideoControlProps {
@@ -8,9 +9,10 @@ export interface VideoControlProps {
   width?: number;
   height?: number;
   title: string;
+  mode?: 'light' | 'dark';
 }
 
-export function VideoControl({poster, handlePlay, width, height, title}: VideoControlProps) {
+export function VideoControl({poster, handlePlay, width, height, title, mode}: VideoControlProps) {
   return (
     <button onClick={handlePlay} className={'relative'}>
       <div className={'absolute bottom-10 left-10 w-full '}>
@@ -29,7 +31,7 @@ export function VideoControl({poster, handlePlay, width, height, title}: VideoCo
                alt={title}/>
         :
         <Image width={width} height={height} loading={'lazy'}
-               src={placeholder}
+               src={(mode === 'light') ? placeholder : placeholder_white}
                quality={60}
                alt={title}/>
       }

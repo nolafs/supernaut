@@ -15,20 +15,26 @@ export interface VimeoProps {
 }
 
 export function Vimeo({id, src, title, poster, width = 1920, height = 1200}: VimeoProps) {
-
-  const [player, setPlayer] = useState<any | null>(null);
   const [showPlayer, setShowPlayer] = useState<boolean>(false);
   const ref = useRef<any>(null);
 
+
+  const opts: any = {
+    playerOptions: {
+      controls: true
+    },
+    title: title,
+  };
+
   const handlePlay = () => {
-    return null
+    setShowPlayer(true);
   }
+
 
   return (
     <div className={'relative'}>
       <div
-        className={cn('absolute bg-black  w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9', (showPlayer) ? 'opacity-100 display' : 'opacity-0 hidden')}>
-
+        className={cn('absolute bg-black w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9', (showPlayer) ? 'opacity-100 display' : 'opacity-0 hidden')}>
         {(showPlayer) && <ReactPlayer
           width="100%"
           height="100%"
@@ -36,10 +42,10 @@ export function Vimeo({id, src, title, poster, width = 1920, height = 1200}: Vim
           ref={ref}
           id={id}
           url={src}
+          config={opts}
           onPlay={handlePlay}
 
         />}
-
       </div>
       <VideoControl handlePlay={handlePlay} title={title} poster={poster} width={width} height={height}/>
     </div>

@@ -1,5 +1,5 @@
 /* eslint-disable-next-line */
-import { Navigation, Footer, ContentProfileList} from '@supernaut/features';
+import {Navigation, Footer, ContentProfileList, ContentVideo} from '@supernaut/features';
 import {Header, Section} from '@supernaut/shared-ui';
 import ContentList from '../../content/content-list/content-list';
 
@@ -35,7 +35,14 @@ export function Page({
         title="Neonhive"
       />
 
-
+      <Section
+        internalName={'partners'}
+        marginTop={true}
+        marginBottom={true}
+        mode={'dark'}
+      >
+        <ContentVideo id={'first'} type={'youtube'} src={'https://www.youtube.com/watch?v=M7jgxJ_4TJs'} title={'first'} />
+      </Section>
 
       <Footer
         copyright={footer?.copyright}
