@@ -20,11 +20,22 @@
     @apply text-xl md:text-2xl lg:text-[28px] font-normal;
   }
 
+
   .input {
-    @apply bg-base;
+    @apply bg-base border-0 outline-none;
+
+    &:focus {
+      @apply ring-2 ring-primary outline-none border border-primary #{!important};
+    }
 
     &.input-bordered{
       @apply border-2 border-primary;
+
+
+    }
+
+    &.input-error{
+      @apply border-2 border-red-700
     }
   }
 
@@ -39,10 +50,13 @@
   .textarea {
     @apply bg-base;
 
+    &:focus {
+      @apply ring-2 ring-primary outline-none border border-primary #{!important};
+    }
+
     &.textarea-bordered {
       @apply border-2 border-primary;
     }
   }
-
 
 }

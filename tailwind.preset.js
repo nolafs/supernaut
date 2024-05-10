@@ -1,5 +1,6 @@
 const defaultTheme = require('tailwindcss/defaultTheme');
 const colors = require('tailwindcss/colors');
+const theme = require('tailwindcss/defaultTheme');
 //tailwind.preset.js
 
 module.exports = {
@@ -38,6 +39,7 @@ module.exports = {
       white: colors.white,
       black: colors.black,
       red: colors.red,
+      error: colors.red['600'],
       primary: colors.white,
       secondary: '#acacac',
       accent: '#E62997',
