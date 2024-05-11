@@ -23,8 +23,43 @@
     },
     {
       "files": ["*.ts", "*.tsx"],
-      "extends": ["plugin:@nx/typescript"],
-      "rules": {}
+
+      "extends": [
+        "plugin:@nx/typescript"
+      ],
+      "rules": {
+        "import/order": [
+          "warn",
+          {
+            "groups": [
+              "builtin",
+              "external",
+              [
+                "parent",
+                "sibling"
+              ],
+              "index"
+            ],
+
+            "pathGroups": [
+              {
+                "pattern": "@/**",
+                "group": "external",
+                "position": "after"
+              },
+              {
+                "pattern": "@test/**",
+                "group": "external",
+                "position": "after"
+              }
+            ],
+            "alphabetize": {
+              "order": "asc",
+              "caseInsensitive": true
+            }
+          }
+        ]
+      }
     },
     {
       "files": ["*.js", "*.jsx"],

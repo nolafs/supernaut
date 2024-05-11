@@ -1,8 +1,8 @@
 /* eslint-disable-next-line */
 import cn from 'classnames';
 import {useRef, useState} from 'react';
+import ReactPlayer, {Config, ReactPlayerProps} from 'react-player/lazy';
 import VideoControl from './video-control';
-import ReactPlayer from 'react-player/lazy';
 
 
 export interface VimeoProps {
@@ -16,14 +16,20 @@ export interface VimeoProps {
 
 export function Vimeo({id, src, title, poster, width = 1920, height = 1200}: VimeoProps) {
   const [showPlayer, setShowPlayer] = useState<boolean>(false);
-  const ref = useRef<any>(null);
+  const ref = useRef<ReactPlayer>(null);
 
 
-  const opts: any = {
-    playerOptions: {
-      controls: true
+  const opts: Config = {
+    vimeo: {
+      title: title,
+      playerOptions: {
+        controls: true,
+        byline: false,
+        vimeo_logo: false,
+        dnt: true,
+      }
     },
-    title: title,
+
   };
 
   const handlePlay = () => {
@@ -43,9 +49,8 @@ export function Vimeo({id, src, title, poster, width = 1920, height = 1200}: Vim
           id={id}
           url={src}
           config={opts}
-          onPlay={handlePlay}
-
-        />}
+          className={'object-center object-cover w-full h-full'}
+          onPlay={handlePlay}></ReactPlayer>}
       </div>
       <VideoControl handlePlay={handlePlay} title={title} poster={poster} width={width} height={height}/>
     </div>

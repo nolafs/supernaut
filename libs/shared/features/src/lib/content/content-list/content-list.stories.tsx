@@ -1,12 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ContentList } from './content-list';
 
 const meta: Meta<typeof ContentList> = {
   component: ContentList,
+  tags: ['autodocs'],
   title: 'Features/Blocks/Content List',
 };
 export default meta;
-type Story = StoryObj<typeof ContentList>;
+
 
 export const Primary = {
   args: {

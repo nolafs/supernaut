@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ContactForm } from './contact-form';
 
 const meta: Meta<typeof ContactForm> = {
@@ -6,7 +6,6 @@ const meta: Meta<typeof ContactForm> = {
   title: 'Features/Contact Form',
 };
 export default meta;
-type Story = StoryObj<typeof ContactForm>;
 
 export const Primary = {
   args: {},

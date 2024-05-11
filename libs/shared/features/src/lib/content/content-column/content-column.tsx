@@ -1,7 +1,7 @@
-import styles from './content-column.module.css';
 import { LinkPrimary } from '@supernaut/shared-ui';
 import cn from 'classnames';
 import {ReactNode} from 'react';
+
 
 /* eslint-disable-next-line */
 export interface ContentColumnProps {

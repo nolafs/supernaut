@@ -1,15 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ContentVideo } from './content-video';
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
 
 const meta: Meta<typeof ContentVideo> = {
   component: ContentVideo,
   title: 'Features/Blocks/Content Video',
 };
 export default meta;
-type Story = StoryObj<typeof ContentVideo>;
+
 
 export const YouTube = {
   args: {
@@ -23,8 +21,18 @@ export const YouTube = {
 export const Vimeo = {
   args: {
     id: '1',
-    type: 'youtube',
+    type: 'vimeo',
     title: 'video',
     src: 'https://vimeo.com/328435644',
+  },
+};
+
+
+export const Coudinary = {
+  args: {
+    id: '1',
+    type: 'video',
+    title: 'video',
+    src: 'fdwwgzb980yiwtitocgk',
   },
 };

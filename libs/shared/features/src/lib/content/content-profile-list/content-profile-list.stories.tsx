@@ -1,4 +1,4 @@
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta } from '@storybook/react';
 import { ContentProfileList } from './content-profile-list';
 
 const meta: Meta<typeof ContentProfileList> = {
@@ -6,7 +6,7 @@ const meta: Meta<typeof ContentProfileList> = {
   title: 'Features/Blocks/Content Profile List',
 };
 export default meta;
-type Story = StoryObj<typeof ContentProfileList>;
+
 
 export const Primary = {
   args: {

@@ -1,15 +1,15 @@
 'use client'
 import {zodResolver} from '@hookform/resolvers/zod';
-import React, {useRef, useState} from 'react';
-import ReCAPTCHA from 'react-google-recaptcha';
+import {ButtonPrimary} from '@supernaut/shared-ui';
+import {emailSchema, IContactFormInput} from '@supernaut/types';
+import React, {useState} from 'react';
+//import ReCAPTCHA from 'react-google-recaptcha';
 import {useForm, SubmitHandler} from 'react-hook-form';
 import toast, {Toaster} from 'react-hot-toast';
-import {emailSchema, IContactFormInput} from '@supernaut/types';
-import {ButtonPrimary} from '@supernaut/shared-ui';
 
 
 export function ContactForm() {
-  const captchaRef: any = useRef(null)
+  //const captchaRef: any = useRef(null)
   const [isSubmitting, setIsSubmitting] = useState<boolean>(false);
   const [submissionSuccess, setSubmissionSuccess] = useState<boolean>(false);
 
@@ -29,7 +29,7 @@ export function ContactForm() {
   };
 
 
-  const onSubmit: SubmitHandler<IContactFormInput> = async (data: any) => {
+  const onSubmit: SubmitHandler<IContactFormInput> = async (data: IContactFormInput) => {
     setIsSubmitting(true);
     try {
 

@@ -2,6 +2,7 @@
 import {Navigation, Footer, ContentProfileList, ContentVideo} from '@supernaut/features';
 import {Header, Section} from '@supernaut/shared-ui';
 import ContentList from '../../content/content-list/content-list';
+import ContentColumn from '../../content/content-column/content-column';
 
 export interface PageHomeProps {
   navigation: any;
@@ -36,12 +37,26 @@ export function Page({
       />
 
       <Section
-        internalName={'partners'}
+        internalName={'video'}
         marginTop={true}
         marginBottom={true}
         mode={'dark'}
       >
         <ContentVideo id={'first'} type={'youtube'} src={'https://www.youtube.com/watch?v=M7jgxJ_4TJs'} title={'first'} />
+      </Section>
+
+      <Section
+        internalName={'video'}
+        marginTop={true}
+        marginBottom={true}
+        mode={'dark'}
+      >
+        <ContentColumn
+          align="right"
+          body="<p>Supernaut is a creative studio that designs and builds digital products for brands and startups.</p>"
+          mode="dark"
+          type="text"
+        />
       </Section>
 
       <Footer

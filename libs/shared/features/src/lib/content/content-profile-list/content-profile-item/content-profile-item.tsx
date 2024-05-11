@@ -3,7 +3,8 @@
 /* eslint-disable-next-line */
 import {TProfileItem} from '@supernaut/types';
 import Image from 'next/image';
-import {SocialList} from '@supernaut/features';
+import SocialList from '../../../social-list/social-list';
+
 
 export interface ContentProfileItemProps {
   item: TProfileItem,

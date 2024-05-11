@@ -2,8 +2,8 @@
 
 /* eslint-disable-next-line */
 import {TProfileItem} from '@supernaut/types';
-import ContentProfileItem from './content-profile-item/content-profile-item';
 import cn from 'classnames';
+import ContentProfileItem from './content-profile-item/content-profile-item';
 
 export interface ContentProfileListProps {
   items: TProfileItem[];

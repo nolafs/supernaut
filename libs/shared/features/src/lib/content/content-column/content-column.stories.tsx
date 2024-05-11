@@ -1,15 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { ContentColumn } from './content-column';
+import type { Meta } from '@storybook/react';
 
-import { within } from '@storybook/testing-library';
-import { expect } from '@storybook/jest';
+import { ContentColumn } from './content-column';
 
 const meta: Meta<typeof ContentColumn> = {
   component: ContentColumn,
+  tags: ['autodocs'],
   title: 'Features/Blocks/Content Column',
 };
 export default meta;
-type Story = StoryObj<typeof ContentColumn>;
 
 export const Intro = {
   args: {
