@@ -124,9 +124,10 @@ export function Page({
       </Section>
 
       <Section
-        internalName={'text_1'}
+        internalName={'text_2'}
         marginTop={true}
         marginBottom={true}
+
         mode={'dark'}
       >
         <ContentColumn
