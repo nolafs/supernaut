@@ -1,6 +1,6 @@
-import Image from 'next/image';
 import {TImageLink} from '@supernaut/types';
 import cn from 'classnames';
+import Image from 'next/image';
 /* eslint-disable-next-line */
 export interface GridImagesProps {
  items: TImageLink[];
@@ -58,17 +58,15 @@ export function GridImages({items, columnsSm = 1, columnsMd = 2, columnsLg = 2, 
   if(!items || !items.length) return <div>No items</div>;
 
   return (
-    <div>
       <div className={cn('grid', COLUMNS_SM[columnsSm], COLUMNS_MD[columnsMd], COLUMNS_LG[columnsLg], girdClass )}>
         {items.map((item) => {
           return (
             <div key={item.id} className={cn('relative', imageClass)}>
-              <Image src={item.image} alt={item.alt} width={itemWidth} height={itemHeight} />
+              <Image src={item.image} alt={item.alt} width={itemWidth} height={itemHeight} className={'object-center object-cover w-full h-full'} />
             </div>
           );
         })}
       </div>
-    </div>
   );
 }
 

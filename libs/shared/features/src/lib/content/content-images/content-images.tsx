@@ -1,10 +1,46 @@
 /* eslint-disable-next-line */
-export interface ContentImagesProps {}
+import {GridImages} from '@supernaut/shared-ui';
+import {TImageLink} from '@supernaut/types';
 
-export function ContentImages(props: ContentImagesProps) {
+export interface ContentImagesProps {
+  items: TImageLink[];
+  columnsSm?: number;
+  columnsMd?: number;
+  columnsLg?: number;
+  itemWidth?: number;
+  itemHeight?: number;
+  mode?: 'light' | 'dark';
+}
+
+export function ContentImages({items, mode, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
+
+  if(!items || !items.length) return <div>No items</div>;
+
+  if(items.length === 1) {
+    columnsSm = 0;
+    columnsMd = 0;
+    columnsLg = 0;
+    itemWidth = 1820;
+  }
+
+  if(items.length > 1) {
+    columnsSm = 0;
+    columnsMd = 1;
+    columnsLg = 1;
+  }
+
   return (
-    <div>
-      <h1>Welcome to ContentImages!</h1>
+    <div className={'w-full max-w-9xl mx-auto flex flex-row justify-center'}>
+    <GridImages
+      imageClass={'px-0 py-0 md:px-0 md:py-0 lg:px-0 lg:py-0'}
+      girdClass={'gap-0 md:gap-10 py-10  max-w-10/12 mx-auto' }
+      items={items}
+      columnsSm={columnsSm}
+      columnsMd={columnsMd}
+      columnsLg={columnsLg}
+      itemWidth={itemWidth}
+      itemHeight={itemHeight}
+    />
     </div>
   );
 }
