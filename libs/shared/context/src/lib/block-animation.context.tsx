@@ -74,6 +74,8 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
       children = props.target;
     }
 
+    console.log('children', children, props.target)
+
     gsap.fromTo(children, {opacity: 0, y: 100, ...props.from}, {opacity: 1, y: 0, stagger: 0.05, ...props.to, ...props.animProps});
   }
 
@@ -101,6 +103,7 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
       animations[animation](ref.current, {
         from,
         to,
+        target,
         animProps: {
           duration,
           scrollTrigger: {
