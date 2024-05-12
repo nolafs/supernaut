@@ -35,6 +35,8 @@ export function ContentColumn({
 
   if(type === 'intro' || type === 'text' || !children) {
 
+    console.log('type', type)
+    console.log('intro', title)
     console.log('body', body)
 
     return (<BlockAnimationProvider>
@@ -52,7 +54,7 @@ export function ContentColumn({
           )}
         >
           <div className={'w-full md:w-9/12 lg:w-1/2'}>
-            {type === 'intro' && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-24 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
+            {title && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-24 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
             {body && (<BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%">
               <div
                 className={'text-[28px] md:text-3xl lg:text-5xl font-normal'}

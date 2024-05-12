@@ -18,7 +18,7 @@ export interface ContentColumnImagesProps {
 export function ContentColumnImages({title, items, mode, columnsSm, columnsMd, columnsLg, itemWidth = 425, itemHeight = 250 }: ContentColumnImagesProps) {
   return (
     <ContentColumn title={title} hTag={'h2'} type={'3/9'} mode={mode}>
-      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 90%" target={'.image'}>
+      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 70%" target={'.image'}>
         <GridImages items={items}  columnsSm={columnsSm} columnsMd={columnsMd} columnsLg={columnsLg} itemWidth={itemWidth}
                     itemHeight={itemHeight}/>
       </BlockAnimateOnScroll>

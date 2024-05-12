@@ -107,6 +107,7 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
         animProps: {
           duration,
           scrollTrigger: {
+            //markers: true,
             trigger: ref.current,
             start,
           }
