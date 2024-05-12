@@ -62,7 +62,7 @@ export function GridImages({items, columnsSm = 1, columnsMd = 2, columnsLg = 2, 
         {items.map((item) => {
           return (
             <div key={item.id} className={cn('relative', imageClass)}>
-              <Image src={item.image} alt={item.alt} width={itemWidth} height={itemHeight} className={'object-center object-cover w-full h-full'} />
+              <Image src={item.image} alt={item.alt} width={itemWidth} height={itemHeight} className={'image object-center object-cover w-full h-full'} />
             </div>
           );
         })}

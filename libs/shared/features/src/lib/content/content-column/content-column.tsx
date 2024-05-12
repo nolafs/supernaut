@@ -1,3 +1,4 @@
+import {BlockAnimateOnScroll, BlockAnimationContext, BlockAnimationProvider} from '@supernaut/context';
 import { LinkPrimary } from '@supernaut/shared-ui';
 import cn from 'classnames';
 import {ReactNode} from 'react';
@@ -15,6 +16,7 @@ export interface ContentColumnProps {
   label?: string;
   mode?: 'light' | 'dark';
   children?: ReactNode;
+  hasAnimation?: boolean;
 }
 
 export function ContentColumn({
@@ -32,41 +34,48 @@ export function ContentColumn({
 
 
   if(type === 'intro' || type === 'text' || !children) {
-    return (
-      <div
-        className={cn(
-          'w-full max-w-9xl mx-auto flex flex-row',
-          align === 'left' && 'justify-start',
-          align === 'right' && 'justify-end',
-          mode === 'dark' && 'text-white',
-          mode === 'light' && 'text-black bg-white',
-          padding === 'none' && 'px-0',
-          padding === 'small' && 'px-5 md:px-10',
-          padding === 'medium' && 'px-10 md:px-20',
-          padding === 'large' && 'px-20 md:px-40'
-        )}
-      >
-        <div className={'w-full md:w-9/12 lg:w-1/2'}>
-          {type === 'intro' && <h1 className={'mb-24'}>{title}</h1>}
-          {body && (
-            <div
-              className={'text-[28px] md:text-3xl lg:text-5xl font-normal'}
-              dangerouslySetInnerHTML={{__html: body}}
-            />
+
+    console.log('body', body)
+
+    return (<BlockAnimationProvider>
+        <div
+          className={cn(
+            'w-full max-w-9xl mx-auto flex flex-row',
+            align === 'left' && 'justify-start',
+            align === 'right' && 'justify-end',
+            mode === 'dark' && 'text-white',
+            mode === 'light' && 'text-black bg-white',
+            padding === 'none' && 'px-0',
+            padding === 'small' && 'px-5 md:px-10',
+            padding === 'medium' && 'px-10 md:px-20',
+            padding === 'large' && 'px-20 md:px-40'
           )}
-          {url && label && (
-            <div className={'mt-20'}>
-              <LinkPrimary url={url} hasIcon={true} size={'md'}>
-                {label}
-              </LinkPrimary>
-            </div>
-          )}
+        >
+          <div className={'w-full md:w-9/12 lg:w-1/2'}>
+            {type === 'intro' && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-24 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
+            {body && (<BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%">
+              <div
+                className={'text-[28px] md:text-3xl lg:text-5xl font-normal'}
+                dangerouslySetInnerHTML={{__html: body}}
+              />
+              </BlockAnimateOnScroll>
+            )}
+            {url && label && (
+              <BlockAnimateOnScroll animation="fadeIn" duration={1.5} start="top 90%">
+              <div className={'mt-20'}>
+                <LinkPrimary url={url} hasIcon={true} size={'md'}>
+                  {label}
+                </LinkPrimary>
+              </div>
+              </BlockAnimateOnScroll>
+            )}
+          </div>
         </div>
-      </div>
+      </BlockAnimationProvider>
     );
   }
   else {
-    return (
+    return (<BlockAnimationProvider>
       <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row w-full gap-10',
         mode === 'dark' && 'text-white',
         mode === 'light' && 'text-black bg-white',
@@ -79,17 +88,22 @@ export function ContentColumn({
 
       )}>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-3/12')}>
-          { hTag === 'h1' && <h1>{title}</h1>}
+          <BlockAnimateOnScroll animation="splitText" duration={0.5}  start="top 90%">
+          { hTag === 'h1' && <h1 className={'splitTextOverflow'}>{title}</h1>}
           { hTag === 'h2' && <h2>{title}</h2>}
-          { hTag === 'h3' && <h3>{title}</h3>}
-          { hTag === 'h4' && <h4>{title}</h4>}
-          { hTag === 'h5' && <h5>{title}</h5>}
-          { hTag === 'h6' && <h6>{title}</h6>}
+          { hTag === 'h3' && <h3 className={'splitTextOverflow'}>{title}</h3>}
+          { hTag === 'h4' && <h4 className={'splitTextOverflow'}>{title}</h4>}
+          { hTag === 'h5' && <h5 className={'splitTextOverflow'}>{title}</h5>}
+          { hTag === 'h6' && <h6 className={'splitTextOverflow'}>{title}</h6>}
+          </BlockAnimateOnScroll>
         </div>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-9/12')}>
-          {children}
+          <BlockAnimateOnScroll animation="fadeIn" duration={0.5} start="top 90%">
+            {children}
+          </BlockAnimateOnScroll>
         </div>
       </div>
+      </BlockAnimationProvider>
     )
   }
 }

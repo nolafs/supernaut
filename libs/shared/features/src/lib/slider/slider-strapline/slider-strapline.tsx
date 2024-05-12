@@ -1,9 +1,9 @@
-import styles from './slider-strapline.module.scss';
-import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
+import cn from 'classnames';
+import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import { useRef } from 'react';
-import cn from 'classnames';
+import styles from './slider-strapline.module.scss';
 
 gsap.registerPlugin(useGSAP, SplitText);
 /* eslint-disable-next-line */
@@ -16,7 +16,7 @@ export function SliderStrapline({ strapline }: SliderStraplineProps) {
   const split = useRef<SplitText | null>(null);
 
   useGSAP(() => {
-    split.current = new SplitText('.strapline', { type: 'chars, words' });
+    split.current = new SplitText('.strapline', { type: 'chars, words, line' });
     gsap.from(split.current.chars, {
       opacity: 0,
       y: '100%',

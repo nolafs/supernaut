@@ -1,7 +1,8 @@
 /* eslint-disable-next-line */
-import ContentColumn from '../content-column/content-column';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 import {GridImages} from '@supernaut/shared-ui';
 import {TImageLink} from '@supernaut/types';
+import ContentColumn from '../content-column/content-column';
 
 export interface ContentColumnImagesProps {
   title: string;
@@ -17,8 +18,10 @@ export interface ContentColumnImagesProps {
 export function ContentColumnImages({title, items, mode, columnsSm, columnsMd, columnsLg, itemWidth = 425, itemHeight = 250 }: ContentColumnImagesProps) {
   return (
     <ContentColumn title={title} hTag={'h2'} type={'3/9'} mode={mode}>
+      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 90%" target={'.image'}>
         <GridImages items={items}  columnsSm={columnsSm} columnsMd={columnsMd} columnsLg={columnsLg} itemWidth={itemWidth}
                     itemHeight={itemHeight}/>
+      </BlockAnimateOnScroll>
     </ContentColumn>
   );
 }
