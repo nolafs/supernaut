@@ -1,4 +1,4 @@
-import * as Types from '../../../../apps/supernaut/src/lib/__generated/graphql.types';
+import * as Types from '../../../__generated/graphql.types';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful/lib/fetchConfig';

@@ -1,4 +1,4 @@
-import * as Types from '../../../../apps/supernaut/src/lib/__generated/graphql.types';
+import * as Types from '../../../__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';

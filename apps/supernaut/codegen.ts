@@ -52,7 +52,7 @@ export const config: CodegenConfig = {
       preset: 'near-operation-file',
       presetConfig: {
         extension: '.generated.ts',
-        baseTypesPath: './apps/supernaut/src/lib/__generated/graphql.types.ts',
+        baseTypesPath: 'lib/__generated/graphql.types.ts',
         folder: '__generated',
       },
       plugins: [
