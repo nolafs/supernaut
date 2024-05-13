@@ -7,6 +7,7 @@ import { expect } from '@storybook/jest';
 const meta: Meta<typeof Navigation> = {
   component: Navigation,
   title: 'Features/Navigation',
+  tags: ['autodocs'],
   argTypes: {
     siteTitle: {
       control: {

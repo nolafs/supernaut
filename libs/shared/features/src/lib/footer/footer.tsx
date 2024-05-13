@@ -4,21 +4,26 @@ import cn from 'classnames';
 import { ButtonPrimary } from '@supernaut/shared-ui';
 import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
+import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
 
 export interface FooterProps {
   copyright?: string | undefined | null;
   strapline?: string | undefined | null;
-  contactButtonLabel?: string;
+  contactButtonLabel?: string | undefined | null;
+  contactDialog?: boolean | undefined | null;
   social?: TSocialLinkItemType[];
   legal?: TNavigationItem[];
+  navigation?: TNavigationItem[];
 }
 
 export function Footer({
   legal,
+  contactDialog,
   contactButtonLabel,
   copyright,
   strapline,
   social,
+  navigation
 }: FooterProps) {
 
   const copyRight = new Date().getFullYear();
@@ -35,16 +40,28 @@ export function Footer({
               'flex flex-col md:flex-row space-y-10 md:space-y-0  md:space-x-10'
             }
           >
-            <ButtonPrimary
-              label={contactButtonLabel}
-              size={'lg'}
-            />
+            {(contactButtonLabel && contactButtonLabel.length > 0 && contactDialog) && (
+            <ContactFormDialogButton label={contactButtonLabel} />) }
+
+            {(navigation && navigation.length > 0) && (
+              <ul className={cn('flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10')}>
+                {navigation?.map((item) => {
+                  return (
+                    <li key={item.id} className={'flex'}>
+                      <NavigationButton item={item} className={'underline'}/>
+                    </li>
+                  );
+                })}
+              </ul>
+            )}
+
             <SocialList
               items={social}
               icons={false}
               variantList={1}
               variantButton={2}
             />
+
           </div>
         </div>
         <div

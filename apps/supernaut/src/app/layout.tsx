@@ -6,10 +6,12 @@ import {Metadata, ResolvingMetadata, Viewport} from 'next';
 import {ReactNode, Suspense} from 'react';
 import i18nConfig from '../../next-i18next.config';
 
-import {CookieBanner, Footer, Navigation} from '@supernaut/features';
+import {CookieBanner, Footer, ModalsContainer, Navigation} from '@supernaut/features';
 import {GoogleAnalytics} from '@supernaut/utils';
-import {TNavigationItem} from '@supernaut/types';
+import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
+import {ModalProvider} from '@supernaut/features';
+
 
 
 
@@ -101,7 +103,12 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     }
   ) as TNavigationItem[];
 
+
+  const social = settings?.socialMediaCollection?.items as unknown as TSocialLinkItemType[];
+
+
   return (
+    <ModalProvider>
     <html
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`, 'dark')}
@@ -111,7 +118,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       </Suspense>
 
       <body>
-      <Navigation items={navigation} mode={'dark'} />
+      <Navigation items={navigation} mode={'dark'} social={social}/>
 
       {children}
 
@@ -119,13 +126,18 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         copyright={settings?.copyrightLine}
         strapline={settings?.strapline}
         legal={legalNavigation}
+        contactButtonLabel={settings?.contactDialogButtonLabel}
+        contactDialog={settings?.contactFormDialog}
+        social={social}
       />
 
       <Suspense>
         <CookieBanner />
       </Suspense>
 
+      <ModalsContainer />
       </body>
     </html>
+    </ModalProvider>
   );
 }

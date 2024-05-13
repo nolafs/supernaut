@@ -8,7 +8,10 @@ interface SocialIconsProps {
     | 'gitHub'
     | 'youtube'
     | 'tiktok'
-    | 'linkedin';
+    | 'linkedin'
+    | undefined
+    | null
+    | unknown;
   url?: string | any;
   props?: any;
 }

@@ -48,6 +48,8 @@ fragment SettingsFields on Settings {
   canonicalUrl,
   twitterCardType,
   twitterHandler,
+  contactDialogButtonLabel
+  contactFormDialog
   ogImage {
     ...AssetFields
   }
@@ -97,6 +99,11 @@ fragment SettingsFields on Settings {
           id
         }
       }
+      id: sys {
+        id
+      }
+      type
+      name
       internalName
       url
     }

@@ -83,12 +83,10 @@ export const SocialLink = ({ item, className, icons, iconsClass }: SocialLinkPro
     return (
       <ButtonPrimary
         onClick={() => openSocialMediaLink(item?.url as string)}
-        isDisabled={false}
         hasIcon={false}
         size={'lg'}
-        label={item.name}
         classNames={className}
-      />
+      >{item.name}</ButtonPrimary>
     );
   }
 };

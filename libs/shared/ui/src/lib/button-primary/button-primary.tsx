@@ -1,7 +1,6 @@
 import styles from './button-primary.module.scss';
 import cn from 'classnames';
 import Label from '../label/label';
-import {classNames} from '@headlessui/react/dist/utils/class-names';
 import {ButtonHTMLAttributes, forwardRef} from 'react';
 
 /* eslint-disable-next-line */

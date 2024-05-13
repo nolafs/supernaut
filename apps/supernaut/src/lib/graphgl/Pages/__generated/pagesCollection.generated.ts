@@ -2,7 +2,7 @@ import * as Types from '../../../../apps/supernaut/src/lib/__generated/graphql.t
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful/lib/fetchConfig';
-export type PageFieldsFragment = { __typename: 'Pages', pageName?: string | null, title?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'PagesBodyText', json: any } | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename?: 'Asset', url?: string | null } | null } | null, topSectionsCollection?: { __typename?: 'PagesTopSectionsCollection', items: Array<{ __typename: 'QuoteComponent', sys: { __typename?: 'Sys', id: string } } | null> } | null };
+export type PageFieldsFragment = { __typename: 'Pages', pageName?: string | null, title?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string }, id: { __typename?: 'Sys', id: string }, bodyText?: { __typename?: 'PagesBodyText', json: any } | null, seo?: { __typename?: 'Seo', title?: string | null, description?: string | null, noIndex?: boolean | null, noFollow?: boolean | null, image?: { __typename?: 'Asset', url?: string | null } | null } | null, topSectionsCollection?: { __typename?: 'PagesTopSectionsCollection', items: Array<{ __typename: 'QuoteComponent', sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type PagesCollectionQueryVariables = Types.Exact<{
   slug: Types.Scalars['String']['input'];
@@ -21,6 +21,9 @@ export const PageFieldsFragmentDoc = `
     fragment PageFields on Pages {
   __typename
   sys {
+    id
+  }
+  id: sys {
     id
   }
   pageName

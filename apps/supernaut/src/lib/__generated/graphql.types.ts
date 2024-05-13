@@ -545,6 +545,10 @@ export enum NavigationItemLinkingCollectionsNavigationItemCollectionOrder {
 export enum NavigationItemLinkingCollectionsSettingsCollectionOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  ContactDialogButtonLabelAsc = 'contactDialogButtonLabel_ASC',
+  ContactDialogButtonLabelDesc = 'contactDialogButtonLabel_DESC',
+  ContactFormDialogAsc = 'contactFormDialog_ASC',
+  ContactFormDialogDesc = 'contactFormDialog_DESC',
   CopyrightLineAsc = 'copyrightLine_ASC',
   CopyrightLineDesc = 'copyrightLine_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -813,6 +817,10 @@ export type PagesLinkingCollectionsSettingsCollectionArgs = {
 export enum PagesLinkingCollectionsSettingsCollectionOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  ContactDialogButtonLabelAsc = 'contactDialogButtonLabel_ASC',
+  ContactDialogButtonLabelDesc = 'contactDialogButtonLabel_DESC',
+  ContactFormDialogAsc = 'contactFormDialog_ASC',
+  ContactFormDialogDesc = 'contactFormDialog_DESC',
   CopyrightLineAsc = 'copyrightLine_ASC',
   CopyrightLineDesc = 'copyrightLine_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1508,6 +1516,8 @@ export enum SeoOrder {
 export type Settings = Entry & {
   __typename?: 'Settings';
   canonicalUrl?: Maybe<Scalars['String']['output']>;
+  contactDialogButtonLabel?: Maybe<Scalars['String']['output']>;
+  contactFormDialog?: Maybe<Scalars['Boolean']['output']>;
   contentfulMetadata: ContentfulMetadata;
   copyrightLine?: Maybe<Scalars['String']['output']>;
   footerNavigationCollection?: Maybe<SettingsFooterNavigationCollection>;
@@ -1531,6 +1541,18 @@ export type Settings = Entry & {
 
 /** Site settings [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/settings) */
 export type SettingsCanonicalUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Site settings [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/settings) */
+export type SettingsContactDialogButtonLabelArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Site settings [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/settings) */
+export type SettingsContactFormDialogArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -1667,6 +1689,16 @@ export type SettingsFilter = {
   canonicalUrl_not?: InputMaybe<Scalars['String']['input']>;
   canonicalUrl_not_contains?: InputMaybe<Scalars['String']['input']>;
   canonicalUrl_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contactDialogButtonLabel?: InputMaybe<Scalars['String']['input']>;
+  contactDialogButtonLabel_contains?: InputMaybe<Scalars['String']['input']>;
+  contactDialogButtonLabel_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  contactDialogButtonLabel_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contactDialogButtonLabel_not?: InputMaybe<Scalars['String']['input']>;
+  contactDialogButtonLabel_not_contains?: InputMaybe<Scalars['String']['input']>;
+  contactDialogButtonLabel_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contactFormDialog?: InputMaybe<Scalars['Boolean']['input']>;
+  contactFormDialog_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  contactFormDialog_not?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   copyrightLine?: InputMaybe<Scalars['String']['input']>;
   copyrightLine_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1874,6 +1906,10 @@ export type SettingsMainNavigationItem = NavigationItem | Pages;
 export enum SettingsOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  ContactDialogButtonLabelAsc = 'contactDialogButtonLabel_ASC',
+  ContactDialogButtonLabelDesc = 'contactDialogButtonLabel_DESC',
+  ContactFormDialogAsc = 'contactFormDialog_ASC',
+  ContactFormDialogDesc = 'contactFormDialog_DESC',
   CopyrightLineAsc = 'copyrightLine_ASC',
   CopyrightLineDesc = 'copyrightLine_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -2040,6 +2076,10 @@ export type SocialMediaItemLinkingCollectionsSettingsCollectionArgs = {
 export enum SocialMediaItemLinkingCollectionsSettingsCollectionOrder {
   CanonicalUrlAsc = 'canonicalUrl_ASC',
   CanonicalUrlDesc = 'canonicalUrl_DESC',
+  ContactDialogButtonLabelAsc = 'contactDialogButtonLabel_ASC',
+  ContactDialogButtonLabelDesc = 'contactDialogButtonLabel_DESC',
+  ContactFormDialogAsc = 'contactFormDialog_ASC',
+  ContactFormDialogDesc = 'contactFormDialog_DESC',
   CopyrightLineAsc = 'copyrightLine_ASC',
   CopyrightLineDesc = 'copyrightLine_DESC',
   InternalNameAsc = 'internalName_ASC',

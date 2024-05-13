@@ -410,6 +410,10 @@ enum NavigationItemLinkingCollectionsNavigationItemCollectionOrder {
 enum NavigationItemLinkingCollectionsSettingsCollectionOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
+  contactDialogButtonLabel_ASC
+  contactDialogButtonLabel_DESC
+  contactFormDialog_ASC
+  contactFormDialog_DESC
   copyrightLine_ASC
   copyrightLine_DESC
   internalName_ASC
@@ -596,6 +600,10 @@ type PagesLinkingCollections {
 enum PagesLinkingCollectionsSettingsCollectionOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
+  contactDialogButtonLabel_ASC
+  contactDialogButtonLabel_DESC
+  contactFormDialog_ASC
+  contactFormDialog_DESC
   copyrightLine_ASC
   copyrightLine_DESC
   internalName_ASC
@@ -990,6 +998,8 @@ Site settings [See type definition](https://app.contentful.com/spaces/njzagoag3n
 """
 type Settings implements Entry {
   canonicalUrl(locale: String): String
+  contactDialogButtonLabel(locale: String): String
+  contactFormDialog(locale: String): Boolean
   contentfulMetadata: ContentfulMetadata!
   copyrightLine(locale: String): String
   footerNavigationCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: SettingsFooterNavigationFilter): SettingsFooterNavigationCollection
@@ -1027,6 +1037,16 @@ input SettingsFilter {
   canonicalUrl_not: String
   canonicalUrl_not_contains: String
   canonicalUrl_not_in: [String]
+  contactDialogButtonLabel: String
+  contactDialogButtonLabel_contains: String
+  contactDialogButtonLabel_exists: Boolean
+  contactDialogButtonLabel_in: [String]
+  contactDialogButtonLabel_not: String
+  contactDialogButtonLabel_not_contains: String
+  contactDialogButtonLabel_not_in: [String]
+  contactFormDialog: Boolean
+  contactFormDialog_exists: Boolean
+  contactFormDialog_not: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   copyrightLine: String
   copyrightLine_contains: String
@@ -1222,6 +1242,10 @@ union SettingsMainNavigationItem = NavigationItem | Pages
 enum SettingsOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
+  contactDialogButtonLabel_ASC
+  contactDialogButtonLabel_DESC
+  contactFormDialog_ASC
+  contactFormDialog_DESC
   copyrightLine_ASC
   copyrightLine_DESC
   internalName_ASC
@@ -1339,6 +1363,10 @@ type SocialMediaItemLinkingCollections {
 enum SocialMediaItemLinkingCollectionsSettingsCollectionOrder {
   canonicalUrl_ASC
   canonicalUrl_DESC
+  contactDialogButtonLabel_ASC
+  contactDialogButtonLabel_DESC
+  contactFormDialog_ASC
+  contactFormDialog_DESC
   copyrightLine_ASC
   copyrightLine_DESC
   internalName_ASC

@@ -11,7 +11,7 @@ export type NavigationItemFieldsFragment = { __typename: 'NavigationItem', inter
         & AssetFieldsFragment
       ) | null } | null> } | null };
 
-export type SettingsFieldsFragment = { __typename: 'Settings', siteTitle?: string | null, strapline?: string | null, metaTitle?: string | null, metaDescription?: string | null, metaKeywords?: string | null, canonicalUrl?: string | null, twitterCardType?: string | null, twitterHandler?: string | null, internalName?: string | null, copyrightLine?: string | null, sys: { __typename?: 'Sys', id: string }, ogImage?: (
+export type SettingsFieldsFragment = { __typename: 'Settings', siteTitle?: string | null, strapline?: string | null, metaTitle?: string | null, metaDescription?: string | null, metaKeywords?: string | null, canonicalUrl?: string | null, twitterCardType?: string | null, twitterHandler?: string | null, contactDialogButtonLabel?: string | null, contactFormDialog?: boolean | null, internalName?: string | null, copyrightLine?: string | null, sys: { __typename?: 'Sys', id: string }, ogImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, mainNavigationCollection?: { __typename?: 'SettingsMainNavigationCollection', items: Array<(
@@ -32,7 +32,7 @@ export type SettingsFieldsFragment = { __typename: 'Settings', siteTitle?: strin
     ) | (
       { __typename: 'Pages', sys: { __typename?: 'Sys', id: string } }
       & NavigationPageFieldsFragment
-    ) | null> } | null, socialMediaCollection?: { __typename?: 'SettingsSocialMediaCollection', items: Array<{ __typename: 'SocialMediaItem', internalName?: string | null, url?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
+    ) | null> } | null, socialMediaCollection?: { __typename?: 'SettingsSocialMediaCollection', items: Array<{ __typename: 'SocialMediaItem', type?: string | null, name?: string | null, internalName?: string | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, id: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type SettingsCollectionQueryVariables = Types.Exact<{
   internName: Types.Scalars['String']['input'];
@@ -99,6 +99,8 @@ export const SettingsFieldsFragmentDoc = `
   canonicalUrl
   twitterCardType
   twitterHandler
+  contactDialogButtonLabel
+  contactFormDialog
   ogImage {
     ...AssetFields
   }
@@ -148,6 +150,11 @@ export const SettingsFieldsFragmentDoc = `
           id
         }
       }
+      id: sys {
+        id
+      }
+      type
+      name
       internalName
       url
     }
