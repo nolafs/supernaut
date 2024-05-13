@@ -73,7 +73,7 @@ export const config: CodegenConfig = {
         namingConvention: {
           enumValues: 'keep',
         },
-        fetcher: '@supernaut/contentful/lib/fetchConfig#customFetcher',
+        fetcher: '@supernaut/contentful#customFetcher',
       },
     },
   },

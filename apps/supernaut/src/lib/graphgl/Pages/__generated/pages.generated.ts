@@ -1,7 +1,7 @@
 import * as Types from '../../../__generated/graphql.types';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { customFetcher } from '@supernaut/contentful/lib/fetchConfig';
+import { customFetcher } from '@supernaut/contentful';
 export type PagesQueryVariables = Types.Exact<{
   id: Types.Scalars['String']['input'];
   locale?: Types.InputMaybe<Types.Scalars['String']['input']>;

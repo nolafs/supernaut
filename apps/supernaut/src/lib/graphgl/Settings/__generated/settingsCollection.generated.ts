@@ -3,7 +3,7 @@ import * as Types from '../../../__generated/graphql.types';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
-import { customFetcher } from '@supernaut/contentful/lib/fetchConfig';
+import { customFetcher } from '@supernaut/contentful';
 export type NavigationPageFieldsFragment = { __typename: 'Pages', pageName?: string | null, slug?: string | null, internalName?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type NavigationItemFieldsFragment = { __typename: 'NavigationItem', internalName?: string | null, slug?: string | null, pageName?: string | null, sys: { __typename?: 'Sys', id: string }, subsectionCollection?: { __typename?: 'NavigationItemSubsectionCollection', items: Array<{ __typename: 'NavigationItem', pageName?: string | null, slug?: string | null, iconLibary?: string | null, sys: { __typename?: 'Sys', id: string }, icon?: (
