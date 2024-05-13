@@ -1,0 +1,5 @@
+query pages ($id: String!, $locale: String, $preview: Boolean) {
+    pages (id: $id, locale: $locale, preview: $preview) {
+        pageName
+    }
+}

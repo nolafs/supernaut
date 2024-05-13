@@ -56,7 +56,7 @@ export function Quotes({
           {items.map((quote) => (
             <SwiperSlide key={quote?.id}>
               <div className="flex flex-col justify-center items-start mx-auto">
-                <blockquote className="container font-medium text-3xl tracking-tight  lg:text-6xl flex flex-col">
+                <blockquote className="container max-w-7xl font-medium text-3xl tracking-tight  lg:text-6xl flex flex-col">
                   <div>"{quote?.quote}"</div>
                   <div className={'!outline-none mt-4'}>
                     <cite className="text-normal lg:text-3xl not-italic font-normal leading-[0]">

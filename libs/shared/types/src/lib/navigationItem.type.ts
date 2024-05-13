@@ -1,5 +1,6 @@
 export type TNavigationItem = {
-  id: string;
+  __typename?: string;
+  id?: string;
   pageName: string;
   slug: string;
 };

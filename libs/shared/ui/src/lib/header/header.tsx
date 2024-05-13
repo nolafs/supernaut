@@ -3,11 +3,10 @@ import cn from 'classnames';
 import styles from './header.module.scss';
 
 export interface HeaderProps {
-  id?: number;
-  pageName?: string;
-  title?: string;
-  subtitle?: string;
-  description?: string;
+  pageName?: string | undefined | null;
+  title?: string | undefined | null;
+  subtitle?: string | undefined | null;
+  description?: string | undefined | null;
   columnLayout?: boolean;
   mode?: 'light' | 'dark';
   marginTop?: boolean;
@@ -15,7 +14,6 @@ export interface HeaderProps {
 }
 
 export function Header({
-  id,
   pageName,
   title,
   subtitle,
@@ -36,7 +34,7 @@ export function Header({
       >
         <div
           className={cn(
-            !columnLayout
+            columnLayout
               ? 'grid grid-cols-1 md:grid-cols-2'
               : 'flex flex-row w-full',
             mode === 'light' ? 'text-base' : 'text-primary'
@@ -44,7 +42,7 @@ export function Header({
         >
           <div className={cn(columnLayout && 'w-full md:w-4/12')}>
             <div className={'sr-only'}>{pageName}</div>
-            <h1>{title}</h1>
+            <h1>{title || pageName}</h1>
           </div>
           {columnLayout && (
             <div

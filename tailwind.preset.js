@@ -50,7 +50,25 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css:{
-            color: theme('colors.secondary'),
+            color: theme('colors.primary'),
+            h1: {
+              color: theme('colors.primary'),
+            },
+            h2: {
+              color: theme('colors.primary'),
+            },
+            h3: {
+              color: theme('colors.primary'),
+            },
+            h4: {
+              color: theme('colors.primary'),
+            },
+            h5: {
+              color: theme('colors.primary'),
+            },
+            h6: {
+              color: theme('colors.primary'),
+            },
           },
         },
         sm: {

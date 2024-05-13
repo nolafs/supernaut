@@ -55,8 +55,9 @@ export function Page({
 
         <Section
           internalName={'services'}
-
           marginTop={true}
+          paddingTop={true}
+          marginSize={'lg'}
           marginBottom={false}
           mode={'dark'}
         >

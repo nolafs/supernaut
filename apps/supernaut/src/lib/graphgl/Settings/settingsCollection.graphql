@@ -1,0 +1,113 @@
+fragment NavigationPageFields on Pages {
+  __typename
+  sys {
+    id
+  }
+  pageName
+  internalName: pageName
+  slug
+}
+
+fragment NavigationItemFields on NavigationItem {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  slug
+  pageName
+  subsectionCollection(limit: 10) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      pageName
+      slug
+      icon {
+        ...AssetFields
+      }
+      iconLibary
+    }
+  }
+}
+
+
+fragment SettingsFields on Settings {
+  __typename
+  sys {
+    id
+  }
+  siteTitle
+  strapline
+  metaTitle,
+  metaDescription,
+  metaKeywords,
+  canonicalUrl,
+  twitterCardType,
+  twitterHandler,
+  ogImage {
+    ...AssetFields
+  }
+  internalName
+  copyrightLine
+  mainNavigationCollection(limit: 10) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...NavigationPageFields
+      ...NavigationItemFields
+    }
+  },
+  footerNavigationCollection(limit: 10) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...NavigationPageFields
+      ...NavigationItemFields
+    }
+  },
+  legalNavigationCollection(limit: 10) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      ...NavigationPageFields
+      ...NavigationItemFields
+    }
+  }
+  socialMediaCollection(limit: 10) {
+    items {
+      ... on Entry {
+        __typename
+        sys {
+          id
+        }
+      }
+      internalName
+      url
+    }
+  }
+}
+
+
+query settingsCollection($internName: String!,  $locale: String, $preview: Boolean){
+  settingsCollection(where: {internalName: $internName}, locale: $locale, preview: $preview, limit: 1) {
+    items{
+      ...SettingsFields
+    }
+  }
+}

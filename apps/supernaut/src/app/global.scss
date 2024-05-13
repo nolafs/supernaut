@@ -8,6 +8,11 @@
     @apply bg-base text-primary;
   }
 
+  .wrapper {
+    @apply w-full max-w-9xl mx-auto;
+  }
+
+
   h1 {
     @apply text-4xl md:text-5xl lg:text-6xl font-normal;
   }

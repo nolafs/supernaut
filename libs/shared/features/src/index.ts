@@ -1,6 +1,6 @@
 export * from './lib/content/content-images/content-images';
-export * from './lib/content/content-video/content-video';
-export * from './lib/contact-form/contact-form';
+export { ContentVideo } from './lib/content/content-video/content-video';
+export { ContactForm } from './lib/contact-form/contact-form';
 export * from './lib/content/content-list/content-list';
 export * from './lib/content/content-column-images/content-column-images';
 export { Quotes } from './lib/quotes/quotes';

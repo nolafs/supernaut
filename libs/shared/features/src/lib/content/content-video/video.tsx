@@ -20,7 +20,7 @@ export interface VideoProps {
 }
 
 
-export function Video({id, src, title, poster, mode, width = 1920, height = 1200}: VideoProps) {
+export function CloudinaryVideo({id, src, title, poster, mode, width = 1920, height = 1200}: VideoProps) {
 
   const ref = useRef<any>(null);
 
@@ -57,4 +57,4 @@ export function Video({id, src, title, poster, mode, width = 1920, height = 1200
   );
 }
 
-export default Video;
+export default CloudinaryVideo;

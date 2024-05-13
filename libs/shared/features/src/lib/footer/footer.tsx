@@ -6,11 +6,11 @@ import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 
 export interface FooterProps {
-  copyright: string;
-  strapline: string;
-  contactButtonLabel: string;
+  copyright?: string | undefined | null;
+  strapline?: string | undefined | null;
+  contactButtonLabel?: string;
   social?: TSocialLinkItemType[];
-  legal: TNavigationItem[];
+  legal?: TNavigationItem[];
 }
 
 export function Footer({
@@ -20,6 +20,9 @@ export function Footer({
   strapline,
   social,
 }: FooterProps) {
+
+  const copyRight = new Date().getFullYear();
+
   return (
     <footer>
       <div className={cn('max-w-9xl mx-auto px-8 lg:px-12 pt-16 mb:pt-24 pb-10 text-primary')}>
@@ -34,7 +37,6 @@ export function Footer({
           >
             <ButtonPrimary
               label={contactButtonLabel}
-              isDisabled={false}
               size={'lg'}
             />
             <SocialList
@@ -51,10 +53,10 @@ export function Footer({
             'text-secondary'
           )}
         >
-          <div className={'text-sm md:text-normal'}>{copyright}</div>
+          <div className={'text-sm md:text-normal'}>&copy; {copyRight} {copyright}</div>
           <div>
             <ul className={cn('flex space-x-6 mt-5 md:mt-0  items-center')}>
-              {legal.map((item) => {
+              {legal?.map((item) => {
                 return (
                   <li key={item.id} className={'flex'}>
                     <NavigationButton item={item} className={'underline'} />

@@ -1,9 +1,6 @@
-
+'use client';
 /* eslint-disable-next-line */
 import dynamic from 'next/dynamic';
-
-
-
 
 export interface ContentVideoProps {
   id: string;
@@ -49,11 +46,11 @@ export function ContentVideo({id, type, title, src, poster}: ContentVideoProps) 
 
   if (type === 'video') {
 
-    const Video = dynamic(() => import('./video'));
+    const CloudinaryVideo = dynamic(() => import('./video'));
 
     return (
       <div className={'flex w-full max-w-9xl mx-auto'}>
-        <Video id={id} title={title} poster={poster} src={src}/>
+        <CloudinaryVideo id={id} title={title} poster={poster} src={src}/>
       </div>
     );
   }

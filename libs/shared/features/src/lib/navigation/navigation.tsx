@@ -1,11 +1,11 @@
-import styles from './navigation.module.scss';
 import { TNavigationItem, TSocialLinkItemType } from '@supernaut/types';
-import SocialList from '../social-list/social-list';
 import cn from 'classnames';
-import NavigationMobile from './navigation-mobile/navigation-mobile';
-import NavigationButton from './navigation-button';
-import NavigationWrapper from './navigation-wrapper';
 import Image from 'next/image';
+import NavigationButton from './navigation-button';
+import NavigationMobile from './navigation-mobile/navigation-mobile';
+import NavigationWrapper from './navigation-wrapper';
+import styles from './navigation.module.scss';
+import SocialList from '../social-list/social-list';
 
 /* eslint-disable-next-line */
 export interface NavigationProps {
@@ -20,7 +20,7 @@ export interface NavigationProps {
 export function Navigation({
   siteTitle,
   items,
-  logo,
+  logo = '/images/logo.svg',
   sticky = true,
   mode = 'dark',
   social,

@@ -12,11 +12,11 @@ export interface ContentProfileItemProps {
 
 export function ContentProfileItem({item}: ContentProfileItemProps) {
   return (
-    <div className={'flex flex-col space-y-7'}>
+    <div className={'flex flex-col space-y-4 md:space-y-7'}>
         <Image src={item.image} alt={item.name} width={735} height={810} />
       <div>
-        <h2 className={'mb-6'}>{item.name}</h2>
-        <h3 className={'mb-10'}>{item.title}</h3>
+        <h2 className={'mb-3 md:mb-6'}>{item.name}</h2>
+        <h3 className={'mb-5 md:mb-10'}>{item.title}</h3>
         <div className={'prose prose-base lg:prose-lg'} dangerouslySetInnerHTML={{__html: item.description}}/>
       </div>
       <div>
