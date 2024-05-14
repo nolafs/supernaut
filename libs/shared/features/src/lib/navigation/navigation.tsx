@@ -75,11 +75,10 @@ export function Navigation({
   }
 
   return (<>
-      <Suspense fallback={navigation()}>
-        <NavigationWrapper mode={mode} sticky={sticky}>
-          {navigation()}
-        </NavigationWrapper>
-      </Suspense>
+
+      <NavigationWrapper mode={mode} sticky={sticky}>
+        {navigation()}
+      </NavigationWrapper>
 
       <NavigationMobile
         mode={mode}
