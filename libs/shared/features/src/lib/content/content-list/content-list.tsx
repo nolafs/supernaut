@@ -15,13 +15,15 @@ export function ContentList({title,items, mode = 'dark'  }: ContentListProps) {
       {items.items.map((item, index) => (
         <div key={index} className={'flex flex-col mb-10'}>
           <ContentColumn title={item.title} hTag={'h3'} type={'1/2'} mode={mode} padding={'none'}>
-            <ul className={'flex flex-col gap-y-2'}>
-              <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 90%">
+            <BlockAnimateOnScroll animation="staggerList" duration={0.5} target={'li'} start="top 80%">
+            <ul className={'flex flex-col space-y-5'}>
+
               {item.items.map((subItem, subIndex) => (
-                <li key={subIndex}>{subItem}</li>
+                <li key={subIndex} className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{subItem}</li>
               ))}
-              </BlockAnimateOnScroll>
+
             </ul>
+            </BlockAnimateOnScroll>
           </ContentColumn>
         </div>
       ))}
