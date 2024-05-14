@@ -49,7 +49,7 @@ export function Page({
         internalName={'images_1'}
         marginTop={false}
         paddingTop={false}
-        marginBottom={true}
+        marginBottom={false}
         mode={'dark'}
       >
         <ContentImages

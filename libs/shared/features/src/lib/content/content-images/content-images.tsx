@@ -33,7 +33,7 @@ export function ContentImages({items, mode, columnsSm, columnsMd, columnsLg, ite
     <div className={'w-full max-w-9xl mx-auto flex flex-row justify-center'}>
     <GridImages
       imageClass={'px-0 py-0 md:px-0 md:py-0 lg:px-0 lg:py-0'}
-      girdClass={'gap-0 md:gap-10 py-10  max-w-10/12 mx-auto' }
+      girdClass={'gap-0 md:gap-10 pt-10  max-w-10/12 mx-auto' }
       items={items}
       columnsSm={columnsSm}
       columnsMd={columnsMd}
