@@ -35,9 +35,6 @@ export function ContentColumn({
 
   if(type === 'intro' || type === 'text' || !children) {
 
-    console.log('type', type)
-    console.log('intro', title)
-    console.log('body', body)
 
     return (<BlockAnimationProvider>
         <div

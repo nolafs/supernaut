@@ -1,6 +1,7 @@
 /* eslint-disable-next-line */
 import cn from 'classnames';
 import styles from './header.module.scss';
+import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
 
 export interface HeaderProps {
   pageName?: string | undefined | null;
@@ -23,12 +24,23 @@ export function Header({
   marginTop = true,
   marginBottom = false,
 }: HeaderProps) {
-  return (
-    <header>
-      <div
-        className={cn(
-          'w-full max-w-9xl mx-auto px-5 md:px-10',
-          marginTop && 'mt-[130px] lg:mt-[220px]',
+
+  const descriptionContent = () => {
+    if(description) {
+      return (<div
+        className={cn(styles['header-body'], 'text-secondary text-lg')}
+        dangerouslySetInnerHTML={{__html: description || ''}}
+      ></div>)
+    }
+  }
+
+
+  return (<BlockAnimationProvider>
+      <header>
+        <div
+          className={cn(
+            'w-full max-w-9xl mx-auto px-5 md:px-10',
+            marginTop && 'mt-[130px] lg:mt-[220px]',
           marginBottom && 'mb-[110px] lg:mb-[160px]'
         )}
       >
@@ -40,9 +52,9 @@ export function Header({
             mode === 'light' ? 'text-base' : 'text-primary'
           )}
         >
-          <div className={cn(columnLayout && 'w-full md:w-4/12')}>
+          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'max-w-3xl') }>
             <div className={'sr-only'}>{pageName}</div>
-            <h1>{title || pageName}</h1>
+            <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
           </div>
           {columnLayout && (
             <div
@@ -51,17 +63,18 @@ export function Header({
               )}
             >
               <div>
-                <h2>{subtitle}</h2>
+                <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h2
+                  className={'splitTextOverflow'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
-              <div
-                className={cn(styles['header-body'], 'text-secondary text-lg')}
-                dangerouslySetInnerHTML={{ __html: description || '' }}
-              ></div>
+              <BlockAnimateOnScroll animation="slideIn" duration={0.2} start="top 80%" >
+                {descriptionContent()}
+              </BlockAnimateOnScroll>
             </div>
           )}
         </div>
       </div>
     </header>
+    </BlockAnimationProvider>
   );
 }
 
