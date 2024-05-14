@@ -20,8 +20,8 @@ export function SliderStrapline({ strapline }: SliderStraplineProps) {
     gsap.from(split.current.chars, {
       opacity: 0,
       y: '100%',
-      duration: 1,
-      stagger: 0.05,
+      duration: 0.5,
+      stagger: 0.009,
       ease: 'power3.inOut',
     });
   }, [strapline]);
