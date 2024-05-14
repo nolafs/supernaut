@@ -18,9 +18,9 @@ export function ContactFormDialogButton({label,isIcon=false}: ContactFormDialogB
       <span className={'inline-block fill-primary :hover:fill-secondary w-6 h-6 ml-5'}
             onClick={() => openModal('CONTACT')}>
         <span className={'sr-only'}>{label}</span>
-        <svg fill="currentColor" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
           <path
-            d="M48 150.8l208 143 208-143V112H48v38.8zM464 209L256 352 48 209V400H464V209zM0 400V176 112 64H48 464h48v48 64V400v48H464 48 0V400z"/></svg>
+            d="M32 159.2l224 154 224-154V96H32v63.2zM480 198L256 352 32 198V416H480V198zM0 416V176 96 64H32 480h32V96v80V416v32H480 32 0V416z"/></svg>
       </span>
     )
   }
