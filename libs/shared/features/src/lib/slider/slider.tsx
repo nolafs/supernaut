@@ -11,29 +11,38 @@ import SliderControls from './slider-controls/slider-controls';
 import { CursorContextProvider } from '@supernaut/context';
 import SliderDescription from './slider-description/slider-description';
 import SliderStrapline from './slider-strapline/slider-strapline';
+import {TAssets} from '@supernaut/types';
 
 type Slide = {
   title: string;
   description: string;
-  image: string;
-  video?: string;
+  image: TAssets;
+  video?: TAssets;
+  url?: string;
 };
+
+type Slides = {
+  items: Slide[];
+}
 
 /* eslint-disable-next-line */
 export interface SliderProps {
-  slides?: Slide[];
+  slidesCollection?: Slides;
   strapline?: string;
   autoplay?: boolean;
 }
 
-export function Slider({ slides, strapline, autoplay }: SliderProps) {
+export function Slider({slidesCollection, strapline, autoplay }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
-  const [numberSlides, setNumberSlides] = useState(slides?.length || 0);
+  const [numberSlides, setNumberSlides] = useState(slidesCollection?.items.length || 0);
   const [currentSlide, setCurrentSlide] = useState<Slide | null>(
-    slides?.length ? slides[0] : null
+
+    slidesCollection?.items.length ? slidesCollection.items[0] : null
   );
 
-  if (!slides) {
+  console.log('slidesCollection', slidesCollection);
+
+  if (!slidesCollection?.items.length) {
     return;
   }
 
@@ -50,7 +59,7 @@ export function Slider({ slides, strapline, autoplay }: SliderProps) {
             modules={[Navigation, Autoplay]}
             onSlideChange={(e) => {
               setCurrentIndex(e.realIndex);
-              setCurrentSlide(slides[e.realIndex]);
+              setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
             autoplay={(autoplay) ? { delay: 3000 } : false}
 
@@ -62,13 +71,13 @@ export function Slider({ slides, strapline, autoplay }: SliderProps) {
               prevEl: '.swiper-button-prev-custom',
             }}
           >
-            {slides?.map((slide, index) => (
+            {slidesCollection?.items.map((slide, index) => (
               <SwiperSlide key={index}>
                 <SliderItem
                   title={slide.title}
                   description={slide.description}
-                  image={slide?.image}
-                  video={slide?.video}
+                  image={slide?.image?.url}
+                  video={slide?.video?.url}
                 />
               </SwiperSlide>
             ))}

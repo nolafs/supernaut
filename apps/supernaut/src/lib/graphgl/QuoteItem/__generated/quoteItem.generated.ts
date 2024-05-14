@@ -2,6 +2,8 @@ import * as Types from '../../../__generated/graphql.types';
 
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
+export type QuoteFieldsFragment = { __typename: 'Quotes', quote?: string | null, author?: string | null, position?: string | null, sys: { __typename?: 'Sys', id: string } };
+
 export type QuoteComponentFieldsFragment = { __typename: 'QuoteComponent', internalName?: string | null, sys: { __typename?: 'Sys', id: string }, quotesCollection?: { __typename?: 'QuoteComponentQuotesCollection', items: Array<{ __typename: 'Quotes', quote?: string | null, author?: string | null, position?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null };
 
 export type QuoteComponentQueryVariables = Types.Exact<{
@@ -14,6 +16,17 @@ export type QuoteComponentQueryVariables = Types.Exact<{
 export type QuoteComponentQuery = { __typename?: 'Query', quoteComponent?: { __typename: 'QuoteComponent', sys: { __typename?: 'Sys', id: string } } | null };
 
 
+export const QuoteFieldsFragmentDoc = `
+    fragment QuoteFields on Quotes {
+  __typename
+  sys {
+    id
+  }
+  quote
+  author
+  position
+}
+    `;
 export const QuoteComponentFieldsFragmentDoc = `
     fragment QuoteComponentFields on QuoteComponent {
   __typename

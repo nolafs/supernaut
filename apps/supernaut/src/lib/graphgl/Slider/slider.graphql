@@ -1,0 +1,38 @@
+fragment SliderItem on SliderItem {
+    __typename
+    sys {
+        id
+    }
+    internalName
+    title
+    description
+    image {
+        ...AssetFields
+    }
+    video {
+      ...AssetFields
+    }
+    url
+
+}
+
+fragment SliderFields on Slider {
+    __typename
+    sys {
+        id
+    }
+    internalName
+    autoplay
+    slidesCollection(limit: 10) {
+        items {
+            ...SliderItem
+        }
+    }
+}
+
+
+query slider($id: String!, $locale: String, $preview: Boolean) {
+    slider(id: $id, locale: $locale, preview: $preview) {
+        ...SliderFields
+    }
+}

@@ -1,3 +1,13 @@
+fragment QuoteFields on Quotes {
+  __typename
+  sys {
+    id
+  }
+  quote
+  author
+  position
+}
+
 fragment QuoteComponentFields on QuoteComponent {
   __typename
   sys {

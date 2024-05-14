@@ -5,6 +5,7 @@ import { ReactNode } from 'react';
 
 export interface SectionProps {
   internalName?: string;
+  sectionId?: string;
   children: ReactNode;
   marginSize?: 'sm' | 'md' | 'lg';
   paddingSize?: 'sm' | 'md' | 'lg';
@@ -25,6 +26,7 @@ export interface SectionProps {
 
 export function Section({
   internalName,
+  sectionId,
   children,
   color,
   mode,
@@ -44,7 +46,7 @@ export function Section({
 }: SectionProps) {
   return (
     <section
-      id={internalName}
+      id={sectionId}
       className={cn(
         'relative overflow-hidden',
         'flex',

@@ -21,7 +21,7 @@ export function ContentVideoAnimation({children, handleReady}: ContentVideoAnima
         {
           opacity: 1, y: 0, duration: 1,
           scrollTrigger: {
-            markers: true,
+            //markers: true,
             trigger: ref.current,
             start: 'top 90%',
           },

@@ -30,6 +30,7 @@ fragment PageFields on Pages {
         sys {
           id
         }
+        ...SectionFields
       }
     }
   }

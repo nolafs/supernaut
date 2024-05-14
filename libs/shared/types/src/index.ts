@@ -5,3 +5,4 @@ export * from './lib/profileItem.type';
 export * from './lib/imageLink.type';
 export * from './lib/TContentListItemType';
 export * from './lib/email.type';
+export * from './lib/assets.type';
