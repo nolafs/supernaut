@@ -15,12 +15,12 @@ export const Primary = {
     items: [
       {
         id: '1',
-        image: 'https://via.placeholder.com/940x626',
+        image: 'https://fakeimg.pl/940x626',
         alt: 'Image 1',
       },
       {
         id: '2',
-        image: 'https://via.placeholder.com/640x226',
+        image: 'https://fakeimg.pl/640x226',
         alt: 'Image 2',
       },
     ],
@@ -32,7 +32,7 @@ export const Single: Story = {
     items: [
       {
         id: '1',
-        image: 'https://via.placeholder.com/1820x1024',
+        image: 'https://fakeimg.pl/1820x1024',
         alt: 'Image 1',
       },
     ],

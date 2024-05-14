@@ -162,7 +162,7 @@ export function Page({
         internalName={'images_4'}
         marginTop={false}
         paddingTop={false}
-        marginBottom={true}
+        marginBottom={false}
         mode={'dark'}
       >
         <ContentImages
@@ -193,7 +193,7 @@ export function Page({
             {
               alt: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/1840x600'
+              image: 'https://via.placeholder.com/1940x600'
             },
           ]}
         />

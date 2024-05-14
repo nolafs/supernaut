@@ -55,7 +55,7 @@ export function SliderDescription({
     >
       <h2
         className={
-          'header text-3xl md:text-[48px] font-medium tracking-tighter overflow-hidden py-1'
+          'header text-3xl md:text-[48px] font-medium tracking-tighter splitTextOverflow'
         }
       >
         {title}
