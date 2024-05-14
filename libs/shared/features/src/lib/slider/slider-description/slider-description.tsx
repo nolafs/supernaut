@@ -38,7 +38,7 @@ export function SliderDescription({
         });
       }, 100);
     },
-    { dependencies: [id, title], scope: main, revertOnUpdate: false }
+    { dependencies: [id, title, description], scope: main, revertOnUpdate: false }
   );
 
   useEffect(() => {
