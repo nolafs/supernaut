@@ -38,6 +38,7 @@ module.exports = {
       current: 'currentColor',
       white: colors.white,
       black: colors.black,
+      gray: colors.gray,
       red: colors.red,
       error: colors.red['600'],
       primary: colors.white,

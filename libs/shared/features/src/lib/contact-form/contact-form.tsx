@@ -100,9 +100,9 @@ export function ContactForm() {
         >
           <option value="" disabled defaultValue="">Nature of Enquiry</option>
           <option value="general">General Inquiry</option>
-          <option value="billing">Billing Inquiry</option>
-          <option value="support">Support Request</option>
-          <option value="feedback">Feedback</option>
+          <option value="billing">Can we chat!</option>
+          <option value="support">Pricing and Quoting</option>
+          <option value="feedback">Collaboration</option>
           <option value="other">Other</option>
         </select>
         {errors.enquiryType && <p className="text-error">{errors.enquiryType.message}</p>}

@@ -28,4 +28,63 @@
   h4 {
     @apply text-xl md:text-2xl lg:text-[28px] font-normal;
   }
+
+  h1, h2, h3, h4, h5, h6, p {
+
+    @apply overflow-hidden will-change-transform;
+
+    > div {
+      @apply inline-block overflow-hidden;
+    }
+  }
+
+  .splitTextOverflow {
+    @apply overflow-hidden inline-block tracking-tight;
+  }
+
+
+  .input {
+    @apply bg-base border-0 outline-none;
+
+    &:focus {
+      @apply ring-2 ring-primary outline-none border border-primary #{!important};
+    }
+
+    &.input-bordered {
+      @apply border-2 border-primary;
+
+
+    }
+
+    &.input-error {
+      @apply border-2 border-red-700
+    }
+  }
+
+  .select {
+    @apply bg-base;
+
+    &.select-bordered {
+      @apply border-2 border-primary;
+    }
+  }
+
+  .textarea {
+    @apply bg-base;
+
+    &:focus {
+      @apply ring-2 ring-primary outline-none border border-primary #{!important};
+    }
+
+    &.textarea-bordered {
+      @apply border-2 border-primary;
+    }
+  }
+
+  form {
+    .label-text {
+      @apply text-secondary;
+    }
+  }
+
 }
