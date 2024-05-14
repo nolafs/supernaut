@@ -6,7 +6,6 @@ import NavigationMobile from './navigation-mobile/navigation-mobile';
 import NavigationWrapper from './navigation-wrapper';
 import styles from './navigation.module.scss';
 import SocialList from '../social-list/social-list';
-import {Suspense} from 'react';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
 
 
@@ -18,6 +17,7 @@ export interface NavigationProps {
   mode: 'light' | 'dark';
   social?: TSocialLinkItemType[];
   sticky?: boolean;
+  contactForm?: boolean;
 }
 
 export function Navigation({
@@ -27,6 +27,7 @@ export function Navigation({
   sticky = true,
   mode = 'dark',
   social,
+  contactForm = false,
 }: NavigationProps) {
   //check if logo is an image or svg
   const isSvg = logo?.endsWith('.svg');
@@ -66,7 +67,7 @@ export function Navigation({
           {social && social.length > 0 && (
             <div className={styles['desktop']}>
               <SocialList items={social}/>
-              <ContactFormDialogButton label='Contact' isIcon={true} />
+              {(contactForm) && <ContactFormDialogButton label='Contact' isIcon={true} />}
             </div>
           )}
         </div>
@@ -75,7 +76,6 @@ export function Navigation({
   }
 
   return (<>
-
       <NavigationWrapper mode={mode} sticky={sticky}>
         {navigation()}
       </NavigationWrapper>
@@ -86,7 +86,6 @@ export function Navigation({
         siteTitle={siteTitle}
         logo={logo}
       />
-
     </>
   )
     ;

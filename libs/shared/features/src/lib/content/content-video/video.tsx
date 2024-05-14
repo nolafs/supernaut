@@ -7,6 +7,7 @@ import Image from 'next/image';
 import {useRef} from 'react';
 import placeholder_white from '../../assets/placeholder-white.webp';
 import placeholder from '../../assets/placeholder.webp';
+import ContentVideoAnimation from './content-video-animation';
 
 
 export interface VideoProps {
@@ -16,11 +17,14 @@ export interface VideoProps {
   poster?: string;
   width?: number;
   height?: number;
+  autoplay?: boolean;
+  controls?: boolean;
+  frame?: boolean;
   mode?: 'light' | 'dark';
 }
 
 
-export function CloudinaryVideo({id, src, title, poster, mode, width = 1920, height = 1200}: VideoProps) {
+export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, mode, width = 1920, height = 1200}: VideoProps) {
 
   const ref = useRef<any>(null);
 
@@ -34,26 +38,40 @@ export function CloudinaryVideo({id, src, title, poster, mode, width = 1920, hei
 
   videoSource.resize(fill().width(width).height(height));
 
+  const handlePlay = () => {
 
-  return (
-    <div className={'relative'}>
-      <div
-        className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
-        <AdvancedVideo
-          autoPlay={true}
-          muted={true}
-          plugins={[lazyload()]}
-          cldVid={videoSource}
-          controls
-          //cldPoster={videoSource.format('webp')}
-        />
+    console.log('handlePlay', ref.current.videoRef.current)
+
+    if (autoplay) {
+      ref.current.videoRef.current.play();
+    }
+  }
+
+
+  return (<ContentVideoAnimation handleReady={handlePlay}>
+    <div className={cn('relative', frame && 'p-10')}>
+      <div className={cn('relative video')}>
+        <div
+          className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
+          <AdvancedVideo
+            ref={ref}
+            muted={(autoplay) ? true : false}
+            plugins={[lazyload()]}
+            cldVid={videoSource}
+            controls={controls}
+            autoPlay={false}
+
+            //cldPoster={videoSource.format('webp')}
+          />
+        </div>
+        <Image width={width} height={height} loading={'lazy'}
+               className={'z-10'}
+               src={(mode === 'light') ? placeholder : placeholder_white}
+               quality={60}
+               alt={title}/>
       </div>
-      <Image width={width} height={height} loading={'lazy'}
-             className={'z-10'}
-             src={(mode === 'light') ? placeholder : placeholder_white}
-             quality={60}
-             alt={title}/>
     </div>
+    </ContentVideoAnimation>
   );
 }
 

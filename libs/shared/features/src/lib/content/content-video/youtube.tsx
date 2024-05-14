@@ -3,6 +3,7 @@ import cn from 'classnames';
 import {useReducer, useRef, useState} from 'react';
 import ReactPlayer, {Config} from 'react-player/lazy'
 import VideoControl from './video-control';
+import ContentVideoAnimation from './content-video-animation';
 
 export interface YoutubeProps {
   id: string;
@@ -35,6 +36,7 @@ export function Youtube({id, src, title, poster, mode, width = 1920, height = 12
 
 
   return (
+    <ContentVideoAnimation handleReady={handlePlay}>
     <div className={'relative'}>
       <div
         className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9', (showPlayer) ? 'opacity-100 display' : 'opacity-0 hidden')}>
@@ -53,6 +55,7 @@ export function Youtube({id, src, title, poster, mode, width = 1920, height = 12
       </div>
       <VideoControl handlePlay={handlePlay} title={title} mode={mode}  poster={poster} width={width} height={height} />
     </div>
+    </ContentVideoAnimation>
   );
 }
 

@@ -86,22 +86,14 @@ export function Page({
       <Section
         internalName={'images_2'}
         marginTop={false}
-        paddingTop={false}
-        paddingBottom={false}
+        paddingTop={true}
+        paddingBottom={true}
         marginBottom={true}
         marginSize={'md'}
         backgroundColor={'#f97a7a'}
         mode={'dark'}
       >
-        <ContentImages
-          items={[
-            {
-              alt: 'Image 1',
-              id: '1',
-              image: 'https://via.placeholder.com/1840x1040'
-            },
-          ]}
-        />
+        <ContentVideo id={'first'} type={'video'} src={'fdwwgzb980yiwtitocgk'} frame={false} title={'first'}/>
       </Section>
 
       <Section
