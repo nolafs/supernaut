@@ -8,7 +8,6 @@ const meta: Meta<typeof Header> = {
   title: 'UI/Header',
   tags: ['autodocs'],
   argTypes: {
-    id: { control: 'text' },
     pageName: { control: 'text' },
     title: { control: 'text' },
     subtitle: { control: 'text' },

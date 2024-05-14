@@ -66,9 +66,11 @@ export function Header({
                 <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h2
                   className={'splitTextOverflow'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
-              <BlockAnimateOnScroll animation="slideIn" duration={0.2} start="top 80%" >
+              <div className={'overflow-hidden'}>
+              <BlockAnimateOnScroll animation="slideIn" duration={0.2} start="top 100%" to={{delay:0.5}} >
                 {descriptionContent()}
               </BlockAnimateOnScroll>
+              </div>
             </div>
           )}
         </div>
