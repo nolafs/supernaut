@@ -13,7 +13,7 @@ export interface ContentProfileListProps {
 export function ContentProfileList({items, mode}: ContentProfileListProps) {
   return (
     <div className={'w-full max-w-9xl mx-auto px-5 md:px-10'}>
-      <div className={cn('flex flex-col md:flex-row w-full md:w-10/12',
+      <div className={cn('flex flex-col md:flex-row w-full md:w-9/12',
         mode === 'dark' && 'text-white',
         mode === 'light' && 'text-black bg-white'
         )}>

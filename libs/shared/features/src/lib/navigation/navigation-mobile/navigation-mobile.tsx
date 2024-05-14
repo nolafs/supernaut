@@ -58,7 +58,7 @@ export function NavigationMobile({
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-base/40 bg-opacity-75 transition-opacity"/>
+              <div className="fixed inset-0 bg-neutral/40 bg-opacity-75 transition-opacity"/>
             </TransitionChild>
 
 

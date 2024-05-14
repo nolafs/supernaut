@@ -47,7 +47,7 @@ export function Quotes({
           }}
           spaceBetween={20}
           slidesPerView={1}
-          autoplay={autoplay}
+          autoplay={autoplay ? { delay: 3000 } : false}
           pagination={true}
           className={'w-full'}
           speed={1000}

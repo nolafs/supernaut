@@ -15,9 +15,9 @@ export function ContentProfileItem({item}: ContentProfileItemProps) {
     <div className={'flex flex-col space-y-4 md:space-y-7'}>
         <Image src={item.image} alt={item.name} width={735} height={810} />
       <div>
-        <h2 className={'mb-3 md:mb-6'}>{item.name}</h2>
-        <h3 className={'mb-5 md:mb-10'}>{item.title}</h3>
-        <div className={'prose prose-base lg:prose-lg'} dangerouslySetInnerHTML={{__html: item.description}}/>
+        <h2 className={'mb-2 md:mb-3'}>{item.name}</h2>
+        <h3 className={'mb-3 md:mb-4'}>{item.title}</h3>
+        <div className={'prose prose-base lg:prose-lg text-secondary'} dangerouslySetInnerHTML={{__html: item.description}}/>
       </div>
       <div>
         <SocialList items={item.socials} icons={true} variantButton={1} variantList={2}/>

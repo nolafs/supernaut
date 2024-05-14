@@ -47,12 +47,12 @@ export function Header({
         <div
           className={cn(
             columnLayout
-              ? 'grid grid-cols-1 md:grid-cols-2'
+              ? 'flex flex-col w-full md:flex-row'
               : 'flex flex-row w-full',
             mode === 'light' ? 'text-base' : 'text-primary'
           )}
         >
-          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full w-6/12') }>
+          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full w-8/12') }>
             <div className={'sr-only'}>{pageName}</div>
             <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
           </div>
@@ -67,9 +67,14 @@ export function Header({
                   className={'splitTextOverflow'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
               <div className={'overflow-hidden'}>
-              <BlockAnimateOnScroll animation="slideIn" duration={0.2} start="top 100%" to={{delay:0.5}} >
-                {descriptionContent()}
-              </BlockAnimateOnScroll>
+                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.5,
+                  ease: 'power2.inOut'}}>
+                <div className={'text-white'}>{title || pageName}</div>
+                </BlockAnimateOnScroll>
+                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:0.8,
+                  ease: 'power2.inOut'}} >
+                  {descriptionContent()}
+                </BlockAnimateOnScroll>
               </div>
             </div>
           )}

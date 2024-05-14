@@ -7,6 +7,7 @@ import NavigationWrapper from './navigation-wrapper';
 import styles from './navigation.module.scss';
 import SocialList from '../social-list/social-list';
 import {Suspense} from 'react';
+import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
 
 
 /* eslint-disable-next-line */
@@ -55,9 +56,7 @@ export function Navigation({
                 {items.map((item: TNavigationItem) => {
                   return (
                     <li key={item.id}>
-
                       <NavigationButton item={item}/>
-
                     </li>
                   );
                 })}
@@ -67,6 +66,7 @@ export function Navigation({
           {social && social.length > 0 && (
             <div className={styles['desktop']}>
               <SocialList items={social}/>
+              <ContactFormDialogButton label='Contact' isIcon={true} />
             </div>
           )}
         </div>

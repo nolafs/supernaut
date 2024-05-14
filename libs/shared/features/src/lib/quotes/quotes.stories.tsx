@@ -13,6 +13,7 @@ type Story = StoryObj<typeof Quotes>;
 
 const defaultArgs = {
   internalName: 'test',
+  autoplay: true,
   items: [
     {
       id: '1',

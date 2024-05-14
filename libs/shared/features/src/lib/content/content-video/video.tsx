@@ -38,7 +38,7 @@ export function CloudinaryVideo({id, src, title, poster, mode, width = 1920, hei
   return (
     <div className={'relative'}>
       <div
-        className={cn('absolute bg-black w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
+        className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
         <AdvancedVideo
           autoPlay={true}
           muted={true}

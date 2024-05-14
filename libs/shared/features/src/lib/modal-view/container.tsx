@@ -43,7 +43,7 @@ export function ModalsContainer() {
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-black bg-opacity-50 z-50 transition-opacity"/>
+          <div className="fixed inset-0 bg-neutral bg-opacity-50 z-50 transition-opacity"/>
         </TransitionChild>
 
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
@@ -58,7 +58,7 @@ export function ModalsContainer() {
               leaveTo="opacity-0 translate-y-4 sm:translate-y-0 sm:scale-95"
             >
               <DialogPanel
-                className="relative transform overflow-hidden  border-2 border-white bg-black px-4 pb-4 pt-5 text-left transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
+                className="relative transform overflow-hidden  border-2 border-white bg-neutral px-4 pb-4 pt-5 text-left transition-all sm:my-8 sm:w-full sm:max-w-sm sm:p-6">
                 <div>
                   <div className="absolute top-0 right-0 flex h-12 w-12 items-center justify-center bg-white  cursor-pointer"
                        onClick={closeModal}>

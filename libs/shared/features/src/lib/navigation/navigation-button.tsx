@@ -20,7 +20,7 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
         pathname: item?.slug,
       }}
       className={cn(
-        'cursor-pointer',
+        'cursor-pointer font-medium',
         isActive(`/${item.slug}`)
           ? 'text-secondary'
           : 'text-white',

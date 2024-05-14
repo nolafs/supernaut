@@ -14,7 +14,6 @@ type Story = StoryObj<typeof Slider>;
 
 export const Home = {
   args: {
-    strapline: 'ELEVATION THROUGH CONNECTIVITY.',
     autoplay: true,
     slides: [
       {

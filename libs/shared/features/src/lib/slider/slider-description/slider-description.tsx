@@ -45,11 +45,12 @@ export function SliderDescription({
     setShow((prevState) => false);
   }, [title]);
 
+
   return (
     <div
       ref={main}
       className={cn(
-        'main absolute text-primary bottom-0 mx-6 md:mx-12 mb-6 md:mb-14 flex flex-col md:space-y-7 z-20 max-w-xl lg:max-w-3xl xl:max-w-6xl',
+        'main absolute text-primary bottom-14 mx-6 md:mx-12 flex flex-col md:space-y-3 z-20 max-w-xl lg:max-w-3xl xl:max-w-6xl',
         !show ? 'opacity-0' : 'opacity-1'
       )}
     >

@@ -19,7 +19,7 @@ export function ContentList({title,items, mode = 'dark'  }: ContentListProps) {
             <ul className={'flex flex-col space-y-5'}>
 
               {item.items.map((subItem, subIndex) => (
-                <li key={subIndex} className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{subItem}</li>
+                <li key={subIndex} className={'text-xl lg:text-2xl font-normal'}>{subItem}</li>
               ))}
 
             </ul>

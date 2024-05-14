@@ -75,7 +75,7 @@ export function Slider({ slides, strapline, autoplay }: SliderProps) {
           </Swiper>
           <div
             className={
-              'absolute bottom-0 right-0 text-white text-xl md:text-4xl z-20 mr-6 md:mr-12 mb-6 md:mb-14'
+              'absolute bottom-14 right-0 text-white text-xl md:text-4xl z-20 mr-6 md:mr-12'
             }
           >
             {currentIndex + 1 >= 10 ? currentIndex + 1 : `0${currentIndex + 1}`}
