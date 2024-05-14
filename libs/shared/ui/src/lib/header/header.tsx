@@ -52,7 +52,7 @@ export function Header({
             mode === 'light' ? 'text-base' : 'text-primary'
           )}
         >
-          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'max-w-3xl') }>
+          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full w-6/12') }>
             <div className={'sr-only'}>{pageName}</div>
             <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
           </div>

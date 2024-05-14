@@ -29,7 +29,7 @@ export const parameters = {
   backgrounds: {
     default: 'dark',
     values: [
-      {name: 'Supernaut', value: '#000000'},
+      {name: 'Supernaut', value: '#191919'},
       {name: 'dark', value: '#000000'},
       {name: 'light', value: '#ffffff'},
     ],

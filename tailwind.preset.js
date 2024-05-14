@@ -45,7 +45,7 @@ module.exports = {
       secondary: '#acacac',
       accent: '#E62997',
       neutral: '#191919',
-      base: '#000000',
+      base: '#191919',
     },
     extend: {
       typography: (theme) => ({

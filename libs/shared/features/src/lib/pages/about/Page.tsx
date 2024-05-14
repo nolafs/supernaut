@@ -29,7 +29,7 @@ export function Page({
       <Header
       pageName={'About'}
       marginBottom={true}
-      title={'We\'re a full service independent brand and design studio traversing the worlds of entertainment and technology.'}
+      title={'We\'ve built brands that are beloved by communities all over the world.'}
      ></Header>
 
 

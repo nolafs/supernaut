@@ -52,7 +52,8 @@ export function Slider({ slides, strapline, autoplay }: SliderProps) {
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slides[e.realIndex]);
             }}
-            autoplay={autoplay}
+            autoplay={(autoplay) ? { delay: 3000 } : false}
+
             spaceBetween={50}
             slidesPerView={1}
             loop={false}
