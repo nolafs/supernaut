@@ -14,6 +14,7 @@ interface SocialLinkProps {
 }
 
 export const SocialLink = ({ item, className, icons, iconsClass }: SocialLinkProps) => {
+
   const openSocialMediaLink = (url: string) => {
     const userAgent = navigator.userAgent || navigator.vendor;
     let appUrl: any = url; // Default to the provided URL as a fallback.
@@ -80,13 +81,13 @@ export const SocialLink = ({ item, className, icons, iconsClass }: SocialLinkPro
       </button>
     );
   } else {
-    return (
-      <ButtonPrimary
+    return (<ButtonPrimary
         onClick={() => openSocialMediaLink(item?.url as string)}
         hasIcon={false}
         size={'lg'}
+        label={item?.name}
         classNames={className}
-      >{item.name}</ButtonPrimary>
+      />
     );
   }
 };

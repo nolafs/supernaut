@@ -33,26 +33,27 @@ export function SocialList({
   variantButton = 0,
   variantList = 0
 }: SocialListProps) {
+
+  console.log('social items', items)
+
   if (!items?.length) return null;
 
   return (
-    <div className={styles['container']}>
-      <ul
+    <ul
         className={cn(
           className ? className : VARIANTS_LIST[variantList]
         )}
       >
-        {items.map((item) => {
+        {items.map((item, id  ) => {
           return (
             item?.url && (
-              <li key={item?.id} className={'flex'}>
+              <li key={id} className={'flex'}>
                 <SocialLink item={item} icons={icons} className={VARIANTS_BUTTON[variantButton]} />
               </li>
             )
           );
         })}
       </ul>
-    </div>
   );
 }
 

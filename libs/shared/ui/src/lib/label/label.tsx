@@ -18,7 +18,7 @@ export function Label({ children, size, hasIcon, isDisabled }: LabelProps) {
         isDisabled ? 'text-secondary cursor-not-allowed' : 'text-primary',
         size === 'sm' && 'text-normal md:text-lg',
         size === 'md' && 'text-xl md:text-2xl',
-        size === 'lg' && 'text-3xl md:text-4xl lg:text-5xl',
+        size === 'lg' && 'text-2xl sm:text-3xl md:text-4xl lg:text-5xl',
         styles['container']
       )}
     >

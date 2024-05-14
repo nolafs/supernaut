@@ -5,7 +5,7 @@ import {ButtonHTMLAttributes, forwardRef} from 'react';
 
 /* eslint-disable-next-line */
 export interface ButtonPrimaryProps extends ButtonHTMLAttributes<HTMLButtonElement> {
-  label?: string;
+  label?: string | undefined | null;
   size?: 'sm' | 'md' | 'lg';
   hasIcon?: boolean;
   classNames?: string;
@@ -19,6 +19,8 @@ export const ButtonPrimary = forwardRef(function({
                                     classNames,
                                     ...props
                                   }: ButtonPrimaryProps, ref: any)  {
+
+  console.log('button primary', label, size, hasIcon, classNames, props)
 
   return (
     <button

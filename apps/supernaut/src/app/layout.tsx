@@ -75,8 +75,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   const settings = await SettingContent('Settings', i18nConfig.defaultLocale, process?.env.NEXT_PUBLIC_PREVIEW === 'true');
 
-  console.log('Settings',settings?.mainNavigationCollection);
-
   const navigation = settings?.mainNavigationCollection?.items.map(
     (item) => {
       if(!item?.sys){
@@ -129,6 +127,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         contactButtonLabel={settings?.contactDialogButtonLabel}
         contactDialog={settings?.contactFormDialog}
         social={social}
+
       />
 
       <Suspense>

@@ -32,7 +32,7 @@ function modalReducer(state: State, action: Action): State {
     case 'close':
       return {
         ...state,
-        view: undefined,
+        //view: undefined,
         data: null,
         isOpen: false,
       };

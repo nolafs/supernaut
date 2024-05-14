@@ -117,8 +117,8 @@ export function ContactForm() {
         {errors.message && <p className="text-error">{errors.message.message}</p>}
 
 
-        <div className="flex items-center pt-6">
-          <div className="grow w-full">
+        <div className="flex flex-col items-center">
+          <div className="w-full">
             <div className="flex items-center  gap-2">
               <input
                 type="checkbox"
@@ -132,7 +132,7 @@ export function ContactForm() {
           </div>
 
 
-          <div className="shrink flex w-full justify-end">
+          <div className="flex w-full justify-end pt-6">
             {/* Submit Button */}
             <ButtonPrimary type="submit" size={'md'} hasIcon={true} label={isSubmitting ? 'Sending...' : 'Submit'} className={`${isSubmitting ? 'loading' : ''}`}
                     disabled={isSubmitting}>

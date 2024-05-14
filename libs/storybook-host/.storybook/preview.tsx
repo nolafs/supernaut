@@ -41,7 +41,9 @@ const preview: Preview = {
   decorators: [
     (Story) => (
       <div className={`${GeistMono.variable} ${GeistSans.variable}`}>
+
         <Story/>
+
       </div>
     ),
   ],
