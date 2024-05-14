@@ -3,8 +3,7 @@
 import cn from 'classnames';
 import Link from 'next/link';
 import { TNavigationItem } from '@supernaut/types';
-import { useNavigation } from '@supernaut/hooks';
-import { useEffect, useState } from 'react';
+import {usePathname} from 'next/navigation';
 
 export interface NavigationButtonProps {
   item: TNavigationItem;
@@ -12,16 +11,8 @@ export interface NavigationButtonProps {
 }
 
 export function NavigationButton({ item, className }: NavigationButtonProps) {
-  const route = useNavigation({});
-  const [currentRoute, setCurrentRoute] = useState({ pathname: '' });
-
-  useEffect(() => {
-    if (route?.route.pathname !== currentRoute.pathname) {
-      setCurrentRoute({
-        pathname: route.route.pathname,
-      });
-    }
-  }, []);
+  const pathname = usePathname();
+  const isActive = (path: string) => path === pathname;
 
   return (
     <Link
@@ -30,7 +21,7 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
       }}
       className={cn(
         'cursor-pointer',
-        `/${item.slug}` === currentRoute.pathname
+        isActive(`/${item.slug}`)
           ? 'text-secondary'
           : 'text-white',
         'hover:text-secondary',

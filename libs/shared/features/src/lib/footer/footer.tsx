@@ -1,10 +1,10 @@
 /* eslint-disable-next-line */
 import { TNavigationItem, TSocialLinkItemType } from '@supernaut/types';
 import cn from 'classnames';
-import { ButtonPrimary } from '@supernaut/shared-ui';
 import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
+
 
 export interface FooterProps {
   copyright?: string | undefined | null;
@@ -48,7 +48,8 @@ export function Footer({
                 {navigation?.map((item) => {
                   return (
                     <li key={item.id} className={'flex'}>
-                      <NavigationButton item={item} className={'underline'}/>
+                        <NavigationButton item={item} className={'underline'}/>
+
                     </li>
                   );
                 })}

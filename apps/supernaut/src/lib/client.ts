@@ -1,18 +1,16 @@
-//import {endpoint} from 'codegen';
 import {GraphQLClient} from 'graphql-request';
 import {getSdk} from './__generated/sdk';
 import {endpoint} from '../../codegen';
 
-
 const graphQlClient = new GraphQLClient(endpoint, {
 	headers: {
-		Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
+		Authorization: `Bearer ${process.env.CONTENTFUL_ACCESS_TOKEN}`,
 	},
 });
 
 const previewGraphQlClient = new GraphQLClient(endpoint, {
 	headers: {
-		Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
+		Authorization: `Bearer ${process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN}`,
 	},
 });
 

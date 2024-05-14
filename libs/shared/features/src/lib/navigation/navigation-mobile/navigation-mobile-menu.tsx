@@ -1,10 +1,13 @@
 /* eslint-disable-next-line */
+'use client';
 import { TNavigationItem } from '@supernaut/types';
 import { useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
 import Link from 'next/link';
+import {usePathname} from 'next/navigation';
+import cn from 'classnames';
 
 export interface NavigationMobileMenuProps {
   items: TNavigationItem[];
@@ -17,6 +20,8 @@ export function NavigationMobileMenu({
 }: NavigationMobileMenuProps) {
   const menu = useRef<any>();
   const tl = useRef<any>();
+  const pathname = usePathname();
+  const isActive = (path: string) => path === pathname;
 
   useGSAP(
     () => {
@@ -67,7 +72,7 @@ export function NavigationMobileMenu({
                 pathname: item?.slug,
               }}
               className={
-                'text-2xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150'
+                cn('text-2xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
               }
             >
               <span

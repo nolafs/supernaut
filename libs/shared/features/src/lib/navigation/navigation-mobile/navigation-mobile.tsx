@@ -2,10 +2,8 @@
 /* eslint-disable-next-line */
 import styles from './navigation-mobile.module.scss';
 import { TNavigationItem } from '@supernaut/types';
-import { Dialog, Transition } from '@headlessui/react';
-import { Fragment, useEffect, useRef, useState } from 'react';
-import { useNavigation } from '@supernaut/hooks';
-import Link from 'next/link';
+import {Dialog, DialogPanel, Transition, TransitionChild} from '@headlessui/react';
+import { Fragment, useState } from 'react';
 import cn from 'classnames';
 import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
@@ -28,21 +26,7 @@ export function NavigationMobile({
   siteTitle,
 }: NavigationMobileProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [currentRoute, setCurrentRoute] = useState({ pathname: '' });
-  const route = useNavigation({});
 
-  useEffect(() => {
-    if (route?.route.pathname !== currentRoute.pathname) {
-      setCurrentRoute({
-        pathname: route.route.pathname,
-      });
-
-      setMobileMenuOpen(false);
-      setTimeout(() => {
-        window.scrollTo(0, 0);
-      }, 500);
-    }
-  }, [route, currentRoute.pathname]);
 
   const handleClick = () => {
     setMobileMenuOpen((prev) => !prev);
@@ -61,11 +45,11 @@ export function NavigationMobile({
         </button>
       </div>
 
-      <Transition.Root show={mobileMenuOpen} as={Fragment}>
+      <Transition show={mobileMenuOpen} as={Fragment}>
           <Dialog className="relative z-[45]" onClose={setMobileMenuOpen}>
             <div className="fixed inset-0"/>
 
-            <Transition.Child
+            <TransitionChild
               as={Fragment}
               enter="ease-in-out duration-500"
               enterFrom="opacity-0"
@@ -75,13 +59,13 @@ export function NavigationMobile({
               leaveTo="opacity-0"
             >
               <div className="fixed inset-0 bg-base/40 bg-opacity-75 transition-opacity"/>
-            </Transition.Child>
+            </TransitionChild>
 
 
             <div className="fixed inset-0  overflow-hidden">
               <div className="absolute inset-0 overflow-hidden">
                 <div className="pointer-events-none fixed inset-y-0 right-0 flex max-w-full pl-20">
-                  <Transition.Child
+                  <TransitionChild
                     as={Fragment}
                     enter="transform transition ease-in-out duration-500 sm:duration-700"
                     enterFrom="translate-x-full"
@@ -90,7 +74,7 @@ export function NavigationMobile({
                     leaveFrom="translate-x-0"
                     leaveTo="translate-x-full"
                   >
-                      <Dialog.Panel className="pointer-events-none w-screen max-w-md">
+                      <DialogPanel className="pointer-events-none w-screen max-w-md">
                         <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
                           <div className={'pt-20 px-5'}>
                             <nav className={'pointer-events-auto'}>
@@ -98,13 +82,13 @@ export function NavigationMobile({
                             </nav>
                           </div>
                         </div>
-                    </Dialog.Panel>
-                  </Transition.Child>
+                    </DialogPanel>
+                  </TransitionChild>
                 </div>
               </div>
             </div>
           </Dialog>
-      </Transition.Root>
+      </Transition>
     </>
   );
 }

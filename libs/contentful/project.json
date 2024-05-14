@@ -4,16 +4,5 @@
   "sourceRoot": "libs/contentful/src",
   "projectType": "library",
   "tags": [],
-  "targets": {
-    "build": {
-      "executor": "@nx/js:tsc",
-      "outputs": ["{options.outputPath}"],
-      "options": {
-        "outputPath": "dist/libs/contentful",
-        "main": "libs/contentful/src/index.ts",
-        "tsConfig": "libs/contentful/tsconfig.lib.json",
-        "assets": ["libs/contentful/*.md"]
-      }
-    }
-  }
+  "targets": {}
 }

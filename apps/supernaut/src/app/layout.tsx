@@ -119,9 +119,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
       <body>
       <Navigation items={navigation} mode={'dark'} social={social}/>
-
-      {children}
-
+      <main>
+        {children}
+      </main>
       <Footer
         copyright={settings?.copyrightLine}
         strapline={settings?.strapline}

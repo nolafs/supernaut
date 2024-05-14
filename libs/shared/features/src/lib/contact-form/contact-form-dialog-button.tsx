@@ -1,7 +1,7 @@
 'use client';
 /* eslint-disable-next-line */
 import {ButtonPrimary} from '@supernaut/shared-ui';
-import {useModalAction, useModalState} from '../modal-view/hooks';
+import {useModalAction} from '../modal-view/hooks';
 
 
 export interface ContactFormDialogButtonProps {
@@ -9,7 +9,6 @@ export interface ContactFormDialogButtonProps {
 }
 
 export function ContactFormDialogButton({label}: ContactFormDialogButtonProps) {
-  //const {view, isOpen} = useModalState();
   const {openModal} = useModalAction();
 
   return (
