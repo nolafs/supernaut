@@ -131,7 +131,9 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <ModalsContainer />
 
         </ModalProvider>
-        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+        <Suspense>
+          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+        </Suspense>
       </body>
     </html>
 
