@@ -1,8 +1,11 @@
 /* eslint-disable-next-line */
+
 import {BlockAnimateOnScroll} from '@supernaut/context';
-import {GridImages} from '@supernaut/shared-ui';
+
 import {TImageLink} from '@supernaut/types';
 import ContentColumn from '../content-column/content-column';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {GridImages} from '@supernaut/shared-ui';
 
 export interface ContentColumnImagesProps {
   title: string;

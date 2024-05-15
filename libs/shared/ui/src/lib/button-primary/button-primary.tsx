@@ -19,9 +19,6 @@ export const ButtonPrimary = forwardRef(function({
                                     classNames,
                                     ...props
                                   }: ButtonPrimaryProps, ref: any)  {
-
-  console.log('button primary', label, size, hasIcon, classNames, props)
-
   return (
     <button
       ref={ref}

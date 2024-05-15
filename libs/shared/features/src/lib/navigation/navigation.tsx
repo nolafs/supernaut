@@ -7,6 +7,7 @@ import NavigationWrapper from './navigation-wrapper';
 import styles from './navigation.module.scss';
 import SocialList from '../social-list/social-list';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
+import Link from 'next/link';
 
 
 /* eslint-disable-next-line */
@@ -17,7 +18,7 @@ export interface NavigationProps {
   mode: 'light' | 'dark';
   social?: TSocialLinkItemType[];
   sticky?: boolean;
-  contactForm?: boolean;
+  contactFormDialog?: boolean | undefined | null;
 }
 
 export function Navigation({
@@ -27,7 +28,7 @@ export function Navigation({
   sticky = true,
   mode = 'dark',
   social,
-  contactForm = false,
+  contactFormDialog = false,
 }: NavigationProps) {
   //check if logo is an image or svg
   const isSvg = logo?.endsWith('.svg');
@@ -37,13 +38,17 @@ export function Navigation({
       <div className={cn(styles['navbar'])}>
         <div className="navbar-start">
           <h1 className={'text-primary'}>
-            <div className="sr-only">{siteTitle}</div>
-            {logo && isSvg && (
-              <Image src={logo} className={styles['logo']} alt={'logo'} width={162} height={47}/>
-            )}
-            {logo && !isSvg && (
-              <img src={logo} alt="logo" className={styles['logo']}/>
-            )}
+            <Link href={{
+              pathname: '/',
+            }}>
+              <div className="sr-only">{siteTitle}</div>
+              {logo && isSvg && (
+                <Image src={logo} className={styles['logo']} alt={'logo'} width={162} height={47}/>
+              )}
+              {logo && !isSvg && (
+                <img src={logo} alt="logo" className={styles['logo']}/>
+              )}
+            </Link>
           </h1>
         </div>
         <div className="navbar-end flex space-x-10 items-center justify-center">
@@ -67,7 +72,7 @@ export function Navigation({
           {social && social.length > 0 && (
             <div className={styles['desktop']}>
               <SocialList items={social}/>
-              {(contactForm) && <ContactFormDialogButton label='Contact' isIcon={true} />}
+              {(contactFormDialog) && <ContactFormDialogButton label='Contact' isIcon={true} />}
             </div>
           )}
         </div>

@@ -9,7 +9,7 @@ export interface ContentColumnProps {
   align?: 'left' | 'right';
   type?: 'text' | 'intro' | '1/2' | '3/9';
   hTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
-  padding?: 'none' | 'small' | 'medium' | 'large';
+  padding?: 'none' | 'sm' | 'md' | 'lg';
   title?: string;
   body?: string;
   url?: string;
@@ -28,9 +28,12 @@ export function ContentColumn({
   url,
   label,
   mode,
-  padding = 'small',
+  padding = 'sm',
   children
 }: ContentColumnProps) {
+
+
+  console.log('ContentColumnProps', type, hTag, title, body, align, url, label, mode, padding, children);
 
 
   if(type === 'intro' || type === 'text' || !children) {
@@ -45,9 +48,9 @@ export function ContentColumn({
             mode === 'dark' && 'text-white',
             mode === 'light' && 'text-black bg-white',
             padding === 'none' && 'px-0',
-            padding === 'small' && 'px-5 md:px-10',
-            padding === 'medium' && 'px-10 md:px-20',
-            padding === 'large' && 'px-20 md:px-40'
+            padding === 'sm' && 'px-5 md:px-10',
+            padding === 'md' && 'px-10 md:px-20',
+            padding === 'lg' && 'px-20 md:px-40'
           )}
         >
           <div className={'w-full md:w-9/12 lg:w-1/2'}>
@@ -79,9 +82,9 @@ export function ContentColumn({
         mode === 'dark' && 'text-white',
         mode === 'light' && 'text-black bg-white',
         padding === 'none' && 'px-0',
-        padding === 'small' && 'px-5 md:px-10',
-        padding === 'medium' && 'px-10 md:px-20',
-        padding === 'large' && 'px-20 md:px-40',
+        padding === 'sm' && 'px-5 md:px-10',
+        padding === 'md' && 'px-10 md:px-20',
+        padding === 'lg' && 'px-20 md:px-40',
         align === 'left' && 'justify-start',
         align === 'right' && 'justify-end',
 

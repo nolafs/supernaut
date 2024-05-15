@@ -2,9 +2,18 @@ import {TSocialLinkItemType} from './TSocialLinkItemType';
 
 export type TProfileItem = {
   id: string | number;
+  sys: {
+    id: string;
+  },
   name: string;
   title: string;
-  description: string;
-  image: string;
-  socials: TSocialLinkItemType[];
+  description: {
+    json: any;
+  };
+  image: {
+    url: string;
+  };
+  socialCollection: {
+    items: TSocialLinkItemType[]
+  };
 }

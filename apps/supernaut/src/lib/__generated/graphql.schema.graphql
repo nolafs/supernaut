@@ -92,6 +92,7 @@ input AssetFilter {
 type AssetLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   navigationItemCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationItemCollection
+  profileCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProfileCollection
   seoCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SeoCollection
   settingsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SettingsCollection
   sliderItemCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): SliderItemCollection
@@ -118,6 +119,319 @@ enum AssetOrder {
   url_DESC
   width_ASC
   width_DESC
+}
+
+"""
+Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
+"""
+type ContentColumnComponent implements Entry {
+  align(locale: String): String
+  body(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  hTag(locale: String): String
+  internalName(locale: String): String
+  label(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContentColumnComponentLinkingCollections
+  mode(locale: String): String
+  padding(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+  type(locale: String): String
+  url(locale: String): String
+}
+
+type ContentColumnComponentCollection {
+  items: [ContentColumnComponent]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContentColumnComponentFilter {
+  AND: [ContentColumnComponentFilter]
+  OR: [ContentColumnComponentFilter]
+  align: String
+  align_contains: String
+  align_exists: Boolean
+  align_in: [String]
+  align_not: String
+  align_not_contains: String
+  align_not_in: [String]
+  body: String
+  body_contains: String
+  body_exists: Boolean
+  body_in: [String]
+  body_not: String
+  body_not_contains: String
+  body_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  hTag: String
+  hTag_contains: String
+  hTag_exists: Boolean
+  hTag_in: [String]
+  hTag_not: String
+  hTag_not_contains: String
+  hTag_not_in: [String]
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  label: String
+  label_contains: String
+  label_exists: Boolean
+  label_in: [String]
+  label_not: String
+  label_not_contains: String
+  label_not_in: [String]
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  padding: String
+  padding_contains: String
+  padding_exists: Boolean
+  padding_in: [String]
+  padding_not: String
+  padding_not_contains: String
+  padding_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  type: String
+  type_contains: String
+  type_exists: Boolean
+  type_in: [String]
+  type_not: String
+  type_not_contains: String
+  type_not_in: [String]
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
+}
+
+type ContentColumnComponentLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [ContentColumnComponentLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
+  align_ASC
+  align_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  className_ASC
+  className_DESC
+  height_ASC
+  height_DESC
+  internalName_ASC
+  internalName_DESC
+  lineBottom_ASC
+  lineBottom_DESC
+  lineTop_ASC
+  lineTop_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginSize_ASC
+  marginSize_DESC
+  marginTop_ASC
+  marginTop_DESC
+  mode_ASC
+  mode_DESC
+  paddingBottom_ASC
+  paddingBottom_DESC
+  paddingSize_ASC
+  paddingSize_DESC
+  paddingTop_ASC
+  paddingTop_DESC
+  sectionId_ASC
+  sectionId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textColor_ASC
+  textColor_DESC
+  width_ASC
+  width_DESC
+}
+
+enum ContentColumnComponentOrder {
+  align_ASC
+  align_DESC
+  hTag_ASC
+  hTag_DESC
+  internalName_ASC
+  internalName_DESC
+  label_ASC
+  label_DESC
+  mode_ASC
+  mode_DESC
+  padding_ASC
+  padding_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
+}
+
+"""
+Profile list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentProfileComponent)
+"""
+type ContentProfileComponent implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  itemsCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentItemsCollectionOrder], preview: Boolean, skip: Int = 0, where: ProfileFilter): ContentProfileComponentItemsCollection
+  linkedFrom(allowedLocales: [String]): ContentProfileComponentLinkingCollections
+  mode(locale: String): String
+  sys: Sys!
+}
+
+type ContentProfileComponentCollection {
+  items: [ContentProfileComponent]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContentProfileComponentFilter {
+  AND: [ContentProfileComponentFilter]
+  OR: [ContentProfileComponentFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  items: cfProfileNestedFilter
+  itemsCollection_exists: Boolean
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  sys: SysFilter
+}
+
+type ContentProfileComponentItemsCollection {
+  items: [Profile]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ContentProfileComponentItemsCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ContentProfileComponentLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
+  align_ASC
+  align_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  className_ASC
+  className_DESC
+  height_ASC
+  height_DESC
+  internalName_ASC
+  internalName_DESC
+  lineBottom_ASC
+  lineBottom_DESC
+  lineTop_ASC
+  lineTop_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginSize_ASC
+  marginSize_DESC
+  marginTop_ASC
+  marginTop_DESC
+  mode_ASC
+  mode_DESC
+  paddingBottom_ASC
+  paddingBottom_DESC
+  paddingSize_ASC
+  paddingSize_DESC
+  paddingTop_ASC
+  paddingTop_DESC
+  sectionId_ASC
+  sectionId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textColor_ASC
+  textColor_DESC
+  width_ASC
+  width_DESC
+}
+
+enum ContentProfileComponentOrder {
+  internalName_ASC
+  internalName_DESC
+  mode_ASC
+  mode_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 type ContentfulMetadata {
@@ -185,6 +499,130 @@ enum EntryOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+"""
+Page Header component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/headerComponent)
+"""
+type HeaderComponent implements Entry {
+  columnLayout(locale: String): Boolean
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): String
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): HeaderComponentLinkingCollections
+  marginBottom(locale: String): Boolean
+  marginTop(locale: String): Boolean
+  mode(locale: String): String
+  subtitle(locale: String): String
+  sys: Sys!
+  title(locale: String): String
+}
+
+type HeaderComponentCollection {
+  items: [HeaderComponent]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input HeaderComponentFilter {
+  AND: [HeaderComponentFilter]
+  OR: [HeaderComponentFilter]
+  columnLayout: Boolean
+  columnLayout_exists: Boolean
+  columnLayout_not: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  description: String
+  description_contains: String
+  description_exists: Boolean
+  description_in: [String]
+  description_not: String
+  description_not_contains: String
+  description_not_in: [String]
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  marginBottom: Boolean
+  marginBottom_exists: Boolean
+  marginBottom_not: Boolean
+  marginTop: Boolean
+  marginTop_exists: Boolean
+  marginTop_not: Boolean
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  subtitle: String
+  subtitle_contains: String
+  subtitle_exists: Boolean
+  subtitle_in: [String]
+  subtitle_not: String
+  subtitle_not_contains: String
+  subtitle_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type HeaderComponentLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  pagesCollection(limit: Int = 100, locale: String, order: [HeaderComponentLinkingCollectionsPagesCollectionOrder], preview: Boolean, skip: Int = 0): PagesCollection
+}
+
+enum HeaderComponentLinkingCollectionsPagesCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum HeaderComponentOrder {
+  columnLayout_ASC
+  columnLayout_DESC
+  internalName_ASC
+  internalName_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginTop_ASC
+  marginTop_DESC
+  mode_ASC
+  mode_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 """The 'HexColor' type represents color in `rgb:ffffff` string format."""
@@ -489,7 +927,7 @@ enum NavigationItemSubsectionCollectionOrder {
 }
 
 """
-Top Level Pages [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/pages)
+Top Level Page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/pages)
 """
 type Pages implements Entry {
   bodyText(locale: String): PagesBodyText
@@ -501,7 +939,7 @@ type Pages implements Entry {
   slug(locale: String): String
   sys: Sys!
   title(locale: String): String
-  topSectionsCollection(limit: Int = 100, locale: String, order: [PagesTopSectionsCollectionOrder], preview: Boolean, skip: Int = 0, where: SectionFilter): PagesTopSectionsCollection
+  topSectionsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0, where: PagesTopSectionsFilter): PagesTopSectionsCollection
 }
 
 type PagesBodyText {
@@ -589,7 +1027,7 @@ input PagesFilter {
   title_not: String
   title_not_contains: String
   title_not_in: [String]
-  topSections: cfSectionNestedFilter
+  topSections: cftopSectionsMultiTypeNestedFilter
   topSectionsCollection_exists: Boolean
 }
 
@@ -653,13 +1091,292 @@ enum PagesOrder {
 }
 
 type PagesTopSectionsCollection {
-  items: [Section]!
+  items: [PagesTopSectionsItem]!
   limit: Int!
   skip: Int!
   total: Int!
 }
 
-enum PagesTopSectionsCollectionOrder {
+input PagesTopSectionsFilter {
+  AND: [PagesTopSectionsFilter]
+  OR: [PagesTopSectionsFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  marginBottom: Boolean
+  marginBottom_exists: Boolean
+  marginBottom_not: Boolean
+  marginTop: Boolean
+  marginTop_exists: Boolean
+  marginTop_not: Boolean
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  sys: SysFilter
+}
+
+union PagesTopSectionsItem = HeaderComponent | Section
+
+"""
+Profile or Author [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/profile)
+"""
+type Profile implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): ProfileDescription
+  image(locale: String, preview: Boolean): Asset
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ProfileLinkingCollections
+  name(locale: String): String
+  socialCollection(limit: Int = 100, locale: String, order: [ProfileSocialCollectionOrder], preview: Boolean, skip: Int = 0, where: SocialMediaItemFilter): ProfileSocialCollection
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ProfileCollection {
+  items: [Profile]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ProfileDescription {
+  json: JSON!
+  links: ProfileDescriptionLinks!
+}
+
+type ProfileDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ProfileDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ProfileDescriptionLinks {
+  assets: ProfileDescriptionAssets!
+  entries: ProfileDescriptionEntries!
+  resources: ProfileDescriptionResources!
+}
+
+type ProfileDescriptionResources {
+  block: [ProfileDescriptionResourcesBlock!]!
+  hyperlink: [ProfileDescriptionResourcesHyperlink!]!
+  inline: [ProfileDescriptionResourcesInline!]!
+}
+
+type ProfileDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ProfileDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ProfileDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+input ProfileFilter {
+  AND: [ProfileFilter]
+  OR: [ProfileFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  image_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  social: cfSocialMediaItemNestedFilter
+  socialCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ProfileLinkingCollections {
+  contentProfileComponentCollection(limit: Int = 100, locale: String, order: [ProfileLinkingCollectionsContentProfileComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentProfileComponentCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ProfileLinkingCollectionsContentProfileComponentCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  mode_ASC
+  mode_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ProfileOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ProfileSocialCollection {
+  items: [SocialMediaItem]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ProfileSocialCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
+}
+
+"""
+The 'Quality' type represents quality as whole numeric values between `1` and `100`.
+"""
+scalar Quality
+
+type Query {
+  _node(id: ID!, locale: String, preview: Boolean): _Node
+  asset(id: String!, locale: String, preview: Boolean): Asset
+  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
+  contentColumnComponent(id: String!, locale: String, preview: Boolean): ContentColumnComponent
+  contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentColumnComponentOrder], preview: Boolean, skip: Int = 0, where: ContentColumnComponentFilter): ContentColumnComponentCollection
+  contentProfileComponent(id: String!, locale: String, preview: Boolean): ContentProfileComponent
+  contentProfileComponentCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentOrder], preview: Boolean, skip: Int = 0, where: ContentProfileComponentFilter): ContentProfileComponentCollection
+  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
+  headerComponent(id: String!, locale: String, preview: Boolean): HeaderComponent
+  headerComponentCollection(limit: Int = 100, locale: String, order: [HeaderComponentOrder], preview: Boolean, skip: Int = 0, where: HeaderComponentFilter): HeaderComponentCollection
+  navigationItem(id: String!, locale: String, preview: Boolean): NavigationItem
+  navigationItemCollection(limit: Int = 100, locale: String, order: [NavigationItemOrder], preview: Boolean, skip: Int = 0, where: NavigationItemFilter): NavigationItemCollection
+  pages(id: String!, locale: String, preview: Boolean): Pages
+  pagesCollection(limit: Int = 100, locale: String, order: [PagesOrder], preview: Boolean, skip: Int = 0, where: PagesFilter): PagesCollection
+  profile(id: String!, locale: String, preview: Boolean): Profile
+  profileCollection(limit: Int = 100, locale: String, order: [ProfileOrder], preview: Boolean, skip: Int = 0, where: ProfileFilter): ProfileCollection
+  quoteComponent(id: String!, locale: String, preview: Boolean): QuoteComponent
+  quoteComponentCollection(limit: Int = 100, locale: String, order: [QuoteComponentOrder], preview: Boolean, skip: Int = 0, where: QuoteComponentFilter): QuoteComponentCollection
+  quotes(id: String!, locale: String, preview: Boolean): Quotes
+  quotesCollection(limit: Int = 100, locale: String, order: [QuotesOrder], preview: Boolean, skip: Int = 0, where: QuotesFilter): QuotesCollection
+  section(id: String!, locale: String, preview: Boolean): Section
+  sectionCollection(limit: Int = 100, locale: String, order: [SectionOrder], preview: Boolean, skip: Int = 0, where: SectionFilter): SectionCollection
+  seo(id: String!, locale: String, preview: Boolean): Seo
+  seoCollection(limit: Int = 100, locale: String, order: [SeoOrder], preview: Boolean, skip: Int = 0, where: SeoFilter): SeoCollection
+  settings(id: String!, locale: String, preview: Boolean): Settings
+  settingsCollection(limit: Int = 100, locale: String, order: [SettingsOrder], preview: Boolean, skip: Int = 0, where: SettingsFilter): SettingsCollection
+  slider(id: String!, locale: String, preview: Boolean): Slider
+  sliderCollection(limit: Int = 100, locale: String, order: [SliderOrder], preview: Boolean, skip: Int = 0, where: SliderFilter): SliderCollection
+  sliderItem(id: String!, locale: String, preview: Boolean): SliderItem
+  sliderItemCollection(limit: Int = 100, locale: String, order: [SliderItemOrder], preview: Boolean, skip: Int = 0, where: SliderItemFilter): SliderItemCollection
+  socialMediaItem(id: String!, locale: String, preview: Boolean): SocialMediaItem
+  socialMediaItemCollection(limit: Int = 100, locale: String, order: [SocialMediaItemOrder], preview: Boolean, skip: Int = 0, where: SocialMediaItemFilter): SocialMediaItemCollection
+}
+
+"""
+Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quoteComponent)
+"""
+type QuoteComponent implements Entry {
+  autoplay(locale: String): Boolean
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): QuoteComponentLinkingCollections
+  mode(locale: String): String
+  quotesCollection(limit: Int = 100, locale: String, order: [QuoteComponentQuotesCollectionOrder], preview: Boolean, skip: Int = 0, where: QuotesFilter): QuoteComponentQuotesCollection
+  sys: Sys!
+}
+
+type QuoteComponentCollection {
+  items: [QuoteComponent]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input QuoteComponentFilter {
+  AND: [QuoteComponentFilter]
+  OR: [QuoteComponentFilter]
+  autoplay: Boolean
+  autoplay_exists: Boolean
+  autoplay_not: Boolean
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  quotes: cfQuotesNestedFilter
+  quotesCollection_exists: Boolean
+  sys: SysFilter
+}
+
+type QuoteComponentLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [QuoteComponentLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
   backgroundColor_ASC
@@ -704,79 +1421,13 @@ enum PagesTopSectionsCollectionOrder {
   width_DESC
 }
 
-"""
-The 'Quality' type represents quality as whole numeric values between `1` and `100`.
-"""
-scalar Quality
-
-type Query {
-  _node(id: ID!, locale: String, preview: Boolean): _Node
-  asset(id: String!, locale: String, preview: Boolean): Asset
-  assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
-  entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
-  navigationItem(id: String!, locale: String, preview: Boolean): NavigationItem
-  navigationItemCollection(limit: Int = 100, locale: String, order: [NavigationItemOrder], preview: Boolean, skip: Int = 0, where: NavigationItemFilter): NavigationItemCollection
-  pages(id: String!, locale: String, preview: Boolean): Pages
-  pagesCollection(limit: Int = 100, locale: String, order: [PagesOrder], preview: Boolean, skip: Int = 0, where: PagesFilter): PagesCollection
-  quoteComponent(id: String!, locale: String, preview: Boolean): QuoteComponent
-  quoteComponentCollection(limit: Int = 100, locale: String, order: [QuoteComponentOrder], preview: Boolean, skip: Int = 0, where: QuoteComponentFilter): QuoteComponentCollection
-  quotes(id: String!, locale: String, preview: Boolean): Quotes
-  quotesCollection(limit: Int = 100, locale: String, order: [QuotesOrder], preview: Boolean, skip: Int = 0, where: QuotesFilter): QuotesCollection
-  section(id: String!, locale: String, preview: Boolean): Section
-  sectionCollection(limit: Int = 100, locale: String, order: [SectionOrder], preview: Boolean, skip: Int = 0, where: SectionFilter): SectionCollection
-  seo(id: String!, locale: String, preview: Boolean): Seo
-  seoCollection(limit: Int = 100, locale: String, order: [SeoOrder], preview: Boolean, skip: Int = 0, where: SeoFilter): SeoCollection
-  settings(id: String!, locale: String, preview: Boolean): Settings
-  settingsCollection(limit: Int = 100, locale: String, order: [SettingsOrder], preview: Boolean, skip: Int = 0, where: SettingsFilter): SettingsCollection
-  slider(id: String!, locale: String, preview: Boolean): Slider
-  sliderCollection(limit: Int = 100, locale: String, order: [SliderOrder], preview: Boolean, skip: Int = 0, where: SliderFilter): SliderCollection
-  sliderItem(id: String!, locale: String, preview: Boolean): SliderItem
-  sliderItemCollection(limit: Int = 100, locale: String, order: [SliderItemOrder], preview: Boolean, skip: Int = 0, where: SliderItemFilter): SliderItemCollection
-  socialMediaItem(id: String!, locale: String, preview: Boolean): SocialMediaItem
-  socialMediaItemCollection(limit: Int = 100, locale: String, order: [SocialMediaItemOrder], preview: Boolean, skip: Int = 0, where: SocialMediaItemFilter): SocialMediaItemCollection
-}
-
-"""
-Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quoteComponent)
-"""
-type QuoteComponent implements Entry {
-  contentfulMetadata: ContentfulMetadata!
-  internalName(locale: String): String
-  linkedFrom(allowedLocales: [String]): QuoteComponentLinkingCollections
-  quotesCollection(limit: Int = 100, locale: String, order: [QuoteComponentQuotesCollectionOrder], preview: Boolean, skip: Int = 0, where: QuotesFilter): QuoteComponentQuotesCollection
-  sys: Sys!
-}
-
-type QuoteComponentCollection {
-  items: [QuoteComponent]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input QuoteComponentFilter {
-  AND: [QuoteComponentFilter]
-  OR: [QuoteComponentFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  quotes: cfQuotesNestedFilter
-  quotesCollection_exists: Boolean
-  sys: SysFilter
-}
-
-type QuoteComponentLinkingCollections {
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-}
-
 enum QuoteComponentOrder {
+  autoplay_ASC
+  autoplay_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -812,7 +1463,7 @@ enum QuoteComponentQuotesCollectionOrder {
 }
 
 """
-Inspriational Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quotes)
+Inspirational Quote [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quotes)
 """
 type Quotes implements Entry {
   author(locale: String): String
@@ -869,53 +1520,15 @@ input QuotesFilter {
 type QuotesLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   quoteComponentCollection(limit: Int = 100, locale: String, order: [QuotesLinkingCollectionsQuoteComponentCollectionOrder], preview: Boolean, skip: Int = 0): QuoteComponentCollection
-  sectionCollection(limit: Int = 100, locale: String, order: [QuotesLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
 }
 
 enum QuotesLinkingCollectionsQuoteComponentCollectionOrder {
+  autoplay_ASC
+  autoplay_DESC
   internalName_ASC
   internalName_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-enum QuotesLinkingCollectionsSectionCollectionOrder {
-  align_ASC
-  align_DESC
-  backgroundColor_ASC
-  backgroundColor_DESC
-  className_ASC
-  className_DESC
-  height_ASC
-  height_DESC
-  internalName_ASC
-  internalName_DESC
-  lineBottom_ASC
-  lineBottom_DESC
-  lineTop_ASC
-  lineTop_DESC
-  marginBottom_ASC
-  marginBottom_DESC
-  marginSize_ASC
-  marginSize_DESC
-  marginTop_ASC
-  marginTop_DESC
   mode_ASC
   mode_DESC
-  paddingBottom_ASC
-  paddingBottom_DESC
-  paddingSize_ASC
-  paddingSize_DESC
-  paddingTop_ASC
-  paddingTop_DESC
-  sectionId_ASC
-  sectionId_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -924,10 +1537,6 @@ enum QuotesLinkingCollectionsSectionCollectionOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  textColor_ASC
-  textColor_DESC
-  width_ASC
-  width_DESC
 }
 
 enum QuotesOrder {
@@ -990,7 +1599,7 @@ type SectionCollection {
   total: Int!
 }
 
-union SectionComponent = Quotes | Slider
+union SectionComponent = ContentColumnComponent | ContentProfileComponent | QuoteComponent | Slider
 
 input SectionFilter {
   AND: [SectionFilter]
@@ -1631,7 +2240,7 @@ type SliderItem implements Entry {
   sys: Sys!
   title(locale: String): String
   url(locale: String): String
-  video(locale: String, preview: Boolean): Asset
+  video(locale: String): JSON
 }
 
 type SliderItemCollection {
@@ -1865,7 +2474,25 @@ input SocialMediaItemFilter {
 
 type SocialMediaItemLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  profileCollection(limit: Int = 100, locale: String, order: [SocialMediaItemLinkingCollectionsProfileCollectionOrder], preview: Boolean, skip: Int = 0): ProfileCollection
   settingsCollection(limit: Int = 100, locale: String, order: [SocialMediaItemLinkingCollectionsSettingsCollectionOrder], preview: Boolean, skip: Int = 0): SettingsCollection
+}
+
+enum SocialMediaItemLinkingCollectionsProfileCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum SocialMediaItemLinkingCollectionsSettingsCollectionOrder {
@@ -2009,6 +2636,39 @@ input cfNavigationItemNestedFilter {
   sys: SysFilter
 }
 
+input cfProfileNestedFilter {
+  AND: [cfProfileNestedFilter]
+  OR: [cfProfileNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  image_exists: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  socialCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
 input cfQuotesNestedFilter {
   AND: [cfQuotesNestedFilter]
   OR: [cfQuotesNestedFilter]
@@ -2042,109 +2702,6 @@ input cfQuotesNestedFilter {
   quote_not_contains: String
   quote_not_in: [String]
   sys: SysFilter
-}
-
-input cfSectionNestedFilter {
-  AND: [cfSectionNestedFilter]
-  OR: [cfSectionNestedFilter]
-  align: String
-  align_contains: String
-  align_exists: Boolean
-  align_in: [String]
-  align_not: String
-  align_not_contains: String
-  align_not_in: [String]
-  backgroundColor: String
-  backgroundColor_contains: String
-  backgroundColor_exists: Boolean
-  backgroundColor_in: [String]
-  backgroundColor_not: String
-  backgroundColor_not_contains: String
-  backgroundColor_not_in: [String]
-  className: String
-  className_contains: String
-  className_exists: Boolean
-  className_in: [String]
-  className_not: String
-  className_not_contains: String
-  className_not_in: [String]
-  component_exists: Boolean
-  contentfulMetadata: ContentfulMetadataFilter
-  height: String
-  height_contains: String
-  height_exists: Boolean
-  height_in: [String]
-  height_not: String
-  height_not_contains: String
-  height_not_in: [String]
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  lineBottom: Boolean
-  lineBottom_exists: Boolean
-  lineBottom_not: Boolean
-  lineTop: Boolean
-  lineTop_exists: Boolean
-  lineTop_not: Boolean
-  marginBottom: Boolean
-  marginBottom_exists: Boolean
-  marginBottom_not: Boolean
-  marginSize: String
-  marginSize_contains: String
-  marginSize_exists: Boolean
-  marginSize_in: [String]
-  marginSize_not: String
-  marginSize_not_contains: String
-  marginSize_not_in: [String]
-  marginTop: Boolean
-  marginTop_exists: Boolean
-  marginTop_not: Boolean
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
-  paddingBottom: Boolean
-  paddingBottom_exists: Boolean
-  paddingBottom_not: Boolean
-  paddingSize: String
-  paddingSize_contains: String
-  paddingSize_exists: Boolean
-  paddingSize_in: [String]
-  paddingSize_not: String
-  paddingSize_not_contains: String
-  paddingSize_not_in: [String]
-  paddingTop: Boolean
-  paddingTop_exists: Boolean
-  paddingTop_not: Boolean
-  sectionId: String
-  sectionId_contains: String
-  sectionId_exists: Boolean
-  sectionId_in: [String]
-  sectionId_not: String
-  sectionId_not_contains: String
-  sectionId_not_in: [String]
-  sys: SysFilter
-  textColor: String
-  textColor_contains: String
-  textColor_exists: Boolean
-  textColor_in: [String]
-  textColor_not: String
-  textColor_not_contains: String
-  textColor_not_in: [String]
-  width: String
-  width_contains: String
-  width_exists: Boolean
-  width_in: [String]
-  width_not: String
-  width_not_contains: String
-  width_not_in: [String]
 }
 
 input cfSeoNestedFilter {
@@ -2335,5 +2892,32 @@ input cfmainNavigationMultiTypeNestedFilter {
   slug_not: String
   slug_not_contains: String
   slug_not_in: [String]
+  sys: SysFilter
+}
+
+input cftopSectionsMultiTypeNestedFilter {
+  AND: [cftopSectionsMultiTypeNestedFilter]
+  OR: [cftopSectionsMultiTypeNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  marginBottom: Boolean
+  marginBottom_exists: Boolean
+  marginBottom_not: Boolean
+  marginTop: Boolean
+  marginTop_exists: Boolean
+  marginTop_not: Boolean
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
   sys: SysFilter
 }

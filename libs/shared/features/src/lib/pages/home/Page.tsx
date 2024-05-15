@@ -1,5 +1,6 @@
 /* eslint-disable-next-line */
 import { Navigation, Footer, Slider, Quotes } from '@supernaut/features';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import { Section } from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
 import ContentColumnImages from '../../content/content-column-images/content-column-images';
@@ -34,7 +35,7 @@ export function Page({
         social={navigation?.social}
       />
       <Slider
-        slides={slider?.slides}
+        slidesCollection={{items:slider?.slides}}
         strapline={slider?.strapline}
         autoplay={slider.autoplay}
       />
@@ -75,7 +76,7 @@ export function Page({
 
       <Quotes
         mode={quotes?.mode}
-        items={quotes?.items}
+        quotesCollection={{items:quotes?.items}}
         internalName={'quotes'}
       />
 

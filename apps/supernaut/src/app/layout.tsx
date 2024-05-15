@@ -12,9 +12,6 @@ import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
 
-
-
-
 export const viewport: Viewport = {
   themeColor: 'black',
   width: 'device-width',
@@ -104,39 +101,40 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   const social = settings?.socialMediaCollection?.items as unknown as TSocialLinkItemType[];
 
-
   return (
-    <ModalProvider>
     <html
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`, 'dark')}
     >
-      <Suspense>
-        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
-      </Suspense>
-
       <body>
-      <Navigation items={navigation} mode={'dark'} social={social}/>
-      <main>
-        {children}
-      </main>
-      <Footer
-        copyright={settings?.copyrightLine}
-        strapline={settings?.strapline}
-        legal={legalNavigation}
-        contactButtonLabel={settings?.contactDialogButtonLabel}
-        contactDialog={settings?.contactFormDialog}
-        social={social}
+        <ModalProvider>
 
-      />
+          <Navigation items={navigation} mode={'dark'} social={social} contactFormDialog={settings?.contactFormDialog} />
 
-      <Suspense>
-        <CookieBanner />
-      </Suspense>
+          <main>
+            {children}
+          </main>
 
-      <ModalsContainer />
+          <Footer
+            copyright={settings?.copyrightLine}
+            strapline={settings?.strapline}
+            legal={legalNavigation}
+            contactButtonLabel={settings?.contactDialogButtonLabel}
+            contactDialog={settings?.contactFormDialog}
+            social={social}
+          />
+
+          <Suspense>
+            <CookieBanner />
+          </Suspense>
+
+          <ModalsContainer />
+
+        </ModalProvider>
+        <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
       </body>
     </html>
-    </ModalProvider>
+
   );
+
 }

@@ -34,10 +34,7 @@ export function SocialList({
   variantList = 0
 }: SocialListProps) {
 
-  console.log('social items', items)
-
   if (!items?.length) return null;
-
   return (
     <ul
         className={cn(

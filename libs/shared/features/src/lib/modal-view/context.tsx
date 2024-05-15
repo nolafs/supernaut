@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, {createContext, ReactNode, Suspense, useReducer} from 'react';
 
 export type MODAL_VIEWS =
     | 'CONTACT'
@@ -41,24 +41,21 @@ function modalReducer(state: State, action: Action): State {
   }
 }
 
-export const ModalStateContext = React.createContext<State>(initialState);
+export const ModalStateContext = createContext<State>(initialState);
 ModalStateContext.displayName = 'ModalStateContext';
 
-export const ModalActionContext = React.createContext<
+export const ModalActionContext = createContext<
     React.Dispatch<Action> | undefined
 >(undefined);
 ModalActionContext.displayName = 'ModalActionContext';
 
-export const ModalProvider: React.FC<{
-  children?: React.ReactNode;
-}> = ({children}) => {
-  const [state, dispatch] = React.useReducer(modalReducer, initialState);
-
+export function ModalProvider({children}: { children: ReactNode }) {
+  const [state, dispatch] = useReducer(modalReducer, initialState);
   return (
-      <ModalStateContext.Provider value={state}>
-        <ModalActionContext.Provider value={dispatch}>
-          {children}
-        </ModalActionContext.Provider>
-      </ModalStateContext.Provider>
+        <ModalStateContext.Provider value={state}>
+          <ModalActionContext.Provider value={dispatch}>
+            {children}
+          </ModalActionContext.Provider>
+        </ModalStateContext.Provider>
   );
-};
+}

@@ -1,3 +1,16 @@
+fragment HeaderComponentFields on HeaderComponent {
+  __typename
+  sys {
+    id
+  }
+  title
+  description
+  mode
+  columnLayout
+  marginTop
+  marginBottom
+}
+
 
 fragment PageFields on Pages {
   __typename
@@ -31,6 +44,7 @@ fragment PageFields on Pages {
           id
         }
         ...SectionFields
+        ...HeaderComponentFields
       }
     }
   }

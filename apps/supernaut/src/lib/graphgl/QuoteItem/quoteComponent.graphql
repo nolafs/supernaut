@@ -1,0 +1,29 @@
+fragment quoteFields on Quotes {
+  __typename
+  sys {
+    id
+  }
+  quote
+  author
+  position
+}
+
+fragment quoteComponentFields on QuoteComponent {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  quotesCollection(limit: 10) {
+    items {
+      ...quoteFields
+    }
+  }
+}
+
+
+query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
+  quoteComponent(id: $id, locale: $locale, preview: $preview) {
+    ...quoteComponentFields
+  }
+}

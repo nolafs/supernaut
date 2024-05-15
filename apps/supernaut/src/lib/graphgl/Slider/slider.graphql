@@ -9,9 +9,6 @@ fragment SliderItem on SliderItem {
     image {
         ...AssetFields
     }
-    video {
-      ...AssetFields
-    }
     url
 
 }

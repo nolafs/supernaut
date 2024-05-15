@@ -14,6 +14,9 @@ import SliderStrapline from './slider-strapline/slider-strapline';
 import {TAssets} from '@supernaut/types';
 
 type Slide = {
+  sys: {
+    id: string;
+  };
   title: string;
   description: string;
   image: TAssets;
@@ -39,8 +42,6 @@ export function Slider({slidesCollection, strapline, autoplay }: SliderProps) {
 
     slidesCollection?.items.length ? slidesCollection.items[0] : null
   );
-
-  console.log('slidesCollection', slidesCollection);
 
   if (!slidesCollection?.items.length) {
     return;
@@ -72,14 +73,16 @@ export function Slider({slidesCollection, strapline, autoplay }: SliderProps) {
             }}
           >
             {slidesCollection?.items.map((slide, index) => (
-              <SwiperSlide key={index}>
-                <SliderItem
-                  title={slide.title}
-                  description={slide.description}
-                  image={slide?.image?.url}
-                  video={slide?.video?.url}
-                />
-              </SwiperSlide>
+
+                <SwiperSlide id={`${slide.sys.id}-${index}`} key={`${slide.sys.id}-${index}`}>
+                  <SliderItem
+                    title={slide.title}
+                    description={slide.description}
+                    image={slide?.image?.url}
+                    video={slide?.video?.url}
+                  />
+                </SwiperSlide>
+
             ))}
           </Swiper>
           <div

@@ -22,10 +22,23 @@ export function SectionResolver({sections}: SectionResolverProps) {
   return (<>
       { sections?.map((entry: any, index: number) => {
         return (entry?.__typename !== undefined) && (
-          <Section {...entry}>
-            <ComponentResolver key={`${entry!.component.__typename}-${generateRandomKey()} `} componentProps={entry.component!} />
-          </Section>
-          )
+
+          <>
+            {(entry.__typename === 'Section') && (
+              <Section {...entry}>
+                <ComponentResolver key={`${entry!.component.__typename}-${generateRandomKey()} `} componentProps={entry.component!} />
+              </Section>
+            )}
+
+
+          {(entry.__typename === 'HeaderComponent') && (
+              <ComponentResolver key={`${entry!.__typename}-${generateRandomKey()} `}
+                                 componentProps={entry!}/>
+
+          )}
+        </>
+
+        )
       })}
     </>
   );

@@ -7,9 +7,6 @@ import { customFetcher } from '@supernaut/contentful';
 export type SliderItemFragment = { __typename: 'SliderItem', internalName?: string | null, title?: string | null, description?: string | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null, video?: (
-    { __typename?: 'Asset' }
-    & AssetFieldsFragment
   ) | null };
 
 export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
@@ -40,9 +37,6 @@ export const SliderItemFragmentDoc = `
   title
   description
   image {
-    ...AssetFields
-  }
-  video {
     ...AssetFields
   }
   url

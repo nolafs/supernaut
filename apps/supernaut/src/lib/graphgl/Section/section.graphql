@@ -1,6 +1,67 @@
 fragment SectionComponentFields on SectionComponent {
-  ...QuoteFields
+  ...quoteComponentFields
   ...SliderFields
+  ...ContentProfileComponentFields
+  ...ContentColumnComponentFields
+}
+
+fragment ProfileFields on Profile {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  name
+  title
+  description {
+    json
+  }
+  image {
+    ...AssetFields
+  }
+  socialCollection(limit: 10) {
+    items {
+      __typename
+      id: sys {
+        id
+      }
+      type
+      name
+      internalName
+      url
+    }
+  }
+}
+
+fragment ContentProfileComponentFields on ContentProfileComponent {
+  __typename
+  sys {
+    id
+  }
+  mode
+  itemsCollection(limit: 10) {
+    items {
+      ... on Entry {
+        ...ProfileFields
+      }
+    }
+  }
+}
+
+fragment ContentColumnComponentFields on ContentColumnComponent {
+  __typename
+  sys {
+    id
+  }
+  mode
+  type
+  title
+  body
+  hTag
+  label
+  url
+  align
+  padding
 }
 
 fragment SectionFields on Section {
@@ -28,7 +89,6 @@ fragment SectionFields on Section {
   component {
     __typename
     ...SectionComponentFields
-
   }
 }
 

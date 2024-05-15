@@ -14,7 +14,8 @@ let previousComponent: string | null = null;
 
 export function ComponentResolver({componentProps}: ComponentResolverProps) {
   console.log(componentProps.__typename);
-  // @ts-ignore
+  // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+  // @ts-expect-error
   const Component = componentMap[componentProps.__typename];
 
   const previousComponentProp = previousComponent;

@@ -9,19 +9,25 @@ import 'swiper/css/autoplay';
 import cn from 'classnames';
 import { useState } from 'react';
 
+export type TQuoteCollection = {
+  items: TQuote[];
+}
+
 export interface QuotesProps {
   mode: 'dark' | 'light';
   internalName: string;
-  items: TQuote[];
+  quotesCollection: TQuoteCollection;
   autoplay?: boolean;
 }
 
 export function Quotes({
-  items,
+   quotesCollection,
   internalName,
   mode = 'dark',
   autoplay = false,
 }: QuotesProps) {
+
+  const items = quotesCollection?.items;
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(items?.length || 0);
   const [currentSlide, setCurrentSlide] = useState<TQuote | null>(
@@ -31,8 +37,7 @@ export function Quotes({
   if (!items || !items.length) return null;
 
   return (
-    <section
-      id={'quote' + internalName}
+    <div
       className={cn(
         'relative overflow-hidden',
         mode === 'light' ? 'text-base' : 'text-primary'
@@ -53,16 +58,16 @@ export function Quotes({
           speed={1000}
           modules={[Autoplay]}
         >
-          {items.map((quote) => (
-            <SwiperSlide key={quote?.id}>
+          {items.map((quote, index) => (
+            <SwiperSlide id={`${quote.sys.id}-${index}`} key={`${quote.sys.id}-${index}`}>
               <div className="flex flex-col justify-center items-start mx-auto">
                 <blockquote className="container max-w-7xl font-medium text-3xl tracking-tight  lg:text-6xl flex flex-col">
-                  <div>"{quote?.quote}"</div>
-                  <div className={'!outline-none mt-4'}>
+                  <span>"{quote?.quote}"</span>
+                  <span className={'!outline-none mt-4'}>
                     <cite className="text-normal lg:text-3xl not-italic font-normal leading-[0]">
                       {quote?.author} / {quote?.position}
                     </cite>
-                  </div>
+                  </span>
                 </blockquote>
               </div>
             </SwiperSlide>
@@ -83,7 +88,7 @@ export function Quotes({
           </div>
         </Swiper>
       </div>
-    </section>
+    </div>
   );
 }
 
