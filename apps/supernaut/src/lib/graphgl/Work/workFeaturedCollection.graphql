@@ -1,0 +1,11 @@
+
+query workFeaturedCollection( $skip: Int, $limit: Int, $locale: String, $preview:Boolean) {
+  workCollection(where:{featured: true}, skip: $skip, limit: $limit, locale: $locale, preview: $preview, order:[publishingDate_DESC]) {
+    total
+    limit
+    skip
+    items {
+        ...workFields
+      }
+    }
+}

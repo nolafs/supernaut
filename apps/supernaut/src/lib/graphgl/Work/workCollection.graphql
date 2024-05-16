@@ -1,0 +1,32 @@
+fragment workFields on Work {
+  __typename
+  sys {
+    id
+  }
+  title
+  category{
+    name
+    slug
+    description {
+      json
+    }
+  }
+  slug
+  publishingDate
+  featured
+  featureImage {
+    ...AssetFields
+  }
+
+}
+
+query workCollection($category: cfCategoryNestedFilter, $skip: Int, $limit: Int, $locale: String, $preview:Boolean) {
+  workCollection(where:{category: $category}, skip: $skip, limit: $limit, locale: $locale, preview: $preview, order:[publishingDate_DESC]) {
+    total
+    limit
+    skip
+    items {
+        ...workFields
+      }
+    }
+}

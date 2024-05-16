@@ -20,7 +20,7 @@ export function ContentVideo({id, type, title, src, poster, autoplay = true, con
   if(!src) {
     return (
       <div className={'block w-full p-5'}>
-        No src defined
+        No Video defined
       </div>
     );
   }

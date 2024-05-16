@@ -13,11 +13,11 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-normal leading-9;
+    @apply text-4xl md:text-5xl lg:text-[64px] font-medium leading-[60px];
   }
 
   h2 {
-    @apply text-[28px] md:text-3xl lg:text-[40px] font-normal leading-7;
+    @apply text-[28px] md:text-3xl lg:text-[40px] font-medium leading-7;
   }
 
   h3 {

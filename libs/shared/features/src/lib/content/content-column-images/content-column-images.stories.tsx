@@ -9,7 +9,7 @@ const meta: Meta<typeof ContentColumnImages> = {
 export default meta;
 
 
-export const Primary = {
+export const ListTitle = {
   args: {
     title: 'Our Partners',
     columnsSm: 1,
@@ -70,5 +70,36 @@ export const Primary = {
     itemWidth: 425,
     itemHeight: 250,
     mode: 'dark'
+  },
+};
+
+export const ListImage = {
+  args: {
+    hasTitle: false,
+    items: [
+      {
+        id: '1',
+        image: 'https://fakeimg.pl/940x626',
+        alt: 'Image 1',
+      },
+      {
+        id: '2',
+        image: 'https://fakeimg.pl/640x226',
+        alt: 'Image 2',
+      },
+    ],
+  },
+};
+
+export const SingleImage = {
+  args: {
+    hasTitle: false,
+    items: [
+      {
+        id: '1',
+        image: 'https://fakeimg.pl/1820x1024',
+        alt: 'Image 1',
+      },
+    ],
   },
 };

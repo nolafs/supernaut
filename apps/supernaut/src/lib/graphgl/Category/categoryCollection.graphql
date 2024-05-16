@@ -1,0 +1,35 @@
+fragment CategoryFields on Category {
+  __typename
+  sys {
+    id
+  }
+  name
+  slug
+  description {
+    json
+  }
+  linkedFrom {
+    workCollection {
+      total
+      items {
+        ... on Work {
+          __typename
+          sys {
+            id
+          }
+          title
+          slug
+        }
+      }
+    }
+  }
+}
+
+
+query categoryCollection($locale: String, $preview: Boolean, $limit: Int) {
+  categoryCollection(locale: $locale, preview: $preview, limit: $limit) {
+    items {
+      ...CategoryFields
+    }
+  }
+}

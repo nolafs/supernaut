@@ -1,6 +1,6 @@
 import * as Types from '../../../__generated/graphql.types';
 
-import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment } from '../../Section/__generated/section.generated';
+import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentImageGridComponent_Fragment, SectionComponentFields_ContentListComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment } from '../../Section/__generated/section.generated';
 import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../QuoteItem/__generated/quoteComponent.generated';
 import { SliderFieldsFragment, SliderItemFragment } from '../../Slider/__generated/slider.generated';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';

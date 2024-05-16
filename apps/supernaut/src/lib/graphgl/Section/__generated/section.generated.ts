@@ -13,6 +13,10 @@ export type SectionComponentFields_ContentColumnComponent_Fragment = (
   & ContentColumnComponentFieldsFragment
 );
 
+export type SectionComponentFields_ContentImageGridComponent_Fragment = { __typename?: 'ContentImageGridComponent' };
+
+export type SectionComponentFields_ContentListComponent_Fragment = { __typename?: 'ContentListComponent' };
+
 export type SectionComponentFields_ContentProfileComponent_Fragment = (
   { __typename?: 'ContentProfileComponent' }
   & ContentProfileComponentFieldsFragment
@@ -28,7 +32,7 @@ export type SectionComponentFields_Slider_Fragment = (
   & SliderFieldsFragment
 );
 
-export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
+export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
 
 export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
     { __typename?: 'Asset' }
@@ -40,11 +44,17 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
       & ProfileFieldsFragment
     ) | null> } | null };
 
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
     & SectionComponentFields_ContentColumnComponent_Fragment
+  ) | (
+    { __typename: 'ContentImageGridComponent' }
+    & SectionComponentFields_ContentImageGridComponent_Fragment
+  ) | (
+    { __typename: 'ContentListComponent' }
+    & SectionComponentFields_ContentListComponent_Fragment
   ) | (
     { __typename: 'ContentProfileComponent' }
     & SectionComponentFields_ContentProfileComponent_Fragment
@@ -125,6 +135,7 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   title
   body
   hTag
+  label
   url
   align
   padding
