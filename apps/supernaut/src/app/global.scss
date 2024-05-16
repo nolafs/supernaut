@@ -9,16 +9,15 @@
   }
 
   .wrapper {
-    @apply w-full max-w-9xl mx-auto;
+    @apply w-full max-w-9xl mx-auto px-5 md:px-10;
   }
 
-
   h1 {
-    @apply text-4xl md:text-5xl lg:text-6xl font-normal;
+    @apply text-4xl md:text-5xl lg:text-6xl font-normal leading-9;
   }
 
   h2 {
-    @apply text-[28px] md:text-3xl lg:text-[40px] font-normal;
+    @apply text-[28px] md:text-3xl lg:text-[40px] font-normal leading-7;
   }
 
   h3 {

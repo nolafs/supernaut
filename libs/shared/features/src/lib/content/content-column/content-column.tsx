@@ -42,7 +42,7 @@ export function ContentColumn({
     return (<BlockAnimationProvider>
         <div
           className={cn(
-            'w-full max-w-9xl mx-auto flex flex-row',
+            'wrapper flex flex-row',
             align === 'left' && 'justify-start',
             align === 'right' && 'justify-end',
             mode === 'dark' && 'text-white',
@@ -54,18 +54,18 @@ export function ContentColumn({
           )}
         >
           <div className={'w-full md:w-9/12 lg:w-1/2'}>
-            {title && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-24 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
+            {title && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
             {body && (<BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%">
               <div
-                className={'text-[28px] md:text-3xl lg:text-5xl font-normal'}
+                className={'text-[28px] md:text-3xl lg:text-5xl font-normal leading-7'}
                 dangerouslySetInnerHTML={{__html: body}}
               />
               </BlockAnimateOnScroll>
             )}
             {url && label && (
               <BlockAnimateOnScroll animation="fadeIn" duration={1.5} start="top 90%">
-              <div className={'mt-20'}>
-                <LinkPrimary url={url} hasIcon={true} size={'md'}>
+              <div className={'mt-10 md:mb-16'}>
+                <LinkPrimary url={url} hasIcon={true} size={'lg'}>
                   {label}
                 </LinkPrimary>
               </div>

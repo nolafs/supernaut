@@ -39,7 +39,7 @@ export function Quotes({
   return (
     <div
       className={cn(
-        'relative overflow-hidden',
+        'relative overflow-hidden wrapper',
         mode === 'light' ? 'text-base' : 'text-primary'
       )}
     >

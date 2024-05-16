@@ -40,7 +40,7 @@ export function Page({
         marginBottom={true}
         mode={'dark'}
       >
-        <ContentProfileList items={profile.items} mode={'dark'} />
+        <ContentProfileList itemsCollection={profile} mode={'dark'} />
 
       </Section>
 
