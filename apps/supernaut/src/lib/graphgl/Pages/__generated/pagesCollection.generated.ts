@@ -1,10 +1,10 @@
 import * as Types from '../../../__generated/graphql.types';
 
-import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentImageGridComponent_Fragment, SectionComponentFields_ContentListComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_ContentServiceList_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment, ContentImageGridFieldsFragment, ContentBodyTextFieldsFragment, ContentServiceListFieldsFragment } from '../../Section/__generated/section.generated';
+import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentImageGridComponent_Fragment, SectionComponentFields_ContentListComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_ContentServiceList_Fragment, SectionComponentFields_ContentVideoComponent_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment, ContentImageGridFieldsFragment, ContentBodyTextFieldsFragment, ContentServiceListFieldsFragment, ContentVideoComponentFieldsFragment } from '../../Section/__generated/section.generated';
 import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../QuoteItem/__generated/quoteComponent.generated';
 import { SliderFieldsFragment, SliderItemFragment } from '../../Slider/__generated/slider.generated';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
-import { SectionFieldsFragmentDoc, SectionComponentFieldsFragmentDoc, ContentProfileComponentFieldsFragmentDoc, ProfileFieldsFragmentDoc, ContentColumnComponentFieldsFragmentDoc, ContentImageGridFieldsFragmentDoc, ContentBodyTextFieldsFragmentDoc, ContentServiceListFieldsFragmentDoc } from '../../Section/__generated/section.generated';
+import { SectionFieldsFragmentDoc, SectionComponentFieldsFragmentDoc, ContentProfileComponentFieldsFragmentDoc, ProfileFieldsFragmentDoc, ContentColumnComponentFieldsFragmentDoc, ContentImageGridFieldsFragmentDoc, ContentBodyTextFieldsFragmentDoc, ContentServiceListFieldsFragmentDoc, ContentVideoComponentFieldsFragmentDoc } from '../../Section/__generated/section.generated';
 import { QuoteComponentFieldsFragmentDoc, QuoteFieldsFragmentDoc } from '../../QuoteItem/__generated/quoteComponent.generated';
 import { SliderFieldsFragmentDoc, SliderItemFragmentDoc } from '../../Slider/__generated/slider.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
@@ -113,6 +113,7 @@ ${ContentColumnComponentFieldsFragmentDoc}
 ${ContentImageGridFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
+${ContentVideoComponentFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 
 export const usePagesCollectionQuery = <

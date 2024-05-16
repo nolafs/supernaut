@@ -26,6 +26,8 @@ export default async function Page({params}: PageProps) {
       return `<ul>${services.map((service: ServicesFieldsFragment) => `<li>${service.name}</li>`).join('')}</ul>`;
     }
 
+
+
     return (
         <article>
           <Header

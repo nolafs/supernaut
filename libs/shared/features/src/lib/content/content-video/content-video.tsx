@@ -7,6 +7,7 @@ export interface ContentVideoProps {
   id: string;
   type: 'video' | 'youtube' | 'vimeo';
   src: string;
+  videoUpload: any,
   title: string;
   poster?: string;
   frame?: boolean;
@@ -15,9 +16,11 @@ export interface ContentVideoProps {
   controls?: boolean
 }
 
-export function ContentVideo({id, type, title, src, poster, autoplay = true, controls = false, frame= false}: ContentVideoProps) {
+export function ContentVideo({id, type, title, src, videoUpload, poster, autoplay = true, controls = false, frame= false}: ContentVideoProps) {
 
-  if(!src) {
+  console.log('ContentVideo', type, videoUpload[0].public_id);
+
+  if(!src && !videoUpload[0]?.public_id) {
     return (
       <div className={'block w-full p-5'}>
         No Video defined
@@ -48,7 +51,7 @@ export function ContentVideo({id, type, title, src, poster, autoplay = true, con
     const CloudinaryVideo = dynamic(() => import('./video'));
 
     return (
-          <CloudinaryVideo id={id} title={title} poster={poster} src={src} autoplay={autoplay} controls={controls} frame={frame} />
+          <CloudinaryVideo id={id} title={title} poster={poster} src={videoUpload[0].public_id} autoplay={autoplay} controls={controls} frame={frame} />
     );
   }
 

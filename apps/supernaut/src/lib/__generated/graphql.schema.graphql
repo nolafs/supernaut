@@ -1289,6 +1289,52 @@ input ContentVideoComponentFilter {
 
 type ContentVideoComponentLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [ContentVideoComponentLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
+  align_ASC
+  align_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  className_ASC
+  className_DESC
+  height_ASC
+  height_DESC
+  internalName_ASC
+  internalName_DESC
+  lineBottom_ASC
+  lineBottom_DESC
+  lineTop_ASC
+  lineTop_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginSize_ASC
+  marginSize_DESC
+  marginTop_ASC
+  marginTop_DESC
+  mode_ASC
+  mode_DESC
+  paddingBottom_ASC
+  paddingBottom_DESC
+  paddingSize_ASC
+  paddingSize_DESC
+  paddingTop_ASC
+  paddingTop_DESC
+  sectionId_ASC
+  sectionId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textColor_ASC
+  textColor_DESC
+  width_ASC
+  width_DESC
 }
 
 enum ContentVideoComponentOrder {
@@ -2525,7 +2571,7 @@ type SectionCollection {
   total: Int!
 }
 
-union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | QuoteComponent | Slider
+union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider
 
 input SectionFilter {
   AND: [SectionFilter]

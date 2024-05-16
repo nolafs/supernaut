@@ -1962,6 +1962,7 @@ export type ContentVideoComponentFilter = {
 export type ContentVideoComponentLinkingCollections = {
   __typename?: 'ContentVideoComponentLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  sectionCollection?: Maybe<SectionCollection>;
 };
 
 
@@ -1971,6 +1972,60 @@ export type ContentVideoComponentLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+
+export type ContentVideoComponentLinkingCollectionsSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentVideoComponentLinkingCollectionsSectionCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  BackgroundColorAsc = 'backgroundColor_ASC',
+  BackgroundColorDesc = 'backgroundColor_DESC',
+  ClassNameAsc = 'className_ASC',
+  ClassNameDesc = 'className_DESC',
+  HeightAsc = 'height_ASC',
+  HeightDesc = 'height_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LineBottomAsc = 'lineBottom_ASC',
+  LineBottomDesc = 'lineBottom_DESC',
+  LineTopAsc = 'lineTop_ASC',
+  LineTopDesc = 'lineTop_DESC',
+  MarginBottomAsc = 'marginBottom_ASC',
+  MarginBottomDesc = 'marginBottom_DESC',
+  MarginSizeAsc = 'marginSize_ASC',
+  MarginSizeDesc = 'marginSize_DESC',
+  MarginTopAsc = 'marginTop_ASC',
+  MarginTopDesc = 'marginTop_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
+  PaddingBottomAsc = 'paddingBottom_ASC',
+  PaddingBottomDesc = 'paddingBottom_DESC',
+  PaddingSizeAsc = 'paddingSize_ASC',
+  PaddingSizeDesc = 'paddingSize_DESC',
+  PaddingTopAsc = 'paddingTop_ASC',
+  PaddingTopDesc = 'paddingTop_DESC',
+  SectionIdAsc = 'sectionId_ASC',
+  SectionIdDesc = 'sectionId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TextColorAsc = 'textColor_ASC',
+  TextColorDesc = 'textColor_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
+}
 
 export enum ContentVideoComponentOrder {
   AutoplayAsc = 'autoplay_ASC',
@@ -4090,7 +4145,7 @@ export type SectionCollection = {
   total: Scalars['Int']['output'];
 };
 
-export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | QuoteComponent | Slider;
+export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider;
 
 export type SectionFilter = {
   AND?: InputMaybe<Array<InputMaybe<SectionFilter>>>;
@@ -6589,6 +6644,11 @@ export type SectionComponentFields_ContentServiceList_Fragment = (
   & ContentServiceListFieldsFragment
 );
 
+export type SectionComponentFields_ContentVideoComponent_Fragment = (
+  { __typename?: 'ContentVideoComponent' }
+  & ContentVideoComponentFieldsFragment
+);
+
 export type SectionComponentFields_QuoteComponent_Fragment = (
   { __typename?: 'QuoteComponent' }
   & QuoteComponentFieldsFragment
@@ -6599,7 +6659,7 @@ export type SectionComponentFields_Slider_Fragment = (
   & SliderFieldsFragment
 );
 
-export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
+export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_ContentVideoComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
 
 export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
     { __typename?: 'Asset' }
@@ -6628,6 +6688,8 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentImageGridFieldsFragment
   ) | null };
 
+export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, mode?: string | null, sys: { __typename?: 'Sys', id: string } };
+
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
     & SectionComponentFields_ContentColumnComponent_Fragment
@@ -6643,6 +6705,9 @@ export type SectionFieldsFragment = { __typename: 'Section', internalName?: stri
   ) | (
     { __typename: 'ContentServiceList' }
     & SectionComponentFields_ContentServiceList_Fragment
+  ) | (
+    { __typename: 'ContentVideoComponent' }
+    & SectionComponentFields_ContentVideoComponent_Fragment
   ) | (
     { __typename: 'QuoteComponent' }
     & SectionComponentFields_QuoteComponent_Fragment
@@ -7064,6 +7129,22 @@ export const ContentServiceListFieldsFragmentDoc = gql`
   }
 }
     `;
+export const ContentVideoComponentFieldsFragmentDoc = gql`
+    fragment ContentVideoComponentFields on ContentVideoComponent {
+  __typename
+  sys {
+    id
+  }
+  title
+  type
+  src
+  videoUpload
+  controls
+  autoplay
+  frame
+  mode
+}
+    `;
 export const SectionComponentFieldsFragmentDoc = gql`
     fragment SectionComponentFields on SectionComponent {
   ...quoteComponentFields
@@ -7071,6 +7152,7 @@ export const SectionComponentFieldsFragmentDoc = gql`
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
   ...ContentServiceListFields
+  ...ContentVideoComponentFields
 }
     `;
 export const SectionFieldsFragmentDoc = gql`
@@ -7364,6 +7446,7 @@ ${ContentColumnComponentFieldsFragmentDoc}
 ${ContentImageGridFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
+${ContentVideoComponentFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const QuoteComponentDocument = gql`
     query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
@@ -7391,7 +7474,8 @@ ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
 ${ContentImageGridFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
-${ContentServiceListFieldsFragmentDoc}`;
+${ContentServiceListFieldsFragmentDoc}
+${ContentVideoComponentFieldsFragmentDoc}`;
 export const ServiceCollectionDocument = gql`
     query serviceCollection($locale: String, $preview: Boolean, $limit: Int) {
   servicesCollection(locale: $locale, preview: $preview, limit: $limit) {
@@ -7457,6 +7541,7 @@ ${ContentColumnComponentFieldsFragmentDoc}
 ${ContentImageGridFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
+${ContentVideoComponentFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const WorkCollectionDocument = gql`
     query workCollection($skip: Int, $limit: Int, $locale: String, $preview: Boolean) {

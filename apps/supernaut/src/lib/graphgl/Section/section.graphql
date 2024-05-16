@@ -4,6 +4,7 @@ fragment SectionComponentFields on SectionComponent {
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
   ...ContentServiceListFields
+  ...ContentVideoComponentFields
 }
 
 fragment ProfileFields on Profile {
@@ -121,6 +122,22 @@ fragment ContentColumnComponentFields on ContentColumnComponent {
     ...ContentImageGridFields
     ...ContentBodyTextFields
   }
+}
+
+fragment ContentVideoComponentFields on ContentVideoComponent {
+  __typename
+  sys {
+    id
+  }
+  title
+  type
+  src
+  videoUpload
+  controls
+  autoplay
+  frame
+  mode
+
 }
 
 fragment SectionFields on Section {
