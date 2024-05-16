@@ -13,7 +13,7 @@ export interface ComponentResolverProps {
 let previousComponent: string | null = null;
 
 export function ComponentResolver({componentProps}: ComponentResolverProps) {
-  console.log(componentProps.__typename);
+  //console.log(componentProps.__typename);
   // eslint-disable-next-line @typescript-eslint/ban-ts-comment
   // @ts-expect-error
   const Component = componentMap[componentProps.__typename];

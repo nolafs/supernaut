@@ -33,9 +33,10 @@ export interface SliderProps {
   slidesCollection?: Slides;
   strapline?: string;
   autoplay?: boolean;
+  slideDuration?: number;
 }
 
-export function Slider({slidesCollection, strapline, autoplay }: SliderProps) {
+export function Slider({slidesCollection, strapline, autoplay, slideDuration=3000 }: SliderProps) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const [numberSlides, setNumberSlides] = useState(slidesCollection?.items.length || 0);
   const [currentSlide, setCurrentSlide] = useState<Slide | null>(
@@ -62,7 +63,7 @@ export function Slider({slidesCollection, strapline, autoplay }: SliderProps) {
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
-            autoplay={(autoplay) ? { delay: 3000 } : false}
+            autoplay={(autoplay) ? { delay: slideDuration } : false}
 
             spaceBetween={50}
             slidesPerView={1}

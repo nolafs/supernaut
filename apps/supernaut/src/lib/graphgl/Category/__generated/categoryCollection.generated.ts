@@ -1,8 +1,18 @@
 import * as Types from '../../../__generated/graphql.types';
 
+import { ServicesFieldsFragment } from '../../Service/__generated/servicesCollection.generated';
+import { ServicesFieldsFragmentDoc } from '../../Service/__generated/servicesCollection.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
-export type CategoryFieldsFragment = { __typename: 'Category', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryDescription', json: any } | null, linkedFrom?: { __typename?: 'CategoryLinkingCollections', workCollection?: { __typename?: 'WorkCollection', total: number, items: Array<{ __typename: 'Work', title?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null };
+export type CategoryFieldsFragment = { __typename: 'Category', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryDescription', json: any } | null, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<(
+      { __typename?: 'Services' }
+      & ServicesFieldsFragment
+    ) | null> } | null, linkedFrom?: { __typename?: 'CategoryLinkingCollections', workCollection?: { __typename?: 'WorkCollection', total: number, items: Array<{ __typename: 'Work', title?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null };
+
+export type CategoryCollectionFieldsFragment = { __typename: 'CategoryCollection', total: number, items: Array<(
+    { __typename?: 'Category' }
+    & CategoryFieldsFragment
+  ) | null> };
 
 export type CategoryCollectionQueryVariables = Types.Exact<{
   locale?: Types.InputMaybe<Types.Scalars['String']['input']>;
@@ -11,10 +21,10 @@ export type CategoryCollectionQueryVariables = Types.Exact<{
 }>;
 
 
-export type CategoryCollectionQuery = { __typename?: 'Query', categoryCollection?: { __typename?: 'CategoryCollection', items: Array<(
-      { __typename?: 'Category' }
-      & CategoryFieldsFragment
-    ) | null> } | null };
+export type CategoryCollectionQuery = { __typename?: 'Query', categoryCollection?: (
+    { __typename?: 'CategoryCollection' }
+    & CategoryCollectionFieldsFragment
+  ) | null };
 
 
 export const CategoryFieldsFragmentDoc = `
@@ -27,6 +37,11 @@ export const CategoryFieldsFragmentDoc = `
   slug
   description {
     json
+  }
+  servicesCollection(limit: 10) {
+    items {
+      ...servicesFields
+    }
   }
   linkedFrom {
     workCollection(limit: 10) {
@@ -45,15 +60,24 @@ export const CategoryFieldsFragmentDoc = `
   }
 }
     `;
+export const CategoryCollectionFieldsFragmentDoc = `
+    fragment CategoryCollectionFields on CategoryCollection {
+  __typename
+  total
+  items {
+    ...CategoryFields
+  }
+}
+    `;
 export const CategoryCollectionDocument = `
     query categoryCollection($locale: String, $preview: Boolean, $limit: Int) {
   categoryCollection(locale: $locale, preview: $preview, limit: $limit) {
-    items {
-      ...CategoryFields
-    }
+    ...CategoryCollectionFields
   }
 }
-    ${CategoryFieldsFragmentDoc}`;
+    ${CategoryCollectionFieldsFragmentDoc}
+${CategoryFieldsFragmentDoc}
+${ServicesFieldsFragmentDoc}`;
 
 export const useCategoryCollectionQuery = <
       TData = CategoryCollectionQuery,

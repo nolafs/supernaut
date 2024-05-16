@@ -3,6 +3,7 @@ fragment SectionComponentFields on SectionComponent {
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
+  ...ContentServiceListFields
 }
 
 fragment ProfileFields on Profile {
@@ -39,10 +40,37 @@ fragment ContentProfileComponentFields on ContentProfileComponent {
     id
   }
   mode
-  itemsCollection(limit: 10) {
+  itemsCollection(limit: 5) {
     items {
       ... on Entry {
         ...ProfileFields
+      }
+    }
+  }
+}
+
+fragment ContentServiceListFields on ContentServiceList {
+  __typename
+  sys {
+    id
+  }
+  title
+  servicesCollection(limit: 5) {
+    items {
+      __typename
+      sys {
+        id
+      }
+      name
+      servicesCollection(limit: 10) {
+        items {
+          __typename
+          sys {
+            id
+          }
+          name
+          slug
+        }
       }
     }
   }

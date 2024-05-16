@@ -22,6 +22,11 @@ export type SectionComponentFields_ContentProfileComponent_Fragment = (
   & ContentProfileComponentFieldsFragment
 );
 
+export type SectionComponentFields_ContentServiceList_Fragment = (
+  { __typename?: 'ContentServiceList' }
+  & ContentServiceListFieldsFragment
+);
+
 export type SectionComponentFields_QuoteComponent_Fragment = (
   { __typename?: 'QuoteComponent' }
   & QuoteComponentFieldsFragment
@@ -32,7 +37,7 @@ export type SectionComponentFields_Slider_Fragment = (
   & SliderFieldsFragment
 );
 
-export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
+export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
 
 export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
     { __typename?: 'Asset' }
@@ -43,6 +48,8 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
       { __typename?: 'Profile' }
       & ProfileFieldsFragment
     ) | null> } | null };
+
+export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
 export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
 
@@ -58,6 +65,9 @@ export type SectionFieldsFragment = { __typename: 'Section', internalName?: stri
   ) | (
     { __typename: 'ContentProfileComponent' }
     & SectionComponentFields_ContentProfileComponent_Fragment
+  ) | (
+    { __typename: 'ContentServiceList' }
+    & SectionComponentFields_ContentServiceList_Fragment
   ) | (
     { __typename: 'QuoteComponent' }
     & SectionComponentFields_QuoteComponent_Fragment
@@ -115,7 +125,7 @@ export const ContentProfileComponentFieldsFragmentDoc = `
     id
   }
   mode
-  itemsCollection(limit: 10) {
+  itemsCollection(limit: 5) {
     items {
       ... on Entry {
         ...ProfileFields
@@ -141,12 +151,41 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   padding
 }
     `;
+export const ContentServiceListFieldsFragmentDoc = `
+    fragment ContentServiceListFields on ContentServiceList {
+  __typename
+  sys {
+    id
+  }
+  title
+  servicesCollection(limit: 5) {
+    items {
+      __typename
+      sys {
+        id
+      }
+      name
+      servicesCollection(limit: 10) {
+        items {
+          __typename
+          sys {
+            id
+          }
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+    `;
 export const SectionComponentFieldsFragmentDoc = `
     fragment SectionComponentFields on SectionComponent {
   ...quoteComponentFields
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
+  ...ContentServiceListFields
 }
     `;
 export const SectionFieldsFragmentDoc = `
@@ -193,7 +232,8 @@ ${SliderItemFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
-${ContentColumnComponentFieldsFragmentDoc}`;
+${ContentColumnComponentFieldsFragmentDoc}
+${ContentServiceListFieldsFragmentDoc}`;
 
 export const useSectionQuery = <
       TData = SectionQuery,

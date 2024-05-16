@@ -17,7 +17,7 @@ export function SectionResolver({sections}: SectionResolverProps) {
     return null;
   }
 
-  console.log(sections)
+  console.log('SECTION',sections);
 
   return (<>
       { sections?.map((entry: any, index: number) => {
@@ -37,7 +37,6 @@ export function SectionResolver({sections}: SectionResolverProps) {
 
           )}
         </>
-
         )
       })}
     </>

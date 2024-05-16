@@ -9,7 +9,7 @@ export type SliderItemFragment = { __typename: 'SliderItem', internalName?: stri
     & AssetFieldsFragment
   ) | null };
 
-export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
+export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
       { __typename?: 'SliderItem' }
       & SliderItemFragment
     ) | null> } | null };
@@ -50,6 +50,7 @@ export const SliderFieldsFragmentDoc = `
   }
   internalName
   autoplay
+  slideDuration
   slidesCollection(limit: 10) {
     items {
       ...SliderItem

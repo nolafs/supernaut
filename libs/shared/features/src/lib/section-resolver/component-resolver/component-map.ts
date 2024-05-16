@@ -16,4 +16,7 @@ export const componentMap = {
   ContentColumnComponent: dynamic(() =>
     import('../../content/content-column/content-column').then(module => module.ContentColumn),
   ),
+  ContentServiceList: dynamic(() =>
+    import('../../services/services').then(module => module.Services),
+  ),
 };

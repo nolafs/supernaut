@@ -10,10 +10,10 @@ export interface ContentColumnProps {
   type?: 'text' | 'intro' | '1/2' | '3/9';
   hTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
   padding?: 'none' | 'sm' | 'md' | 'lg';
-  title?: string;
-  body?: string;
-  url?: string;
-  label?: string;
+  title?: string | undefined | null;
+  body?: string | undefined | null;
+  url?: string | undefined | null;
+  label?: string  | undefined | null;
   mode?: 'light' | 'dark';
   children?: ReactNode;
   hasAnimation?: boolean;

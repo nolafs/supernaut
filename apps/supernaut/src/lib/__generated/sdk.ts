@@ -424,8 +424,18 @@ export type CategoryFilter = {
 
 export type CategoryLinkingCollections = {
   __typename?: 'CategoryLinkingCollections';
+  contentServiceListCollection?: Maybe<ContentServiceListCollection>;
   entryCollection?: Maybe<EntryCollection>;
   workCollection?: Maybe<WorkCollection>;
+};
+
+
+export type CategoryLinkingCollectionsContentServiceListCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<CategoryLinkingCollectionsContentServiceListCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -444,6 +454,21 @@ export type CategoryLinkingCollectionsWorkCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+export enum CategoryLinkingCollectionsContentServiceListCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
 
 export enum CategoryLinkingCollectionsWorkCollectionOrder {
   FeaturedAsc = 'featured_ASC',
@@ -711,8 +736,6 @@ export enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -968,8 +991,6 @@ export enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1173,8 +1194,6 @@ export enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1540,8 +1559,6 @@ export enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1585,6 +1602,185 @@ export enum ContentProfileComponentOrder {
   InternalNameDesc = 'internalName_DESC',
   ModeAsc = 'mode_ASC',
   ModeDesc = 'mode_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
+export type ContentServiceList = Entry & {
+  __typename?: 'ContentServiceList';
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ContentServiceListLinkingCollections>;
+  servicesCollection?: Maybe<ContentServiceListServicesCollection>;
+  sys: Sys;
+  title?: Maybe<Scalars['String']['output']>;
+};
+
+
+/** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
+export type ContentServiceListInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
+export type ContentServiceListLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
+export type ContentServiceListServicesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentServiceListServicesCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<CategoryFilter>;
+};
+
+
+/** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
+export type ContentServiceListTitleArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContentServiceListCollection = {
+  __typename?: 'ContentServiceListCollection';
+  items: Array<Maybe<ContentServiceList>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ContentServiceListFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ContentServiceListFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ContentServiceListFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  services?: InputMaybe<CfCategoryNestedFilter>;
+  servicesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContentServiceListLinkingCollections = {
+  __typename?: 'ContentServiceListLinkingCollections';
+  entryCollection?: Maybe<EntryCollection>;
+  sectionCollection?: Maybe<SectionCollection>;
+};
+
+
+export type ContentServiceListLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ContentServiceListLinkingCollectionsSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentServiceListLinkingCollectionsSectionCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  BackgroundColorAsc = 'backgroundColor_ASC',
+  BackgroundColorDesc = 'backgroundColor_DESC',
+  ClassNameAsc = 'className_ASC',
+  ClassNameDesc = 'className_DESC',
+  HeightAsc = 'height_ASC',
+  HeightDesc = 'height_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LineBottomAsc = 'lineBottom_ASC',
+  LineBottomDesc = 'lineBottom_DESC',
+  LineTopAsc = 'lineTop_ASC',
+  LineTopDesc = 'lineTop_DESC',
+  MarginBottomAsc = 'marginBottom_ASC',
+  MarginBottomDesc = 'marginBottom_DESC',
+  MarginSizeAsc = 'marginSize_ASC',
+  MarginSizeDesc = 'marginSize_DESC',
+  MarginTopAsc = 'marginTop_ASC',
+  MarginTopDesc = 'marginTop_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
+  PaddingBottomAsc = 'paddingBottom_ASC',
+  PaddingBottomDesc = 'paddingBottom_DESC',
+  PaddingSizeAsc = 'paddingSize_ASC',
+  PaddingSizeDesc = 'paddingSize_DESC',
+  PaddingTopAsc = 'paddingTop_ASC',
+  PaddingTopDesc = 'paddingTop_DESC',
+  SectionIdAsc = 'sectionId_ASC',
+  SectionIdDesc = 'sectionId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TextColorAsc = 'textColor_ASC',
+  TextColorDesc = 'textColor_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
+}
+
+export enum ContentServiceListOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC'
+}
+
+export type ContentServiceListServicesCollection = {
+  __typename?: 'ContentServiceListServicesCollection';
+  items: Array<Maybe<Category>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export enum ContentServiceListServicesCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  NameAsc = 'name_ASC',
+  NameDesc = 'name_DESC',
+  SlugAsc = 'slug_ASC',
+  SlugDesc = 'slug_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -2937,6 +3133,8 @@ export type Query = {
   contentListItemCollection?: Maybe<ContentListItemCollection>;
   contentProfileComponent?: Maybe<ContentProfileComponent>;
   contentProfileComponentCollection?: Maybe<ContentProfileComponentCollection>;
+  contentServiceList?: Maybe<ContentServiceList>;
+  contentServiceListCollection?: Maybe<ContentServiceListCollection>;
   contentVideoComponent?: Maybe<ContentVideoComponent>;
   contentVideoComponentCollection?: Maybe<ContentVideoComponentCollection>;
   entryCollection?: Maybe<EntryCollection>;
@@ -3094,6 +3292,23 @@ export type QueryContentProfileComponentCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ContentProfileComponentFilter>;
+};
+
+
+export type QueryContentServiceListArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryContentServiceListCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentServiceListOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContentServiceListFilter>;
 };
 
 
@@ -3472,8 +3687,6 @@ export enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -3714,7 +3927,6 @@ export type Section = Entry & {
   className?: Maybe<Scalars['String']['output']>;
   component?: Maybe<SectionComponent>;
   contentfulMetadata: ContentfulMetadata;
-  dataComponent?: Maybe<Scalars['String']['output']>;
   height?: Maybe<Scalars['String']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   lineBottom?: Maybe<Scalars['Boolean']['output']>;
@@ -3756,12 +3968,6 @@ export type SectionClassNameArgs = {
 export type SectionComponentArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-/** Section wrapper for components [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/section) */
-export type SectionDataComponentArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -3862,7 +4068,7 @@ export type SectionCollection = {
   total: Scalars['Int']['output'];
 };
 
-export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | QuoteComponent | Slider;
+export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | QuoteComponent | Slider;
 
 export type SectionFilter = {
   AND?: InputMaybe<Array<InputMaybe<SectionFilter>>>;
@@ -3890,13 +4096,6 @@ export type SectionFilter = {
   className_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   component_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  dataComponent?: InputMaybe<Scalars['String']['input']>;
-  dataComponent_contains?: InputMaybe<Scalars['String']['input']>;
-  dataComponent_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  dataComponent_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  dataComponent_not?: InputMaybe<Scalars['String']['input']>;
-  dataComponent_not_contains?: InputMaybe<Scalars['String']['input']>;
-  dataComponent_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   height?: InputMaybe<Scalars['String']['input']>;
   height_contains?: InputMaybe<Scalars['String']['input']>;
   height_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4058,8 +4257,6 @@ export enum SectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -4977,6 +5174,7 @@ export type Slider = Entry & {
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<SliderLinkingCollections>;
+  slideDuration?: Maybe<Scalars['Int']['output']>;
   slidesCollection?: Maybe<SliderSlidesCollection>;
   strapline?: Maybe<Scalars['String']['output']>;
   sys: Sys;
@@ -4998,6 +5196,12 @@ export type SliderInternalNameArgs = {
 /** Slider [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/slider) */
 export type SliderLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Slider [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/slider) */
+export type SliderSlideDurationArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -5039,6 +5243,15 @@ export type SliderFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slideDuration?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slideDuration_gt?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_gte?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  slideDuration_lt?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_lte?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_not?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   slides?: InputMaybe<CfSliderItemNestedFilter>;
   slidesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   strapline?: InputMaybe<Scalars['String']['input']>;
@@ -5181,6 +5394,8 @@ export enum SliderItemLinkingCollectionsSliderCollectionOrder {
   AutoplayDesc = 'autoplay_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  SlideDurationAsc = 'slideDuration_ASC',
+  SlideDurationDesc = 'slideDuration_DESC',
   StraplineAsc = 'strapline_ASC',
   StraplineDesc = 'strapline_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -5240,8 +5455,6 @@ export enum SliderLinkingCollectionsSectionCollectionOrder {
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
   ClassNameDesc = 'className_DESC',
-  DataComponentAsc = 'dataComponent_ASC',
-  DataComponentDesc = 'dataComponent_DESC',
   HeightAsc = 'height_ASC',
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -5285,6 +5498,8 @@ export enum SliderOrder {
   AutoplayDesc = 'autoplay_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  SlideDurationAsc = 'slideDuration_ASC',
+  SlideDurationDesc = 'slideDuration_DESC',
   StraplineAsc = 'strapline_ASC',
   StraplineDesc = 'strapline_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -6292,7 +6507,15 @@ export type CftopSectionsMultiTypeNestedFilter = {
 
 export type AssetFieldsFragment = { __typename: 'Asset', contentType?: string | null, title?: string | null, description?: string | null, width?: number | null, height?: number | null, url?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type CategoryFieldsFragment = { __typename: 'Category', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryDescription', json: any } | null, linkedFrom?: { __typename?: 'CategoryLinkingCollections', workCollection?: { __typename?: 'WorkCollection', total: number, items: Array<{ __typename: 'Work', title?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null };
+export type CategoryFieldsFragment = { __typename: 'Category', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'CategoryDescription', json: any } | null, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<(
+      { __typename?: 'Services' }
+      & ServicesFieldsFragment
+    ) | null> } | null, linkedFrom?: { __typename?: 'CategoryLinkingCollections', workCollection?: { __typename?: 'WorkCollection', total: number, items: Array<{ __typename: 'Work', title?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null };
+
+export type CategoryCollectionFieldsFragment = { __typename: 'CategoryCollection', total: number, items: Array<(
+    { __typename?: 'Category' }
+    & CategoryFieldsFragment
+  ) | null> };
 
 export type CategoryCollectionQueryVariables = Exact<{
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -6301,10 +6524,10 @@ export type CategoryCollectionQueryVariables = Exact<{
 }>;
 
 
-export type CategoryCollectionQuery = { __typename?: 'Query', categoryCollection?: { __typename?: 'CategoryCollection', items: Array<(
-      { __typename?: 'Category' }
-      & CategoryFieldsFragment
-    ) | null> } | null };
+export type CategoryCollectionQuery = { __typename?: 'Query', categoryCollection?: (
+    { __typename?: 'CategoryCollection' }
+    & CategoryCollectionFieldsFragment
+  ) | null };
 
 export type PagesQueryVariables = Exact<{
   id: Scalars['String']['input'];
@@ -6370,6 +6593,11 @@ export type SectionComponentFields_ContentProfileComponent_Fragment = (
   & ContentProfileComponentFieldsFragment
 );
 
+export type SectionComponentFields_ContentServiceList_Fragment = (
+  { __typename?: 'ContentServiceList' }
+  & ContentServiceListFieldsFragment
+);
+
 export type SectionComponentFields_QuoteComponent_Fragment = (
   { __typename?: 'QuoteComponent' }
   & QuoteComponentFieldsFragment
@@ -6380,7 +6608,7 @@ export type SectionComponentFields_Slider_Fragment = (
   & SliderFieldsFragment
 );
 
-export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
+export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
 
 export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
     { __typename?: 'Asset' }
@@ -6391,6 +6619,8 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
       { __typename?: 'Profile' }
       & ProfileFieldsFragment
     ) | null> } | null };
+
+export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
 export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
 
@@ -6406,6 +6636,9 @@ export type SectionFieldsFragment = { __typename: 'Section', internalName?: stri
   ) | (
     { __typename: 'ContentProfileComponent' }
     & SectionComponentFields_ContentProfileComponent_Fragment
+  ) | (
+    { __typename: 'ContentServiceList' }
+    & SectionComponentFields_ContentServiceList_Fragment
   ) | (
     { __typename: 'QuoteComponent' }
     & SectionComponentFields_QuoteComponent_Fragment
@@ -6487,7 +6720,7 @@ export type SliderItemFragment = { __typename: 'SliderItem', internalName?: stri
     & AssetFieldsFragment
   ) | null };
 
-export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
+export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
       { __typename?: 'SliderItem' }
       & SliderItemFragment
     ) | null> } | null };
@@ -6564,6 +6797,76 @@ export type WorkFeaturedCollectionQuery = { __typename?: 'Query', workCollection
       & WorkFieldsFragment
     ) | null> } | null };
 
+export const ServicesFieldsFragmentDoc = gql`
+    fragment servicesFields on Services {
+  __typename
+  sys {
+    id
+  }
+  name
+  slug
+  description {
+    json
+  }
+  linkedFrom {
+    workCollection(limit: 10) {
+      total
+      items {
+        ... on Work {
+          __typename
+          sys {
+            id
+          }
+          title
+          slug
+        }
+      }
+    }
+  }
+}
+    `;
+export const CategoryFieldsFragmentDoc = gql`
+    fragment CategoryFields on Category {
+  __typename
+  sys {
+    id
+  }
+  name
+  slug
+  description {
+    json
+  }
+  servicesCollection(limit: 10) {
+    items {
+      ...servicesFields
+    }
+  }
+  linkedFrom {
+    workCollection(limit: 10) {
+      total
+      items {
+        ... on Work {
+          __typename
+          sys {
+            id
+          }
+          title
+          slug
+        }
+      }
+    }
+  }
+}
+    `;
+export const CategoryCollectionFieldsFragmentDoc = gql`
+    fragment CategoryCollectionFields on CategoryCollection {
+  __typename
+  total
+  items {
+    ...CategoryFields
+  }
+}
+    `;
 export const QuoteFieldsFragmentDoc = gql`
     fragment quoteFields on Quotes {
   __typename
@@ -6626,6 +6929,7 @@ export const SliderFieldsFragmentDoc = gql`
   }
   internalName
   autoplay
+  slideDuration
   slidesCollection(limit: 10) {
     items {
       ...SliderItem
@@ -6669,7 +6973,7 @@ export const ContentProfileComponentFieldsFragmentDoc = gql`
     id
   }
   mode
-  itemsCollection(limit: 10) {
+  itemsCollection(limit: 5) {
     items {
       ... on Entry {
         ...ProfileFields
@@ -6695,12 +6999,41 @@ export const ContentColumnComponentFieldsFragmentDoc = gql`
   padding
 }
     `;
+export const ContentServiceListFieldsFragmentDoc = gql`
+    fragment ContentServiceListFields on ContentServiceList {
+  __typename
+  sys {
+    id
+  }
+  title
+  servicesCollection(limit: 5) {
+    items {
+      __typename
+      sys {
+        id
+      }
+      name
+      servicesCollection(limit: 10) {
+        items {
+          __typename
+          sys {
+            id
+          }
+          name
+          slug
+        }
+      }
+    }
+  }
+}
+    `;
 export const SectionComponentFieldsFragmentDoc = gql`
     fragment SectionComponentFields on SectionComponent {
   ...quoteComponentFields
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
+  ...ContentServiceListFields
 }
     `;
 export const SectionFieldsFragmentDoc = gql`
@@ -6899,62 +7232,6 @@ export const SettingsFieldsFragmentDoc = gql`
   }
 }
     `;
-export const CategoryFieldsFragmentDoc = gql`
-    fragment CategoryFields on Category {
-  __typename
-  sys {
-    id
-  }
-  name
-  slug
-  description {
-    json
-  }
-  linkedFrom {
-    workCollection(limit: 10) {
-      total
-      items {
-        ... on Work {
-          __typename
-          sys {
-            id
-          }
-          title
-          slug
-        }
-      }
-    }
-  }
-}
-    `;
-export const ServicesFieldsFragmentDoc = gql`
-    fragment servicesFields on Services {
-  __typename
-  sys {
-    id
-  }
-  name
-  slug
-  description {
-    json
-  }
-  linkedFrom {
-    workCollection(limit: 10) {
-      total
-      items {
-        ... on Work {
-          __typename
-          sys {
-            id
-          }
-          title
-          slug
-        }
-      }
-    }
-  }
-}
-    `;
 export const WorkFieldsFragmentDoc = gql`
     fragment workFields on Work {
   __typename
@@ -7010,12 +7287,12 @@ export const WorkFieldsDetailFragmentDoc = gql`
 export const CategoryCollectionDocument = gql`
     query categoryCollection($locale: String, $preview: Boolean, $limit: Int) {
   categoryCollection(locale: $locale, preview: $preview, limit: $limit) {
-    items {
-      ...CategoryFields
-    }
+    ...CategoryCollectionFields
   }
 }
-    ${CategoryFieldsFragmentDoc}`;
+    ${CategoryCollectionFieldsFragmentDoc}
+${CategoryFieldsFragmentDoc}
+${ServicesFieldsFragmentDoc}`;
 export const PagesDocument = gql`
     query pages($id: String!, $locale: String, $preview: Boolean) {
   pages(id: $id, locale: $locale, preview: $preview) {
@@ -7047,6 +7324,7 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentServiceListFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const QuoteComponentDocument = gql`
     query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
@@ -7071,7 +7349,8 @@ ${SliderItemFragmentDoc}
 ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
-${ContentColumnComponentFieldsFragmentDoc}`;
+${ContentColumnComponentFieldsFragmentDoc}
+${ContentServiceListFieldsFragmentDoc}`;
 export const ServiceCollectionDocument = gql`
     query serviceCollection($locale: String, $preview: Boolean, $limit: Int) {
   servicesCollection(locale: $locale, preview: $preview, limit: $limit) {
@@ -7134,6 +7413,7 @@ ${SliderItemFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentServiceListFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const WorkCollectionDocument = gql`
     query workCollection($skip: Int, $limit: Int, $locale: String, $preview: Boolean) {

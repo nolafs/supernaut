@@ -8,6 +8,11 @@ fragment CategoryFields on Category {
   description {
     json
   }
+  servicesCollection(limit: 10) {
+    items {
+      ...servicesFields
+    }
+  }
   linkedFrom {
     workCollection(limit: 10) {
       total
@@ -25,11 +30,17 @@ fragment CategoryFields on Category {
   }
 }
 
+fragment CategoryCollectionFields on CategoryCollection {
+  __typename
+  total
+  items {
+    ...CategoryFields
+  }
+}
+
 
 query categoryCollection($locale: String, $preview: Boolean, $limit: Int) {
   categoryCollection(locale: $locale, preview: $preview, limit: $limit) {
-    items {
-      ...CategoryFields
-    }
+    ...CategoryCollectionFields
   }
 }

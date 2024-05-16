@@ -219,8 +219,24 @@ input CategoryFilter {
 }
 
 type CategoryLinkingCollections {
+  contentServiceListCollection(limit: Int = 100, locale: String, order: [CategoryLinkingCollectionsContentServiceListCollectionOrder], preview: Boolean, skip: Int = 0): ContentServiceListCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   workCollection(limit: Int = 100, locale: String, order: [CategoryLinkingCollectionsWorkCollectionOrder], preview: Boolean, skip: Int = 0): WorkCollection
+}
+
+enum CategoryLinkingCollectionsContentServiceListCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
 }
 
 enum CategoryLinkingCollectionsWorkCollectionOrder {
@@ -404,8 +420,6 @@ enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -580,8 +594,6 @@ enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -731,8 +743,6 @@ enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -994,8 +1004,6 @@ enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -1039,6 +1047,137 @@ enum ContentProfileComponentOrder {
   internalName_DESC
   mode_ASC
   mode_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList)
+"""
+type ContentServiceList implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContentServiceListLinkingCollections
+  servicesCollection(limit: Int = 100, locale: String, order: [ContentServiceListServicesCollectionOrder], preview: Boolean, skip: Int = 0, where: CategoryFilter): ContentServiceListServicesCollection
+  sys: Sys!
+  title(locale: String): String
+}
+
+type ContentServiceListCollection {
+  items: [ContentServiceList]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContentServiceListFilter {
+  AND: [ContentServiceListFilter]
+  OR: [ContentServiceListFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  services: cfCategoryNestedFilter
+  servicesCollection_exists: Boolean
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+}
+
+type ContentServiceListLinkingCollections {
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [ContentServiceListLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
+  align_ASC
+  align_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  className_ASC
+  className_DESC
+  height_ASC
+  height_DESC
+  internalName_ASC
+  internalName_DESC
+  lineBottom_ASC
+  lineBottom_DESC
+  lineTop_ASC
+  lineTop_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginSize_ASC
+  marginSize_DESC
+  marginTop_ASC
+  marginTop_DESC
+  mode_ASC
+  mode_DESC
+  paddingBottom_ASC
+  paddingBottom_DESC
+  paddingSize_ASC
+  paddingSize_DESC
+  paddingTop_ASC
+  paddingTop_DESC
+  sectionId_ASC
+  sectionId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textColor_ASC
+  textColor_DESC
+  width_ASC
+  width_DESC
+}
+
+enum ContentServiceListOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+type ContentServiceListServicesCollection {
+  items: [Category]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum ContentServiceListServicesCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -2057,6 +2196,8 @@ type Query {
   contentListItemCollection(limit: Int = 100, locale: String, order: [ContentListItemOrder], preview: Boolean, skip: Int = 0, where: ContentListItemFilter): ContentListItemCollection
   contentProfileComponent(id: String!, locale: String, preview: Boolean): ContentProfileComponent
   contentProfileComponentCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentOrder], preview: Boolean, skip: Int = 0, where: ContentProfileComponentFilter): ContentProfileComponentCollection
+  contentServiceList(id: String!, locale: String, preview: Boolean): ContentServiceList
+  contentServiceListCollection(limit: Int = 100, locale: String, order: [ContentServiceListOrder], preview: Boolean, skip: Int = 0, where: ContentServiceListFilter): ContentServiceListCollection
   contentVideoComponent(id: String!, locale: String, preview: Boolean): ContentVideoComponent
   contentVideoComponentCollection(limit: Int = 100, locale: String, order: [ContentVideoComponentOrder], preview: Boolean, skip: Int = 0, where: ContentVideoComponentFilter): ContentVideoComponentCollection
   entryCollection(limit: Int = 100, locale: String, order: [EntryOrder], preview: Boolean, skip: Int = 0, where: EntryFilter): EntryCollection
@@ -2148,8 +2289,6 @@ enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -2341,7 +2480,6 @@ type Section implements Entry {
   className(locale: String): String
   component(locale: String, preview: Boolean): SectionComponent
   contentfulMetadata: ContentfulMetadata!
-  dataComponent(locale: String): String
   height(locale: String): String
   internalName(locale: String): String
   lineBottom(locale: String): Boolean
@@ -2367,7 +2505,7 @@ type SectionCollection {
   total: Int!
 }
 
-union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | QuoteComponent | Slider
+union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | QuoteComponent | Slider
 
 input SectionFilter {
   AND: [SectionFilter]
@@ -2395,13 +2533,6 @@ input SectionFilter {
   className_not_in: [String]
   component_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
-  dataComponent: String
-  dataComponent_contains: String
-  dataComponent_exists: Boolean
-  dataComponent_in: [String]
-  dataComponent_not: String
-  dataComponent_not_contains: String
-  dataComponent_not_in: [String]
   height: String
   height_contains: String
   height_exists: Boolean
@@ -2536,8 +2667,6 @@ enum SectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -3175,6 +3304,7 @@ type Slider implements Entry {
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): SliderLinkingCollections
+  slideDuration(locale: String): Int
   slidesCollection(limit: Int = 100, locale: String, order: [SliderSlidesCollectionOrder], preview: Boolean, skip: Int = 0, where: SliderItemFilter): SliderSlidesCollection
   strapline(locale: String): String
   sys: Sys!
@@ -3201,6 +3331,15 @@ input SliderFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  slideDuration: Int
+  slideDuration_exists: Boolean
+  slideDuration_gt: Int
+  slideDuration_gte: Int
+  slideDuration_in: [Int]
+  slideDuration_lt: Int
+  slideDuration_lte: Int
+  slideDuration_not: Int
+  slideDuration_not_in: [Int]
   slides: cfSliderItemNestedFilter
   slidesCollection_exists: Boolean
   strapline: String
@@ -3282,6 +3421,8 @@ enum SliderItemLinkingCollectionsSliderCollectionOrder {
   autoplay_DESC
   internalName_ASC
   internalName_DESC
+  slideDuration_ASC
+  slideDuration_DESC
   strapline_ASC
   strapline_DESC
   sys_firstPublishedAt_ASC
@@ -3323,8 +3464,6 @@ enum SliderLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
-  dataComponent_ASC
-  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -3368,6 +3507,8 @@ enum SliderOrder {
   autoplay_DESC
   internalName_ASC
   internalName_DESC
+  slideDuration_ASC
+  slideDuration_DESC
   strapline_ASC
   strapline_DESC
   sys_firstPublishedAt_ASC

@@ -11,7 +11,7 @@ export default meta;
 
 export const Primary = {
   args: {
-    title: 'Our Services',
+    title: 'Our services',
     items: {
       items: [
         {

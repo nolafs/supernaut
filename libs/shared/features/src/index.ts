@@ -1,3 +1,4 @@
+export * from './lib/services/services';
 export * from './lib/contact-form/contact-form-dialog-button';
 export * from './lib/content/content-images/content-images';
 export { ContentVideo } from './lib/content/content-video/content-video';
@@ -8,7 +9,7 @@ export { Quotes } from './lib/quotes/quotes';
 export * from './lib/social-list/social-list';
 export * from './lib/navigation/navigation';
 export * from './lib/footer/footer';
-export { Slider }from './lib/slider/slider';
+export { Slider } from './lib/slider/slider';
 export { CookieBanner } from './lib/cookiebanner/cookiebanner';
 export { LogoAnimated } from './lib/logo/logo-animated';
 export * from './lib/content/content-profile-list/content-profile-list';
