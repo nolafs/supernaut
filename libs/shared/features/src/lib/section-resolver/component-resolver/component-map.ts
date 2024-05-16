@@ -22,4 +22,7 @@ export const componentMap = {
   ContentImageGridComponent: dynamic(() =>
     import('../../content/content-images/content-images').then(module => module.ContentImages),
   ),
+  ContentVideoComponent: dynamic(() =>
+    import('../../content/content-video/content-video').then(module => module.ContentVideo),
+  ),
 };
