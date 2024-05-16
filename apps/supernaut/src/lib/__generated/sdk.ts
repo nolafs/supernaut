@@ -6813,7 +6813,7 @@ export const ServicesFieldsFragmentDoc = gql`
     json
   }
   linkedFrom {
-    workCollection(limit: 10) {
+    workCollection(limit: 1) {
       total
       items {
         ... on Work {

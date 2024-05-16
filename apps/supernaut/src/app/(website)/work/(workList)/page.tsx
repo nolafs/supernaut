@@ -40,18 +40,25 @@ export default async function Page({searchParams}: {
           <Card
             title={featuredWork?.title}
             description={featuredWork?.subtitle}
-            image={featuredWork?.featureImage?.url} url={featuredWork?.slug} wide={true} />
+            url={featuredWork?.slug}
+            prefix={'work'}
+            image={featuredWork?.featureImage?.url}
+            wide={true} />
         </section>
 
         <section>
+          <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-16 mb:mt-20'}>
           {workData?.workCollection?.items.map((work, index) => {
             return (
-              <div key={index} className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-5'}>
-                {work?.title}
-
-              </div>
+                <Card key={index}
+                  title={work?.title}
+                  image={work?.featureImage?.url}
+                  url={work?.slug}
+                  prefix={'work'}
+                  wide={false} />
             )
           })}
+          </div>
         </section>
       </div>
     </div>

@@ -3,7 +3,6 @@ import { Navigation, Footer, Slider, Quotes } from '@supernaut/features';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { Section } from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
-
 import ContentList from '../../content/content-list/content-list';
 
 export interface PageHomeProps {

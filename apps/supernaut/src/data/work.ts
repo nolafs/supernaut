@@ -22,6 +22,18 @@ export async function WorkFeaturedCollection(limit: number, skip: number, locale
   return data;
 }
 
+export async function Work(slug: string, locale: string, preview: boolean) {
+  const gqlClient = preview ? previewClient : client;
+
+  const data = await gqlClient.work({
+    slug, locale, preview
+  });
+
+
+
+  return data.workCollection?.items[0] || null;
+}
+
 
 export async function WorkCategoryCollection(limit: number, skip: number, locale: string, preview: boolean) {
   const gqlClient = preview ? previewClient : client;

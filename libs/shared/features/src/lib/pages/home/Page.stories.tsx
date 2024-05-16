@@ -5,7 +5,7 @@ import * as Footer from '../../footer/footer.stories';
 import * as Slider from '../../slider/slider.stories';
 import * as Quotes from '../../quotes/quotes.stories';
 import * as ContentColumn from '../../content/content-column/content-column.stories';
-import * as ContentColumnImages from '../../content/content-column-images/content-column-images.stories';
+
 import * as ContentList from '../../content/content-list/content-list.stories';
 
 import { within } from '@storybook/testing-library';
@@ -23,7 +23,6 @@ export const Main = {
     navigation: Navigation.Primary.args,
     slider: Slider.Home.args,
     contentColumn: ContentColumn.Intro.args,
-    contentColumnImages: ContentColumnImages.Primary.args,
     quotes: Quotes.Primary.args,
     footer: Footer.Primary.args,
     contentList: ContentList.Primary.args,
