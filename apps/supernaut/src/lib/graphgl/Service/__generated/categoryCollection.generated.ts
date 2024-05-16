@@ -29,7 +29,7 @@ export const CategoryFieldsFragmentDoc = `
     json
   }
   linkedFrom {
-    workCollection(limit: 10) {
+    workCollection {
       total
       items {
         ... on Work {

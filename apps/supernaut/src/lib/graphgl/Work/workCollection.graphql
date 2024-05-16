@@ -4,24 +4,28 @@ fragment workFields on Work {
     id
   }
   title
-  category{
-    name
-    slug
-    description {
-      json
-    }
-  }
+  subtitle
   slug
   publishingDate
   featured
   featureImage {
     ...AssetFields
   }
+  serviceCategoryCollection(limit: 10) {
+    items {
+      ...CategoryFields
+    }
+  }
+  servicesCollection(limit: 10) {
+    items {
+      ...servicesFields
+    }
+  }
 
 }
 
-query workCollection($category: cfCategoryNestedFilter, $skip: Int, $limit: Int, $locale: String, $preview:Boolean) {
-  workCollection(where:{category: $category}, skip: $skip, limit: $limit, locale: $locale, preview: $preview, order:[publishingDate_DESC]) {
+query workCollection( $skip: Int, $limit: Int, $locale: String, $preview:Boolean) {
+  workCollection( skip: $skip, limit: $limit, locale: $locale, preview: $preview, order:[publishingDate_DESC]) {
     total
     limit
     skip

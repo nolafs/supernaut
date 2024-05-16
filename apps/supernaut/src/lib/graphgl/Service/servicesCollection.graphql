@@ -1,4 +1,4 @@
-fragment CategoryFields on Category {
+fragment servicesFields on Services {
   __typename
   sys {
     id
@@ -26,10 +26,10 @@ fragment CategoryFields on Category {
 }
 
 
-query categoryCollection($locale: String, $preview: Boolean, $limit: Int) {
-  categoryCollection(locale: $locale, preview: $preview, limit: $limit) {
+query serviceCollection($locale: String, $preview: Boolean, $limit: Int) {
+  servicesCollection(locale: $locale, preview: $preview, limit: $limit) {
     items {
-      ...CategoryFields
+      ...servicesFields
     }
   }
 }

@@ -1,16 +1,25 @@
 import * as Types from '../../../__generated/graphql.types';
 
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
+import { CategoryFieldsFragment } from '../../Category/__generated/categoryCollection.generated';
+import { ServicesFieldsFragment } from '../../Service/__generated/servicesCollection.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
+import { CategoryFieldsFragmentDoc } from '../../Category/__generated/categoryCollection.generated';
+import { ServicesFieldsFragmentDoc } from '../../Service/__generated/servicesCollection.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
-export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, slug?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, category?: { __typename?: 'Category', name?: string | null, slug?: string | null, description?: { __typename?: 'CategoryDescription', json: any } | null } | null, featureImage?: (
+export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, subtitle?: string | null, slug?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, featureImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null };
+  ) | null, serviceCategoryCollection?: { __typename?: 'WorkServiceCategoryCollection', items: Array<(
+      { __typename?: 'Category' }
+      & CategoryFieldsFragment
+    ) | null> } | null, servicesCollection?: { __typename?: 'WorkServicesCollection', items: Array<(
+      { __typename?: 'Services' }
+      & ServicesFieldsFragment
+    ) | null> } | null };
 
 export type WorkCollectionQueryVariables = Types.Exact<{
-  category?: Types.InputMaybe<Types.CfCategoryNestedFilter>;
   skip?: Types.InputMaybe<Types.Scalars['Int']['input']>;
   limit?: Types.InputMaybe<Types.Scalars['Int']['input']>;
   locale?: Types.InputMaybe<Types.Scalars['String']['input']>;
@@ -31,25 +40,28 @@ export const WorkFieldsFragmentDoc = `
     id
   }
   title
-  category {
-    name
-    slug
-    description {
-      json
-    }
-  }
+  subtitle
   slug
   publishingDate
   featured
   featureImage {
     ...AssetFields
   }
+  serviceCategoryCollection(limit: 10) {
+    items {
+      ...CategoryFields
+    }
+  }
+  servicesCollection(limit: 10) {
+    items {
+      ...servicesFields
+    }
+  }
 }
     `;
 export const WorkCollectionDocument = `
-    query workCollection($category: cfCategoryNestedFilter, $skip: Int, $limit: Int, $locale: String, $preview: Boolean) {
+    query workCollection($skip: Int, $limit: Int, $locale: String, $preview: Boolean) {
   workCollection(
-    where: {category: $category}
     skip: $skip
     limit: $limit
     locale: $locale
@@ -65,7 +77,9 @@ export const WorkCollectionDocument = `
   }
 }
     ${WorkFieldsFragmentDoc}
-${AssetFieldsFragmentDoc}`;
+${AssetFieldsFragmentDoc}
+${CategoryFieldsFragmentDoc}
+${ServicesFieldsFragmentDoc}`;
 
 export const useWorkCollectionQuery = <
       TData = WorkCollectionQuery,

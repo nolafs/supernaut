@@ -7,7 +7,7 @@ export default async function Page({searchParams}: {
 
   console.log('searchParams', searchParams);
 
-  const workData = await WorkCollection(null, 10, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
+  const workData = await WorkCollection(10, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
   const workFeatured = await WorkFeaturedCollection(1, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
   let featuredWork = null;
   console.log('workData', workData)
@@ -32,13 +32,14 @@ export default async function Page({searchParams}: {
     featuredWork = workData.workCollection.items[0]
   }
 
+  console.log('featuredWork', featuredWork)
+
   return (<div className={'wrapper mt-10'}>
       <div className={'border-t-2 border-secondary/40 pt-5 md:pt-10'}>
         <section>
           <Card
             title={featuredWork?.title}
-            description={''}
-            category={featuredWork?.category?.name}
+            description={featuredWork?.subtitle}
             image={featuredWork?.featureImage?.url} url={featuredWork?.slug} wide={true} />
         </section>
 

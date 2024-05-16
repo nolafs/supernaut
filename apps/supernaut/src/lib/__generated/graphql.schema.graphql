@@ -125,7 +125,7 @@ enum AssetOrder {
 }
 
 """
-Work Category [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/category)
+Service Category [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/category)
 """
 type Category implements Entry {
   contentfulMetadata: ContentfulMetadata!
@@ -133,6 +133,7 @@ type Category implements Entry {
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): CategoryLinkingCollections
   name(locale: String): String
+  servicesCollection(limit: Int = 100, locale: String, order: [CategoryServicesCollectionOrder], preview: Boolean, skip: Int = 0, where: ServicesFilter): CategoryServicesCollection
   slug(locale: String): String
   sys: Sys!
 }
@@ -205,6 +206,8 @@ input CategoryFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  services: cfServicesNestedFilter
+  servicesCollection_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -246,6 +249,30 @@ enum CategoryLinkingCollectionsWorkCollectionOrder {
 }
 
 enum CategoryOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type CategoryServicesCollection {
+  items: [Services]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum CategoryServicesCollectionOrder {
   internalName_ASC
   internalName_DESC
   name_ASC
@@ -377,6 +404,8 @@ enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -551,6 +580,8 @@ enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -700,6 +731,8 @@ enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -961,6 +994,8 @@ enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -2041,6 +2076,8 @@ type Query {
   sectionCollection(limit: Int = 100, locale: String, order: [SectionOrder], preview: Boolean, skip: Int = 0, where: SectionFilter): SectionCollection
   seo(id: String!, locale: String, preview: Boolean): Seo
   seoCollection(limit: Int = 100, locale: String, order: [SeoOrder], preview: Boolean, skip: Int = 0, where: SeoFilter): SeoCollection
+  services(id: String!, locale: String, preview: Boolean): Services
+  servicesCollection(limit: Int = 100, locale: String, order: [ServicesOrder], preview: Boolean, skip: Int = 0, where: ServicesFilter): ServicesCollection
   settings(id: String!, locale: String, preview: Boolean): Settings
   settingsCollection(limit: Int = 100, locale: String, order: [SettingsOrder], preview: Boolean, skip: Int = 0, where: SettingsFilter): SettingsCollection
   slider(id: String!, locale: String, preview: Boolean): Slider
@@ -2111,6 +2148,8 @@ enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -2302,6 +2341,7 @@ type Section implements Entry {
   className(locale: String): String
   component(locale: String, preview: Boolean): SectionComponent
   contentfulMetadata: ContentfulMetadata!
+  dataComponent(locale: String): String
   height(locale: String): String
   internalName(locale: String): String
   lineBottom(locale: String): Boolean
@@ -2355,6 +2395,13 @@ input SectionFilter {
   className_not_in: [String]
   component_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
+  dataComponent: String
+  dataComponent_contains: String
+  dataComponent_exists: Boolean
+  dataComponent_in: [String]
+  dataComponent_not: String
+  dataComponent_not_contains: String
+  dataComponent_not_in: [String]
   height: String
   height_contains: String
   height_exists: Boolean
@@ -2489,6 +2536,8 @@ enum SectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -2653,6 +2702,162 @@ enum SeoOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+"""
+Work Services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/services)
+"""
+type Services implements Entry {
+  contentfulMetadata: ContentfulMetadata!
+  description(locale: String): ServicesDescription
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ServicesLinkingCollections
+  name(locale: String): String
+  slug(locale: String): String
+  sys: Sys!
+}
+
+type ServicesCollection {
+  items: [Services]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+type ServicesDescription {
+  json: JSON!
+  links: ServicesDescriptionLinks!
+}
+
+type ServicesDescriptionAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ServicesDescriptionEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ServicesDescriptionLinks {
+  assets: ServicesDescriptionAssets!
+  entries: ServicesDescriptionEntries!
+  resources: ServicesDescriptionResources!
+}
+
+type ServicesDescriptionResources {
+  block: [ServicesDescriptionResourcesBlock!]!
+  hyperlink: [ServicesDescriptionResourcesHyperlink!]!
+  inline: [ServicesDescriptionResourcesInline!]!
+}
+
+type ServicesDescriptionResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ServicesDescriptionResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ServicesDescriptionResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+input ServicesFilter {
+  AND: [ServicesFilter]
+  OR: [ServicesFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
+}
+
+type ServicesLinkingCollections {
+  categoryCollection(limit: Int = 100, locale: String, order: [ServicesLinkingCollectionsCategoryCollectionOrder], preview: Boolean, skip: Int = 0): CategoryCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  workCollection(limit: Int = 100, locale: String, order: [ServicesLinkingCollectionsWorkCollectionOrder], preview: Boolean, skip: Int = 0): WorkCollection
+}
+
+enum ServicesLinkingCollectionsCategoryCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+enum ServicesLinkingCollectionsWorkCollectionOrder {
+  featured_ASC
+  featured_DESC
+  internalName_ASC
+  internalName_DESC
+  pageName_ASC
+  pageName_DESC
+  publishingDate_ASC
+  publishingDate_DESC
+  slug_ASC
+  slug_DESC
+  subtitle_ASC
+  subtitle_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+}
+
+enum ServicesOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 """
@@ -3118,6 +3323,8 @@ enum SliderLinkingCollectionsSectionCollectionOrder {
   backgroundColor_DESC
   className_ASC
   className_DESC
+  dataComponent_ASC
+  dataComponent_DESC
   height_ASC
   height_DESC
   internalName_ASC
@@ -3379,7 +3586,6 @@ input SysFilter {
 Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work)
 """
 type Work implements Entry {
-  category(locale: String, preview: Boolean, where: CategoryFilter): Category
   contentfulMetadata: ContentfulMetadata!
   featureImage(locale: String, preview: Boolean): Asset
   featured(locale: String): Boolean
@@ -3388,6 +3594,8 @@ type Work implements Entry {
   pageName(locale: String): String
   publishingDate(locale: String): DateTime
   seo(locale: String, preview: Boolean, where: SeoFilter): Seo
+  serviceCategoryCollection(limit: Int = 100, locale: String, order: [WorkServiceCategoryCollectionOrder], preview: Boolean, skip: Int = 0, where: CategoryFilter): WorkServiceCategoryCollection
+  servicesCollection(limit: Int = 100, locale: String, order: [WorkServicesCollectionOrder], preview: Boolean, skip: Int = 0, where: ServicesFilter): WorkServicesCollection
   slug(locale: String): String
   subtitle(locale: String): String
   sys: Sys!
@@ -3405,8 +3613,6 @@ type WorkCollection {
 input WorkFilter {
   AND: [WorkFilter]
   OR: [WorkFilter]
-  category: cfCategoryNestedFilter
-  category_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   featureImage_exists: Boolean
   featured: Boolean
@@ -3437,6 +3643,10 @@ input WorkFilter {
   publishingDate_not_in: [DateTime]
   seo: cfSeoNestedFilter
   seo_exists: Boolean
+  serviceCategory: cfCategoryNestedFilter
+  serviceCategoryCollection_exists: Boolean
+  services: cfServicesNestedFilter
+  servicesCollection_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -3490,6 +3700,54 @@ enum WorkOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
+}
+
+type WorkServiceCategoryCollection {
+  items: [Category]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum WorkServiceCategoryCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type WorkServicesCollection {
+  items: [Services]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+enum WorkServicesCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  name_ASC
+  name_DESC
+  slug_ASC
+  slug_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
 }
 
 type WorkTopSectionsCollection {
@@ -3553,6 +3811,7 @@ input cfCategoryNestedFilter {
   name_not: String
   name_not_contains: String
   name_not_in: [String]
+  servicesCollection_exists: Boolean
   slug: String
   slug_contains: String
   slug_exists: Boolean
@@ -3732,6 +3991,37 @@ input cfSeoNestedFilter {
   title_not: String
   title_not_contains: String
   title_not_in: [String]
+}
+
+input cfServicesNestedFilter {
+  AND: [cfServicesNestedFilter]
+  OR: [cfServicesNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  description_contains: String
+  description_exists: Boolean
+  description_not_contains: String
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  name: String
+  name_contains: String
+  name_exists: Boolean
+  name_in: [String]
+  name_not: String
+  name_not_contains: String
+  name_not_in: [String]
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  sys: SysFilter
 }
 
 input cfSliderItemNestedFilter {

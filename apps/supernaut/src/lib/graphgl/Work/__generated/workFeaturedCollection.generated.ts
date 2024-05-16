@@ -2,8 +2,12 @@ import * as Types from '../../../__generated/graphql.types';
 
 import { WorkFieldsFragment } from './workCollection.generated';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
+import { CategoryFieldsFragment } from '../../Category/__generated/categoryCollection.generated';
+import { ServicesFieldsFragment } from '../../Service/__generated/servicesCollection.generated';
 import { WorkFieldsFragmentDoc } from './workCollection.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
+import { CategoryFieldsFragmentDoc } from '../../Category/__generated/categoryCollection.generated';
+import { ServicesFieldsFragmentDoc } from '../../Service/__generated/servicesCollection.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
 export type WorkFeaturedCollectionQueryVariables = Types.Exact<{
@@ -40,7 +44,9 @@ export const WorkFeaturedCollectionDocument = `
   }
 }
     ${WorkFieldsFragmentDoc}
-${AssetFieldsFragmentDoc}`;
+${AssetFieldsFragmentDoc}
+${CategoryFieldsFragmentDoc}
+${ServicesFieldsFragmentDoc}`;
 
 export const useWorkFeaturedCollectionQuery = <
       TData = WorkFeaturedCollectionQuery,

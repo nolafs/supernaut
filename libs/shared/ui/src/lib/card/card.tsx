@@ -6,7 +6,7 @@ export interface CardProps {
   id?: string;
   title: string | undefined | null;
   description?: string | undefined | null;
-  category: string | undefined | null;
+  category?: string | undefined | null;
   image?: string | undefined | null;
   url?: string | undefined | null;
   wide: boolean;
