@@ -537,11 +537,178 @@ export enum CategoryServicesCollectionOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
+export type ContentBodyText = Entry & {
+  __typename?: 'ContentBodyText';
+  body?: Maybe<ContentBodyTextBody>;
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ContentBodyTextLinkingCollections>;
+  sys: Sys;
+};
+
+
+/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
+export type ContentBodyTextBodyArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
+export type ContentBodyTextInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
+export type ContentBodyTextLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type ContentBodyTextBody = {
+  __typename?: 'ContentBodyTextBody';
+  json: Scalars['JSON']['output'];
+  links: ContentBodyTextBodyLinks;
+};
+
+export type ContentBodyTextBodyAssets = {
+  __typename?: 'ContentBodyTextBodyAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type ContentBodyTextBodyEntries = {
+  __typename?: 'ContentBodyTextBodyEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type ContentBodyTextBodyLinks = {
+  __typename?: 'ContentBodyTextBodyLinks';
+  assets: ContentBodyTextBodyAssets;
+  entries: ContentBodyTextBodyEntries;
+  resources: ContentBodyTextBodyResources;
+};
+
+export type ContentBodyTextBodyResources = {
+  __typename?: 'ContentBodyTextBodyResources';
+  block: Array<ContentBodyTextBodyResourcesBlock>;
+  hyperlink: Array<ContentBodyTextBodyResourcesHyperlink>;
+  inline: Array<ContentBodyTextBodyResourcesInline>;
+};
+
+export type ContentBodyTextBodyResourcesBlock = ResourceLink & {
+  __typename?: 'ContentBodyTextBodyResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type ContentBodyTextBodyResourcesHyperlink = ResourceLink & {
+  __typename?: 'ContentBodyTextBodyResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type ContentBodyTextBodyResourcesInline = ResourceLink & {
+  __typename?: 'ContentBodyTextBodyResourcesInline';
+  sys: ResourceSys;
+};
+
+export type ContentBodyTextCollection = {
+  __typename?: 'ContentBodyTextCollection';
+  items: Array<Maybe<ContentBodyText>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ContentBodyTextFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ContentBodyTextFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ContentBodyTextFilter>>>;
+  body_contains?: InputMaybe<Scalars['String']['input']>;
+  body_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  body_not_contains?: InputMaybe<Scalars['String']['input']>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ContentBodyTextLinkingCollections = {
+  __typename?: 'ContentBodyTextLinkingCollections';
+  contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+};
+
+
+export type ContentBodyTextLinkingCollectionsContentColumnComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ContentBodyTextLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  HTagAsc = 'hTag_ASC',
+  HTagDesc = 'hTag_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LabelAsc = 'label_ASC',
+  LabelDesc = 'label_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
+  PaddingAsc = 'padding_ASC',
+  PaddingDesc = 'padding_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
+
+export enum ContentBodyTextOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponent = Entry & {
   __typename?: 'ContentColumnComponent';
   align?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['String']['output']>;
+  component?: Maybe<ContentColumnComponentComponent>;
   contentfulMetadata: ContentfulMetadata;
   hTag?: Maybe<Scalars['String']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
@@ -556,67 +723,74 @@ export type ContentColumnComponent = Entry & {
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentAlignArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentBodyArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+export type ContentColumnComponentComponentArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentHTagArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentModeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentPaddingArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -628,6 +802,8 @@ export type ContentColumnComponentCollection = {
   skip: Scalars['Int']['output'];
   total: Scalars['Int']['output'];
 };
+
+export type ContentColumnComponentComponent = ContentBodyText | ContentImageGridComponent;
 
 export type ContentColumnComponentFilter = {
   AND?: InputMaybe<Array<InputMaybe<ContentColumnComponentFilter>>>;
@@ -646,6 +822,7 @@ export type ContentColumnComponentFilter = {
   body_not?: InputMaybe<Scalars['String']['input']>;
   body_not_contains?: InputMaybe<Scalars['String']['input']>;
   body_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  component_exists?: InputMaybe<Scalars['Boolean']['input']>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   hTag?: InputMaybe<Scalars['String']['input']>;
   hTag_contains?: InputMaybe<Scalars['String']['input']>;
@@ -810,14 +987,14 @@ export type ContentImageGridComponent = Entry & {
   columnsMd?: Maybe<Scalars['Int']['output']>;
   columnsSm?: Maybe<Scalars['Int']['output']>;
   contentfulMetadata: ContentfulMetadata;
-  hasTitle?: Maybe<Scalars['Boolean']['output']>;
+  gridVariant?: Maybe<Scalars['Int']['output']>;
+  imageVariant?: Maybe<Scalars['Int']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   itemHeight?: Maybe<Scalars['Int']['output']>;
   itemWidth?: Maybe<Scalars['Int']['output']>;
   itemsCollection?: Maybe<AssetCollection>;
   linkedFrom?: Maybe<ContentImageGridComponentLinkingCollections>;
   sys: Sys;
-  title?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -840,7 +1017,13 @@ export type ContentImageGridComponentColumnsSmArgs = {
 
 
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
-export type ContentImageGridComponentHasTitleArgs = {
+export type ContentImageGridComponentGridVariantArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
+export type ContentImageGridComponentImageVariantArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -875,12 +1058,6 @@ export type ContentImageGridComponentItemsCollectionArgs = {
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
 export type ContentImageGridComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
-export type ContentImageGridComponentTitleArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type ContentImageGridComponentCollection = {
@@ -922,9 +1099,24 @@ export type ContentImageGridComponentFilter = {
   columnsSm_not?: InputMaybe<Scalars['Int']['input']>;
   columnsSm_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  hasTitle?: InputMaybe<Scalars['Boolean']['input']>;
-  hasTitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  hasTitle_not?: InputMaybe<Scalars['Boolean']['input']>;
+  gridVariant?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  gridVariant_gt?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_gte?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  gridVariant_lt?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_lte?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_not?: InputMaybe<Scalars['Int']['input']>;
+  gridVariant_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  imageVariant?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  imageVariant_gt?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_gte?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  imageVariant_lt?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_lte?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_not?: InputMaybe<Scalars['Int']['input']>;
+  imageVariant_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   internalName?: InputMaybe<Scalars['String']['input']>;
   internalName_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -952,19 +1144,22 @@ export type ContentImageGridComponentFilter = {
   itemWidth_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   itemsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type ContentImageGridComponentLinkingCollections = {
   __typename?: 'ContentImageGridComponentLinkingCollections';
+  contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
   entryCollection?: Maybe<EntryCollection>;
   sectionCollection?: Maybe<SectionCollection>;
+};
+
+
+export type ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -983,6 +1178,35 @@ export type ContentImageGridComponentLinkingCollectionsSectionCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+export enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  HTagAsc = 'hTag_ASC',
+  HTagDesc = 'hTag_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LabelAsc = 'label_ASC',
+  LabelDesc = 'label_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
+  PaddingAsc = 'padding_ASC',
+  PaddingDesc = 'padding_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
 
 export enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
@@ -1036,8 +1260,10 @@ export enum ContentImageGridComponentOrder {
   ColumnsMdDesc = 'columnsMd_DESC',
   ColumnsSmAsc = 'columnsSm_ASC',
   ColumnsSmDesc = 'columnsSm_DESC',
-  HasTitleAsc = 'hasTitle_ASC',
-  HasTitleDesc = 'hasTitle_DESC',
+  GridVariantAsc = 'gridVariant_ASC',
+  GridVariantDesc = 'gridVariant_DESC',
+  ImageVariantAsc = 'imageVariant_ASC',
+  ImageVariantDesc = 'imageVariant_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   ItemHeightAsc = 'itemHeight_ASC',
@@ -1051,12 +1277,10 @@ export enum ContentImageGridComponentOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponent = Entry & {
   __typename?: 'ContentListComponent';
   contentfulMetadata: ContentfulMetadata;
@@ -1069,36 +1293,34 @@ export type ContentListComponent = Entry & {
 };
 
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponentItemsCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ContentListComponentItemsCollectionOrder>>>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ContentListItemFilter>;
 };
 
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponentModeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
+/** Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent) */
 export type ContentListComponentTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1122,7 +1344,6 @@ export type ContentListComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  items?: InputMaybe<CfContentListItemNestedFilter>;
   itemsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   mode?: InputMaybe<Scalars['String']['input']>;
   mode_contains?: InputMaybe<Scalars['String']['input']>;
@@ -1143,26 +1364,11 @@ export type ContentListComponentFilter = {
 
 export type ContentListComponentItemsCollection = {
   __typename?: 'ContentListComponentItemsCollection';
-  items: Array<Maybe<ContentListItem>>;
+  items: Array<Maybe<Entry>>;
   limit: Scalars['Int']['output'];
   skip: Scalars['Int']['output'];
   total: Scalars['Int']['output'];
 };
-
-export enum ContentListComponentItemsCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
 
 export type ContentListComponentLinkingCollections = {
   __typename?: 'ContentListComponentLinkingCollections';
@@ -1248,190 +1454,6 @@ export enum ContentListComponentOrder {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC'
 }
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItem = Entry & {
-  __typename?: 'ContentListItem';
-  contentfulMetadata: ContentfulMetadata;
-  internalName?: Maybe<Scalars['String']['output']>;
-  items?: Maybe<Scalars['String']['output']>;
-  linkedFrom?: Maybe<ContentListItemLinkingCollections>;
-  sys: Sys;
-  test?: Maybe<ContentListItemTest>;
-  title?: Maybe<Scalars['String']['output']>;
-};
-
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItemInternalNameArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItemItemsArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItemLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItemTestArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem) */
-export type ContentListItemTitleArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-export type ContentListItemCollection = {
-  __typename?: 'ContentListItemCollection';
-  items: Array<Maybe<ContentListItem>>;
-  limit: Scalars['Int']['output'];
-  skip: Scalars['Int']['output'];
-  total: Scalars['Int']['output'];
-};
-
-export type ContentListItemFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ContentListItemFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ContentListItemFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  items?: InputMaybe<Scalars['String']['input']>;
-  items_contains?: InputMaybe<Scalars['String']['input']>;
-  items_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  items_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  items_not?: InputMaybe<Scalars['String']['input']>;
-  items_not_contains?: InputMaybe<Scalars['String']['input']>;
-  items_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-  test_contains?: InputMaybe<Scalars['String']['input']>;
-  test_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  test_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type ContentListItemLinkingCollections = {
-  __typename?: 'ContentListItemLinkingCollections';
-  contentListComponentCollection?: Maybe<ContentListComponentCollection>;
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type ContentListItemLinkingCollectionsContentListComponentCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ContentListItemLinkingCollectionsContentListComponentCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type ContentListItemLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export enum ContentListItemLinkingCollectionsContentListComponentCollectionOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
-export enum ContentListItemOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC'
-}
-
-export type ContentListItemTest = {
-  __typename?: 'ContentListItemTest';
-  json: Scalars['JSON']['output'];
-  links: ContentListItemTestLinks;
-};
-
-export type ContentListItemTestAssets = {
-  __typename?: 'ContentListItemTestAssets';
-  block: Array<Maybe<Asset>>;
-  hyperlink: Array<Maybe<Asset>>;
-};
-
-export type ContentListItemTestEntries = {
-  __typename?: 'ContentListItemTestEntries';
-  block: Array<Maybe<Entry>>;
-  hyperlink: Array<Maybe<Entry>>;
-  inline: Array<Maybe<Entry>>;
-};
-
-export type ContentListItemTestLinks = {
-  __typename?: 'ContentListItemTestLinks';
-  assets: ContentListItemTestAssets;
-  entries: ContentListItemTestEntries;
-  resources: ContentListItemTestResources;
-};
-
-export type ContentListItemTestResources = {
-  __typename?: 'ContentListItemTestResources';
-  block: Array<ContentListItemTestResourcesBlock>;
-  hyperlink: Array<ContentListItemTestResourcesHyperlink>;
-  inline: Array<ContentListItemTestResourcesInline>;
-};
-
-export type ContentListItemTestResourcesBlock = ResourceLink & {
-  __typename?: 'ContentListItemTestResourcesBlock';
-  sys: ResourceSys;
-};
-
-export type ContentListItemTestResourcesHyperlink = ResourceLink & {
-  __typename?: 'ContentListItemTestResourcesHyperlink';
-  sys: ResourceSys;
-};
-
-export type ContentListItemTestResourcesInline = ResourceLink & {
-  __typename?: 'ContentListItemTestResourcesInline';
-  sys: ResourceSys;
-};
 
 /** Profile list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentProfileComponent) */
 export type ContentProfileComponent = Entry & {
@@ -3123,14 +3145,14 @@ export type Query = {
   assetCollection?: Maybe<AssetCollection>;
   category?: Maybe<Category>;
   categoryCollection?: Maybe<CategoryCollection>;
+  contentBodyText?: Maybe<ContentBodyText>;
+  contentBodyTextCollection?: Maybe<ContentBodyTextCollection>;
   contentColumnComponent?: Maybe<ContentColumnComponent>;
   contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
   contentImageGridComponent?: Maybe<ContentImageGridComponent>;
   contentImageGridComponentCollection?: Maybe<ContentImageGridComponentCollection>;
   contentListComponent?: Maybe<ContentListComponent>;
   contentListComponentCollection?: Maybe<ContentListComponentCollection>;
-  contentListItem?: Maybe<ContentListItem>;
-  contentListItemCollection?: Maybe<ContentListItemCollection>;
   contentProfileComponent?: Maybe<ContentProfileComponent>;
   contentProfileComponentCollection?: Maybe<ContentProfileComponentCollection>;
   contentServiceList?: Maybe<ContentServiceList>;
@@ -3210,6 +3232,23 @@ export type QueryCategoryCollectionArgs = {
 };
 
 
+export type QueryContentBodyTextArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryContentBodyTextCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentBodyTextOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContentBodyTextFilter>;
+};
+
+
 export type QueryContentColumnComponentArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -3258,23 +3297,6 @@ export type QueryContentListComponentCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ContentListComponentFilter>;
-};
-
-
-export type QueryContentListItemArgs = {
-  id: Scalars['String']['input'];
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-export type QueryContentListItemCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ContentListItemOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ContentListItemFilter>;
 };
 
 
@@ -6120,37 +6142,6 @@ export type CfCategoryNestedFilter = {
   sys?: InputMaybe<SysFilter>;
 };
 
-export type CfContentListItemNestedFilter = {
-  AND?: InputMaybe<Array<InputMaybe<CfContentListItemNestedFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<CfContentListItemNestedFilter>>>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  items?: InputMaybe<Scalars['String']['input']>;
-  items_contains?: InputMaybe<Scalars['String']['input']>;
-  items_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  items_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  items_not?: InputMaybe<Scalars['String']['input']>;
-  items_not_contains?: InputMaybe<Scalars['String']['input']>;
-  items_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-  test_contains?: InputMaybe<Scalars['String']['input']>;
-  test_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  test_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title?: InputMaybe<Scalars['String']['input']>;
-  title_contains?: InputMaybe<Scalars['String']['input']>;
-  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  title_not?: InputMaybe<Scalars['String']['input']>;
-  title_not_contains?: InputMaybe<Scalars['String']['input']>;
-  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
 export type CfNavigationItemNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfNavigationItemNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfNavigationItemNestedFilter>>>;
@@ -6622,7 +6613,20 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
 
 export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type ContentImageGridFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & AssetFieldsFragment
+    ) | null> } | null };
+
+export type ContentBodyTextFieldsFragment = { __typename: 'ContentBodyText', internalName?: string | null, body?: { __typename?: 'ContentBodyTextBody', json: any } | null };
+
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+    { __typename: 'ContentBodyText' }
+    & ContentBodyTextFieldsFragment
+  ) | (
+    { __typename: 'ContentImageGridComponent' }
+    & ContentImageGridFieldsFragment
+  ) | null };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -6982,6 +6986,34 @@ export const ContentProfileComponentFieldsFragmentDoc = gql`
   }
 }
     `;
+export const ContentImageGridFieldsFragmentDoc = gql`
+    fragment ContentImageGridFields on ContentImageGridComponent {
+  __typename
+  sys {
+    id
+  }
+  columnsLg
+  columnsMd
+  columnsSm
+  internalName
+  itemsCollection(limit: 10) {
+    items {
+      ...AssetFields
+    }
+  }
+  itemHeight
+  itemWidth
+}
+    `;
+export const ContentBodyTextFieldsFragmentDoc = gql`
+    fragment ContentBodyTextFields on ContentBodyText {
+  __typename
+  internalName
+  body {
+    json
+  }
+}
+    `;
 export const ContentColumnComponentFieldsFragmentDoc = gql`
     fragment ContentColumnComponentFields on ContentColumnComponent {
   __typename
@@ -6997,6 +7029,11 @@ export const ContentColumnComponentFieldsFragmentDoc = gql`
   url
   align
   padding
+  component {
+    __typename
+    ...ContentImageGridFields
+    ...ContentBodyTextFields
+  }
 }
     `;
 export const ContentServiceListFieldsFragmentDoc = gql`
@@ -7324,6 +7361,8 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentImageGridFieldsFragmentDoc}
+${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const QuoteComponentDocument = gql`
@@ -7350,6 +7389,8 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentImageGridFieldsFragmentDoc}
+${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}`;
 export const ServiceCollectionDocument = gql`
     query serviceCollection($locale: String, $preview: Boolean, $limit: Int) {
@@ -7413,6 +7454,8 @@ ${SliderItemFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentImageGridFieldsFragmentDoc}
+${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const WorkCollectionDocument = gql`

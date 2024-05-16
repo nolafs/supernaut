@@ -4,7 +4,7 @@ import { WorkFieldsFragment } from './workCollection.generated';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
 import { CategoryFieldsFragment } from '../../Category/__generated/categoryCollection.generated';
 import { ServicesFieldsFragment } from '../../Service/__generated/servicesCollection.generated';
-import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentImageGridComponent_Fragment, SectionComponentFields_ContentListComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_ContentServiceList_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment, ContentServiceListFieldsFragment } from '../../Section/__generated/section.generated';
+import { SectionFieldsFragment, SectionComponentFields_ContentColumnComponent_Fragment, SectionComponentFields_ContentImageGridComponent_Fragment, SectionComponentFields_ContentListComponent_Fragment, SectionComponentFields_ContentProfileComponent_Fragment, SectionComponentFields_ContentServiceList_Fragment, SectionComponentFields_QuoteComponent_Fragment, SectionComponentFields_Slider_Fragment, ContentProfileComponentFieldsFragment, ProfileFieldsFragment, ContentColumnComponentFieldsFragment, ContentImageGridFieldsFragment, ContentBodyTextFieldsFragment, ContentServiceListFieldsFragment } from '../../Section/__generated/section.generated';
 import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../QuoteItem/__generated/quoteComponent.generated';
 import { SliderFieldsFragment, SliderItemFragment } from '../../Slider/__generated/slider.generated';
 import { HeaderComponentFieldsFragment } from '../../Pages/__generated/pagesCollection.generated';
@@ -12,7 +12,7 @@ import { WorkFieldsFragmentDoc } from './workCollection.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { CategoryFieldsFragmentDoc } from '../../Category/__generated/categoryCollection.generated';
 import { ServicesFieldsFragmentDoc } from '../../Service/__generated/servicesCollection.generated';
-import { SectionFieldsFragmentDoc, SectionComponentFieldsFragmentDoc, ContentProfileComponentFieldsFragmentDoc, ProfileFieldsFragmentDoc, ContentColumnComponentFieldsFragmentDoc, ContentServiceListFieldsFragmentDoc } from '../../Section/__generated/section.generated';
+import { SectionFieldsFragmentDoc, SectionComponentFieldsFragmentDoc, ContentProfileComponentFieldsFragmentDoc, ProfileFieldsFragmentDoc, ContentColumnComponentFieldsFragmentDoc, ContentImageGridFieldsFragmentDoc, ContentBodyTextFieldsFragmentDoc, ContentServiceListFieldsFragmentDoc } from '../../Section/__generated/section.generated';
 import { QuoteComponentFieldsFragmentDoc, QuoteFieldsFragmentDoc } from '../../QuoteItem/__generated/quoteComponent.generated';
 import { SliderFieldsFragmentDoc, SliderItemFragmentDoc } from '../../Slider/__generated/slider.generated';
 import { HeaderComponentFieldsFragmentDoc } from '../../Pages/__generated/pagesCollection.generated';
@@ -95,6 +95,8 @@ ${SliderItemFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentImageGridFieldsFragmentDoc}
+${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 

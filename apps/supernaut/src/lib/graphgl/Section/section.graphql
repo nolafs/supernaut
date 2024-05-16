@@ -76,6 +76,32 @@ fragment ContentServiceListFields on ContentServiceList {
   }
 }
 
+fragment ContentImageGridFields on ContentImageGridComponent {
+  __typename
+  sys {
+    id
+  }
+  columnsLg
+  columnsMd
+  columnsSm
+  internalName
+  itemsCollection(limit: 10) {
+    items {
+      ...AssetFields
+    }
+  }
+  itemHeight
+  itemWidth
+}
+
+fragment ContentBodyTextFields on ContentBodyText {
+  __typename
+  internalName
+  body {
+    json
+  }
+}
+
 fragment ContentColumnComponentFields on ContentColumnComponent {
   __typename
   sys {
@@ -90,6 +116,11 @@ fragment ContentColumnComponentFields on ContentColumnComponent {
   url
   align
   padding
+  component {
+    __typename
+    ...ContentImageGridFields
+    ...ContentBodyTextFields
+  }
 }
 
 fragment SectionFields on Section {

@@ -19,4 +19,7 @@ export const componentMap = {
   ContentServiceList: dynamic(() =>
     import('../../services/services').then(module => module.Services),
   ),
+  ContentImageGridComponent: dynamic(() =>
+    import('../../content/content-images/content-images').then(module => module.ContentImages),
+  ),
 };

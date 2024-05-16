@@ -4,7 +4,6 @@ export * from './lib/content/content-images/content-images';
 export { ContentVideo } from './lib/content/content-video/content-video';
 export { ContactForm } from './lib/contact-form/contact-form';
 export * from './lib/content/content-list/content-list';
-export * from './lib/content/content-column-images/content-column-images';
 export { Quotes } from './lib/quotes/quotes';
 export * from './lib/social-list/social-list';
 export * from './lib/navigation/navigation';

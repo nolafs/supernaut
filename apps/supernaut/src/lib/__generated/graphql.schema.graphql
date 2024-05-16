@@ -306,11 +306,134 @@ enum CategoryServicesCollectionOrder {
 }
 
 """
-Simple block for text in columns [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
+Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText)
+"""
+type ContentBodyText implements Entry {
+  body(locale: String): ContentBodyTextBody
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContentBodyTextLinkingCollections
+  sys: Sys!
+}
+
+type ContentBodyTextBody {
+  json: JSON!
+  links: ContentBodyTextBodyLinks!
+}
+
+type ContentBodyTextBodyAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ContentBodyTextBodyEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ContentBodyTextBodyLinks {
+  assets: ContentBodyTextBodyAssets!
+  entries: ContentBodyTextBodyEntries!
+  resources: ContentBodyTextBodyResources!
+}
+
+type ContentBodyTextBodyResources {
+  block: [ContentBodyTextBodyResourcesBlock!]!
+  hyperlink: [ContentBodyTextBodyResourcesHyperlink!]!
+  inline: [ContentBodyTextBodyResourcesInline!]!
+}
+
+type ContentBodyTextBodyResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ContentBodyTextBodyResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ContentBodyTextBodyResourcesInline implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ContentBodyTextCollection {
+  items: [ContentBodyText]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContentBodyTextFilter {
+  AND: [ContentBodyTextFilter]
+  OR: [ContentBodyTextFilter]
+  body_contains: String
+  body_exists: Boolean
+  body_not_contains: String
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  sys: SysFilter
+}
+
+type ContentBodyTextLinkingCollections {
+  contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentColumnComponentCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+}
+
+enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
+  align_ASC
+  align_DESC
+  hTag_ASC
+  hTag_DESC
+  internalName_ASC
+  internalName_DESC
+  label_ASC
+  label_DESC
+  mode_ASC
+  mode_DESC
+  padding_ASC
+  padding_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
+}
+
+enum ContentBodyTextOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+"""
+Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
 """
 type ContentColumnComponent implements Entry {
   align(locale: String): String
   body(locale: String): String
+  component(locale: String, preview: Boolean): ContentColumnComponentComponent
   contentfulMetadata: ContentfulMetadata!
   hTag(locale: String): String
   internalName(locale: String): String
@@ -331,6 +454,8 @@ type ContentColumnComponentCollection {
   total: Int!
 }
 
+union ContentColumnComponentComponent = ContentBodyText | ContentImageGridComponent
+
 input ContentColumnComponentFilter {
   AND: [ContentColumnComponentFilter]
   OR: [ContentColumnComponentFilter]
@@ -348,6 +473,7 @@ input ContentColumnComponentFilter {
   body_not: String
   body_not_contains: String
   body_not_in: [String]
+  component_exists: Boolean
   contentfulMetadata: ContentfulMetadataFilter
   hTag: String
   hTag_contains: String
@@ -495,14 +621,14 @@ type ContentImageGridComponent implements Entry {
   columnsMd(locale: String): Int
   columnsSm(locale: String): Int
   contentfulMetadata: ContentfulMetadata!
-  hasTitle(locale: String): Boolean
+  gridVariant(locale: String): Int
+  imageVariant(locale: String): Int
   internalName(locale: String): String
   itemHeight(locale: String): Int
   itemWidth(locale: String): Int
   itemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   linkedFrom(allowedLocales: [String]): ContentImageGridComponentLinkingCollections
   sys: Sys!
-  title(locale: String): String
 }
 
 type ContentImageGridComponentCollection {
@@ -543,9 +669,24 @@ input ContentImageGridComponentFilter {
   columnsSm_not: Int
   columnsSm_not_in: [Int]
   contentfulMetadata: ContentfulMetadataFilter
-  hasTitle: Boolean
-  hasTitle_exists: Boolean
-  hasTitle_not: Boolean
+  gridVariant: Int
+  gridVariant_exists: Boolean
+  gridVariant_gt: Int
+  gridVariant_gte: Int
+  gridVariant_in: [Int]
+  gridVariant_lt: Int
+  gridVariant_lte: Int
+  gridVariant_not: Int
+  gridVariant_not_in: [Int]
+  imageVariant: Int
+  imageVariant_exists: Boolean
+  imageVariant_gt: Int
+  imageVariant_gte: Int
+  imageVariant_in: [Int]
+  imageVariant_lt: Int
+  imageVariant_lte: Int
+  imageVariant_not: Int
+  imageVariant_not_in: [Int]
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -573,18 +714,41 @@ input ContentImageGridComponentFilter {
   itemWidth_not_in: [Int]
   itemsCollection_exists: Boolean
   sys: SysFilter
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
 
 type ContentImageGridComponentLinkingCollections {
+  contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentColumnComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   sectionCollection(limit: Int = 100, locale: String, order: [ContentImageGridComponentLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder {
+  align_ASC
+  align_DESC
+  hTag_ASC
+  hTag_DESC
+  internalName_ASC
+  internalName_DESC
+  label_ASC
+  label_DESC
+  mode_ASC
+  mode_DESC
+  padding_ASC
+  padding_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
 }
 
 enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
@@ -639,8 +803,10 @@ enum ContentImageGridComponentOrder {
   columnsMd_DESC
   columnsSm_ASC
   columnsSm_DESC
-  hasTitle_ASC
-  hasTitle_DESC
+  gridVariant_ASC
+  gridVariant_DESC
+  imageVariant_ASC
+  imageVariant_DESC
   internalName_ASC
   internalName_DESC
   itemHeight_ASC
@@ -655,17 +821,15 @@ enum ContentImageGridComponentOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 """
-List of 3 level deep [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent)
+Content Columns list [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListComponent)
 """
 type ContentListComponent implements Entry {
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
-  itemsCollection(limit: Int = 100, locale: String, order: [ContentListComponentItemsCollectionOrder], preview: Boolean, skip: Int = 0, where: ContentListItemFilter): ContentListComponentItemsCollection
+  itemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentListComponentItemsCollection
   linkedFrom(allowedLocales: [String]): ContentListComponentLinkingCollections
   mode(locale: String): String
   sys: Sys!
@@ -690,7 +854,6 @@ input ContentListComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
-  items: cfContentListItemNestedFilter
   itemsCollection_exists: Boolean
   mode: String
   mode_contains: String
@@ -710,25 +873,10 @@ input ContentListComponentFilter {
 }
 
 type ContentListComponentItemsCollection {
-  items: [ContentListItem]!
+  items: [Entry]!
   limit: Int!
   skip: Int!
   total: Int!
-}
-
-enum ContentListComponentItemsCollectionOrder {
-  internalName_ASC
-  internalName_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
 }
 
 type ContentListComponentLinkingCollections {
@@ -796,134 +944,6 @@ enum ContentListComponentOrder {
   sys_publishedVersion_DESC
   title_ASC
   title_DESC
-}
-
-"""
-Content list Component item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentListItem)
-"""
-type ContentListItem implements Entry {
-  contentfulMetadata: ContentfulMetadata!
-  internalName(locale: String): String
-  items(locale: String): String
-  linkedFrom(allowedLocales: [String]): ContentListItemLinkingCollections
-  sys: Sys!
-  test(locale: String): ContentListItemTest
-  title(locale: String): String
-}
-
-type ContentListItemCollection {
-  items: [ContentListItem]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input ContentListItemFilter {
-  AND: [ContentListItemFilter]
-  OR: [ContentListItemFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  items: String
-  items_contains: String
-  items_exists: Boolean
-  items_in: [String]
-  items_not: String
-  items_not_contains: String
-  items_not_in: [String]
-  sys: SysFilter
-  test_contains: String
-  test_exists: Boolean
-  test_not_contains: String
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
-}
-
-type ContentListItemLinkingCollections {
-  contentListComponentCollection(limit: Int = 100, locale: String, order: [ContentListItemLinkingCollectionsContentListComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentListComponentCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-}
-
-enum ContentListItemLinkingCollectionsContentListComponentCollectionOrder {
-  internalName_ASC
-  internalName_DESC
-  mode_ASC
-  mode_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-}
-
-enum ContentListItemOrder {
-  internalName_ASC
-  internalName_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-}
-
-type ContentListItemTest {
-  json: JSON!
-  links: ContentListItemTestLinks!
-}
-
-type ContentListItemTestAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type ContentListItemTestEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type ContentListItemTestLinks {
-  assets: ContentListItemTestAssets!
-  entries: ContentListItemTestEntries!
-  resources: ContentListItemTestResources!
-}
-
-type ContentListItemTestResources {
-  block: [ContentListItemTestResourcesBlock!]!
-  hyperlink: [ContentListItemTestResourcesHyperlink!]!
-  inline: [ContentListItemTestResourcesInline!]!
-}
-
-type ContentListItemTestResourcesBlock implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ContentListItemTestResourcesHyperlink implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ContentListItemTestResourcesInline implements ResourceLink {
-  sys: ResourceSys!
 }
 
 """
@@ -2186,14 +2206,14 @@ type Query {
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   category(id: String!, locale: String, preview: Boolean): Category
   categoryCollection(limit: Int = 100, locale: String, order: [CategoryOrder], preview: Boolean, skip: Int = 0, where: CategoryFilter): CategoryCollection
+  contentBodyText(id: String!, locale: String, preview: Boolean): ContentBodyText
+  contentBodyTextCollection(limit: Int = 100, locale: String, order: [ContentBodyTextOrder], preview: Boolean, skip: Int = 0, where: ContentBodyTextFilter): ContentBodyTextCollection
   contentColumnComponent(id: String!, locale: String, preview: Boolean): ContentColumnComponent
   contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentColumnComponentOrder], preview: Boolean, skip: Int = 0, where: ContentColumnComponentFilter): ContentColumnComponentCollection
   contentImageGridComponent(id: String!, locale: String, preview: Boolean): ContentImageGridComponent
   contentImageGridComponentCollection(limit: Int = 100, locale: String, order: [ContentImageGridComponentOrder], preview: Boolean, skip: Int = 0, where: ContentImageGridComponentFilter): ContentImageGridComponentCollection
   contentListComponent(id: String!, locale: String, preview: Boolean): ContentListComponent
   contentListComponentCollection(limit: Int = 100, locale: String, order: [ContentListComponentOrder], preview: Boolean, skip: Int = 0, where: ContentListComponentFilter): ContentListComponentCollection
-  contentListItem(id: String!, locale: String, preview: Boolean): ContentListItem
-  contentListItemCollection(limit: Int = 100, locale: String, order: [ContentListItemOrder], preview: Boolean, skip: Int = 0, where: ContentListItemFilter): ContentListItemCollection
   contentProfileComponent(id: String!, locale: String, preview: Boolean): ContentProfileComponent
   contentProfileComponentCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentOrder], preview: Boolean, skip: Int = 0, where: ContentProfileComponentFilter): ContentProfileComponentCollection
   contentServiceList(id: String!, locale: String, preview: Boolean): ContentServiceList
@@ -3961,37 +3981,6 @@ input cfCategoryNestedFilter {
   slug_not_contains: String
   slug_not_in: [String]
   sys: SysFilter
-}
-
-input cfContentListItemNestedFilter {
-  AND: [cfContentListItemNestedFilter]
-  OR: [cfContentListItemNestedFilter]
-  contentfulMetadata: ContentfulMetadataFilter
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  items: String
-  items_contains: String
-  items_exists: Boolean
-  items_in: [String]
-  items_not: String
-  items_not_contains: String
-  items_not_in: [String]
-  sys: SysFilter
-  test_contains: String
-  test_exists: Boolean
-  test_not_contains: String
-  title: String
-  title_contains: String
-  title_exists: Boolean
-  title_in: [String]
-  title_not: String
-  title_not_contains: String
-  title_not_in: [String]
 }
 
 input cfNavigationItemNestedFilter {

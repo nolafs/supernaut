@@ -53,16 +53,21 @@ const COLUMNS_LG = [
 ];
 
 
-export function GridImages({items, columnsSm = 1, columnsMd = 2, columnsLg = 2, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 pb-5 md:px-10 md:pb-10 lg:px-20 lg:pb-[75px]'}: GridImagesProps) {
+export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 pb-5 md:px-10 md:pb-10 lg:px-20 lg:pb-[75px]'}: GridImagesProps) {
 
   if(!items || !items.length) return <div>No items</div>;
 
+  console.log('GridImages', columnsSm, columnsMd, columnsLg);
+
+
   return (
-      <div className={cn('grid', COLUMNS_SM[columnsSm], COLUMNS_MD[columnsMd], COLUMNS_LG[columnsLg], girdClass )}>
+      <div className={cn('grid', COLUMNS_SM[columnsSm || 0], COLUMNS_MD[columnsMd || 1 ], COLUMNS_LG[columnsLg || 1], girdClass )}>
         {items.map((item) => {
           return (
             <div key={item.id} className={cn('relative', imageClass)}>
-              <Image src={item.image} alt={item.alt} width={itemWidth} height={itemHeight} className={'image object-center object-cover w-full h-full'} />
+              { (item?.url) &&
+                <Image src={item.url} alt={item.title} width={itemWidth} height={itemHeight} className={'image object-center object-cover w-full h-full'} />
+              }
             </div>
           );
         })}

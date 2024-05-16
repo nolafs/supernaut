@@ -1,7 +1,8 @@
 /* eslint-disable-next-line */
 //'use client';
 import ComponentResolver from './component-resolver/component-resolver';
-import {Section, SectionProps} from '@supernaut/shared-ui';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {Section} from '@supernaut/shared-ui';
 
 export interface SectionResolverProps {
   sections: any[];

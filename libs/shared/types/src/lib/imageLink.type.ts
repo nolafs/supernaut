@@ -1,6 +1,10 @@
 export type TImageLink = {
   id: string | number;
-  image: string;
-  alt: string;
+  sys: {
+    id: string;
+  }
+  title: string;
+  weight: number;
+  height: number;
   url?: string;
 }

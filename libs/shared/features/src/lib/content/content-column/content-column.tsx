@@ -2,6 +2,7 @@ import {BlockAnimateOnScroll, BlockAnimationContext, BlockAnimationProvider} fro
 import { LinkPrimary } from '@supernaut/shared-ui';
 import cn from 'classnames';
 import {ReactNode} from 'react';
+import ComponentResolver from '../../section-resolver/component-resolver/component-resolver';
 
 
 /* eslint-disable-next-line */
@@ -17,7 +18,13 @@ export interface ContentColumnProps {
   mode?: 'light' | 'dark';
   children?: ReactNode;
   hasAnimation?: boolean;
+  component?: any
 }
+
+function generateRandomKey() {
+  return Math.random().toString(36).substring(7);
+}
+
 
 export function ContentColumn({
   type = '1/2',
@@ -29,14 +36,11 @@ export function ContentColumn({
   label,
   mode,
   padding = 'sm',
-  children
+  children,
+  component
 }: ContentColumnProps) {
 
-
-  console.log('ContentColumnProps', type, hTag, title, body, align, url, label, mode, padding, children);
-
-
-  if(type === 'intro' || type === 'text' || !children) {
+  if(type === 'intro' || type === 'text' || !children && component === undefined) {
 
 
     return (<BlockAnimationProvider>
@@ -77,6 +81,10 @@ export function ContentColumn({
     );
   }
   else {
+
+
+    console.log('component', component);
+
     return (<BlockAnimationProvider>
       <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row w-full gap-10',
         mode === 'dark' && 'text-white',
@@ -100,9 +108,20 @@ export function ContentColumn({
           </BlockAnimateOnScroll>
         </div>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-9/12')}>
-          <BlockAnimateOnScroll animation="fadeIn" duration={0.5} start="top 90%">
-            {children}
-          </BlockAnimateOnScroll>
+
+          {children &&
+            <BlockAnimateOnScroll animation="fadeIn" duration={0.5} start="top 90%">
+              {children}
+            </BlockAnimateOnScroll>
+          }
+
+
+          {(component !== undefined) && (
+            (component.__typename !== undefined) && (
+                <ComponentResolver key={`${component.__typename}-${generateRandomKey()} `}
+                                   componentProps={component!}/>
+            )
+          )}
         </div>
       </div>
       </BlockAnimationProvider>

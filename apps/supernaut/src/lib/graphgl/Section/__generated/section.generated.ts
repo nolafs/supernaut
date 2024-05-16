@@ -51,7 +51,20 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
 
 export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type ContentImageGridFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & AssetFieldsFragment
+    ) | null> } | null };
+
+export type ContentBodyTextFieldsFragment = { __typename: 'ContentBodyText', internalName?: string | null, body?: { __typename?: 'ContentBodyTextBody', json: any } | null };
+
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+    { __typename: 'ContentBodyText' }
+    & ContentBodyTextFieldsFragment
+  ) | (
+    { __typename: 'ContentImageGridComponent' }
+    & ContentImageGridFieldsFragment
+  ) | null };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -134,6 +147,34 @@ export const ContentProfileComponentFieldsFragmentDoc = `
   }
 }
     `;
+export const ContentImageGridFieldsFragmentDoc = `
+    fragment ContentImageGridFields on ContentImageGridComponent {
+  __typename
+  sys {
+    id
+  }
+  columnsLg
+  columnsMd
+  columnsSm
+  internalName
+  itemsCollection(limit: 10) {
+    items {
+      ...AssetFields
+    }
+  }
+  itemHeight
+  itemWidth
+}
+    `;
+export const ContentBodyTextFieldsFragmentDoc = `
+    fragment ContentBodyTextFields on ContentBodyText {
+  __typename
+  internalName
+  body {
+    json
+  }
+}
+    `;
 export const ContentColumnComponentFieldsFragmentDoc = `
     fragment ContentColumnComponentFields on ContentColumnComponent {
   __typename
@@ -149,6 +190,11 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   url
   align
   padding
+  component {
+    __typename
+    ...ContentImageGridFields
+    ...ContentBodyTextFields
+  }
 }
     `;
 export const ContentServiceListFieldsFragmentDoc = `
@@ -233,6 +279,8 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
+${ContentImageGridFieldsFragmentDoc}
+${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}`;
 
 export const useSectionQuery = <

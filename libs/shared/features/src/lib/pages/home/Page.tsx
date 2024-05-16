@@ -3,7 +3,7 @@ import { Navigation, Footer, Slider, Quotes } from '@supernaut/features';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import { Section } from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
-import ContentColumnImages from '../../content/content-column-images/content-column-images';
+
 import ContentList from '../../content/content-list/content-list';
 
 export interface PageHomeProps {
@@ -71,7 +71,7 @@ export function Page({
           marginBottom={true}
           mode={'dark'}
         >
-        <ContentColumnImages title={contentColumnImages.title} items={contentColumnImages.items}  />
+        test
       </Section>
 
       <Quotes
