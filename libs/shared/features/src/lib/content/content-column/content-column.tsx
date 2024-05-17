@@ -41,12 +41,14 @@ export function ContentColumn({
 }: ContentColumnProps) {
 
 
-  console.log('ContentColumn component', type,component);
+  console.log('ContentColumn', type === '1/2', component === undefined , !!children);
 
-  if(!type || !children && component === undefined)
+  console.log('ContentColumn', type === '1/2' && (component === undefined && !children));
+
+  if(!type && !children && component === undefined)
     return <NotificationBlock body={'Must set Component and type'} type={'error'}/>;
 
-  if (type === '1/2' &&  component === undefined)
+  if (type === '1/2' &&  (component === undefined  && !children))
     return <NotificationBlock body={'Must set component'} type={'error'}/>;
 
 
