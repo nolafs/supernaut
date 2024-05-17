@@ -623,10 +623,10 @@ type ContentImageGridComponent implements Entry {
   contentfulMetadata: ContentfulMetadata!
   gridVariant(locale: String): Int
   imageVariant(locale: String): Int
+  imagesCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   internalName(locale: String): String
   itemHeight(locale: String): Int
   itemWidth(locale: String): Int
-  itemsCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): AssetCollection
   linkedFrom(allowedLocales: [String]): ContentImageGridComponentLinkingCollections
   sys: Sys!
 }
@@ -687,6 +687,7 @@ input ContentImageGridComponentFilter {
   imageVariant_lte: Int
   imageVariant_not: Int
   imageVariant_not_in: [Int]
+  imagesCollection_exists: Boolean
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -712,7 +713,6 @@ input ContentImageGridComponentFilter {
   itemWidth_lte: Int
   itemWidth_not: Int
   itemWidth_not_in: [Int]
-  itemsCollection_exists: Boolean
   sys: SysFilter
 }
 

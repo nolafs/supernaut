@@ -13,7 +13,10 @@ export type SectionComponentFields_ContentColumnComponent_Fragment = (
   & ContentColumnComponentFieldsFragment
 );
 
-export type SectionComponentFields_ContentImageGridComponent_Fragment = { __typename?: 'ContentImageGridComponent' };
+export type SectionComponentFields_ContentImageGridComponent_Fragment = (
+  { __typename?: 'ContentImageGridComponent' }
+  & ContentImageGridComponentFieldsFragment
+);
 
 export type SectionComponentFields_ContentListComponent_Fragment = { __typename?: 'ContentListComponent' };
 
@@ -56,7 +59,7 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
 
 export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
-export type ContentImageGridFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'AssetCollection', items: Array<(
+export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null> } | null };
@@ -68,7 +71,7 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentBodyTextFieldsFragment
   ) | (
     { __typename: 'ContentImageGridComponent' }
-    & ContentImageGridFieldsFragment
+    & ContentImageGridComponentFieldsFragment
   ) | null };
 
 export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, mode?: string | null, sys: { __typename?: 'Sys', id: string } };
@@ -157,8 +160,8 @@ export const ContentProfileComponentFieldsFragmentDoc = `
   }
 }
     `;
-export const ContentImageGridFieldsFragmentDoc = `
-    fragment ContentImageGridFields on ContentImageGridComponent {
+export const ContentImageGridComponentFieldsFragmentDoc = `
+    fragment ContentImageGridComponentFields on ContentImageGridComponent {
   __typename
   sys {
     id
@@ -167,7 +170,7 @@ export const ContentImageGridFieldsFragmentDoc = `
   columnsMd
   columnsSm
   internalName
-  itemsCollection(limit: 10) {
+  imagesCollection(limit: 10) {
     items {
       ...AssetFields
     }
@@ -202,7 +205,7 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   padding
   component {
     __typename
-    ...ContentImageGridFields
+    ...ContentImageGridComponentFields
     ...ContentBodyTextFields
   }
 }
@@ -259,6 +262,7 @@ export const SectionComponentFieldsFragmentDoc = `
   ...ContentColumnComponentFields
   ...ContentServiceListFields
   ...ContentVideoComponentFields
+  ...ContentImageGridComponentFields
 }
     `;
 export const SectionFieldsFragmentDoc = `
@@ -306,7 +310,7 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
-${ContentImageGridFieldsFragmentDoc}
+${ContentImageGridComponentFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}`;

@@ -4,7 +4,7 @@ export type TImageLink = {
     id: string;
   }
   title: string;
-  weight?: number;
+  width?: number;
   height?: number;
   url?: string;
 }

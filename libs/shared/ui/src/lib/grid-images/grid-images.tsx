@@ -1,6 +1,7 @@
 import {TImageLink} from '@supernaut/types';
 import cn from 'classnames';
 import Image from 'next/image';
+import NotificationBlock from '../notification/notification-block';
 /* eslint-disable-next-line */
 export interface GridImagesProps {
  items: TImageLink[];
@@ -55,9 +56,9 @@ const COLUMNS_LG = [
 
 export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 pb-5 md:px-10 md:pb-10 lg:px-20 lg:pb-[75px]'}: GridImagesProps) {
 
-  if(!items || !items.length) return <div>No items</div>;
+  if(!items || !items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
-  console.log('GridImages', columnsSm, columnsMd, columnsLg);
+  console.log('GridImages', items, columnsSm, columnsMd, columnsLg);
 
 
   return (
@@ -66,7 +67,7 @@ export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, i
           return (
             <div key={item.id} className={cn('relative', imageClass)}>
               { (item?.url) &&
-                <Image src={item.url} alt={item.title} width={itemWidth} height={itemHeight} className={'image object-center object-cover w-full h-full'} />
+                <Image src={item.url} alt={item.title} width={itemWidth || item?.width} height={itemHeight || item?.height} className={'image object-center object-cover w-full h-full'} />
               }
             </div>
           );

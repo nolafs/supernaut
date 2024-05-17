@@ -989,10 +989,10 @@ export type ContentImageGridComponent = Entry & {
   contentfulMetadata: ContentfulMetadata;
   gridVariant?: Maybe<Scalars['Int']['output']>;
   imageVariant?: Maybe<Scalars['Int']['output']>;
+  imagesCollection?: Maybe<AssetCollection>;
   internalName?: Maybe<Scalars['String']['output']>;
   itemHeight?: Maybe<Scalars['Int']['output']>;
   itemWidth?: Maybe<Scalars['Int']['output']>;
-  itemsCollection?: Maybe<AssetCollection>;
   linkedFrom?: Maybe<ContentImageGridComponentLinkingCollections>;
   sys: Sys;
 };
@@ -1029,6 +1029,15 @@ export type ContentImageGridComponentImageVariantArgs = {
 
 
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
+export type ContentImageGridComponentImagesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
 export type ContentImageGridComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1043,15 +1052,6 @@ export type ContentImageGridComponentItemHeightArgs = {
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
 export type ContentImageGridComponentItemWidthArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
-export type ContentImageGridComponentItemsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -1117,6 +1117,7 @@ export type ContentImageGridComponentFilter = {
   imageVariant_lte?: InputMaybe<Scalars['Int']['input']>;
   imageVariant_not?: InputMaybe<Scalars['Int']['input']>;
   imageVariant_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  imagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   internalName?: InputMaybe<Scalars['String']['input']>;
   internalName_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1142,7 +1143,6 @@ export type ContentImageGridComponentFilter = {
   itemWidth_lte?: InputMaybe<Scalars['Int']['input']>;
   itemWidth_not?: InputMaybe<Scalars['Int']['input']>;
   itemWidth_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  itemsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -6630,7 +6630,10 @@ export type SectionComponentFields_ContentColumnComponent_Fragment = (
   & ContentColumnComponentFieldsFragment
 );
 
-export type SectionComponentFields_ContentImageGridComponent_Fragment = { __typename?: 'ContentImageGridComponent' };
+export type SectionComponentFields_ContentImageGridComponent_Fragment = (
+  { __typename?: 'ContentImageGridComponent' }
+  & ContentImageGridComponentFieldsFragment
+);
 
 export type SectionComponentFields_ContentListComponent_Fragment = { __typename?: 'ContentListComponent' };
 
@@ -6673,7 +6676,7 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
 
 export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
-export type ContentImageGridFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'AssetCollection', items: Array<(
+export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null> } | null };
@@ -6685,7 +6688,7 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentBodyTextFieldsFragment
   ) | (
     { __typename: 'ContentImageGridComponent' }
-    & ContentImageGridFieldsFragment
+    & ContentImageGridComponentFieldsFragment
   ) | null };
 
 export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, mode?: string | null, sys: { __typename?: 'Sys', id: string } };
@@ -7051,8 +7054,8 @@ export const ContentProfileComponentFieldsFragmentDoc = gql`
   }
 }
     `;
-export const ContentImageGridFieldsFragmentDoc = gql`
-    fragment ContentImageGridFields on ContentImageGridComponent {
+export const ContentImageGridComponentFieldsFragmentDoc = gql`
+    fragment ContentImageGridComponentFields on ContentImageGridComponent {
   __typename
   sys {
     id
@@ -7061,7 +7064,7 @@ export const ContentImageGridFieldsFragmentDoc = gql`
   columnsMd
   columnsSm
   internalName
-  itemsCollection(limit: 10) {
+  imagesCollection(limit: 10) {
     items {
       ...AssetFields
     }
@@ -7096,7 +7099,7 @@ export const ContentColumnComponentFieldsFragmentDoc = gql`
   padding
   component {
     __typename
-    ...ContentImageGridFields
+    ...ContentImageGridComponentFields
     ...ContentBodyTextFields
   }
 }
@@ -7153,6 +7156,7 @@ export const SectionComponentFieldsFragmentDoc = gql`
   ...ContentColumnComponentFields
   ...ContentServiceListFields
   ...ContentVideoComponentFields
+  ...ContentImageGridComponentFields
 }
     `;
 export const SectionFieldsFragmentDoc = gql`
@@ -7443,7 +7447,7 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
-${ContentImageGridFieldsFragmentDoc}
+${ContentImageGridComponentFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}
@@ -7472,7 +7476,7 @@ ${AssetFieldsFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
-${ContentImageGridFieldsFragmentDoc}
+${ContentImageGridComponentFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}`;
@@ -7538,7 +7542,7 @@ ${SliderItemFragmentDoc}
 ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
-${ContentImageGridFieldsFragmentDoc}
+${ContentImageGridComponentFieldsFragmentDoc}
 ${ContentBodyTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}

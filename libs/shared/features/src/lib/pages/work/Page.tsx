@@ -54,7 +54,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={ { items: [
+          imagesCollection={ { items: [
             {
               title: 'Image 1',
               id: '1',
@@ -106,7 +106,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={{items: [
+          imagesCollection={{items: [
             {
               title: 'Image 1',
               id: '1',
@@ -141,7 +141,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={{
+          imagesCollection={{
             items: [
               {
                 title: 'Image 1',
@@ -161,7 +161,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={ { items:[
+          imagesCollection={ { items:[
             {
               title: 'Image 1',
               id: '1',
@@ -184,7 +184,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={{ items:[
+          imagesCollection={{ items:[
             {
               title: 'Image 1',
               id: '1',
@@ -202,7 +202,7 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          itemsCollection={ {items:[
+          imagesCollection={ {items:[
             {
               title: 'Image 1',
               id: '1',

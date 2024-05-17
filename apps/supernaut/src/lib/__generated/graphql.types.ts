@@ -985,10 +985,10 @@ export type ContentImageGridComponent = Entry & {
   contentfulMetadata: ContentfulMetadata;
   gridVariant?: Maybe<Scalars['Int']['output']>;
   imageVariant?: Maybe<Scalars['Int']['output']>;
+  imagesCollection?: Maybe<AssetCollection>;
   internalName?: Maybe<Scalars['String']['output']>;
   itemHeight?: Maybe<Scalars['Int']['output']>;
   itemWidth?: Maybe<Scalars['Int']['output']>;
-  itemsCollection?: Maybe<AssetCollection>;
   linkedFrom?: Maybe<ContentImageGridComponentLinkingCollections>;
   sys: Sys;
 };
@@ -1025,6 +1025,15 @@ export type ContentImageGridComponentImageVariantArgs = {
 
 
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
+export type ContentImageGridComponentImagesCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
 export type ContentImageGridComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1039,15 +1048,6 @@ export type ContentImageGridComponentItemHeightArgs = {
 /** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
 export type ContentImageGridComponentItemWidthArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Images lists [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentImageGridComponent) */
-export type ContentImageGridComponentItemsCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
 };
 
 
@@ -1113,6 +1113,7 @@ export type ContentImageGridComponentFilter = {
   imageVariant_lte?: InputMaybe<Scalars['Int']['input']>;
   imageVariant_not?: InputMaybe<Scalars['Int']['input']>;
   imageVariant_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  imagesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   internalName?: InputMaybe<Scalars['String']['input']>;
   internalName_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1138,7 +1139,6 @@ export type ContentImageGridComponentFilter = {
   itemWidth_lte?: InputMaybe<Scalars['Int']['input']>;
   itemWidth_not?: InputMaybe<Scalars['Int']['input']>;
   itemWidth_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
-  itemsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
 };
 

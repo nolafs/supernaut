@@ -30,7 +30,7 @@ export const Primary = {
 
 export const Single: Story = {
   args: {
-    itemsCollection: {
+    imagesCollection: {
       items: [
         {
           id: '1',

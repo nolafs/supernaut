@@ -12,7 +12,7 @@ interface ItemsCollection {
 }
 
 export interface ContentImagesProps {
-  itemsCollection: ItemsCollection
+  imagesCollection: ItemsCollection
   columnsSm?: number;
   columnsMd?: number;
   columnsLg?: number;
@@ -34,13 +34,13 @@ const IMAGE_VARIANTS = [
 ]
 
 
-export function ContentImages({itemsCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
+export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
 
-  if(!itemsCollection || !itemsCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
+  console.log('ContentImages', imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight);
 
+  if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
-
-  if(itemsCollection.items.length === 1) {
+  if(imagesCollection.items.length === 1) {
     columnsSm = 0;
     columnsMd = 0;
     columnsLg = 0;
@@ -53,7 +53,7 @@ export function ContentImages({itemsCollection, mode, imageVariant, gridVariant,
         <GridImages
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
           girdClass={ GRID_VARIANTS[gridVariant || 0]}
-          items={itemsCollection.items}
+          items={imagesCollection.items}
           columnsSm={columnsSm}
           columnsMd={columnsMd}
           columnsLg={columnsLg}
