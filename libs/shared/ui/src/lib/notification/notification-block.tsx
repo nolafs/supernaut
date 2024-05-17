@@ -1,6 +1,6 @@
 /* eslint-disable-next-line */
-import {ExclamationCircleIcon, ExclamationTriangleIcon, InformationCircleIcon} from '@heroicons/react/16/solid';
-import {CheckCircleIcon} from '@contentful/f36-icons';
+import {ExclamationCircleIcon, ExclamationTriangleIcon, InformationCircleIcon, CheckCircleIcon} from '@heroicons/react/16/solid';
+
 
 export interface NotificationBlockProps {
   body: string;
