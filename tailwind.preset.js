@@ -40,6 +40,8 @@ module.exports = {
       black: colors.black,
       gray: colors.gray,
       red: colors.red,
+      yellow: colors.yellow,
+      blue: colors.blue,
       error: colors.red['600'],
       primary: colors.white,
       secondary: '#acacac',

@@ -4,6 +4,10 @@
 import {TProfileItem} from '@supernaut/types';
 import cn from 'classnames';
 import ContentProfileItem from './content-profile-item/content-profile-item';
+import dynamic from 'next/dynamic';
+
+const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.NotificationBlock));
+
 
 export interface ItemCollection {
   items: TProfileItem[];
@@ -16,6 +20,9 @@ export interface ContentProfileListProps {
 }
 
 export function ContentProfileList({itemsCollection, mode}: ContentProfileListProps) {
+
+  if(!itemsCollection || !itemsCollection.items.length) return <NotificationBlock body={'No items found'} type={'warning'} />;
+
   return (
     <div className={'w-full max-w-9xl mx-auto px-5 md:px-10'}>
       <div className={cn('flex flex-col md:flex-row w-full md:w-9/12',

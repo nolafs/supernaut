@@ -11,30 +11,33 @@ export default meta;
 type Story = StoryObj<typeof ContentImages>;
 
 export const Primary = {
-  args: {
-    items: [
-      {
-        id: '1',
-        image: 'https://fakeimg.pl/940x626',
-        alt: 'Image 1',
-      },
-      {
-        id: '2',
-        image: 'https://fakeimg.pl/640x226',
-        alt: 'Image 2',
-      },
-    ],
+  args: { itemsCollection: {
+      items: [
+        {
+          id: '1',
+          itemsCollection: 'https://fakeimg.pl/940x626',
+          title: 'Image 1',
+        },
+        {
+          id: '2',
+          url: 'https://fakeimg.pl/640x226',
+          title: 'Image 2',
+        },
+      ],
+    }
   },
 };
 
 export const Single: Story = {
   args: {
-    items: [
-      {
-        id: '1',
-        image: 'https://fakeimg.pl/1820x1024',
-        alt: 'Image 1',
-      },
-    ],
+    itemsCollection: {
+      items: [
+        {
+          id: '1',
+          url: 'https://fakeimg.pl/1820x1024',
+          title: 'Image 1',
+        },
+      ],
+    }
   },
 };

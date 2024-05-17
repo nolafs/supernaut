@@ -1,14 +1,15 @@
 'use client';
 /* eslint-disable-next-line */
 import dynamic from 'next/dynamic';
+const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.NotificationBlock));
 
 
 export interface ContentVideoProps {
   id: string;
   type: 'video' | 'youtube' | 'vimeo';
   src: string;
-  videoUpload: any,
-  title: string;
+  videoUpload?: any,
+  title?: string;
   poster?: string;
   frame?: boolean;
   mode?: 'light' | 'dark';
@@ -22,9 +23,13 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
 
   if(!src && !videoUpload[0]?.public_id) {
     return (
-      <div className={'block w-full p-5'}>
-        No Video defined
-      </div>
+      <NotificationBlock body={'No video source found'} type={'error'} />
+    );
+  }
+
+  if(!type) {
+    return (
+      <NotificationBlock body={'No video type found'} type={'error'} />
     );
   }
 
@@ -33,7 +38,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
     const Youtube = dynamic(() => import('./youtube'));
 
     return (
-        <Youtube id={id} title={title} poster={poster} src={src}  />
+        <Youtube id={id} title={title || id} poster={poster} src={src}  />
     );
   }
 
@@ -42,7 +47,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
     const Vimeo = dynamic(() => import('./vimeo'));
 
     return (
-        <Vimeo id={id} title={title} poster={poster} src={src}/>
+        <Vimeo id={id} title={title || id} poster={poster} src={src}/>
     );
   }
 
@@ -51,7 +56,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
     const CloudinaryVideo = dynamic(() => import('./video'));
 
     return (
-          <CloudinaryVideo id={id} title={title} poster={poster} src={videoUpload[0].public_id} autoplay={autoplay} controls={controls} frame={frame} />
+          <CloudinaryVideo id={id} title={title || id} poster={poster} src={videoUpload[0].public_id} autoplay={autoplay} controls={controls} frame={frame} />
     );
   }
 

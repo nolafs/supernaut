@@ -1,7 +1,11 @@
 /* eslint-disable-next-line */
-import {GridImages} from '@supernaut/shared-ui';
 import {TImageLink} from '@supernaut/types';
 import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+
+import dynamic from 'next/dynamic';
+
+const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.NotificationBlock));
+const GridImages = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.GridImages));
 
 interface ItemsCollection {
   items: TImageLink[];
@@ -32,9 +36,9 @@ const IMAGE_VARIANTS = [
 
 export function ContentImages({itemsCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
 
-  if(!itemsCollection || !itemsCollection.items.length) return <div>No items</div>;
+  if(!itemsCollection || !itemsCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
-  console.log('itemsCollection', imageVariant, gridVariant);
+
 
   if(itemsCollection.items.length === 1) {
     columnsSm = 0;

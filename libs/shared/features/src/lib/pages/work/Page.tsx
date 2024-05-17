@@ -1,8 +1,9 @@
 /* eslint-disable-next-line */
 import {Navigation, Footer, ContentProfileList, ContentVideo, ContentImages} from '@supernaut/features';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header, Section} from '@supernaut/shared-ui';
 import ContentColumn from '../../content/content-column/content-column';
-import ContentList from '../../content/content-list/content-list';
+
 
 export interface PageHomeProps {
   navigation: any;
@@ -53,18 +54,18 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
+          itemsCollection={ { items: [
             {
-              alt: 'Image 1',
+              title: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/940x626'
+              url: 'https://via.placeholder.com/940x626'
             },
             {
-              alt: 'Image 2',
+              title: 'Image 2',
               id: '2',
-              image: 'https://via.placeholder.com/640x226'
+              url: 'https://via.placeholder.com/640x226'
             }
-          ]}
+          ]}}
         />
       </Section>
 
@@ -105,13 +106,13 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
+          itemsCollection={{items: [
             {
-              alt: 'Image 1',
+              title: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/1840x1040'
+              url: 'https://via.placeholder.com/1840x1040'
             },
-          ]}
+          ]}}
         />
       </Section>
 
@@ -140,13 +141,15 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
-            {
-              alt: 'Image 1',
-              id: '1',
-              image: 'https://via.placeholder.com/1840x1200'
-            },
-          ]}
+          itemsCollection={{
+            items: [
+              {
+                title: 'Image 1',
+                id: '1',
+                url: 'https://via.placeholder.com/1840x1040'
+              },
+            ]
+          }}
         />
       </Section>
 
@@ -158,18 +161,18 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
+          itemsCollection={ { items:[
             {
-              alt: 'Image 1',
+              title: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/940x626'
+              url: 'https://via.placeholder.com/940x626'
             },
             {
-              alt: 'Image 2',
+              title: 'Image 2',
               id: '2',
-              image: 'https://via.placeholder.com/640x226'
+              url: 'https://via.placeholder.com/640x226'
             }
-          ]}
+          ]}}
         />
       </Section>
 
@@ -181,13 +184,13 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
+          itemsCollection={{ items:[
             {
-              alt: 'Image 1',
+              title: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/1940x600'
+              url: 'https://via.placeholder.com/1940x600'
             },
-          ]}
+          ]}}
         />
       </Section>
 
@@ -199,13 +202,13 @@ export function Page({
         mode={'dark'}
       >
         <ContentImages
-          items={[
+          itemsCollection={ {items:[
             {
-              alt: 'Image 1',
+              title: 'Image 1',
               id: '1',
-              image: 'https://via.placeholder.com/1940x1200'
+              url: 'https://via.placeholder.com/1940x1200'
             },
-          ]}
+          ]}}
         />
       </Section>
 

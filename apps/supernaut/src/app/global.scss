@@ -13,7 +13,7 @@
   }
 
   h1 {
-    @apply text-4xl md:text-5xl lg:text-[64px] font-medium leading-[60px];
+    @apply text-4xl md:text-5xl lg:text-[60px] font-medium lg:leading-[62px];
   }
 
   h2 {
@@ -39,6 +39,7 @@
 
   .splitTextOverflow {
     @apply overflow-hidden inline-block tracking-tight;
+    //line-height: 1.1;
   }
 
 

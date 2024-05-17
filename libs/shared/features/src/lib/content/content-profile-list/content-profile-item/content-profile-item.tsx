@@ -5,6 +5,7 @@ import {TProfileItem} from '@supernaut/types';
 import Image from 'next/image';
 import SocialList from '../../../social-list/social-list';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import {NotificationBlock} from '@supernaut/shared-ui';
 
 
 export interface ContentProfileItemProps {
@@ -12,6 +13,9 @@ export interface ContentProfileItemProps {
 }
 
 export function ContentProfileItem({item}: ContentProfileItemProps) {
+
+  if(!item) return <NotificationBlock body={'No profile data'} type={'error'} />;
+
   return (
     <div className={'flex flex-col space-y-4 md:space-y-7'}>
         <Image src={item.image.url} alt={item.name} width={735} height={810} />

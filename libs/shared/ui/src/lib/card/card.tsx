@@ -24,12 +24,15 @@ export function Card({id, title = 'title',category, description, image, url, pre
     const image = (media) ? media : '/assets/placeholder.webp';
 
     if(wide){
-      return (<div className={cn("overflow-hidden bg-gray-200 group-hover:opacity-75 mb-7")}>
-        <Image src={image} alt={title || ''}  width={1920} height={1150}  />
+      return (<div className={cn("relative overflow-hidden bg-gray-200 group-hover:opacity-75 mb-7")}>
+        <Image src={image} alt={title || ''}  width={1920} height={1150}
+               className={'absolute z-1 object-cover w-full h-full group-hover:scale-110 transform-gpu transition-all duration-500 ease-in-out'}/>
+        <Image src={placeholder} alt={'placeholder'} width={(1920)} height={1150}
+               className={'object-cover w-full h-full'}/>
       </div>)
     } else {
       return (<div className={cn("relative overflow-hidden bg-gray-200 group-hover:opacity-75 max-w-[890px] max-h-[613px] mb-4")}>
-        <Image src={image} alt={title || ''}  width={(890)} height={613} className={'absolute z-1 object-cover w-full h-full'} />
+        <Image src={image} alt={title || ''}  width={(890)} height={613} className={'absolute z-1 object-cover w-full h-full group-hover:scale-110 transform-gpu transition-all duration-500 ease-in-out'} />
         <Image src={placeholder} alt={'placeholder'} width={(890)} height={613} className={'object-cover w-full h-full'} />
       </div>)
     }

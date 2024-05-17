@@ -41,8 +41,6 @@ export function ContentColumn({
 }: ContentColumnProps) {
 
   if(type === 'intro' || type === 'text' || !children && component === undefined) {
-
-
     return (<BlockAnimationProvider>
         <div
           className={cn(
