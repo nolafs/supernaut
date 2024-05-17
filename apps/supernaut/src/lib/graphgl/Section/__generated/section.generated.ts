@@ -59,7 +59,7 @@ export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfil
 
 export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
 
-export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, imageVariant?: number | null, gridVariant?: number | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
       { __typename?: 'Asset' }
       & AssetFieldsFragment
     ) | null> } | null };
@@ -170,6 +170,8 @@ export const ContentImageGridComponentFieldsFragmentDoc = `
   columnsMd
   columnsSm
   internalName
+  imageVariant
+  gridVariant
   imagesCollection(limit: 10) {
     items {
       ...AssetFields

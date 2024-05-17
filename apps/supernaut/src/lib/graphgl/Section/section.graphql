@@ -89,6 +89,8 @@ fragment ContentImageGridComponentFields on ContentImageGridComponent {
   columnsMd
   columnsSm
   internalName
+  imageVariant
+  gridVariant
   imagesCollection(limit: 10) {
     items {
       ...AssetFields

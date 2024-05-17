@@ -25,7 +25,8 @@ export interface ContentImagesProps {
 
 const GRID_VARIANTS = [
   '',
-  'px-0 py-0 md:px-0 md:py-0 lg:px-0 lg:py-0'
+  'px-0 py-0 md:px-0 md:py-0 lg:px-0 lg:py-0',
+  'wrapper gap-0 md:gap-10'
   ]
 
 const IMAGE_VARIANTS = [
@@ -36,7 +37,8 @@ const IMAGE_VARIANTS = [
 
 export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
 
-  console.log('ContentImages', imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight);
+  console.log('ContentImages imageVariant', imageVariant);
+  console.log('ContentImages gridVariant', imageVariant);
 
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 

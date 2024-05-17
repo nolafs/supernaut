@@ -49,7 +49,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
 
 
   return (<ContentVideoAnimation handleReady={handlePlay}>
-    <div className={cn('relative', frame && 'p-10')}>
+    <div className={cn('wrapper relative', frame && 'p-10')}>
       <div className={cn('relative video')}>
         <div
           className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
