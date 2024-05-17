@@ -25,8 +25,9 @@ export interface ContentImagesProps {
 
 const GRID_VARIANTS = [
   '',
-  'px-0 py-0 md:px-0 md:py-0 lg:px-0 lg:py-0',
-  'wrapper gap-0 md:gap-10'
+  'wrapper p-0',
+  'wrapper p-0 gap-5 md:gap-10',
+  'wrapper gap-5 md:gap-10',
   ]
 
 const IMAGE_VARIANTS = [
