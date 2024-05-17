@@ -94,6 +94,8 @@ export function ContentColumn({
 
     console.log('component', component);
 
+
+
     return (<BlockAnimationProvider>
       <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row w-full gap-10',
         mode === 'dark' && 'text-white',
@@ -125,12 +127,13 @@ export function ContentColumn({
           }
 
 
-          {(component !== undefined) && (
-            (component.__typename !== undefined) && (
+          {( component !== null && component !== undefined  ) ? (
+
+            (component?.__typename !== undefined) && (
                 <ComponentResolver key={`${component.__typename}-${generateRandomKey()} `}
                                    componentProps={component!}/>
             )
-          )}
+          ) : <NotificationBlock body={'Component is not existing'} type={'error'}/>}
         </div>
       </div>
       </BlockAnimationProvider>

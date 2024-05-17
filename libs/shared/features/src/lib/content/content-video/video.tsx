@@ -38,14 +38,31 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
 
   videoSource.resize(fill().width(width).height(height));
 
-  const handlePlay = () => {
+  const handlePlay = (pause = false) => {
+    console.log('handlePlay', pause, videoSource)
     if (autoplay) {
       ref.current.videoRef.current.play();
     }
   }
 
+  const handleReplay = (pause = false) => {
+    console.log('handlePlay', pause, videoSource)
+    if (autoplay) {
+      ref.current.videoRef.current.currentTime = 0
+      ref.current.videoRef.current.play();
+    }
+  }
 
-  return (<ContentVideoAnimation handleReady={handlePlay}>
+  const handlePause = (pause = false) => {
+      ref.current.videoRef.current.paue();
+  }
+
+
+  return (<ContentVideoAnimation
+      handlePause={handlePause}
+      handleReplay={handleReplay}
+      handlePlay={handlePlay}
+    >
     <div className={cn('wrapper relative', frame && 'p-10')}>
       <div className={cn('relative video')}>
         <div

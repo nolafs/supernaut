@@ -8,10 +8,12 @@ gsap.registerPlugin(ScrollTrigger);
 
 export interface ContentVideoAnimationProps {
   children: ReactNode;
-  handleReady: () => void;
+  handlePlay: () => void;
+  handlePause: () => void;
+  handleReplay: () => void;
 }
 
-export function ContentVideoAnimation({children, handleReady}: ContentVideoAnimationProps) {
+export function ContentVideoAnimation({children, handlePlay, handlePause, handleReplay}: ContentVideoAnimationProps) {
   const ref = useRef<HTMLDivElement>(null);
   const [ready, setReady] = useState(false);
 
@@ -21,13 +23,26 @@ export function ContentVideoAnimation({children, handleReady}: ContentVideoAnima
         {
           opacity: 1, y: 0, duration: 1,
           scrollTrigger: {
-            //markers: true,
+            markers: true,
             trigger: ref.current,
-            start: 'top 90%',
+            start: 'top 80%',
+            end: 'bottom 30%',
           },
-          onComplete: () => {
+          onEnter: () => {
+            console.log('onEnter')
             setReady(true);
-            handleReady();
+            handlePlay();
+          },
+          onEnterBack: () => {
+            console.log('onEnterBack')
+            //handleReplay();
+          },
+          onLeave: () => {
+            console.log('onLeave')
+            //handlePause();
+          },
+          onLeaveBack: () => {
+            //handlePlay();
           }
         });
 
