@@ -131,11 +131,12 @@ export function ContentColumn({
 
           {( component !== null && component !== undefined  ) ? (
 
-            (component?.__typename !== undefined) && (
+            (component?.__typename !== undefined) ?
                 <ComponentResolver key={`${component.__typename}-${generateRandomKey()} `}
-                                   componentProps={component!}/>
-            )
-          ) : <NotificationBlock body={'Component is not existing'} type={'error'}/>}
+                                   componentProps={component!}/> :
+              <NotificationBlock body={'Component is not existing'} type={'error'}/>
+
+          ) : null}
         </div>
       </div>
       </BlockAnimationProvider>
