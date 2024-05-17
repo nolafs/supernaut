@@ -32,7 +32,7 @@ const GRID_VARIANTS = [
 
 const IMAGE_VARIANTS = [
   '',
-  'gap-0 md:gap-10 pt-10  max-w-10/12 mx-auto'
+  'gap-5 md:gap-10 pt-10  max-w-10/12 mx-auto'
 ]
 
 
