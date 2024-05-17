@@ -17,7 +17,7 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
   return (
     <Link
       href={{
-        pathname: item?.slug,
+        pathname: `/${item?.slug}`,
       }}
       className={cn(
         'cursor-pointer font-medium',
