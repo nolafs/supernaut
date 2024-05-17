@@ -19,12 +19,12 @@ export interface VideoProps {
   height?: number;
   autoplay?: boolean;
   controls?: boolean;
+  loop?: boolean;
   frame?: boolean;
-  mode?: 'light' | 'dark';
 }
 
 
-export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, mode, width = 1920, height = 1200}: VideoProps) {
+export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, loop = false, width = 1920, height = 1200}: VideoProps) {
 
   const ref = useRef<any>(null);
 
@@ -57,8 +57,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
             cldVid={videoSource}
             controls={controls}
             autoPlay={false}
-
-            //cldPoster={videoSource.format('webp')}
+            loop={loop}
           />
         </div>
 
