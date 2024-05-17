@@ -244,6 +244,8 @@ enum CategoryLinkingCollectionsWorkCollectionOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC
@@ -1218,7 +1220,6 @@ type ContentVideoComponent implements Entry {
   frame(locale: String): Boolean
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentVideoComponentLinkingCollections
-  mode(locale: String): String
   poster(locale: String, preview: Boolean): Asset
   src(locale: String): String
   sys: Sys!
@@ -1254,13 +1255,6 @@ input ContentVideoComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   poster_exists: Boolean
   src: String
   src_contains: String
@@ -1346,8 +1340,6 @@ enum ContentVideoComponentOrder {
   frame_DESC
   internalName_ASC
   internalName_DESC
-  mode_ASC
-  mode_DESC
   src_ASC
   src_DESC
   sys_firstPublishedAt_ASC
@@ -1536,6 +1528,8 @@ enum HeaderComponentLinkingCollectionsWorkCollectionOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC
@@ -2706,6 +2700,8 @@ enum SectionLinkingCollectionsWorkCollectionOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC
@@ -2858,6 +2854,8 @@ enum SeoLinkingCollectionsWorkCollectionOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC
@@ -3018,6 +3016,8 @@ enum ServicesLinkingCollectionsWorkCollectionOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC
@@ -3798,6 +3798,7 @@ type Work implements Entry {
   featured(locale: String): Boolean
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): WorkLinkingCollections
+  mode(locale: String): String
   pageName(locale: String): String
   publishingDate(locale: String): DateTime
   seo(locale: String, preview: Boolean, where: SeoFilter): Seo
@@ -3832,6 +3833,13 @@ input WorkFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
   pageName: String
   pageName_contains: String
   pageName_exists: Boolean
@@ -3889,6 +3897,8 @@ enum WorkOrder {
   featured_DESC
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   publishingDate_ASC

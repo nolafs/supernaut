@@ -141,8 +141,9 @@ fragment ContentVideoComponentFields on ContentVideoComponent {
   controls
   autoplay
   frame
-  mode
-
+  poster {
+    ...AssetFields
+  }
 }
 
 fragment SectionFields on Section {

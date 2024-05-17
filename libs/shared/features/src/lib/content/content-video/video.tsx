@@ -49,7 +49,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
     <div className={cn('wrapper relative', frame && 'p-10')}>
       <div className={cn('relative video')}>
         <div
-          className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
+          className={cn('w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
           <AdvancedVideo
             ref={ref}
             muted={(autoplay) ? true : false}
@@ -61,11 +61,14 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
             //cldPoster={videoSource.format('webp')}
           />
         </div>
-        <Image width={width} height={height} loading={'lazy'}
-               className={'z-10'}
-               src={(mode === 'light') ? placeholder : placeholder_white}
-               quality={60}
-               alt={title}/>
+
+        { (poster) &&
+          <Image width={width} height={height} loading={'lazy'}
+                            className={'z-10'}
+                            src={poster}
+                            quality={60}
+                            alt={title}/>
+        }
       </div>
     </div>
     </ContentVideoAnimation>

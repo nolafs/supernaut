@@ -475,6 +475,8 @@ export enum CategoryLinkingCollectionsWorkCollectionOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -1822,7 +1824,6 @@ export type ContentVideoComponent = Entry & {
   frame?: Maybe<Scalars['Boolean']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContentVideoComponentLinkingCollections>;
-  mode?: Maybe<Scalars['String']['output']>;
   poster?: Maybe<Asset>;
   src?: Maybe<Scalars['String']['output']>;
   sys: Sys;
@@ -1859,12 +1860,6 @@ export type ContentVideoComponentInternalNameArgs = {
 /** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
 export type ContentVideoComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
-export type ContentVideoComponentModeArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1926,13 +1921,6 @@ export type ContentVideoComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
   src_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2036,8 +2024,6 @@ export enum ContentVideoComponentOrder {
   FrameDesc = 'frame_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   SrcAsc = 'src_ASC',
   SrcDesc = 'src_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -2297,6 +2283,8 @@ export enum HeaderComponentLinkingCollectionsWorkCollectionOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -4307,6 +4295,8 @@ export enum SectionLinkingCollectionsWorkCollectionOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -4529,6 +4519,8 @@ export enum SeoLinkingCollectionsWorkCollectionOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -4754,6 +4746,8 @@ export enum ServicesLinkingCollectionsWorkCollectionOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -5858,6 +5852,7 @@ export type Work = Entry & {
   featured?: Maybe<Scalars['Boolean']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<WorkLinkingCollections>;
+  mode?: Maybe<Scalars['String']['output']>;
   pageName?: Maybe<Scalars['String']['output']>;
   publishingDate?: Maybe<Scalars['DateTime']['output']>;
   seo?: Maybe<Seo>;
@@ -5893,6 +5888,12 @@ export type WorkInternalNameArgs = {
 /** Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work) */
 export type WorkLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work) */
+export type WorkModeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -5988,6 +5989,13 @@ export type WorkFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  mode_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode_not?: InputMaybe<Scalars['String']['input']>;
+  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   pageName?: InputMaybe<Scalars['String']['input']>;
   pageName_contains?: InputMaybe<Scalars['String']['input']>;
   pageName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6054,6 +6062,8 @@ export enum WorkOrder {
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   PublishingDateAsc = 'publishingDate_ASC',
@@ -6691,7 +6701,10 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentImageGridComponentFieldsFragment
   ) | null };
 
-export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, mode?: string | null, sys: { __typename?: 'Sys', id: string } };
+export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string }, poster?: (
+    { __typename?: 'Asset' }
+    & AssetFieldsFragment
+  ) | null };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -7147,7 +7160,9 @@ export const ContentVideoComponentFieldsFragmentDoc = gql`
   controls
   autoplay
   frame
-  mode
+  poster {
+    ...AssetFields
+  }
 }
     `;
 export const SectionComponentFieldsFragmentDoc = gql`
