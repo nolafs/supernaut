@@ -23,7 +23,7 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
         {
           opacity: 1, y: 0, duration: 1,
           scrollTrigger: {
-            markers: true,
+            //markers: true,
             trigger: ref.current,
             start: 'top 80%',
             end: 'bottom 30%',
