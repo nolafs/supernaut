@@ -69,7 +69,7 @@ export function NavigationMobileMenu({
           <li key={item.id} className={'menu-button overflow-hidden'}>
             <Link
               href={{
-                pathname: item?.slug,
+                pathname: `/${item?.slug}`,
               }}
               className={
                 cn('text-2xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
