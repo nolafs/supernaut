@@ -37,10 +37,9 @@ const IMAGE_VARIANTS = [
 
 export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
 
-  console.log('ContentImages imageVariant', imageVariant);
-  console.log('ContentImages gridVariant', imageVariant);
-
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
+
+  console.log('ContentImages',columnsSm, columnsMd, columnsLg)
 
   if(imagesCollection.items.length === 1) {
     columnsSm = 0;

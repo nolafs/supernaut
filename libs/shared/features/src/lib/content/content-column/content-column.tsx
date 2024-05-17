@@ -1,5 +1,5 @@
 import {BlockAnimateOnScroll, BlockAnimationContext, BlockAnimationProvider} from '@supernaut/context';
-import { LinkPrimary } from '@supernaut/shared-ui';
+import {LinkPrimary, NotificationBlock} from '@supernaut/shared-ui';
 import cn from 'classnames';
 import {ReactNode} from 'react';
 import ComponentResolver from '../../section-resolver/component-resolver/component-resolver';
@@ -40,6 +40,17 @@ export function ContentColumn({
   component
 }: ContentColumnProps) {
 
+
+  console.log('ContentColumn component', type,component);
+
+  if(!type || !children && component === undefined)
+    return <NotificationBlock body={'Must set Component and type'} type={'error'}/>;
+
+  if (type === '1/2' &&  component === undefined)
+    return <NotificationBlock body={'Must set component'} type={'error'}/>;
+
+
+
   if(type === 'intro' || type === 'text' || !children && component === undefined) {
     return (<BlockAnimationProvider>
         <div
@@ -59,7 +70,7 @@ export function ContentColumn({
             {title && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
             {body && (<BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%">
               <div
-                className={'text-[28px] md:text-3xl lg:text-5xl font-normal leading-7'}
+                className={'text-[28px] md:text-3xl lg:text-5xl font-normal leading-7 splitTextOverflow'}
                 dangerouslySetInnerHTML={{__html: body}}
               />
               </BlockAnimateOnScroll>

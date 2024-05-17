@@ -39,9 +39,6 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
   videoSource.resize(fill().width(width).height(height));
 
   const handlePlay = () => {
-
-    console.log('handlePlay', ref.current.videoRef.current)
-
     if (autoplay) {
       ref.current.videoRef.current.play();
     }

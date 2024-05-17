@@ -37,7 +37,7 @@ export function Youtube({id, src, title, poster, mode, width = 1920, height = 12
 
   return (
     <ContentVideoAnimation handleReady={handlePlay}>
-    <div className={'relative'}>
+    <div className={'relative wrapper'}>
       <div
         className={cn('absolute bg-neutral w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9', (showPlayer) ? 'opacity-100 display' : 'opacity-0 hidden')}>
         {(showPlayer) && <ReactPlayer

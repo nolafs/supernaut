@@ -18,7 +18,7 @@ export function SectionResolver({sections}: SectionResolverProps) {
     return null;
   }
 
-  console.log('SECTION',sections)
+  console.log('SECTION',sections.map((entry: any) => entry.internalName));
 
   return (<>
       { sections?.map((entry: any, index: number) => {

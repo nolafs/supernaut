@@ -19,8 +19,6 @@ export interface ContentVideoProps {
 
 export function ContentVideo({id, type, title, src, videoUpload, poster, autoplay = true, controls = false, frame= false}: ContentVideoProps) {
 
-  console.log('ContentVideo', type, videoUpload[0].public_id);
-
   if(!src && !videoUpload[0]?.public_id) {
     return (
       <NotificationBlock body={'No video source found'} type={'error'} />

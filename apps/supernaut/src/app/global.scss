@@ -40,6 +40,9 @@
   .splitTextOverflow {
     @apply overflow-hidden inline-block tracking-tight;
     //line-height: 1.1;
+    > * {
+      @apply overflow-hidden inline-block tracking-tight;
+    }
   }
 
 
