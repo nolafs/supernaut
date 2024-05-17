@@ -1,6 +1,7 @@
 import {WorkCollection, WorkFeaturedCollection} from '../../../../data/work';
 import {Card} from '@supernaut/shared-ui';
-
+import {Suspense} from 'react';
+import InfiniteScrollPagination from '../../../../components/infinite-scroll-pagination/InfiniteScrollPagination';
 export default async function Page({searchParams}: {
   searchParams: { page: string, category: string }
 }) {
@@ -48,16 +49,9 @@ export default async function Page({searchParams}: {
 
         <section>
           <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-16 mb:mt-20'}>
-          {workData?.workCollection?.items.map((work, index) => {
-            return (
-                <Card key={index}
-                  title={work?.title}
-                  image={work?.featureImage?.url}
-                  url={work?.slug}
-                  prefix={'work'}
-                  wide={false} />
-            )
-          })}
+            <Suspense fallback={<div>Loading...</div>}>
+              <InfiniteScrollPagination />
+            </Suspense>
           </div>
         </section>
       </div>

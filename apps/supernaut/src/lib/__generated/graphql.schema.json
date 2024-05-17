@@ -5031,7 +5031,7 @@
       {
         "kind": "OBJECT",
         "name": "ContentColumnComponent",
-        "description": "Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)",
+        "description": "2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)",
         "fields": [
           {
             "name": "align",

@@ -430,7 +430,7 @@ enum ContentBodyTextOrder {
 }
 
 """
-Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
+2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
 """
 type ContentColumnComponent implements Entry {
   align(locale: String): String

@@ -705,7 +705,7 @@ export enum ContentBodyTextOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponent = Entry & {
   __typename?: 'ContentColumnComponent';
   align?: Maybe<Scalars['String']['output']>;
@@ -725,74 +725,74 @@ export type ContentColumnComponent = Entry & {
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentAlignArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentBodyArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentComponentArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentHTagArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentLabelArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentModeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentPaddingArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentTitleArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
-/** Heading and Content Column  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentUrlArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };

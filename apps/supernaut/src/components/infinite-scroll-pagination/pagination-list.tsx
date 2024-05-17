@@ -3,16 +3,36 @@ import {useInfiniteQuery} from '@tanstack/react-query'
 import {useInView} from 'react-intersection-observer'
 import {useEffect} from 'react'
 import dynamic from 'next/dynamic';
+import {client, previewClient} from '../../lib/client';
 
 const Card = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.Card), {ssr: false});
 
-/* eslint-disable-next-line */
-export interface PaginationListProps {
-  queryFn: () => void;
-  queryKey: string[];
+async function getWork({pageParam}: { pageParam: number }) {
+
+  const gqlClient = process.env.NEXT_PUBLIC_PREVIEW === 'true' ? previewClient : client;
+
+  const data = await gqlClient.workCollection({
+    skip: pageParam,
+    limit: 5,
+    preview: process.env.NEXT_PUBLIC_PREVIEW === 'true',
+    locale: 'en-US'
+
+  });
+
+  if (!data?.workCollection?.items.length) {
+    throw new Error('Failed to fetch data');
+  }
+
+  return data.workCollection.items;
+
 }
 
-export function PaginationList({queryFn, queryKey}: PaginationListProps) {
+
+/* eslint-disable-next-line */
+export interface PaginationListProps {
+}
+
+export function PaginationList({}: PaginationListProps) {
 
   const {ref, inView} = useInView();
 
@@ -24,8 +44,8 @@ export function PaginationList({queryFn, queryKey}: PaginationListProps) {
     isFetchingNextPage,
     status,
   } = useInfiniteQuery({
-    queryKey: queryKey,
-    queryFn: queryFn,
+    queryKey: ['work'],
+    queryFn: getWork,
     initialPageParam: 0,
     getNextPageParam: (lastPage: any, allPages) => {
       const nextPage =
