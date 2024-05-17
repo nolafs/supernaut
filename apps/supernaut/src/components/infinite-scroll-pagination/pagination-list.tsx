@@ -9,6 +9,8 @@ const Card = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.Card
 
 async function getWork({pageParam}: { pageParam: number }) {
 
+  console.log('GET Work', pageParam)
+
   const gqlClient = process.env.NEXT_PUBLIC_PREVIEW === 'true' ? previewClient : client;
 
   const data = await gqlClient.workCollection({
@@ -32,7 +34,7 @@ async function getWork({pageParam}: { pageParam: number }) {
 export interface PaginationListProps {
 }
 
-export function PaginationList({}: PaginationListProps) {
+export function PaginationList() {
 
   const {ref, inView} = useInView();
 
@@ -49,7 +51,7 @@ export function PaginationList({}: PaginationListProps) {
     initialPageParam: 0,
     getNextPageParam: (lastPage: any, allPages) => {
       const nextPage =
-        lastPage?.length === 20 ? allPages.length * 20 : undefined;
+        lastPage?.length === 5 ? allPages.length * 5 : undefined;
       return nextPage;
     },
   })
@@ -64,13 +66,27 @@ export function PaginationList({}: PaginationListProps) {
     <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-10 mt-16 mb:mt-20'}>
       {dataList?.pages.map(page =>
         page.map((dataList: any, index: number) => {
-            return (<Card key={index}
+          if (page.length == index + 1) {
+
+          return (
+
+              <Card key={index}
                           title={dataList?.title}
                           image={dataList?.featureImage?.url}
                           url={dataList?.slug}
                           prefix={'work'}
+                          innerRef={ref}
                           wide={false}/>)
 
+          } else {
+             return (<Card key={index}
+                  title={dataList?.title}
+                  image={dataList?.featureImage?.url}
+                  url={dataList?.slug}
+                  prefix={'work'}
+                  wide={false}/>
+            )
+          }
           }
         ))}
     </div>

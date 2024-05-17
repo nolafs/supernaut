@@ -13,9 +13,10 @@ export interface CardProps {
   url?: string | undefined | null;
   prefix?: string | undefined | null;
   wide: boolean;
+  innerRef?: (node ?: Element | null | undefined) => void
 }
 
-export function Card({id, title = 'title',category, description, image, url, prefix, wide = false}: CardProps) {
+export function Card({id, title = 'title',category, description, image, url, prefix, wide = false, innerRef}: CardProps) {
 
   const imageComp = (media: string) => {
 
@@ -42,7 +43,7 @@ export function Card({id, title = 'title',category, description, image, url, pre
     <Link href={{
       pathname: (prefix) ? `/${prefix}/${url}` : `/${url}` || '/',
     }}>
-      <div id={id} className={cn("group cursor-pointer relative text-primary", wide ? 'max-w-9xl' : 'max-w-[890px]')}>
+      <div id={id} ref={innerRef} className={cn("group cursor-pointer relative text-primary", wide ? 'max-w-9xl' : 'max-w-[890px]')}>
         {(image) && imageComp(image)}
         <div>
           <h2 className={'mb-2'}>{title}</h2>
