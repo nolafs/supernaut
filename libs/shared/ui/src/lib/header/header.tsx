@@ -28,7 +28,7 @@ export function Header({
   const descriptionContent = () => {
     if(description) {
       return (<div
-        className={cn(styles['header-body'], 'text-secondary text-lg')}
+        className={cn(styles['header-body'], 'text-secondary text-lg ')}
         dangerouslySetInnerHTML={{__html: description || ''}}
       ></div>)
     }
@@ -64,7 +64,7 @@ export function Header({
             >
               <div>
                 <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h2
-                  className={'splitTextOverflow'}>{subtitle}</h2></BlockAnimateOnScroll>
+                  className={'splitTextOverflow lg:text-[46px] lg:leading-[48px]'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
               <div className={'overflow-hidden'}>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.5,
