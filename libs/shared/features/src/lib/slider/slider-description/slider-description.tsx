@@ -26,19 +26,34 @@ export function SliderDescription({
 
   useGSAP(
     () => {
-      setTimeout(() => {
-        split.current = new SplitText('.header', { type: 'chars' });
-        setShow((prevState) => true);
-        tl.current.from([split.current.chars, '.body'], {
-          opacity: 0,
-          y: '100%',
-          duration: 0.5,
-          stagger: 0.05,
-          ease: 'power3.inOut',
-        });
-      }, 100);
+
+        setTimeout(() => {
+          tl.current = gsap.timeline();
+          split.current = new SplitText('.header', {type: 'chars'});
+
+          setShow((prevState) => true);
+
+          tl.current.from(split.current.chars, {
+            opacity: 0,
+            y: '100%',
+            duration: 0.5,
+            ease: 'power3.inOut',
+          });
+
+          tl.current.fromTo('.body', {
+            opacity: 0,
+            y: '100%',
+
+          }, {
+            opacity: 1,
+            y: 0,
+            duration: 0.5,
+            ease: 'power3.inOut'
+          }, '-=0.2');
+        }, 200);
+
     },
-    { dependencies: [id, title, description], scope: main, revertOnUpdate: false }
+    { dependencies: [title, description], scope: main, revertOnUpdate: false }
   );
 
   useEffect(() => {

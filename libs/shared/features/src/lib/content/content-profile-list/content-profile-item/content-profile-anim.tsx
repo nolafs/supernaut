@@ -39,7 +39,7 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
       scrollTrigger: {
         //markers: true,
         trigger: ref.current,
-        start: 'top 30%',
+        start: 'top 50%',
       }
     });
 

@@ -3,7 +3,7 @@
 import { TQuote } from '@supernaut/types';
 
 import { Swiper, SwiperSlide } from 'swiper/react';
-import { Autoplay } from 'swiper/modules';
+import { Autoplay, EffectCreative } from 'swiper/modules';
 import 'swiper/css';
 import 'swiper/css/autoplay';
 import cn from 'classnames';
@@ -54,13 +54,28 @@ export function Quotes({
             setCurrentIndex(e.realIndex);
             setCurrentSlide(items[e.realIndex]);
           }}
+          effect={'creative'}
           spaceBetween={20}
           slidesPerView={1}
           autoplay={autoplay ? { delay: slideDuration } : false}
           pagination={true}
           className={'w-full'}
           speed={1000}
-          modules={[Autoplay]}
+          creativeEffect={{
+            prev: {
+              //scale: 0.1,
+              //opacity: 0,
+              translate: [0, '-100%', 0],
+              origin: 'center',
+            },
+            next: {
+              opacity: 0,
+              translate: [0, '100%', 0],
+              //scale: 0.8,
+              origin: 'center',
+            },
+          }}
+          modules={[Autoplay, EffectCreative]}
         >
           {items.map((quote, index) => (
             <SwiperSlide id={`${internalName.replace(' ', '-').toLowerCase()}-${quote.sys.id}-${index}`} key={`${quote.sys.id}-${index}`}>

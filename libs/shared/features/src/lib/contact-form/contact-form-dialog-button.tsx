@@ -15,7 +15,7 @@ export function ContactFormDialogButton({label,isIcon=false}: ContactFormDialogB
 
   if(isIcon) {
     return (
-      <span className={'inline-block fill-primary :hover:fill-secondary w-6 h-6 ml-5 pt-[1px]'}
+      <span  className={'inline-block fill-primary :hover:fill-secondary w-6 h-6 ml-5 pt-[1px] cursor-pointer'}
             onClick={() => openModal('CONTACT')}>
         <span className={'sr-only'}>{label}</span>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">

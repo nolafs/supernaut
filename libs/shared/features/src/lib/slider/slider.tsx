@@ -1,5 +1,5 @@
 'use client';
-import { Navigation, Autoplay } from 'swiper/modules';
+import { Navigation, Autoplay, EffectCreative } from 'swiper/modules';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SliderItem from './slider-item/slider-item';
 import 'swiper/css';
@@ -11,6 +11,7 @@ import SliderControls from './slider-controls/slider-controls';
 import { CursorContextProvider } from '@supernaut/context';
 import SliderDescription from './slider-description/slider-description';
 import SliderStrapline from './slider-strapline/slider-strapline';
+
 import {TAssets} from '@supernaut/types';
 
 type Slide = {
@@ -58,13 +59,22 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
         >
           {strapline && <SliderStrapline strapline={strapline} />}
           <Swiper
-            modules={[Navigation, Autoplay]}
+            modules={[Navigation, Autoplay, EffectCreative]}
             onSlideChange={(e) => {
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
             autoplay={(autoplay) ? { delay: slideDuration } : false}
-
+            effect={'creative'}
+            creativeEffect={{
+              prev: {
+                shadow: true,
+                translate: [0, 0, -400],
+              },
+              next: {
+                translate: ['100%', 0, 0],
+              },
+            }}
             spaceBetween={50}
             slidesPerView={1}
             loop={false}
