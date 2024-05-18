@@ -84,8 +84,6 @@ export function Section({
           'h-auto': height === 'auto',
           'h-1/2': height === 'half',
           'h-svh': height === 'full',
-          //'border-gray-800 border-t-2': lineTop,
-          //'border-gray-700 border-b-2': lineBottom,
         },
         className
       )}
