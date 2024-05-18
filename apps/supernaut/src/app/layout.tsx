@@ -111,7 +111,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
           <Navigation items={navigation} mode={'dark'} social={social} contactFormDialog={settings?.contactFormDialog} />
 
-          <main>
+          <main className={'h-svh'}>
             {children}
           </main>
 

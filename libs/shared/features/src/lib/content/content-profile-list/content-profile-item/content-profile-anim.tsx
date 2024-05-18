@@ -29,7 +29,7 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
       }
     });
 
-    tl.current.fromTo('.cover', {yPercent: -100}, {yPercent:200, duration: 1, ease: 'ease-in'})
+    tl.current.fromTo('.cover', {yPercent: -100}, {yPercent:200, duration: 1, ease: 'ease-out'})
     tl.current.fromTo('.profile', {scale: 1.2, opacity: 0}, {scale: 1, opacity: 1, duration: 1})
     tl.current.fromTo('.cover', {yPercent: 200}, {yPercent: -100, duration: 0.5, ease: 'ease-out'}, '-=1')
     tl.current.fromTo('.bar-1', {yPercent: 0}, {yPercent: -400,  duration: 1}, '-=1')
@@ -39,7 +39,7 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
       scrollTrigger: {
         //markers: true,
         trigger: ref.current,
-        start: 'top 50%',
+        start: 'top 60%',
       }
     });
 
