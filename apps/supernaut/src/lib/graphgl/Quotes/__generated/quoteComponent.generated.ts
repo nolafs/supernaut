@@ -4,7 +4,7 @@ import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
 export type QuoteFieldsFragment = { __typename: 'Quotes', quote?: string | null, author?: string | null, position?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type QuoteComponentFieldsFragment = { __typename: 'QuoteComponent', internalName?: string | null, sys: { __typename?: 'Sys', id: string }, quotesCollection?: { __typename?: 'QuoteComponentQuotesCollection', items: Array<(
+export type QuoteComponentFieldsFragment = { __typename: 'QuoteComponent', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, quotesCollection?: { __typename?: 'QuoteComponentQuotesCollection', items: Array<(
       { __typename?: 'Quotes' }
       & QuoteFieldsFragment
     ) | null> } | null };
@@ -23,7 +23,7 @@ export type QuoteComponentQuery = { __typename?: 'Query', quoteComponent?: (
 
 
 export const QuoteFieldsFragmentDoc = `
-    fragment quoteFields on Quotes {
+    fragment QuoteFields on Quotes {
   __typename
   sys {
     id
@@ -34,23 +34,25 @@ export const QuoteFieldsFragmentDoc = `
 }
     `;
 export const QuoteComponentFieldsFragmentDoc = `
-    fragment quoteComponentFields on QuoteComponent {
+    fragment QuoteComponentFields on QuoteComponent {
   __typename
   sys {
     id
   }
   internalName
+  autoplay
+  slideDuration
   quotesCollection(limit: 10) {
     items {
-      ...quoteFields
+      ...QuoteFields
     }
   }
 }
     `;
 export const QuoteComponentDocument = `
-    query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
+    query QuoteComponent($id: String!, $locale: String, $preview: Boolean) {
   quoteComponent(id: $id, locale: $locale, preview: $preview) {
-    ...quoteComponentFields
+    ...QuoteComponentFields
   }
 }
     ${QuoteComponentFieldsFragmentDoc}
@@ -66,13 +68,13 @@ export const useQuoteComponentQuery = <
     
     return useQuery<QuoteComponentQuery, TError, TData>(
       {
-    queryKey: ['quoteComponent', variables],
+    queryKey: ['QuoteComponent', variables],
     queryFn: customFetcher<QuoteComponentQuery, QuoteComponentQueryVariables>(QuoteComponentDocument, variables),
     ...options
   }
     )};
 
-useQuoteComponentQuery.getKey = (variables: QuoteComponentQueryVariables) => ['quoteComponent', variables];
+useQuoteComponentQuery.getKey = (variables: QuoteComponentQueryVariables) => ['QuoteComponent', variables];
 
 
 useQuoteComponentQuery.fetcher = (variables: QuoteComponentQueryVariables, options?: RequestInit['headers']) => customFetcher<QuoteComponentQuery, QuoteComponentQueryVariables>(QuoteComponentDocument, variables, options);

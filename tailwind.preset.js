@@ -44,6 +44,7 @@ module.exports = {
       blue: colors.blue,
       error: colors.red['600'],
       primary: colors.white,
+      lines: '#3c3c3c',
       secondary: '#acacac',
       accent: '#E62997',
       neutral: '#191919',

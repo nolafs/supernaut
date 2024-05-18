@@ -1,4 +1,4 @@
-fragment quoteFields on Quotes {
+fragment QuoteFields on Quotes {
   __typename
   sys {
     id
@@ -8,22 +8,24 @@ fragment quoteFields on Quotes {
   position
 }
 
-fragment quoteComponentFields on QuoteComponent {
+fragment QuoteComponentFields on QuoteComponent {
   __typename
   sys {
     id
   }
   internalName
+  autoplay
+  slideDuration
   quotesCollection(limit: 10) {
     items {
-      ...quoteFields
+      ...QuoteFields
     }
   }
 }
 
 
-query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
+query QuoteComponent($id: String!, $locale: String, $preview: Boolean) {
   quoteComponent(id: $id, locale: $locale, preview: $preview) {
-    ...quoteComponentFields
+    ...QuoteComponentFields
   }
 }

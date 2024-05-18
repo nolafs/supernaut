@@ -1,5 +1,5 @@
 fragment SectionComponentFields on SectionComponent {
-  ...quoteComponentFields
+  ...QuoteComponentFields
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields

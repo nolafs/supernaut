@@ -8,7 +8,7 @@ export interface CardProps {
   id?: string;
   title: string | undefined | null;
   description?: string | undefined | null;
-  category?: string | undefined | null;
+  categories?: any[];
   image?: string | undefined | null;
   url?: string | undefined | null;
   prefix?: string | undefined | null;
@@ -16,7 +16,7 @@ export interface CardProps {
   innerRef?: (node ?: Element | null | undefined) => void
 }
 
-export function Card({id, title = 'title',category, description, image, url, prefix, wide = false, innerRef}: CardProps) {
+export function Card({id, title = 'title',categories, description, image, url, prefix, wide = false, innerRef}: CardProps) {
 
   const imageComp = (media: string) => {
 
@@ -47,7 +47,11 @@ export function Card({id, title = 'title',category, description, image, url, pre
         {(image) && imageComp(image)}
         <div>
           <h2 className={'mb-2'}>{title}</h2>
-          {(wide) ? <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{description}</p> : <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{category}</p>}
+          {(wide) ? <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{description}</p> : <ul className={'text-xl md:text-2xl lg:text-4xl font-normal flex flex-row space-x-5'}>
+            {categories && categories.map((category, index) => {
+              return <li key={index}>{category.name}</li>
+            })}
+          </ul>}
         </div>
       </div>
     </Link>

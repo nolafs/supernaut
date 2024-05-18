@@ -84,10 +84,8 @@ export function Section({
           'h-auto': height === 'auto',
           'h-1/2': height === 'half',
           'h-svh': height === 'full',
-          'border-t-2': lineTop,
-          'border-b-2': lineBottom,
-          'border-white': mode === 'light',
-          'border-black': mode === 'dark',
+          //'border-gray-800 border-t-2': lineTop,
+          //'border-gray-700 border-b-2': lineBottom,
         },
         className
       )}
@@ -96,7 +94,9 @@ export function Section({
         color: color ? color : undefined,
       }}
     >
+      { lineTop && <div className={'absolute top-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
       {children}
+      {lineBottom && <div className={'absolute bottom-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
     </section>
   );
 }

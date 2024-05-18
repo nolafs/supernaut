@@ -1,9 +1,9 @@
 import * as Types from '../../../__generated/graphql.types';
 
-import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../QuoteItem/__generated/quoteComponent.generated';
+import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../Quotes/__generated/quoteComponent.generated';
 import { SliderFieldsFragment, SliderItemFragment } from '../../Slider/__generated/slider.generated';
 import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
-import { QuoteComponentFieldsFragmentDoc, QuoteFieldsFragmentDoc } from '../../QuoteItem/__generated/quoteComponent.generated';
+import { QuoteComponentFieldsFragmentDoc, QuoteFieldsFragmentDoc } from '../../Quotes/__generated/quoteComponent.generated';
 import { SliderFieldsFragmentDoc, SliderItemFragmentDoc } from '../../Slider/__generated/slider.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
@@ -263,7 +263,7 @@ export const ContentVideoComponentFieldsFragmentDoc = `
     `;
 export const SectionComponentFieldsFragmentDoc = `
     fragment SectionComponentFields on SectionComponent {
-  ...quoteComponentFields
+  ...QuoteComponentFields
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields

@@ -3648,8 +3648,8 @@ export type QuoteComponent = Entry & {
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<QuoteComponentLinkingCollections>;
-  mode?: Maybe<Scalars['String']['output']>;
   quotesCollection?: Maybe<QuoteComponentQuotesCollection>;
+  slideDuration?: Maybe<Scalars['Int']['output']>;
   sys: Sys;
 };
 
@@ -3673,12 +3673,6 @@ export type QuoteComponentLinkedFromArgs = {
 
 
 /** Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quoteComponent) */
-export type QuoteComponentModeArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quoteComponent) */
 export type QuoteComponentQuotesCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -3686,6 +3680,12 @@ export type QuoteComponentQuotesCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<QuotesFilter>;
+};
+
+
+/** Quotes [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/quoteComponent) */
+export type QuoteComponentSlideDurationArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type QuoteComponentCollection = {
@@ -3710,15 +3710,17 @@ export type QuoteComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   quotes?: InputMaybe<CfQuotesNestedFilter>;
   quotesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slideDuration?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slideDuration_gt?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_gte?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  slideDuration_lt?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_lte?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_not?: InputMaybe<Scalars['Int']['input']>;
+  slideDuration_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -3795,8 +3797,8 @@ export enum QuoteComponentOrder {
   AutoplayDesc = 'autoplay_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
+  SlideDurationAsc = 'slideDuration_ASC',
+  SlideDurationDesc = 'slideDuration_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -3945,8 +3947,8 @@ export enum QuotesLinkingCollectionsQuoteComponentCollectionOrder {
   AutoplayDesc = 'autoplay_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
+  SlideDurationAsc = 'slideDuration_ASC',
+  SlideDurationDesc = 'slideDuration_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
   SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
   SysIdAsc = 'sys_id_ASC',
@@ -6618,7 +6620,7 @@ export type PagesCollectionQuery = { __typename?: 'Query', pagesCollection?: { _
 
 export type QuoteFieldsFragment = { __typename: 'Quotes', quote?: string | null, author?: string | null, position?: string | null, sys: { __typename?: 'Sys', id: string } };
 
-export type QuoteComponentFieldsFragment = { __typename: 'QuoteComponent', internalName?: string | null, sys: { __typename?: 'Sys', id: string }, quotesCollection?: { __typename?: 'QuoteComponentQuotesCollection', items: Array<(
+export type QuoteComponentFieldsFragment = { __typename: 'QuoteComponent', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, quotesCollection?: { __typename?: 'QuoteComponentQuotesCollection', items: Array<(
       { __typename?: 'Quotes' }
       & QuoteFieldsFragment
     ) | null> } | null };
@@ -6953,7 +6955,7 @@ export const CategoryCollectionFieldsFragmentDoc = gql`
 }
     `;
 export const QuoteFieldsFragmentDoc = gql`
-    fragment quoteFields on Quotes {
+    fragment QuoteFields on Quotes {
   __typename
   sys {
     id
@@ -6964,15 +6966,17 @@ export const QuoteFieldsFragmentDoc = gql`
 }
     `;
 export const QuoteComponentFieldsFragmentDoc = gql`
-    fragment quoteComponentFields on QuoteComponent {
+    fragment QuoteComponentFields on QuoteComponent {
   __typename
   sys {
     id
   }
   internalName
+  autoplay
+  slideDuration
   quotesCollection(limit: 10) {
     items {
-      ...quoteFields
+      ...QuoteFields
     }
   }
 }
@@ -7167,7 +7171,7 @@ export const ContentVideoComponentFieldsFragmentDoc = gql`
     `;
 export const SectionComponentFieldsFragmentDoc = gql`
     fragment SectionComponentFields on SectionComponent {
-  ...quoteComponentFields
+  ...QuoteComponentFields
   ...SliderFields
   ...ContentProfileComponentFields
   ...ContentColumnComponentFields
@@ -7470,9 +7474,9 @@ ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}
 ${HeaderComponentFieldsFragmentDoc}`;
 export const QuoteComponentDocument = gql`
-    query quoteComponent($id: String!, $locale: String, $preview: Boolean) {
+    query QuoteComponent($id: String!, $locale: String, $preview: Boolean) {
   quoteComponent(id: $id, locale: $locale, preview: $preview) {
-    ...quoteComponentFields
+    ...QuoteComponentFields
   }
 }
     ${QuoteComponentFieldsFragmentDoc}
@@ -7624,8 +7628,8 @@ export function getSdk(client: GraphQLClient, withWrapper: SdkFunctionWrapper = 
     pagesCollection(variables: PagesCollectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<PagesCollectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<PagesCollectionQuery>(PagesCollectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'pagesCollection', 'query', variables);
     },
-    quoteComponent(variables: QuoteComponentQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<QuoteComponentQuery> {
-      return withWrapper((wrappedRequestHeaders) => client.request<QuoteComponentQuery>(QuoteComponentDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'quoteComponent', 'query', variables);
+    QuoteComponent(variables: QuoteComponentQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<QuoteComponentQuery> {
+      return withWrapper((wrappedRequestHeaders) => client.request<QuoteComponentQuery>(QuoteComponentDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'QuoteComponent', 'query', variables);
     },
     section(variables: SectionQueryVariables, requestHeaders?: GraphQLClientRequestHeaders): Promise<SectionQuery> {
       return withWrapper((wrappedRequestHeaders) => client.request<SectionQuery>(SectionDocument, variables, {...requestHeaders, ...wrappedRequestHeaders}), 'section', 'query', variables);

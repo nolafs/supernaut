@@ -2299,8 +2299,8 @@ type QuoteComponent implements Entry {
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): QuoteComponentLinkingCollections
-  mode(locale: String): String
   quotesCollection(limit: Int = 100, locale: String, order: [QuoteComponentQuotesCollectionOrder], preview: Boolean, skip: Int = 0, where: QuotesFilter): QuoteComponentQuotesCollection
+  slideDuration(locale: String): Int
   sys: Sys!
 }
 
@@ -2325,15 +2325,17 @@ input QuoteComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   quotes: cfQuotesNestedFilter
   quotesCollection_exists: Boolean
+  slideDuration: Int
+  slideDuration_exists: Boolean
+  slideDuration_gt: Int
+  slideDuration_gte: Int
+  slideDuration_in: [Int]
+  slideDuration_lt: Int
+  slideDuration_lte: Int
+  slideDuration_not: Int
+  slideDuration_not_in: [Int]
   sys: SysFilter
 }
 
@@ -2392,8 +2394,8 @@ enum QuoteComponentOrder {
   autoplay_DESC
   internalName_ASC
   internalName_DESC
-  mode_ASC
-  mode_DESC
+  slideDuration_ASC
+  slideDuration_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC
@@ -2493,8 +2495,8 @@ enum QuotesLinkingCollectionsQuoteComponentCollectionOrder {
   autoplay_DESC
   internalName_ASC
   internalName_DESC
-  mode_ASC
-  mode_DESC
+  slideDuration_ASC
+  slideDuration_DESC
   sys_firstPublishedAt_ASC
   sys_firstPublishedAt_DESC
   sys_id_ASC

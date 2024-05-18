@@ -18,6 +18,7 @@ export interface QuotesProps {
   internalName: string;
   quotesCollection: TQuoteCollection;
   autoplay?: boolean;
+  slideDuration?: number;
 }
 
 export function Quotes({
@@ -25,6 +26,7 @@ export function Quotes({
   internalName,
   mode = 'dark',
   autoplay = false,
+  slideDuration = 3000,
 }: QuotesProps) {
 
   const items = quotesCollection?.items;
@@ -33,6 +35,8 @@ export function Quotes({
   const [currentSlide, setCurrentSlide] = useState<TQuote | null>(
     items?.length ? items[0] : null
   );
+
+
 
   if (!items || !items.length) return null;
 
@@ -52,14 +56,14 @@ export function Quotes({
           }}
           spaceBetween={20}
           slidesPerView={1}
-          autoplay={autoplay ? { delay: 3000 } : false}
+          autoplay={autoplay ? { delay: slideDuration } : false}
           pagination={true}
           className={'w-full'}
           speed={1000}
           modules={[Autoplay]}
         >
           {items.map((quote, index) => (
-            <SwiperSlide id={`${quote.sys.id}-${index}`} key={`${quote.sys.id}-${index}`}>
+            <SwiperSlide id={`${internalName.replace(' ', '-').toLowerCase()}-${quote.sys.id}-${index}`} key={`${quote.sys.id}-${index}`}>
               <div className="flex flex-col justify-center items-start mx-auto">
                 <blockquote className="container max-w-7xl font-medium text-3xl tracking-tight  lg:text-6xl flex flex-col">
                   <span>"{quote?.quote}"</span>
