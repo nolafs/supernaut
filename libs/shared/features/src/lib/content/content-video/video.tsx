@@ -63,7 +63,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       handleReplay={handleReplay}
       handlePlay={handlePlay}
     >
-    <div className={cn('wrapper relative', frame && 'p-10')}>
+    <div className={cn('wrapper relative', frame && 'p-4 md:p-10')}>
       <div className={cn('relative video')}>
         <div
           className={cn('w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
@@ -73,6 +73,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
             plugins={[lazyload()]}
             cldVid={videoSource}
             controls={controls}
+            playsInline={true}
             autoPlay={false}
             loop={loop}
           />
