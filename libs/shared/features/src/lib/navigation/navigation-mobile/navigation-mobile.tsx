@@ -15,7 +15,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 export interface NavigationMobileProps {
   siteTitle?: string;
   logo?: string;
-  mode: 'light' | 'dark';
+  mode?: 'light' | 'dark';
   items: TNavigationItem[];
 }
 
@@ -41,7 +41,7 @@ export function NavigationMobile({
           )}
           onClick={handleClick}
         >
-          <div className={cn(styles[mode], mobileMenuOpen ? styles['open'] : styles['close'])}></div>
+          <div className={cn((mode) && styles[mode], mobileMenuOpen ? styles['open'] : styles['close'])}></div>
         </button>
       </div>
 

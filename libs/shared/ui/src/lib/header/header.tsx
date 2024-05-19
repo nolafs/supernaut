@@ -49,7 +49,7 @@ export function Header({
             columnLayout
               ? 'flex flex-col w-full md:flex-row'
               : 'flex flex-row w-full',
-            mode === 'light' ? 'text-base' : 'text-primary'
+            'text-primary'
           )}
         >
           <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full md:w-8/12') }>
@@ -69,7 +69,7 @@ export function Header({
               <div className={'overflow-hidden'}>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.5,
                   ease: 'power2.inOut'}}>
-                <div className={'text-white'}>{title || pageName}</div>
+                <div>{title || pageName}</div>
                 </BlockAnimateOnScroll>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:0.8,
                   ease: 'power2.inOut'}} >

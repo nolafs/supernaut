@@ -23,7 +23,7 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
         'cursor-pointer font-medium',
         isActive(`/${item.slug}`)
           ? 'text-secondary'
-          : 'text-white',
+          : 'text-primary',
         'hover:text-secondary',
         className
       )}

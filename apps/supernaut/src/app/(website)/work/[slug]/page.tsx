@@ -4,6 +4,7 @@ import {Header} from '@supernaut/shared-ui';
 import {SectionResolver} from '@supernaut/features';
 import {Work} from '../../../../data/work';
 import {ServicesFieldsFragment} from '../../../../lib/__generated/sdk';
+import cn from 'classnames';
 
 export interface PageProps {
   params: { slug: string }
@@ -21,7 +22,11 @@ export default async function Page({params}: PageProps) {
       return `<ul>${services.map((service: ServicesFieldsFragment) => `<li>${service.name}</li>`).join('')}</ul>`;
     }
 
-    return (
+    return (<div className={cn(
+        workData?.mode === 'dark' && 'text-white',
+        workData?.mode === 'light' && 'text-black bg-white',
+      )
+      }>
         <article>
           <Header
             columnLayout
@@ -32,8 +37,9 @@ export default async function Page({params}: PageProps) {
             title={workData?.title}
           />
           {workData?.topSectionsCollection?.items &&
-            <SectionResolver sections={workData?.topSectionsCollection?.items}/>
+            <SectionResolver pageMode={workData?.mode || 'dark' } sections={workData?.topSectionsCollection?.items}/>
           }
         </article>
+      </div>
     );
 }

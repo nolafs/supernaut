@@ -13,7 +13,7 @@ export interface SectionProps {
   marginBottom?: boolean;
   paddingTop?: boolean;
   paddingBottom?: boolean;
-  mode?: 'light' | 'dark';
+  mode?: 'light' | 'dark' | string | undefined | null;
   backgroundColor?: string | null;
   color?: string | null;
   align?: 'center' | 'left' | 'right';

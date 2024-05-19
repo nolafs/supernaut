@@ -6,13 +6,14 @@ import {Section} from '@supernaut/shared-ui';
 
 export interface SectionResolverProps {
   sections: any[];
+  pageMode?: 'dark' | 'light' | string | undefined | null;
 }
 
 function generateRandomKey() {
   return Math.random().toString(36).substring(7);
 }
 
-export function SectionResolver({sections}: SectionResolverProps) {
+export function SectionResolver({sections, pageMode}: SectionResolverProps) {
 
   if(!sections || sections.length === 0) {
     return null;
@@ -20,21 +21,37 @@ export function SectionResolver({sections}: SectionResolverProps) {
 
   console.log('SECTION',sections.map((entry: any) => entry.internalName));
 
+  const mergeComponentProps = (componentProps: any) => {
+    return componentProps;
+    /*
+    if(!componentProps){
+      return null
+    }
+    if(componentProps?.mode){
+      return {...componentProps, mode: pageMode}
+    } else {
+      return componentProps
+    }
+
+     */
+  }
+
+
   return (<>
       { sections?.map((entry: any, index: number) => {
         return (entry?.__typename !== undefined) && (
 
           <>
             {(entry.__typename === 'Section') && (
-              <Section {...entry}>
-                <ComponentResolver key={`${entry!.component.__typename}-${generateRandomKey()} `} componentProps={entry.component!} />
+              <Section {...mergeComponentProps(entry)}>
+                <ComponentResolver key={`${entry!.component.__typename}-${generateRandomKey()} `} componentProps={mergeComponentProps(entry.component!)} />
               </Section>
             )}
 
 
           {(entry.__typename === 'HeaderComponent') && (
               <ComponentResolver key={`${entry!.__typename}-${generateRandomKey()} `}
-                                 componentProps={entry!}/>
+                                 componentProps={mergeComponentProps(entry!)}/>
 
           )}
         </>

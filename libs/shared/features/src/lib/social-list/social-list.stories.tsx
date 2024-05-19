@@ -13,7 +13,7 @@ type Story = StoryObj<typeof SocialList>;
 
 export const Primary = {
   args: {
-    className: 'text-white flex space-x-6 justify-center items-center',
+    className: 'text-primary flex space-x-6 justify-center items-center',
     items: [
       {
         id: '1',

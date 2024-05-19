@@ -8,7 +8,7 @@ import { useScroll } from '@supernaut/hooks';
 export interface NavigationWrapperProps {
   children: ReactNode;
   sticky: boolean;
-  mode: 'light' | 'dark';
+  mode?: 'light' | 'dark';
 }
 
 export function NavigationWrapper({
@@ -32,7 +32,7 @@ export function NavigationWrapper({
       className={cn(
         sticky ? 'fixed' : 'absolute',
         'w-full h-[100px] inset-0 z-40 overflow-hidden',
-        styles[mode],
+        (mode) && styles[mode],
         state ? styles['scrolled'] : ''
       )}
     >

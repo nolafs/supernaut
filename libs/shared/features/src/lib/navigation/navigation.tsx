@@ -8,6 +8,7 @@ import styles from './navigation.module.scss';
 import SocialList from '../social-list/social-list';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
 import Link from 'next/link';
+import ThemeSwitchButton from '../theme-switch-button/theme-switch-button';
 
 
 /* eslint-disable-next-line */
@@ -15,7 +16,7 @@ export interface NavigationProps {
   siteTitle?: string;
   logo?: string;
   items: TNavigationItem[];
-  mode: 'light' | 'dark';
+  mode?: 'light' | 'dark';
   social?: TSocialLinkItemType[];
   sticky?: boolean;
   contactFormDialog?: boolean | undefined | null;
@@ -26,7 +27,7 @@ export function Navigation({
   items,
   logo = '/images/logo.svg',
   sticky = true,
-  mode = 'dark',
+  mode,
   social,
   contactFormDialog = false,
 }: NavigationProps) {
@@ -43,7 +44,7 @@ export function Navigation({
             }}>
               <div className="sr-only">{siteTitle}</div>
               {logo && isSvg && (
-                <Image src={logo} className={styles['logo']} alt={'logo'} width={162} height={47}/>
+                <Image src={logo} className={'logo'} alt={'logo'} width={162} height={47}/>
               )}
               {logo && !isSvg && (
                 <img src={logo} alt="logo" className={styles['logo']}/>
@@ -73,6 +74,7 @@ export function Navigation({
             <div className={styles['desktop']}>
               <SocialList items={social}/>
               {(contactFormDialog) && <ContactFormDialogButton label='Contact' isIcon={true} />}
+              <div className={'ml-3'}><ThemeSwitchButton/></div>
             </div>
           )}
         </div>

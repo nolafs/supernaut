@@ -6847,7 +6847,7 @@ export type WorkQuery = { __typename?: 'Query', workCollection?: { __typename?: 
       & WorkFieldsDetailFragment
     ) | null> } | null };
 
-export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, subtitle?: string | null, slug?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, featureImage?: (
+export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, subtitle?: string | null, slug?: string | null, mode?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, featureImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, serviceCategoryCollection?: { __typename?: 'WorkServiceCategoryCollection', items: Array<(
@@ -7385,6 +7385,7 @@ export const WorkFieldsFragmentDoc = gql`
   title
   subtitle
   slug
+  mode
   publishingDate
   featured
   featureImage {

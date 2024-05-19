@@ -11,6 +11,7 @@ import {GoogleAnalytics} from '@supernaut/utils';
 import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
+import {ThemeProvider} from '@supernaut/context';
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -104,36 +105,39 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
   return (
     <html
       lang="en"
-      className={cn(`${GeistSans.variable} ${GeistMono.variable}`, 'dark')}
+      className={cn(`${GeistSans.variable} ${GeistMono.variable}`)}
+      data-theme="dark"
     >
       <body>
-        <ModalProvider>
+        <ThemeProvider >
+          <ModalProvider>
 
-          <Navigation items={navigation} mode={'dark'} social={social} contactFormDialog={settings?.contactFormDialog} />
+            <Navigation items={navigation}  social={social} contactFormDialog={settings?.contactFormDialog} />
 
-          <main className={'h-svh'}>
-            {children}
-          </main>
+            <main className={'h-svh'}>
+              {children}
+            </main>
 
-          <Footer
-            copyright={settings?.copyrightLine}
-            strapline={settings?.strapline}
-            legal={legalNavigation}
-            contactButtonLabel={settings?.contactDialogButtonLabel}
-            contactDialog={settings?.contactFormDialog}
-            social={social}
-          />
+            <Footer
+              copyright={settings?.copyrightLine}
+              strapline={settings?.strapline}
+              legal={legalNavigation}
+              contactButtonLabel={settings?.contactDialogButtonLabel}
+              contactDialog={settings?.contactFormDialog}
+              social={social}
+            />
 
-          <Suspense>
-            <CookieBanner />
-          </Suspense>
+            <Suspense>
+              <CookieBanner />
+            </Suspense>
 
-          <ModalsContainer />
+            <ModalsContainer />
 
-        </ModalProvider>
-        <Suspense>
-          <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
-        </Suspense>
+            </ModalProvider>
+            <Suspense>
+              <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
+            </Suspense>
+        </ThemeProvider>
       </body>
     </html>
 

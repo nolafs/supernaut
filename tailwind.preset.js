@@ -43,12 +43,12 @@ module.exports = {
       yellow: colors.yellow,
       blue: colors.blue,
       error: colors.red['600'],
-      primary: colors.white,
-      lines: '#3c3c3c',
-      secondary: '#acacac',
-      accent: '#E62997',
-      neutral: '#191919',
-      base: '#000000',
+      primary: 'var(--color-primary)',
+      lines: 'var(--color-lines)',
+      secondary: 'var(--color-secondary)',
+      accent: 'var(--color-accent)',
+      neutral: 'var(--color-neutral)',
+      base: 'var(--color-base)',
     },
     extend: {
       typography: (theme) => ({

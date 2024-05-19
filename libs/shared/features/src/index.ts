@@ -1,3 +1,4 @@
+export * from './lib/theme-switch-button/theme-switch-button';
 export * from './lib/services/services';
 export * from './lib/contact-form/contact-form-dialog-button';
 export * from './lib/content/content-images/content-images';

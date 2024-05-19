@@ -6,6 +6,7 @@ fragment workFields on Work {
   title
   subtitle
   slug
+  mode
   publishingDate
   featured
   featureImage {

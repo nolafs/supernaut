@@ -3,9 +3,56 @@
 @tailwind utilities;
 
 @layer base {
+
+  html {
+    --color-lines: #3c3c3c;
+    --color-primary: #ffffff;
+    --color-secondary: #acacac;
+    --color-accent: #E62997;
+    --color-neutral: #191919;
+    --color-base: #000000;
+  }
+
+  html[data-theme="dark"] {
+    --color-lines: #3c3c3c;
+    --color-primary: #ffffff;
+    --color-secondary: #acacac;
+    --color-accent: #E62997;
+    --color-neutral: #191919;
+    --color-base: #000000;
+  }
+
+  html[data-theme="light"] {
+    --color-lines: #3c3c3c;
+    --color-primary: #000000;
+    --color-secondary: #525252;
+    --color-accent: #E62997;
+    --color-neutral: #f3f3f3;
+    --color-base: #FFFFFF;
+  }
+
+
   html,
   body {
     @apply bg-neutral text-primary;
+  }
+
+  html[data-theme="light"] {
+    .logo {
+
+        @apply w-auto h-full max-h-[40px] md:max-h-full;
+        filter: invert(0);
+
+    }
+  }
+
+  html[data-theme="dark"] {
+    .logo {
+
+        @apply w-auto h-full max-h-[40px] md:max-h-full;
+        filter: invert(1);
+
+    }
   }
 
   .wrapper {
