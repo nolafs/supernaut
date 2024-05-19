@@ -2,11 +2,12 @@
 /* eslint-disable-next-line */
 import React, {createContext, useContext, useState, ReactNode, useEffect} from 'react';
 
-type Theme = 'light' | 'dark';
+type Theme = 'light' | 'dark' | undefined | null;
 
 interface ThemeContextType {
   theme: Theme;
   toggleTheme: () => void;
+  setInitialTheme: (theme: Theme) => void;
 }
 
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
@@ -29,8 +30,17 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     document.querySelector("html")?.setAttribute("data-theme", newTheme);
   };
 
+  const setInitialTheme = (theme: Theme) => {
+    if(!theme) {
+      theme = 'dark';
+    }
+    setTheme(theme);
+    localStorage.setItem('theme', theme);
+    document.querySelector("html")?.setAttribute("data-theme", theme);
+  }
+
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme}}>
+    <ThemeContext.Provider value={{theme, toggleTheme, setInitialTheme}}>
       {children}
     </ThemeContext.Provider>
   );

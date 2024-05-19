@@ -1,7 +1,7 @@
 import process from 'process';
 import { notFound } from 'next/navigation';
 import {Header} from '@supernaut/shared-ui';
-import {SectionResolver} from '@supernaut/features';
+import {SectionResolver, ThemeSwitchServer} from '@supernaut/features';
 import {Work} from '../../../../data/work';
 import {ServicesFieldsFragment} from '../../../../lib/__generated/sdk';
 import cn from 'classnames';
@@ -37,9 +37,10 @@ export default async function Page({params}: PageProps) {
             title={workData?.title}
           />
           {workData?.topSectionsCollection?.items &&
-            <SectionResolver pageMode={workData?.mode || 'dark' } sections={workData?.topSectionsCollection?.items}/>
+            <SectionResolver  sections={workData?.topSectionsCollection?.items}/>
           }
         </article>
+        <ThemeSwitchServer mode={workData?.mode} />
       </div>
     );
 }
