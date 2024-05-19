@@ -24,10 +24,8 @@ export function ContentProfileList({itemsCollection, mode}: ContentProfileListPr
   if(!itemsCollection || !itemsCollection.items.length) return <NotificationBlock body={'No items found'} type={'warning'} />;
 
   return (
-    <div className={'w-full max-w-9xl mx-auto px-5 md:px-10'}>
+    <div className={'w-full max-w-9xl mx-auto px-5 md:px-10 text-primary'}>
       <div className={cn('flex flex-col md:flex-row w-full md:w-9/12',
-        mode === 'dark' && 'text-white',
-        mode === 'light' && 'text-black bg-white'
         )}>
         <div className={'grid grid-cols-1 md:grid-cols-2 gap-10'}>
           {itemsCollection?.items?.map((item) => (

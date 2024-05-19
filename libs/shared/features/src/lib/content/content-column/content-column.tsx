@@ -60,8 +60,6 @@ export function ContentColumn({
             'wrapper flex flex-row text-primary',
             align === 'left' && 'justify-start',
             align === 'right' && 'justify-end',
-            mode === 'dark' && 'text-white',
-            mode === 'light' && 'text-black bg-white',
             padding === 'none' && 'px-0',
             padding === 'sm' && 'px-5 md:px-10',
             padding === 'md' && 'px-10 md:px-20',
@@ -99,9 +97,7 @@ export function ContentColumn({
 
 
     return (<BlockAnimationProvider>
-      <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10',
-        mode === 'dark' && 'text-white',
-        mode === 'light' && 'text-black bg-white',
+      <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10 text-primary',
         padding === 'none' && 'px-0',
         padding === 'sm' && 'px-5 md:px-10',
         padding === 'md' && 'px-10 md:px-20',

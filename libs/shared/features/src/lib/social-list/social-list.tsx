@@ -14,7 +14,7 @@ export interface SocialListProps {
 
 const VARIANTS_BUTTON = [
   'w-[26px] h-[26px]',
-  'border border-white p-2 h-10 w-10',
+  'border border-primary p-2 h-10 w-10',
   '',
 ];
 

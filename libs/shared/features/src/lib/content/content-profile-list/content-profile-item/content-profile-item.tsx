@@ -21,8 +21,8 @@ export function ContentProfileItem({item}: ContentProfileItemProps) {
       <div className={'relative overflow-hidden'}>
         <Image className={'profile opacity-0'} src={item.image.url} alt={item.name} width={735} height={810}/>
         <div className={'absolute cover inset-0 w-full h-full mix-blend-difference translate-y-[-100]'}>
-          <div className={'bar-1 absolute inset-0 h-[5%] top-[10%] bg-white'}/>
-          <div className={'bar-2 absolute inset-0 h-[8%] top-[20%] bg-white'}/>
+          <div className={'bar-1 absolute inset-0 h-[5%] top-[10%] bg-primary'}/>
+          <div className={'bar-2 absolute inset-0 h-[8%] top-[20%] bg-primary'}/>
           <div className={'absolute inset-0 h-[70%] top-[30%]  bg-white'}/>
         </div>
       </div>
