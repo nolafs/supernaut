@@ -1,6 +1,6 @@
 export * from './lib/loading-indicator/loading-indicator';
 export * from './lib/notification/notification-block';
-export * from './lib/card/card';
+export {Card} from './lib/card/card';
 export * from './lib/skeleton/skeleton';
 export * from './lib/header/header';
 export * from './lib/section/section';

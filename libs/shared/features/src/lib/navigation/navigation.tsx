@@ -36,7 +36,7 @@ export function Navigation({
 
   const navigation = () => {
     return (
-      <div className={cn('wrapper', styles['navbar'])}>
+      <div className={cn('wrapper ', styles['navbar'])}>
         <div className="navbar-start">
           <h1 className={'text-primary'}>
             <Link href={{

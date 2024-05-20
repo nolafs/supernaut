@@ -12,6 +12,7 @@ export interface HeaderProps {
   mode?: 'light' | 'dark';
   marginTop?: boolean;
   marginBottom?: boolean;
+  delay?: number;
 }
 
 export function Header({
@@ -23,6 +24,7 @@ export function Header({
   columnLayout = false,
   marginTop = true,
   marginBottom = false,
+  delay = 0,
 }: HeaderProps) {
 
   const descriptionContent = () => {
@@ -54,7 +56,7 @@ export function Header({
         >
           <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full md:w-8/12') }>
             <div className={'sr-only'}>{pageName}</div>
-            <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
+            <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%" to={{delay: delay}}><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
           </div>
           {columnLayout && (
             <div
@@ -67,11 +69,11 @@ export function Header({
                   className={'splitTextOverflow lg:text-[46px] lg:leading-[48px]'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
               <div className={'overflow-hidden'}>
-                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.5,
+                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.5 + delay,
                   ease: 'power2.inOut'}}>
                 <div>{title || pageName}</div>
                 </BlockAnimateOnScroll>
-                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:0.8,
+                <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:0.8 + delay,
                   ease: 'power2.inOut'}} >
                   {descriptionContent()}
                 </BlockAnimateOnScroll>
