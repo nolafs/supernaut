@@ -3,8 +3,8 @@ import {useInfiniteQuery} from '@tanstack/react-query'
 import {useInView} from 'react-intersection-observer'
 import {useEffect} from 'react'
 import dynamic from 'next/dynamic';
-import {WorkCollection, WorkFeaturedCollection} from '../../data/work';
-import {WorkFieldsFragment} from '../../lib/__generated/sdk';
+import {WorkCollection, WorkFeaturedCollection} from '../../../../../../data/work';
+import {WorkFieldsFragment} from '../../../../../../lib/__generated/sdk';
 
 
 const Card = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.Card), {ssr: false});

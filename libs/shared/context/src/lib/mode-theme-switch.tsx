@@ -2,7 +2,7 @@
 /* eslint-disable-next-line */
 import React, {createContext, useContext, useState, ReactNode, useEffect} from 'react';
 
-type Theme = 'light' | 'dark' | undefined | null;
+type Theme = 'light' | 'dark' | undefined | null | string
 
 interface ThemeContextType {
   theme: Theme;

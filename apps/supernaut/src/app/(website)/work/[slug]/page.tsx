@@ -1,5 +1,6 @@
 import process from 'process';
 import { notFound } from 'next/navigation';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header} from '@supernaut/shared-ui';
 import {SectionResolver, ThemeSwitchServer} from '@supernaut/features';
 import {Work} from '../../../../data/work';
@@ -22,11 +23,7 @@ export default async function Page({params}: PageProps) {
       return `<ul>${services.map((service: ServicesFieldsFragment) => `<li>${service.name}</li>`).join('')}</ul>`;
     }
 
-    return (<div className={cn(
-        workData?.mode === 'dark' && 'text-white',
-        workData?.mode === 'light' && 'text-black bg-white',
-      )
-      }>
+    return (<>
         <article>
           <Header
             columnLayout
@@ -41,6 +38,6 @@ export default async function Page({params}: PageProps) {
           }
         </article>
         <ThemeSwitchServer mode={workData?.mode} />
-      </div>
+      </>
     );
 }

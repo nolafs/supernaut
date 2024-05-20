@@ -1,10 +1,10 @@
 import { render } from '@testing-library/react';
 
-import QueryProvider from './QueryProvider';
+import TransitionLink from './transition-link';
 
-describe('QueryProvider', () => {
+describe('TransitionLink', () => {
   it('should render successfully', () => {
-    const { baseElement } = render(<QueryProvider />);
+    const { baseElement } = render(<TransitionLink />);
     expect(baseElement).toBeTruthy();
   });
 });

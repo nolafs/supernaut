@@ -1,5 +1,4 @@
-export * from './lib/theme-switch-server/theme-switch-server';
-export * from './lib/theme-switch-server/theme-switch-server';
+export { ThemeSwitchServer } from './lib/theme-switch-server/theme-switch-server';
 export * from './lib/theme-switch-button/theme-switch-button';
 export * from './lib/services/services';
 export * from './lib/contact-form/contact-form-dialog-button';

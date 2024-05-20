@@ -4,7 +4,7 @@ import {useEffect} from 'react';
 import {useTheme} from '@supernaut/context';
 
 export interface ThemeSwitchServerProps {
-  mode: 'light' | 'dark'  | undefined | null;
+  mode: 'light' | 'dark'  | undefined | null | string;
 }
 
 export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {

@@ -12,6 +12,7 @@ import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
 import {ThemeProvider} from '@supernaut/context';
+import NextTopLoader from 'nextjs-toploader';
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -110,6 +111,10 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     >
       <body>
         <ThemeProvider >
+          <NextTopLoader
+            color={'var(--color-primary)'}
+            height={5}
+          />
           <ModalProvider>
 
             <Navigation items={navigation}  social={social} contactFormDialog={settings?.contactFormDialog} />

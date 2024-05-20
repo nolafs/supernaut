@@ -5,12 +5,14 @@ import {ReactNode} from 'react';
 import i18nConfig from '../../../../../next-i18next.config';
 import SettingContent from '../../../../data/settings';
 import {PageContent} from '../../../../data/pages';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header} from '@supernaut/shared-ui';
 
 const PAGE_NAME = 'work';
 
 interface LayoutProps {
   children: ReactNode;
+  list: ReactNode
 }
 
 type Props = {
@@ -35,19 +37,19 @@ export async function generateMetadata(
 
 
 
-export default async function Layout({children}: LayoutProps) {
+export default async function Layout({children, list}: LayoutProps) {
 
   const pageData = await PageContent(PAGE_NAME, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
 
-
   return (
-    <main>
+    <>
       <Header
         pageName={pageData?.pageName}
         title={pageData?.title}
       />
 
       {children}
-    </main>
+      {list}
+    </>
   )
 }
