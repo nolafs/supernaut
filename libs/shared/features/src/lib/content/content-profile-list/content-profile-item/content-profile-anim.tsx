@@ -43,7 +43,7 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
       }
     });
 
-    tlText.current.fromTo(['.name', '.title'], {opacity: 0, y: 100}, {opacity: 0.5, y: 0, stagger: 0.3, duration: 1})
+    tlText.current.fromTo(['.name', '.title'], {opacity: 0, y: 100}, {opacity: 1, y: 0, stagger: 0.3, duration: 1})
     tlText.current.fromTo('.main-text', {opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.5}, '-=0.5')
     tlText.current.fromTo('.social', {opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.5}, '-=0.5')
 
