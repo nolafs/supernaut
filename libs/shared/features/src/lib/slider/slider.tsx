@@ -61,7 +61,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
 
   return (
     <CursorContextProvider>
-      <SliderControls>
+      <SliderControls currentIndex={currentIndex} numberSlides={numberSlides}>
         <div
           className={
             'relative container max-w-[1920px] mx-auto p-0 m-0 overflow-hidden'

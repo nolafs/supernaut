@@ -18,7 +18,7 @@ export interface SectionProps {
   backgroundColor?: string | null;
   color?: string | null;
   align?: 'center' | 'left' | 'right';
-  width?: 'sm' | 'lg' | 'xl' | 'full';
+  width?: 'sm' | 'md' |'lg' | 'xl' | 'full';
   height?: 'auto' | 'half' | 'full';
   lineTop?: boolean;
   lineBottom?: boolean;
@@ -31,7 +31,6 @@ export function Section({
   sectionId,
   children,
   color,
-  mode,
   backgroundColor,
   lineBottom,
   lineTop,
@@ -42,7 +41,7 @@ export function Section({
   marginSize = 'lg',
   paddingSize = 'lg',
   height = 'auto',
-  width = 'full',
+  width = 'xl',
   align = 'left',
   className,
   animation = false,
@@ -57,8 +56,12 @@ export function Section({
           'flex',
           'flex-col',
           'justify-center',
-          mode === 'dark' && 'text-white',
-          mode === 'light' && 'text-black bg-white',
+          {
+            'w-full': width === 'full',
+            'wrapper': width === 'xl',
+            'w-1/2': width === 'sm',
+            'w-3/4': width === 'lg',
+          },
           {
             'pt-5 md:pt-10': paddingTop && paddingSize === 'md',
             'pb-5 md:pb-10': paddingBottom && paddingSize === 'md',
@@ -80,12 +83,9 @@ export function Section({
             'mb-0': !marginBottom,
           },
           {
-            'items-center': align === 'center',
+            'items-center mx-auto': align === 'center',
             'items-start': align === 'left',
             'items-end': align === 'right',
-            'w-1/2 mx-auto': width === 'sm',
-            'w-3/4 mx-auto': width === 'lg',
-            'w-full': width === 'xl' || width === 'full',
             'h-auto': height === 'auto',
             'h-1/2': height === 'half',
             'h-svh': height === 'full',

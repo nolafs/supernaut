@@ -5,20 +5,19 @@ import {useMousePosition, useIsTouchDevice, useScrollDetection} from '@supernaut
 import { useCursor } from '@supernaut/context';
 import cn from 'classnames';
 
-
 /* eslint-disable-next-line */
 export interface SliderControlsProps {
   children: ReactNode;
+  numberSlides: number;
+  currentIndex: number;
 }
 
-export function SliderControls({ children }: SliderControlsProps) {
+export function SliderControls({ children, currentIndex, numberSlides }: SliderControlsProps) {
   const { clientX, clientY } = useMousePosition();
   const { cursor, setCursor } = useCursor();
   const { touch } = useIsTouchDevice();
   const ref = useRef<HTMLDivElement>(null);
   const [isVisible, setIsVisible] = useState(false);
-
-
 
   useScrollDetection(
     () => {
@@ -120,8 +119,8 @@ export function SliderControls({ children }: SliderControlsProps) {
             </div>
           )}
           {cursor.type === 'next' && (
-            <div
-              style={{
+            <div className={(currentIndex === (numberSlides - 1)) ? 'hidden' : ''}
+                 style={{
                 position: 'absolute',
                 left: clientX,
                 top: clientY,
@@ -135,7 +134,7 @@ export function SliderControls({ children }: SliderControlsProps) {
             </div>
           )}
           {cursor.type === 'prev' && (
-            <div
+            <div className={(currentIndex === 0) ? 'hidden' : ''}
               style={{
                 position: 'absolute',
                 left: clientX,

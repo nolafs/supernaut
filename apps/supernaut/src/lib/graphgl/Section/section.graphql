@@ -159,7 +159,6 @@ fragment SectionFields on Section {
   marginBottom
   paddingTop
   paddingBottom
-  mode
   backgroundColor
   textColor
   align

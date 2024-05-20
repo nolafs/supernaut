@@ -12,7 +12,7 @@ export const animatePageIn = () => {
 
   if(cover.length && !ANIM) {
     ANIM = true;
-    //document.body.classList.add('is-transitioning');
+    document.body.classList.add('is-transitioning');
     tl.set(wrapper, {opacity: 1})
     tl.fromTo(text, {opacity: 1}, {opacity: 0, duration: 0.2, ease: 'power3.In', delay: 0.5})
     tl.to(cover, {duration: 1, y: window.innerHeight,scaleY: .2, transformOrigin: "0 0",  ease: 'power3.inOut',  stagger: {
@@ -22,7 +22,7 @@ export const animatePageIn = () => {
       },
       onComplete: () => {
         ANIM = false;
-        //document.body.classList.remove('is-transitioning');
+        document.body.classList.remove('is-transitioning');
         //}
       }
       }, '-=0.5'
@@ -37,7 +37,7 @@ export const animatePageOut = (href: string, router: any) => {
   const text = document.getElementById('section-name');
   const wrapper = gsap.utils.selector('#page-transition');
   if (cover.length) {
-    console.log('animatePageOut');
+
     document.body.classList.add('is-transitioning');
     const tl = gsap.timeline({paused: true});
     tl.set(wrapper, {opacity: 1})

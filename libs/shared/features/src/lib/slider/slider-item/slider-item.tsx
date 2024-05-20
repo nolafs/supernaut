@@ -64,7 +64,7 @@ const SliderItem = forwardRef(
           <picture>
             <div className={'hidden md:block w-full h-screen max-h-[1000px]'}>
               <Image
-                src={image}
+                src={`${image}?fit=fill&w=1920&h=1000`}
                 alt={title}
                 width={1920}
                 height={1000}
@@ -73,7 +73,7 @@ const SliderItem = forwardRef(
             </div>
             <div className={'block md:hidden  w-full h-screen max-h-[400px]'}>
               <Image
-                src={image}
+                src={`${image}?fit=fill&w=390&h=400`}
                 alt={title}
                 width={390}
                 height={400}
