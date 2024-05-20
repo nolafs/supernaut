@@ -2,6 +2,7 @@
 import {WorkCollection} from '../../../../../data/work';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Card} from '@supernaut/shared-ui';
+import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
 
 
 
@@ -12,26 +13,34 @@ export default async function List() {
     throw new Error('No projects found')
   }
 
-  return (<div className={'wrapper my-10 md:my-20'}>
-      <section>
-        <div className={'mb-5 md:mb-10'}>
-          <h2 className={'overflow-y-visible'}>More Projects</h2>
+  return (
+    <BlockAnimationProvider>
+      <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{
+        delay: 1.5,
+        ease: 'power2.inOut'
+      }}>
+        <div className={'wrapper my-10 md:my-20'}>
+          <section>
+            <div className={'mb-5 md:mb-10'}>
+              <h2 className={'overflow-y-visible'}>More Projects</h2>
+            </div>
+            <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
+              {work.workCollection?.items.map((item, index) => {
+                return (
+                  <Card key={`${index}-${item?.sys.id}`}
+                        title={item?.title}
+                        categories={item?.serviceCategoryCollection?.items}
+                        image={item?.featureImage?.url}
+                        url={item?.slug}
+                        prefix={'work'}
+                        small={true}
+                        wide={false}/>
+                )
+              })}
+            </div>
+          </section>
         </div>
-        <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
-          {work.workCollection?.items.map((item, index) => {
-            return (
-              <Card key={`${index}-${item?.sys.id}`}
-                    title={item?.title}
-                    categories={item?.serviceCategoryCollection?.items}
-                    image={item?.featureImage?.url}
-                    url={item?.slug}
-                    prefix={'work'}
-                    small={true}
-                    wide={false}/>
-            )
-          })}
-        </div>
-      </section>
-    </div>
+      </BlockAnimateOnScroll>
+    </BlockAnimationProvider>
   );
 }

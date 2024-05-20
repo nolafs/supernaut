@@ -141,4 +141,10 @@
     }
   }
 
+  .is-transitioning {
+    #navigation {
+      @apply mix-blend-difference bg-transparent #{!important};
+    }
+  }
+
 }
