@@ -15,7 +15,7 @@ export default async function List() {
   return (<div className={'wrapper my-10 md:my-20'}>
       <section>
         <div className={'mb-5 md:mb-10'}>
-          <h2>More Projects</h2>
+          <h2 className={'overflow-y-visible'}>More Projects</h2>
         </div>
         <div className={'grid grid-cols-1 md:grid-cols-3 gap-5'}>
           {work.workCollection?.items.map((item, index) => {

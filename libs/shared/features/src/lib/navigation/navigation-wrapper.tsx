@@ -33,7 +33,7 @@ export function NavigationWrapper({
         sticky ? 'fixed' : 'absolute',
         'w-full h-[100px] inset-0 z-40 overflow-hidden',
         (mode) && styles[mode],
-        state ? styles['scrolled'] : 'mix-blend-difference'
+        state ? styles['scrolled'] : ''
       )}
     >
       {children}
