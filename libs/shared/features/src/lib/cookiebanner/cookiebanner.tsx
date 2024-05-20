@@ -37,7 +37,7 @@ export const CookieBanner = () => {
 
 
   return ((isClient) ? <div>
-      <div className={`my-10 mx-auto max-w-max md:max-w-screen-lg fixed z-50 bottom-0 left-0 right-0 bg-primary text-black
+      <div className={`my-10 mx-auto max-w-max md:max-w-screen-lg fixed z-50 bottom-0 left-0 right-0 bg-primary text-secondary
                         flex px-3 md:px-4 py-3 ${cookieConsent != null ? "hidden" : "flex"}  justify-between items-center flex-col sm:flex-row gap-4
                          bg-gray-700`}>
 
@@ -51,10 +51,10 @@ export const CookieBanner = () => {
 
 
         <div className='flex gap-2'>
-          <button className='px-5 py-2 text-gray-300 rounded-md border-gray-900 bg-gray-700'
+          <button className='px-5 py-2 text-gray-300  border-gray-900 bg-gray-700'
                   onClick={() => setCookieConsent(false)}>Decline
           </button>
-          <button className='bg-gray-900 px-5 py-2 text-white rounded-lg whitespace-nowrap'
+          <button className='bg-gray-900 px-5 py-2 text-white  whitespace-nowrap'
                   onClick={() => setCookieConsent(true)}>Allow Cookies
           </button>
         </div>
