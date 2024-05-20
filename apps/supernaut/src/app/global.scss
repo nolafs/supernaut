@@ -5,7 +5,7 @@
 @layer base {
 
   html {
-    --color-lines: #3c3c3c;
+    --color-lines: #606060;
     --color-primary: #ffffff;
     --color-secondary: #acacac;
     --color-accent: #E62997;
@@ -14,7 +14,7 @@
   }
 
   html[data-theme="dark"] {
-    --color-lines: #3c3c3c;
+    --color-lines: #606060;
     --color-primary: #ffffff;
     --color-secondary: #999999;
     --color-accent: #E62997;
@@ -23,7 +23,7 @@
   }
 
   html[data-theme="light"] {
-    --color-lines: #3c3c3c;
+    --color-lines: #606060;
     --color-primary: #000000;
     --color-secondary: #999999;
     --color-accent: #E62997;

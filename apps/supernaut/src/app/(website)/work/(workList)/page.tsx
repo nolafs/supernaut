@@ -11,7 +11,7 @@ export default async function Page({searchParams}: {
   return (
   <section>
     <div className={'wrapper mt-10'}>
-      <div className={'border-t-2 border-secondary/40 pt-5 md:pt-10'}>
+      <div className={'border-t-2 border-lines pt-5 md:pt-10'}>
         <Card
           title={featuredWork?.title}
           description={featuredWork?.subtitle}
