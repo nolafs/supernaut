@@ -19,14 +19,15 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
 
   useGSAP(() => {
       gsap.fromTo('.video',
-        {opacity: 0, y: '100%'},
+        {opacity: 0},
         {
           opacity: 1, y: 0, duration: 1,
           scrollTrigger: {
+            toggleActions: 'play pause resume reset',
             //markers: true,
             trigger: ref.current,
-            start: 'top 80%',
-            end: 'bottom 30%',
+            start: 'top bottom',
+            end: 'bottom top',
           },
           onEnter: () => {
             console.log('onEnter')
@@ -35,13 +36,14 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
           },
           onEnterBack: () => {
             console.log('onEnterBack')
-            //handleReplay();
+           // handleReplay();
           },
           onLeave: () => {
             console.log('onLeave')
-            //handlePause();
+            handlePause();
           },
           onLeaveBack: () => {
+            console.log('onLeaveBack')
             //handlePlay();
           }
         });

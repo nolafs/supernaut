@@ -4,7 +4,7 @@ import {Cloudinary} from '@cloudinary/url-gen';
 import {fill} from "@cloudinary/url-gen/actions/resize";
 import cn from 'classnames';
 import Image from 'next/image';
-import {useRef} from 'react';
+import {useRef, useState} from 'react';
 import placeholder_white from '../../../assets/placeholder-white.webp';
 import placeholder from '../../../assets/placeholder.webp';
 import ContentVideoAnimation from '../content-video-animation';
@@ -54,7 +54,15 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
   }
 
   const handlePause = (pause = false) => {
-      ref.current.videoRef.current.paue();
+     // ref.current.videoRef.current.pause();
+  }
+
+  const handlePlaying = (e: any) => {
+    console.log('handlePlaying', e)
+  }
+
+  const handleEnded = (e: any) => {
+    console.log('handleEnded', e)
   }
 
 
@@ -76,6 +84,9 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
             playsInline={true}
             autoPlay={false}
             loop={loop}
+            onPlay={handlePlaying}
+            onEnded={handleEnded}
+
           />
         </div>
 
