@@ -1,6 +1,6 @@
 'use client'
 
-import {ReactNode, useEffect, useRef} from 'react';
+import {ReactNode, useEffect, useRef, useState} from 'react';
 import {animatePageIn} from '@supernaut/utils';
 
 
@@ -10,9 +10,8 @@ export default function Template({children}: {children: ReactNode}) {
 
   const ref = useRef<HTMLDivElement>(null);
 
-
   useEffect(() => {
-    animatePageIn();
+      animatePageIn();
   }, []);
 
 
