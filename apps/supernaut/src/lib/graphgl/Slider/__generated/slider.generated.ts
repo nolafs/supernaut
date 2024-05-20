@@ -4,10 +4,13 @@ import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
 import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
-export type SliderItemFragment = { __typename: 'SliderItem', internalName?: string | null, title?: string | null, description?: string | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
+export type SliderItemFragment = { __typename: 'SliderItem', internalName?: string | null, title?: string | null, description?: string | null, video?: any | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null };
+  ) | null, work?: { __typename?: 'Work', internalName?: string | null, slug?: string | null, pageName?: string | null, title?: string | null, subtitle?: string | null, featureImage?: (
+      { __typename?: 'Asset' }
+      & AssetFieldsFragment
+    ) | null } | null };
 
 export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
       { __typename?: 'SliderItem' }
@@ -39,7 +42,18 @@ export const SliderItemFragmentDoc = `
   image {
     ...AssetFields
   }
+  video
   url
+  work {
+    internalName
+    slug
+    pageName
+    title
+    subtitle
+    featureImage {
+      ...AssetFields
+    }
+  }
 }
     `;
 export const SliderFieldsFragmentDoc = `

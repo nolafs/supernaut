@@ -5349,6 +5349,7 @@ export type SliderItem = Entry & {
   title?: Maybe<Scalars['String']['output']>;
   url?: Maybe<Scalars['String']['output']>;
   video?: Maybe<Scalars['JSON']['output']>;
+  work?: Maybe<Work>;
 };
 
 
@@ -5394,6 +5395,14 @@ export type SliderItemVideoArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
+
+/** Slider Item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/sliderItem) */
+export type SliderItemWorkArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  where?: InputMaybe<WorkFilter>;
+};
+
 export type SliderItemCollection = {
   __typename?: 'SliderItemCollection';
   items: Array<Maybe<SliderItem>>;
@@ -5437,6 +5446,8 @@ export type SliderItemFilter = {
   url_not_contains?: InputMaybe<Scalars['String']['input']>;
   url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   video_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  work?: InputMaybe<CfWorkNestedFilter>;
+  work_exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type SliderItemLinkingCollections = {
@@ -6049,6 +6060,7 @@ export type WorkFilter = {
 export type WorkLinkingCollections = {
   __typename?: 'WorkLinkingCollections';
   entryCollection?: Maybe<EntryCollection>;
+  sliderItemCollection?: Maybe<SliderItemCollection>;
 };
 
 
@@ -6058,6 +6070,32 @@ export type WorkLinkingCollectionsEntryCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
 };
+
+
+export type WorkLinkingCollectionsSliderItemCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<WorkLinkingCollectionsSliderItemCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum WorkLinkingCollectionsSliderItemCollectionOrder {
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
 
 export enum WorkOrder {
   FeaturedAsc = 'featured_ASC',
@@ -6415,6 +6453,7 @@ export type CfSliderItemNestedFilter = {
   url_not_contains?: InputMaybe<Scalars['String']['input']>;
   url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   video_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  work_exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type CfSocialMediaItemNestedFilter = {
@@ -6450,6 +6489,72 @@ export type CfSocialMediaItemNestedFilter = {
   url_not?: InputMaybe<Scalars['String']['input']>;
   url_not_contains?: InputMaybe<Scalars['String']['input']>;
   url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+export type CfWorkNestedFilter = {
+  AND?: InputMaybe<Array<InputMaybe<CfWorkNestedFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<CfWorkNestedFilter>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  featureImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  featured?: InputMaybe<Scalars['Boolean']['input']>;
+  featured_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  featured_not?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  mode_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode_not?: InputMaybe<Scalars['String']['input']>;
+  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  pageName?: InputMaybe<Scalars['String']['input']>;
+  pageName_contains?: InputMaybe<Scalars['String']['input']>;
+  pageName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  pageName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  pageName_not?: InputMaybe<Scalars['String']['input']>;
+  pageName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  pageName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  publishingDate?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  publishingDate_gt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_gte?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  publishingDate_lt?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_lte?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_not?: InputMaybe<Scalars['DateTime']['input']>;
+  publishingDate_not_in?: InputMaybe<Array<InputMaybe<Scalars['DateTime']['input']>>>;
+  seo_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  serviceCategoryCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  servicesCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slug?: InputMaybe<Scalars['String']['input']>;
+  slug_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  slug_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  slug_not?: InputMaybe<Scalars['String']['input']>;
+  slug_not_contains?: InputMaybe<Scalars['String']['input']>;
+  slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  subtitle?: InputMaybe<Scalars['String']['input']>;
+  subtitle_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  subtitle_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  subtitle_not?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_contains?: InputMaybe<Scalars['String']['input']>;
+  subtitle_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  sys?: InputMaybe<SysFilter>;
+  title?: InputMaybe<Scalars['String']['input']>;
+  title_contains?: InputMaybe<Scalars['String']['input']>;
+  title_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  title_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  title_not?: InputMaybe<Scalars['String']['input']>;
+  title_not_contains?: InputMaybe<Scalars['String']['input']>;
+  title_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  topSectionsCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 export type CffooterNavigationMultiTypeNestedFilter = {
@@ -6802,10 +6907,13 @@ export type SettingsCollectionQuery = { __typename?: 'Query', settingsCollection
       & SettingsFieldsFragment
     ) | null> } | null };
 
-export type SliderItemFragment = { __typename: 'SliderItem', internalName?: string | null, title?: string | null, description?: string | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
+export type SliderItemFragment = { __typename: 'SliderItem', internalName?: string | null, title?: string | null, description?: string | null, video?: any | null, url?: string | null, sys: { __typename?: 'Sys', id: string }, image?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
-  ) | null };
+  ) | null, work?: { __typename?: 'Work', internalName?: string | null, slug?: string | null, pageName?: string | null, title?: string | null, subtitle?: string | null, featureImage?: (
+      { __typename?: 'Asset' }
+      & AssetFieldsFragment
+    ) | null } | null };
 
 export type SliderFieldsFragment = { __typename: 'Slider', internalName?: string | null, autoplay?: boolean | null, slideDuration?: number | null, sys: { __typename?: 'Sys', id: string }, slidesCollection?: { __typename?: 'SliderSlidesCollection', items: Array<(
       { __typename?: 'SliderItem' }
@@ -7007,7 +7115,18 @@ export const SliderItemFragmentDoc = gql`
   image {
     ...AssetFields
   }
+  video
   url
+  work {
+    internalName
+    slug
+    pageName
+    title
+    subtitle
+    featureImage {
+      ...AssetFields
+    }
+  }
 }
     `;
 export const SliderFieldsFragmentDoc = gql`

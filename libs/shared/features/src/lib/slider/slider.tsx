@@ -23,7 +23,17 @@ type Slide = {
   image: TAssets;
   video?: TAssets;
   url?: string;
+  work?: Work;
 };
+
+export type Work = {
+  featureImage?: {url: string};
+  internalName?: string;
+  pageName?: string;
+  slug?: string;
+  subtitle?: string;
+  title?: string;
+}
 
 type Slides = {
   items: Slide[];
@@ -91,6 +101,8 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
                     description={slide.description}
                     image={slide?.image?.url}
                     video={slide?.video?.url}
+                    work={slide.work}
+                    url={slide.url}
                   />
                 </SwiperSlide>
 
@@ -107,8 +119,8 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
 
           <SliderDescription
             id={currentIndex}
-            title={currentSlide?.title}
-            description={currentSlide?.description}
+            title={currentSlide?.title || currentSlide?.work?.title}
+            description={currentSlide?.description || currentSlide?.work?.subtitle}
           />
         </div>
       </SliderControls>

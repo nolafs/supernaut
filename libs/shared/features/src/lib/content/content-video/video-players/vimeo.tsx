@@ -3,7 +3,7 @@ import cn from 'classnames';
 import {useRef, useState} from 'react';
 import ReactPlayer, {Config, ReactPlayerProps} from 'react-player/lazy';
 import VideoControl from './video-control';
-import ContentVideoAnimation from './content-video-animation';
+import ContentVideoAnimation from '../content-video-animation';
 
 
 export interface VimeoProps {

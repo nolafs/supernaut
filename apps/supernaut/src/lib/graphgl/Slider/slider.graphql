@@ -9,7 +9,18 @@ fragment SliderItem on SliderItem {
     image {
         ...AssetFields
     }
+  video
     url
+  work {
+    internalName
+    slug
+    pageName
+    title
+    subtitle
+    featureImage {
+      ...AssetFields
+    }
+  }
 
 }
 

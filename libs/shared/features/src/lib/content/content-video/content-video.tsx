@@ -33,7 +33,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
 
   if(type === 'youtube') {
 
-    const Youtube = dynamic(() => import('./youtube'));
+    const Youtube = dynamic(() => import('./video-players/youtube'));
 
     return (
         <Youtube id={id} title={title || id} poster={poster} src={src}  />
@@ -42,7 +42,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
 
   if(type === 'vimeo') {
 
-    const Vimeo = dynamic(() => import('./vimeo'));
+    const Vimeo = dynamic(() => import('./video-players/vimeo'));
 
     return (
         <Vimeo id={id} title={title || id} poster={poster} src={src}/>
@@ -51,7 +51,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
 
   if (type === 'video') {
 
-    const CloudinaryVideo = dynamic(() => import('./video'));
+    const CloudinaryVideo = dynamic(() => import('./video-players/video'));
 
     return (
           <CloudinaryVideo id={id} title={title || id} poster={poster} src={videoUpload[0].public_id} autoplay={autoplay} controls={controls} frame={frame} />

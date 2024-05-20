@@ -5,9 +5,9 @@ import {fill} from "@cloudinary/url-gen/actions/resize";
 import cn from 'classnames';
 import Image from 'next/image';
 import {useRef} from 'react';
-import placeholder_white from '../../assets/placeholder-white.webp';
-import placeholder from '../../assets/placeholder.webp';
-import ContentVideoAnimation from './content-video-animation';
+import placeholder_white from '../../../assets/placeholder-white.webp';
+import placeholder from '../../../assets/placeholder.webp';
+import ContentVideoAnimation from '../content-video-animation';
 
 
 export interface VideoProps {

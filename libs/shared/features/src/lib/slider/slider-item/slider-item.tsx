@@ -1,6 +1,9 @@
 import { forwardRef } from 'react';
 import Image from 'next/image';
 import { useRouter } from 'next/navigation';
+import CloudinaryVideo from '../../content/content-video/video-players/video';
+import dynamic from 'next/dynamic';
+
 
 /* eslint-disable-next-line */
 export interface SliderItemProps {
@@ -9,11 +12,38 @@ export interface SliderItemProps {
   image: string;
   video?: string;
   url?: string;
+  work?: any;
 }
 
 const SliderItem = forwardRef(
-  ({ title, description, image, video, url }: SliderItemProps, ref) => {
+  ({ title, description, image, video, url, work }: SliderItemProps, ref) => {
     const router = useRouter();
+
+    if(work) {
+      url = `/work/${work.slug}`;
+      if(!image){
+        image = work.featureImage.url;
+      }
+      if(!title){
+        title = work.title;
+      }
+      if(!description){
+        description = work.subtitle;
+      }
+    }
+
+    const addVideoPlayer = (id: string, title: string,  video: any, poster: string) => {
+        const Video = dynamic(() => import('../../content/content-video/video-players/video').then((mod) => mod.CloudinaryVideo));
+        return <Video
+          id={id}
+          title={title || id}
+          poster={poster}
+          src={video[0]?.public_id}
+          autoplay={true}
+          controls={true}
+          frame={false} />
+
+      };
 
     const handleClick = () => {
       //next router
@@ -29,17 +59,7 @@ const SliderItem = forwardRef(
           <p>{description}</p>
         </div>
         {video ? (
-          <video
-            autoPlay
-            muted
-            loop
-            playsInline
-            className={
-              'bottom-0 left-0 right-0 top-0 h-full w-full object-cover object-center'
-            }
-          >
-            <source src={video} type="video/mp4" />
-          </video>
+          addVideoPlayer(title, description, video, image)
         ) : (
           <picture>
             <div className={'hidden md:block w-full h-screen max-h-[1000px]'}>

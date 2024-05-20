@@ -1,7 +1,7 @@
 import Image from 'next/image';
 
-import placeholder_white from '../../assets/placeholder-white.webp';
-import placeholder from '../../assets/placeholder.webp';
+import placeholder_white from '../../../assets/placeholder-white.webp';
+import placeholder from '../../../assets/placeholder.webp';
 
 /* eslint-disable-next-line */
 export interface VideoControlProps {

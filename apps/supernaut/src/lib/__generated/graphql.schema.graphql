@@ -3433,6 +3433,7 @@ type SliderItem implements Entry {
   title(locale: String): String
   url(locale: String): String
   video(locale: String): JSON
+  work(locale: String, preview: Boolean, where: WorkFilter): Work
 }
 
 type SliderItemCollection {
@@ -3477,6 +3478,8 @@ input SliderItemFilter {
   url_not_contains: String
   url_not_in: [String]
   video_exists: Boolean
+  work: cfWorkNestedFilter
+  work_exists: Boolean
 }
 
 type SliderItemLinkingCollections {
@@ -3892,6 +3895,24 @@ input WorkFilter {
 
 type WorkLinkingCollections {
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sliderItemCollection(limit: Int = 100, locale: String, order: [WorkLinkingCollectionsSliderItemCollectionOrder], preview: Boolean, skip: Int = 0): SliderItemCollection
+}
+
+enum WorkLinkingCollectionsSliderItemCollectionOrder {
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  url_ASC
+  url_DESC
 }
 
 enum WorkOrder {
@@ -4247,6 +4268,7 @@ input cfSliderItemNestedFilter {
   url_not_contains: String
   url_not_in: [String]
   video_exists: Boolean
+  work_exists: Boolean
 }
 
 input cfSocialMediaItemNestedFilter {
@@ -4282,6 +4304,72 @@ input cfSocialMediaItemNestedFilter {
   url_not: String
   url_not_contains: String
   url_not_in: [String]
+}
+
+input cfWorkNestedFilter {
+  AND: [cfWorkNestedFilter]
+  OR: [cfWorkNestedFilter]
+  contentfulMetadata: ContentfulMetadataFilter
+  featureImage_exists: Boolean
+  featured: Boolean
+  featured_exists: Boolean
+  featured_not: Boolean
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
+  pageName: String
+  pageName_contains: String
+  pageName_exists: Boolean
+  pageName_in: [String]
+  pageName_not: String
+  pageName_not_contains: String
+  pageName_not_in: [String]
+  publishingDate: DateTime
+  publishingDate_exists: Boolean
+  publishingDate_gt: DateTime
+  publishingDate_gte: DateTime
+  publishingDate_in: [DateTime]
+  publishingDate_lt: DateTime
+  publishingDate_lte: DateTime
+  publishingDate_not: DateTime
+  publishingDate_not_in: [DateTime]
+  seo_exists: Boolean
+  serviceCategoryCollection_exists: Boolean
+  servicesCollection_exists: Boolean
+  slug: String
+  slug_contains: String
+  slug_exists: Boolean
+  slug_in: [String]
+  slug_not: String
+  slug_not_contains: String
+  slug_not_in: [String]
+  subtitle: String
+  subtitle_contains: String
+  subtitle_exists: Boolean
+  subtitle_in: [String]
+  subtitle_not: String
+  subtitle_not_contains: String
+  subtitle_not_in: [String]
+  sys: SysFilter
+  title: String
+  title_contains: String
+  title_exists: Boolean
+  title_in: [String]
+  title_not: String
+  title_not_contains: String
+  title_not_in: [String]
+  topSectionsCollection_exists: Boolean
 }
 
 input cffooterNavigationMultiTypeNestedFilter {

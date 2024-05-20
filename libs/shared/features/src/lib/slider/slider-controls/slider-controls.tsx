@@ -73,14 +73,14 @@ export function SliderControls({ children }: SliderControlsProps) {
         <div className={'controls'}>
           <div
             className={
-              'swiper-button-next-custom absolute right-0 top-0 w-[20%] h-full bg-transparent z-20'
+              'swiper-button-next-custom absolute right-0 top-0 w-[10%] h-full bg-transparent z-20'
             }
             onMouseEnter={() => handleCursor('next')}
             onMouseLeave={() => handleCursor('default')}
           ></div>
           <div
             className={
-              'swiper-button-prev-custom absolute left-0 top-0 w-[20%] h-full bg-transparent z-20'
+              'swiper-button-prev-custom absolute left-0 top-0 w-[10%] h-full bg-transparent z-20'
             }
             onMouseEnter={() => handleCursor('prev')}
             onMouseLeave={() => handleCursor('default')}
