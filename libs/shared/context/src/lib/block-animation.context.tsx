@@ -77,7 +77,7 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
 
     console.log('children', children, props.target)
 
-    gsap.fromTo(children, {opacity: 0, y: 100, ...props.from}, {opacity: 1, y: 0, stagger: 0.009, ...props.to, ...props.animProps});
+    gsap.fromTo(children, {opacity: 0, y: 100, ...props.from}, {opacity: 1, y: 0, stagger: 0.09, ...props.to, ...props.animProps});
   }
 
 

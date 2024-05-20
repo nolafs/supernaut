@@ -911,6 +911,8 @@ export type ContentColumnComponentLinkingCollectionsSectionCollectionArgs = {
 export enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -1213,6 +1215,8 @@ export enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCol
 export enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -1398,6 +1402,8 @@ export type ContentListComponentLinkingCollectionsSectionCollectionArgs = {
 export enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -1579,6 +1585,8 @@ export type ContentProfileComponentLinkingCollectionsSectionCollectionArgs = {
 export enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -1733,6 +1741,8 @@ export type ContentServiceListLinkingCollectionsSectionCollectionArgs = {
 export enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -1973,6 +1983,8 @@ export type ContentVideoComponentLinkingCollectionsSectionCollectionArgs = {
 export enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -3750,6 +3762,8 @@ export type QuoteComponentLinkingCollectionsSectionCollectionArgs = {
 export enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -3990,6 +4004,7 @@ export type ResourceSys = {
 export type Section = Entry & {
   __typename?: 'Section';
   align?: Maybe<Scalars['String']['output']>;
+  animation?: Maybe<Scalars['Boolean']['output']>;
   backgroundColor?: Maybe<Scalars['String']['output']>;
   className?: Maybe<Scalars['String']['output']>;
   component?: Maybe<SectionComponent>;
@@ -4015,6 +4030,12 @@ export type Section = Entry & {
 
 /** Section wrapper for components [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/section) */
 export type SectionAlignArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Section wrapper for components [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/section) */
+export type SectionAnimationArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4147,6 +4168,9 @@ export type SectionFilter = {
   align_not?: InputMaybe<Scalars['String']['input']>;
   align_not_contains?: InputMaybe<Scalars['String']['input']>;
   align_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  animation?: InputMaybe<Scalars['Boolean']['input']>;
+  animation_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  animation_not?: InputMaybe<Scalars['Boolean']['input']>;
   backgroundColor?: InputMaybe<Scalars['String']['input']>;
   backgroundColor_contains?: InputMaybe<Scalars['String']['input']>;
   backgroundColor_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4322,6 +4346,8 @@ export enum SectionLinkingCollectionsWorkCollectionOrder {
 export enum SectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -5535,6 +5561,8 @@ export type SliderLinkingCollectionsSectionCollectionArgs = {
 export enum SliderLinkingCollectionsSectionCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
   BackgroundColorAsc = 'backgroundColor_ASC',
   BackgroundColorDesc = 'backgroundColor_DESC',
   ClassNameAsc = 'className_ASC',
@@ -6813,7 +6841,7 @@ export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoCom
     & AssetFieldsFragment
   ) | null };
 
-export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, animation?: boolean | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
     & SectionComponentFields_ContentColumnComponent_Fragment
   ) | (
@@ -7322,6 +7350,7 @@ export const SectionFieldsFragmentDoc = gql`
   lineTop
   lineBottom
   className
+  animation
   component {
     __typename
     ...SectionComponentFields

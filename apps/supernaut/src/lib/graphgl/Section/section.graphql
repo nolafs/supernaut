@@ -168,6 +168,7 @@ fragment SectionFields on Section {
   lineTop
   lineBottom
   className
+  animation
   component {
     __typename
     ...SectionComponentFields

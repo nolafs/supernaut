@@ -79,7 +79,7 @@ export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoCom
     & AssetFieldsFragment
   ) | null };
 
-export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, mode?: string | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, animation?: boolean | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
     & SectionComponentFields_ContentColumnComponent_Fragment
   ) | (
@@ -295,6 +295,7 @@ export const SectionFieldsFragmentDoc = `
   lineTop
   lineBottom
   className
+  animation
   component {
     __typename
     ...SectionComponentFields

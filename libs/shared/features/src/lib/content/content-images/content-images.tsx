@@ -51,7 +51,7 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
 
 
   return (<BlockAnimationProvider>
-      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 90%" target={'.image'}>
+      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 70%" target={'img'}>
         <GridImages
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
           girdClass={ GRID_VARIANTS[gridVariant || 0]}

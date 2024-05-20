@@ -544,6 +544,8 @@ type ContentColumnComponentLinkingCollections {
 enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -756,6 +758,8 @@ enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCollection
 enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -889,6 +893,8 @@ type ContentListComponentLinkingCollections {
 enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -1022,6 +1028,8 @@ type ContentProfileComponentLinkingCollections {
 enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -1129,6 +1137,8 @@ type ContentServiceListLinkingCollections {
 enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -1289,6 +1299,8 @@ type ContentVideoComponentLinkingCollections {
 enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -2347,6 +2359,8 @@ type QuoteComponentLinkingCollections {
 enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -2538,6 +2552,7 @@ Section wrapper for components [See type definition](https://app.contentful.com/
 """
 type Section implements Entry {
   align(locale: String): String
+  animation(locale: String): Boolean
   backgroundColor(locale: String): String
   className(locale: String): String
   component(locale: String, preview: Boolean): SectionComponent
@@ -2579,6 +2594,9 @@ input SectionFilter {
   align_not: String
   align_not_contains: String
   align_not_in: [String]
+  animation: Boolean
+  animation_exists: Boolean
+  animation_not: Boolean
   backgroundColor: String
   backgroundColor_contains: String
   backgroundColor_exists: Boolean
@@ -2727,6 +2745,8 @@ enum SectionLinkingCollectionsWorkCollectionOrder {
 enum SectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
@@ -3531,6 +3551,8 @@ type SliderLinkingCollections {
 enum SliderLinkingCollectionsSectionCollectionOrder {
   align_ASC
   align_DESC
+  animation_ASC
+  animation_DESC
   backgroundColor_ASC
   backgroundColor_DESC
   className_ASC
