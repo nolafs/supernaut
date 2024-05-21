@@ -17,7 +17,8 @@ export function TransitionLink({children, href, className}: TransitionLinkProps)
   const router = useRouter();
 
   const handleClick = () => {
-    animatePageOut(href, router);
+    //animatePageOut(href, router);
+    router.push(href);
   };
 
   return (

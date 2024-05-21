@@ -113,6 +113,7 @@ module.exports = {
     // Your variant configurations
   },
   plugins: [
+    "prettier-plugin-tailwindcss",
     require('@tailwindcss/aspect-ratio'),
     require('@tailwindcss/typography'),
     require('@tailwindcss/forms'),
