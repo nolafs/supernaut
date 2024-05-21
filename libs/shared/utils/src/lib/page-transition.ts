@@ -14,7 +14,7 @@ export const animatePageIn = () => {
   const tl = gsap.timeline({paused: true});
 
 
-  if(cover.length && !ANIM) {
+  if(cover.length) {
     ANIM = true;
     //document.body.classList.add('is-transitioning');
     tl.set(wrapper, {opacity: 1})
@@ -52,11 +52,8 @@ export const animatePageOut = (href: string, router: any) => {
 
     //document.body.classList.add('is-transitioning');
     const tl = gsap.timeline({paused: true, onComplete: () => {
-
-        setTimeout(() => {
-          console.log('routing')
-          router.push(href);
-        }, 1000)
+      console.log('router', router)
+      router.push(href);
       }});
     tl.set(wrapper, {opacity: 1})
     tl.set(cover, {y:-window.innerHeight, scaleY: .2})

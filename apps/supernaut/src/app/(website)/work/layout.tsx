@@ -6,7 +6,7 @@ interface LayoutProps {
   children: ReactNode;
 }
 
-export default async function Layout({children}: LayoutProps) {
+export default function Layout({children}: LayoutProps) {
   return (
     <QueryProvider>
       {children}

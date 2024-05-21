@@ -1,7 +1,6 @@
 'use client'
 import {ReactNode} from 'react';
 import {useRouter} from 'next/navigation';
-import {animatePageOut} from '@supernaut/utils';
 import cn from 'classnames';
 
 

@@ -1,3 +1,4 @@
+export * from './lib/is-first-render';
 export * from './lib/is-touch-device';
 export * from './lib/mouse-position';
 export * from './lib/navigation';

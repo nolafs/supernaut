@@ -1,5 +1,6 @@
+export * from './lib/page-transition/page-transition';
 export { ThemeSwitchServer } from './lib/theme-switch-server/theme-switch-server';
-export {ThemeSwitchButton} from './lib/theme-switch-button/theme-switch-button';
+export { ThemeSwitchButton } from './lib/theme-switch-button/theme-switch-button';
 export * from './lib/services/services';
 export * from './lib/contact-form/contact-form-dialog-button';
 export * from './lib/content/content-images/content-images';
