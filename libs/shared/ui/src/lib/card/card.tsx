@@ -58,9 +58,9 @@ export function Card({id, title = 'title',categories, description, image, url, p
         {(image) && imageComp(image)}
         <div>
           <h2 className={'mb-2'}>{title}</h2>
-          {(wide) ? <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{description}</p> : <ul className={cn( (!small) ? 'text-xl md:text-2xl lg:text-4xl' : 'text-normal md:text-xl lg:text-2xl' ,' font-normal flex flex-row')}>
+          {(wide) ? <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{description}</p> : <ul className={cn( (!small) ? 'text-xl md:text-2xl lg:text-4xl' : 'text-normal md:text-xl lg:text-2xl' ,' font-normal flex flex-col lg:flex-row')}>
             {categories && categories.map((category, index) => {
-              return <li key={index}>{(index !== 0) && <span className={'inline-block mx-5'}>/</span> }{category.name}</li>
+              return <li key={index}>{(index !== 0) && <span className={'inline-block mx-5 hidden lg:inline-block'}>/</span> }{category.name}</li>
             })}
           </ul>}
         </div>
