@@ -13,7 +13,7 @@
     @apply w-12;
 
     &:after, &:before {
-      background-color: #fff;
+      background-color: var(--color-primary);
       content: "";
       display: block;
       width: 100%;
@@ -22,17 +22,7 @@
       transition: all .2s ease-in-out;
     }
 
-    &.light{
-      &:after, &:before {
-        background-color: #000
-      }
-    }
 
-    &.dark {
-      &:after, &:before {
-        background-color: #fff;
-      }
-    }
 
     &.open {
       &:before {
