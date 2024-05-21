@@ -31,7 +31,7 @@ export default function Template({children}: {children: ReactNode}) {
   return (
     <>
       <div ref={ref} id={'page-transition'} className={'fixed z-[39] w-full h-screen top-0 inset-0 pointer-events-none overflow-hidden'}>
-          <div id="section-name" className={'absolute z-50 top-1/2 font-bold w-full text-7xl -translate-y-1/2 text-neutral text-center mix-blend-darken'}>Work.</div>
+          <div id="section-name" className={'absolute z-50 top-1/2 font-bold w-full text-[150px] -translate-y-1/2 text-neutral text-center mix-blend-darken'}>Work.</div>
           <div className={'bar w-full bg-primary'} style={{height:'5%'}}></div>
           <div className={'bar w-full bg-primary'} style={{height:'6%'}}></div>
           <div className={'bar w-full bg-primary'} style={{height:'12%'}}></div>
