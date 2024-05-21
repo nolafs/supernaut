@@ -70,7 +70,7 @@ export function ContentColumn({
             {title && <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
             {body && (<BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%">
               <div
-                className={'text-[28px] md:text-3xl lg:text-[40px] font-medium lg:leading-[46px]  splitTextOverflow'}
+                className={'text-[28px] md:text-3xl lg:text-[40px] font-medium leading-[28px] lg:leading-[46px]  splitTextOverflow'}
                 dangerouslySetInnerHTML={{__html: body}}
               />
               </BlockAnimateOnScroll>
