@@ -9,12 +9,12 @@ export interface ContentListProps {
   mode?: 'light' | 'dark';
 }
 
-export function ContentList({title,items, mode = 'dark'  }: ContentListProps) {
+export function ContentList({title,items }: ContentListProps) {
   return (
-    <ContentColumn title={title} hTag={'h2'} type={'1/2'} mode={mode}>
+    <ContentColumn title={title} hTag={'h2'} type={'1/2'}>
       {items.items.map((item, index) => (
         <div key={index} className={'flex flex-col mb-10'}>
-          <ContentColumn title={item.title} hTag={'h3'} type={'1/2'} mode={mode} padding={'none'}>
+          <ContentColumn title={item.title} hTag={'h3'} type={'1/2'} padding={'none'}>
             <BlockAnimateOnScroll animation="staggerList" duration={0.5} target={'li'} start="top 80%">
             <ul className={'flex flex-col space-y-5'}>
 

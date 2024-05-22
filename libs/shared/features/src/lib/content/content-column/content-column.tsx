@@ -16,7 +16,7 @@ export interface ContentColumnProps {
   url?: string | undefined | null;
   label?: string  | undefined | null;
   children?: ReactNode;
-  animationType: 'splitText' | 'fadeIn' | 'splitTextByLines' | 'splitTextByWords' | 'slideIn';
+  animationType?: 'splitText' | 'fadeIn' | 'splitTextByLines' | 'splitTextByWords' | 'slideIn';
   component?: any
 }
 
