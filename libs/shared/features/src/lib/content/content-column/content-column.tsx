@@ -39,7 +39,6 @@ export function ContentColumn({
   animationType = 'splitText'
 }: ContentColumnProps) {
 
-  console.log('component', animationType);
 
   if(!type && !children && component === undefined)
     return <NotificationBlock body={'Must set Component and type'} type={'error'}/>;
@@ -86,12 +85,6 @@ export function ContentColumn({
     );
   }
   else {
-
-
-    console.log('component', component);
-
-
-
     return (<BlockAnimationProvider>
       <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10 text-primary',
         padding === 'none' && 'px-0',

@@ -1,6 +1,6 @@
 
 import {Metadata, ResolvingMetadata} from 'next';
-import {ReactNode} from 'react';
+import {ReactNode, Suspense} from 'react';
 
 import i18nConfig from '../../../../../next-i18next.config';
 import SettingContent from '../../../../data/settings';
@@ -51,7 +51,9 @@ export default async function Layout({children, list}: LayoutProps) {
 
       {children}
       {list}
-      <ThemeSwitchServer mode={pageData?.mode}/>
+      <Suspense>
+        <ThemeSwitchServer mode={pageData?.mode}/>
+      </Suspense>
     </>
   )
 }
