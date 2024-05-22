@@ -12,7 +12,7 @@ type Props = {
   searchParams: { [key: string]: string | string[] | undefined }
 }
 
-/*
+
 export async function generateMetadata(
   {params, searchParams}: Props,
   parent: ResolvingMetadata
@@ -31,7 +31,7 @@ export async function generateMetadata(
   }
 }
 
- */
+
 
 export default async function Layout({children, latest}: LayoutProps) {
   return (

@@ -40,8 +40,6 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
 
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
-  console.log('ContentImages',columnsSm, columnsMd, columnsLg)
-
   if(imagesCollection.items.length === 1) {
     columnsSm = 0;
     columnsMd = 0;
