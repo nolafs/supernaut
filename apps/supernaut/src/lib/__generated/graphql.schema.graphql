@@ -390,14 +390,14 @@ type ContentBodyTextLinkingCollections {
 enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
   align_ASC
   align_DESC
+  animationType_ASC
+  animationType_DESC
   hTag_ASC
   hTag_DESC
   internalName_ASC
   internalName_DESC
   label_ASC
   label_DESC
-  mode_ASC
-  mode_DESC
   padding_ASC
   padding_DESC
   sys_firstPublishedAt_ASC
@@ -434,6 +434,7 @@ enum ContentBodyTextOrder {
 """
 type ContentColumnComponent implements Entry {
   align(locale: String): String
+  animationType(locale: String): String
   body(locale: String): String
   component(locale: String, preview: Boolean): ContentColumnComponentComponent
   contentfulMetadata: ContentfulMetadata!
@@ -441,7 +442,6 @@ type ContentColumnComponent implements Entry {
   internalName(locale: String): String
   label(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentColumnComponentLinkingCollections
-  mode(locale: String): String
   padding(locale: String): String
   sys: Sys!
   title(locale: String): String
@@ -468,6 +468,13 @@ input ContentColumnComponentFilter {
   align_not: String
   align_not_contains: String
   align_not_in: [String]
+  animationType: String
+  animationType_contains: String
+  animationType_exists: Boolean
+  animationType_in: [String]
+  animationType_not: String
+  animationType_not_contains: String
+  animationType_not_in: [String]
   body: String
   body_contains: String
   body_exists: Boolean
@@ -498,13 +505,6 @@ input ContentColumnComponentFilter {
   label_not: String
   label_not_contains: String
   label_not_in: [String]
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   padding: String
   padding_contains: String
   padding_exists: Boolean
@@ -589,14 +589,14 @@ enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
 enum ContentColumnComponentOrder {
   align_ASC
   align_DESC
+  animationType_ASC
+  animationType_DESC
   hTag_ASC
   hTag_DESC
   internalName_ASC
   internalName_DESC
   label_ASC
   label_DESC
-  mode_ASC
-  mode_DESC
   padding_ASC
   padding_DESC
   sys_firstPublishedAt_ASC
@@ -727,14 +727,14 @@ type ContentImageGridComponentLinkingCollections {
 enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder {
   align_ASC
   align_DESC
+  animationType_ASC
+  animationType_DESC
   hTag_ASC
   hTag_DESC
   internalName_ASC
   internalName_DESC
   label_ASC
   label_DESC
-  mode_ASC
-  mode_DESC
   padding_ASC
   padding_DESC
   sys_firstPublishedAt_ASC

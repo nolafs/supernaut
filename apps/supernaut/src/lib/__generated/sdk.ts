@@ -666,14 +666,14 @@ export type ContentBodyTextLinkingCollectionsEntryCollectionArgs = {
 export enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationTypeAsc = 'animationType_ASC',
+  AnimationTypeDesc = 'animationType_DESC',
   HTagAsc = 'hTag_ASC',
   HTagDesc = 'hTag_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   LabelAsc = 'label_ASC',
   LabelDesc = 'label_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingAsc = 'padding_ASC',
   PaddingDesc = 'padding_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -709,6 +709,7 @@ export enum ContentBodyTextOrder {
 export type ContentColumnComponent = Entry & {
   __typename?: 'ContentColumnComponent';
   align?: Maybe<Scalars['String']['output']>;
+  animationType?: Maybe<Scalars['String']['output']>;
   body?: Maybe<Scalars['String']['output']>;
   component?: Maybe<ContentColumnComponentComponent>;
   contentfulMetadata: ContentfulMetadata;
@@ -716,7 +717,6 @@ export type ContentColumnComponent = Entry & {
   internalName?: Maybe<Scalars['String']['output']>;
   label?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContentColumnComponentLinkingCollections>;
-  mode?: Maybe<Scalars['String']['output']>;
   padding?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
@@ -727,6 +727,12 @@ export type ContentColumnComponent = Entry & {
 
 /** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentAlignArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
+export type ContentColumnComponentAnimationTypeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -765,12 +771,6 @@ export type ContentColumnComponentLabelArgs = {
 /** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
-export type ContentColumnComponentModeArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -817,6 +817,13 @@ export type ContentColumnComponentFilter = {
   align_not?: InputMaybe<Scalars['String']['input']>;
   align_not_contains?: InputMaybe<Scalars['String']['input']>;
   align_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  animationType?: InputMaybe<Scalars['String']['input']>;
+  animationType_contains?: InputMaybe<Scalars['String']['input']>;
+  animationType_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  animationType_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  animationType_not?: InputMaybe<Scalars['String']['input']>;
+  animationType_not_contains?: InputMaybe<Scalars['String']['input']>;
+  animationType_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   body?: InputMaybe<Scalars['String']['input']>;
   body_contains?: InputMaybe<Scalars['String']['input']>;
   body_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -847,13 +854,6 @@ export type ContentColumnComponentFilter = {
   label_not?: InputMaybe<Scalars['String']['input']>;
   label_not_contains?: InputMaybe<Scalars['String']['input']>;
   label_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   padding?: InputMaybe<Scalars['String']['input']>;
   padding_contains?: InputMaybe<Scalars['String']['input']>;
   padding_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -956,14 +956,14 @@ export enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
 export enum ContentColumnComponentOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationTypeAsc = 'animationType_ASC',
+  AnimationTypeDesc = 'animationType_DESC',
   HTagAsc = 'hTag_ASC',
   HTagDesc = 'hTag_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   LabelAsc = 'label_ASC',
   LabelDesc = 'label_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingAsc = 'padding_ASC',
   PaddingDesc = 'padding_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -1184,14 +1184,14 @@ export type ContentImageGridComponentLinkingCollectionsSectionCollectionArgs = {
 export enum ContentImageGridComponentLinkingCollectionsContentColumnComponentCollectionOrder {
   AlignAsc = 'align_ASC',
   AlignDesc = 'align_DESC',
+  AnimationTypeAsc = 'animationType_ASC',
+  AnimationTypeDesc = 'animationType_DESC',
   HTagAsc = 'hTag_ASC',
   HTagDesc = 'hTag_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   LabelAsc = 'label_ASC',
   LabelDesc = 'label_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingAsc = 'padding_ASC',
   PaddingDesc = 'padding_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -6797,7 +6797,7 @@ export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImag
 
 export type ContentBodyTextFieldsFragment = { __typename: 'ContentBodyText', internalName?: string | null, body?: { __typename?: 'ContentBodyTextBody', json: any } | null };
 
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, animationType?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentBodyText' }
     & ContentBodyTextFieldsFragment
   ) | (
@@ -7223,7 +7223,6 @@ export const ContentColumnComponentFieldsFragmentDoc = gql`
   sys {
     id
   }
-  mode
   type
   title
   body
@@ -7232,6 +7231,7 @@ export const ContentColumnComponentFieldsFragmentDoc = gql`
   url
   align
   padding
+  animationType
   component {
     __typename
     ...ContentImageGridComponentFields

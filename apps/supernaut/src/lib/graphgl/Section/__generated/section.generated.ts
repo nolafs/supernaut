@@ -66,7 +66,7 @@ export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImag
 
 export type ContentBodyTextFieldsFragment = { __typename: 'ContentBodyText', internalName?: string | null, body?: { __typename?: 'ContentBodyTextBody', json: any } | null };
 
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', mode?: string | null, type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, animationType?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentBodyText' }
     & ContentBodyTextFieldsFragment
   ) | (
@@ -199,7 +199,6 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   sys {
     id
   }
-  mode
   type
   title
   body
@@ -208,6 +207,7 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   url
   align
   padding
+  animationType
   component {
     __typename
     ...ContentImageGridComponentFields

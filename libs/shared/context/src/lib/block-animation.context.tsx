@@ -43,6 +43,8 @@ type Animations = {
   fadeIn: (element: Element | null, props: AnimationProps) => void;
   slideIn: (element: Element | null, props: AnimationProps) => void;
   splitText: (element: Element | null, props: AnimationProps) => void;
+  splitTextByWords: (element: Element | null, props: AnimationProps) => void;
+  splitTextByLines: (element: Element | null, props: AnimationProps) => void;
   staggerList: (element: Element | null, props: AnimationProps) => void;
 }
 
@@ -68,15 +70,42 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
     gsap.fromTo(split.chars, {opacity: 0, y: '100%',  ...props.from}, {opacity: 1, y: 0, stagger: 0.02, ease:'power2.inOut', ...props.to, ...props.animProps});
   };
 
+  const splitTextByLines = (element: any, props: any) => {
+
+    const text = element.children[0];
+    const split = new SplitText(text, {type: 'chars, words, lines'});
+
+    if (!split.lines) return;
+
+    gsap.fromTo(split.lines, {opacity: 0, y: '100%', ...props.from}, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+      ease: 'power2.inOut', ...props.to, ...props.animProps
+    });
+  };
+
+  const splitTextByWords = (element: any, props: any) => {
+
+    const text = element.children[0];
+    const split = new SplitText(text, {type: 'chars, words, lines'});
+
+    if (!split.words) return;
+
+    gsap.fromTo(split.words, {opacity: 0, y: '100%', ...props.from}, {
+      opacity: 1,
+      y: 0,
+      stagger: 0.2,
+      ease: 'power2.inOut', ...props.to, ...props.animProps
+    });
+  };
+
   const staggerList = (element: any, props: any) => {
     let children = element.children;
     // get all children
     if(props?.target) {
       children = props.target;
     }
-
-    console.log('children', children, props.target)
-
     gsap.fromTo(children, {opacity: 0, y: 100, ...props.from}, {opacity: 1, y: 0, stagger: 0.09, ...props.to, ...props.animProps});
   }
 
@@ -85,6 +114,8 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
     fadeIn,
     slideIn,
     splitText,
+    splitTextByLines,
+    splitTextByWords,
     staggerList
   };
 

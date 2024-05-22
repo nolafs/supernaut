@@ -113,7 +113,6 @@ fragment ContentColumnComponentFields on ContentColumnComponent {
   sys {
     id
   }
-  mode
   type
   title
   body
@@ -122,6 +121,7 @@ fragment ContentColumnComponentFields on ContentColumnComponent {
   url
   align
   padding
+  animationType
   component {
     __typename
     ...ContentImageGridComponentFields
