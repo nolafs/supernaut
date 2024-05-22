@@ -9,7 +9,7 @@ export default async function Page({searchParams}: {
   const workFeatured = await WorkFeaturedCollection(1, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
   const featuredWork = workFeatured?.workCollection?.items[0];
 
-  return (
+  return ((featuredWork &&
     <BlockAnimationProvider>
       <BlockAnimateOnScroll animation={'slideIn'} to={{delay: .5}}>
       <section>
@@ -26,6 +26,6 @@ export default async function Page({searchParams}: {
         </div>
       </section>
       </BlockAnimateOnScroll>
-    </BlockAnimationProvider>
+    </BlockAnimationProvider>)
   )
 }

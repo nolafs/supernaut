@@ -51,7 +51,7 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
   }, {scope: ref});
 
   return (
-    <div ref={ref} className={'flex w-full max-w-9xl mx-auto'}>
+    <div ref={ref}>
       {children}
     </div>
   );
