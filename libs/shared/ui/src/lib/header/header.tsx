@@ -20,7 +20,6 @@ export function Header({
   title,
   subtitle,
   description,
-  mode,
   columnLayout = false,
   marginTop = true,
   marginBottom = false,
@@ -65,7 +64,7 @@ export function Header({
               )}
             >
               <div>
-                <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%" to={{delay: 0.3 + delay}}><h2
+                <BlockAnimateOnScroll animation="splitTextByWords" duration={0.5} start="top 90%" to={{delay: 0.3 + delay}}><h2
                   className={'splitTextOverflow lg:text-[46px] lg:leading-[48px]'}>{subtitle}</h2></BlockAnimateOnScroll>
               </div>
               <div className={'overflow-hidden'}>

@@ -32,7 +32,7 @@ export default async function Page({params}: PageProps) {
             pageName={workData?.title}
             subtitle={workData?.subtitle}
             title={workData?.title}
-            delay={1}
+            delay={0}
           />
           {workData?.topSectionsCollection?.items &&
             <SectionResolver  sections={workData?.topSectionsCollection?.items}/>

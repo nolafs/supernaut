@@ -88,14 +88,14 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
   const splitTextByWords = (element: any, props: any) => {
 
     const text = element.children[0];
-    const split = new SplitText(text, {type: 'chars, words, lines'});
+    const split = new SplitText(text, {type: 'words, lines'});
 
     if (!split.words) return;
 
     gsap.fromTo(split.words, {opacity: 0, y: '100%', ...props.from}, {
       opacity: 1,
       y: 0,
-      stagger: 0.2,
+      stagger: 0.09,
       ease: 'power2.inOut', ...props.to, ...props.animProps
     });
   };
