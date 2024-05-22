@@ -39,10 +39,7 @@ export function ContentColumn({
   animationType = 'splitText'
 }: ContentColumnProps) {
 
-
-  console.log('ContentColumn', type === '1/2', component === undefined , !!children);
-
-  console.log('ContentColumn', type === '1/2' && (component === undefined && !children));
+  console.log('component', animationType);
 
   if(!type && !children && component === undefined)
     return <NotificationBlock body={'Must set Component and type'} type={'error'}/>;
@@ -66,8 +63,8 @@ export function ContentColumn({
           )}
         >
           <div className={'w-full md:w-9/12 lg:w-1/2'}>
-            {title && <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
-            {body && (<BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 90%">
+            {title && <BlockAnimateOnScroll animation={animationType || 'splitText'} duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
+            {body && (<BlockAnimateOnScroll animation={animationType || 'splitText'} duration={0.5} start="top 90%">
               <div
                 className={'text-[28px] md:text-3xl lg:text-[40px] font-medium leading-[28px] lg:leading-[46px]  splitTextOverflow'}
                 dangerouslySetInnerHTML={{__html: body}}
