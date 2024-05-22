@@ -12,6 +12,11 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
   const {theme, setInitialTheme} = useTheme();
 
   useEffect(() => {
+
+    if(!mode){
+      setInitialTheme('dark');
+    }
+
     if (mode) {
       setInitialTheme(mode);
     } else {

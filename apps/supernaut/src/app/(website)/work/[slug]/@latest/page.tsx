@@ -16,7 +16,6 @@ export default async function List() {
   return (
     <BlockAnimationProvider>
       <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{
-        delay: 1.5,
         ease: 'power2.inOut'
       }}>
         <div className={'wrapper my-10 md:my-20'}>

@@ -927,8 +927,6 @@ export enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -1231,8 +1229,6 @@ export enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -1418,8 +1414,6 @@ export enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -1601,8 +1595,6 @@ export enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -1757,8 +1749,6 @@ export enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -1999,8 +1989,6 @@ export enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -2270,6 +2258,8 @@ export type HeaderComponentLinkingCollectionsWorkCollectionArgs = {
 export enum HeaderComponentLinkingCollectionsPagesCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   SlugAsc = 'slug_ASC',
@@ -2681,6 +2671,7 @@ export type Pages = Entry & {
   contentfulMetadata: ContentfulMetadata;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<PagesLinkingCollections>;
+  mode?: Maybe<Scalars['String']['output']>;
   pageName?: Maybe<Scalars['String']['output']>;
   seo?: Maybe<Seo>;
   slug?: Maybe<Scalars['String']['output']>;
@@ -2705,6 +2696,12 @@ export type PagesInternalNameArgs = {
 /** Top Level Page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/pages) */
 export type PagesLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Top Level Page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/pages) */
+export type PagesModeArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -2813,6 +2810,13 @@ export type PagesFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode?: InputMaybe<Scalars['String']['input']>;
+  mode_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  mode_not?: InputMaybe<Scalars['String']['input']>;
+  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
+  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   pageName?: InputMaybe<Scalars['String']['input']>;
   pageName_contains?: InputMaybe<Scalars['String']['input']>;
   pageName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -2902,6 +2906,8 @@ export enum PagesLinkingCollectionsSettingsCollectionOrder {
 export enum PagesOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   SlugAsc = 'slug_ASC',
@@ -2943,13 +2949,6 @@ export type PagesTopSectionsFilter = {
   marginTop?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_exists?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_not?: InputMaybe<Scalars['Boolean']['input']>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -3778,8 +3777,6 @@ export enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -4013,7 +4010,6 @@ export type Section = Entry & {
   marginBottom?: Maybe<Scalars['Boolean']['output']>;
   marginSize?: Maybe<Scalars['String']['output']>;
   marginTop?: Maybe<Scalars['Boolean']['output']>;
-  mode?: Maybe<Scalars['String']['output']>;
   paddingBottom?: Maybe<Scalars['Boolean']['output']>;
   paddingSize?: Maybe<Scalars['String']['output']>;
   paddingTop?: Maybe<Scalars['Boolean']['output']>;
@@ -4099,12 +4095,6 @@ export type SectionMarginSizeArgs = {
 
 /** Section wrapper for components [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/section) */
 export type SectionMarginTopArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Section wrapper for components [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/section) */
-export type SectionModeArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
@@ -4216,13 +4206,6 @@ export type SectionFilter = {
   marginTop?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_exists?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_not?: InputMaybe<Scalars['Boolean']['input']>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   paddingBottom?: InputMaybe<Scalars['Boolean']['input']>;
   paddingBottom_exists?: InputMaybe<Scalars['Boolean']['input']>;
   paddingBottom_not?: InputMaybe<Scalars['Boolean']['input']>;
@@ -4296,6 +4279,8 @@ export type SectionLinkingCollectionsWorkCollectionArgs = {
 export enum SectionLinkingCollectionsPagesCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   SlugAsc = 'slug_ASC',
@@ -4362,8 +4347,6 @@ export enum SectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -4522,6 +4505,8 @@ export type SeoLinkingCollectionsWorkCollectionArgs = {
 export enum SeoLinkingCollectionsPagesCollectionOrder {
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  ModeAsc = 'mode_ASC',
+  ModeDesc = 'mode_DESC',
   PageNameAsc = 'pageName_ASC',
   PageNameDesc = 'pageName_DESC',
   SlugAsc = 'slug_ASC',
@@ -5577,8 +5562,6 @@ export enum SliderLinkingCollectionsSectionCollectionOrder {
   MarginSizeDesc = 'marginSize_DESC',
   MarginTopAsc = 'marginTop_ASC',
   MarginTopDesc = 'marginTop_DESC',
-  ModeAsc = 'mode_ASC',
-  ModeDesc = 'mode_DESC',
   PaddingBottomAsc = 'paddingBottom_ASC',
   PaddingBottomDesc = 'paddingBottom_DESC',
   PaddingSizeAsc = 'paddingSize_ASC',
@@ -6223,13 +6206,6 @@ export type WorkTopSectionsFilter = {
   marginTop?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_exists?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_not?: InputMaybe<Scalars['Boolean']['input']>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };
 
@@ -6682,12 +6658,5 @@ export type CftopSectionsMultiTypeNestedFilter = {
   marginTop?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_exists?: InputMaybe<Scalars['Boolean']['input']>;
   marginTop_not?: InputMaybe<Scalars['Boolean']['input']>;
-  mode?: InputMaybe<Scalars['String']['input']>;
-  mode_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  mode_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  mode_not?: InputMaybe<Scalars['String']['input']>;
-  mode_not_contains?: InputMaybe<Scalars['String']['input']>;
-  mode_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   sys?: InputMaybe<SysFilter>;
 };

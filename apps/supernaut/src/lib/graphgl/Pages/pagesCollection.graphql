@@ -24,6 +24,7 @@ fragment PageFields on Pages {
   title
   internalName: pageName
   slug
+  mode
   bodyText {
     json
   }

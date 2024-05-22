@@ -564,8 +564,6 @@ enum ContentColumnComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -778,8 +776,6 @@ enum ContentImageGridComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -913,8 +909,6 @@ enum ContentListComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -1048,8 +1042,6 @@ enum ContentProfileComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -1157,8 +1149,6 @@ enum ContentServiceListLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -1319,8 +1309,6 @@ enum ContentVideoComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -1519,6 +1507,8 @@ type HeaderComponentLinkingCollections {
 enum HeaderComponentLinkingCollectionsPagesCollectionOrder {
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   slug_ASC
@@ -1896,6 +1886,7 @@ type Pages implements Entry {
   contentfulMetadata: ContentfulMetadata!
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): PagesLinkingCollections
+  mode(locale: String): String
   pageName(locale: String): String
   seo(locale: String, preview: Boolean, where: SeoFilter): Seo
   slug(locale: String): String
@@ -1965,6 +1956,13 @@ input PagesFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  mode: String
+  mode_contains: String
+  mode_exists: Boolean
+  mode_in: [String]
+  mode_not: String
+  mode_not_contains: String
+  mode_not_in: [String]
   pageName: String
   pageName_contains: String
   pageName_exists: Boolean
@@ -2036,6 +2034,8 @@ enum PagesLinkingCollectionsSettingsCollectionOrder {
 enum PagesOrder {
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   slug_ASC
@@ -2076,13 +2076,6 @@ input PagesTopSectionsFilter {
   marginTop: Boolean
   marginTop_exists: Boolean
   marginTop_not: Boolean
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   sys: SysFilter
 }
 
@@ -2379,8 +2372,6 @@ enum QuoteComponentLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -2565,7 +2556,6 @@ type Section implements Entry {
   marginBottom(locale: String): Boolean
   marginSize(locale: String): String
   marginTop(locale: String): Boolean
-  mode(locale: String): String
   paddingBottom(locale: String): Boolean
   paddingSize(locale: String): String
   paddingTop(locale: String): Boolean
@@ -2646,13 +2636,6 @@ input SectionFilter {
   marginTop: Boolean
   marginTop_exists: Boolean
   marginTop_not: Boolean
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   paddingBottom: Boolean
   paddingBottom_exists: Boolean
   paddingBottom_not: Boolean
@@ -2699,6 +2682,8 @@ type SectionLinkingCollections {
 enum SectionLinkingCollectionsPagesCollectionOrder {
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   slug_ASC
@@ -2765,8 +2750,6 @@ enum SectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -2855,6 +2838,8 @@ type SeoLinkingCollections {
 enum SeoLinkingCollectionsPagesCollectionOrder {
   internalName_ASC
   internalName_DESC
+  mode_ASC
+  mode_DESC
   pageName_ASC
   pageName_DESC
   slug_ASC
@@ -3571,8 +3556,6 @@ enum SliderLinkingCollectionsSectionCollectionOrder {
   marginSize_DESC
   marginTop_ASC
   marginTop_DESC
-  mode_ASC
-  mode_DESC
   paddingBottom_ASC
   paddingBottom_DESC
   paddingSize_ASC
@@ -4036,13 +4019,6 @@ input WorkTopSectionsFilter {
   marginTop: Boolean
   marginTop_exists: Boolean
   marginTop_not: Boolean
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   sys: SysFilter
 }
 
@@ -4495,12 +4471,5 @@ input cftopSectionsMultiTypeNestedFilter {
   marginTop: Boolean
   marginTop_exists: Boolean
   marginTop_not: Boolean
-  mode: String
-  mode_contains: String
-  mode_exists: Boolean
-  mode_in: [String]
-  mode_not: String
-  mode_not_contains: String
-  mode_not_in: [String]
   sys: SysFilter
 }

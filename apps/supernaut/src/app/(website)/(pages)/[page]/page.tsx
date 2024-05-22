@@ -3,7 +3,7 @@ import { notFound } from 'next/navigation';
 import {PageContent} from '../../../../data/pages';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {Header} from '@supernaut/shared-ui';
-import {SectionResolver} from '@supernaut/features';
+import {SectionResolver, ThemeSwitchServer} from '@supernaut/features';
 
 export interface PageProps {
   params: { page: string }
@@ -21,7 +21,10 @@ export default async function Page({ params }: PageProps
 
   if(pageData?.topSectionsCollection?.items.length) {
 
-    return (<SectionResolver sections={pageData?.topSectionsCollection?.items} />)
+    return (<>
+      <SectionResolver sections={pageData?.topSectionsCollection?.items} />
+      <ThemeSwitchServer mode={pageData?.mode}/>
+    </>)
 
   } else {
     return (
