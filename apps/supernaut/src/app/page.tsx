@@ -3,6 +3,7 @@ import {PageContent} from '../data/pages';
 import {notFound} from 'next/navigation';
 import {Header} from '@supernaut/shared-ui';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
+import {Suspense} from 'react';
 
 export default async function Index() {
   const homeData = await PageContent('home', 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
@@ -38,7 +39,9 @@ export default async function Index() {
             </div>
           </div>
         </article>
-        <ThemeSwitchServer mode={homeData?.mode}/>
+        <Suspense>
+          <ThemeSwitchServer mode={homeData?.mode}/>
+        </Suspense>
       </>
     );
   }

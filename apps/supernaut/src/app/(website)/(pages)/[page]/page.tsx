@@ -4,6 +4,7 @@ import {PageContent} from '../../../../data/pages';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {Header} from '@supernaut/shared-ui';
 import {SectionResolver, ThemeSwitchServer} from '@supernaut/features';
+import {Suspense} from 'react';
 
 export interface PageProps {
   params: { page: string }
@@ -23,7 +24,9 @@ export default async function Page({ params }: PageProps
 
     return (<>
       <SectionResolver sections={pageData?.topSectionsCollection?.items} />
-      <ThemeSwitchServer mode={pageData?.mode}/>
+      <Suspense>
+        <ThemeSwitchServer mode={pageData?.mode}/>
+      </Suspense>
     </>)
 
   } else {
