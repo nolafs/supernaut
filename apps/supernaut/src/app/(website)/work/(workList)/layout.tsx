@@ -7,6 +7,7 @@ import SettingContent from '../../../../data/settings';
 import {PageContent} from '../../../../data/pages';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header} from '@supernaut/shared-ui';
+import {ThemeSwitchServer} from '@supernaut/features';
 
 const PAGE_NAME = 'work';
 
@@ -50,6 +51,7 @@ export default async function Layout({children, list}: LayoutProps) {
 
       {children}
       {list}
+      <ThemeSwitchServer mode={pageData?.mode}/>
     </>
   )
 }
