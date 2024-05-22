@@ -27,17 +27,17 @@ export interface ServicesProps {
 
 export function Services({title, servicesCollection}: ServicesProps) {
 
-  const mode = 'dark';
+
 
   if(!servicesCollection || !servicesCollection.items.length) {
     return <div>No services</div>;
   }
 
   return (
-    <ContentColumn title={title} hTag={'h2'} type={'1/2'} mode={mode}>
+    <ContentColumn title={title} hTag={'h2'} type={'1/2'}>
       {servicesCollection?.items.map((item, index) => (
         <div key={index} className={'flex flex-col mb-10'}>
-          <ContentColumn title={item.name} hTag={'h3'} type={'1/2'} mode={mode} padding={'none'}>
+          <ContentColumn title={item.name} hTag={'h3'} type={'1/2'}  padding={'none'}>
             <BlockAnimateOnScroll animation="staggerList" duration={0.5} target={'li'} start="top 80%">
               <ul className={'flex flex-col space-y-5'}>
 
