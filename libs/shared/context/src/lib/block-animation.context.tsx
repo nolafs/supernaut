@@ -130,6 +130,8 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
   const animations = useAnimation();
   const ref = useRef<HTMLDivElement>(null);
 
+
+
   useGSAP(() => {
     if (animations[animation]) {
       animations[animation](ref.current, {

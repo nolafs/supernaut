@@ -6,7 +6,7 @@ import {Metadata, ResolvingMetadata, Viewport} from 'next';
 import {ReactNode, Suspense} from 'react';
 import i18nConfig from '../../next-i18next.config';
 
-import {CookieBanner, Footer, ModalsContainer, Navigation} from '@supernaut/features';
+import {CookieBanner, Footer, ModalsContainer, Navigation, PageTransition} from '@supernaut/features';
 import {GoogleAnalytics} from '@supernaut/utils';
 import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
@@ -110,6 +110,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       data-theme="dark"
     >
       <body>
+
         <ThemeProvider >
           <NextTopLoader
             color={'var(--color-primary)'}
@@ -120,19 +121,21 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <ModalProvider>
 
             <Navigation items={navigation}  social={social} contactFormDialog={settings?.contactFormDialog} />
+            <PageTransition >
+              <main className={'min-h-screen'}>
+                {children}
+              </main>
 
-            <main className={'min-h-screen'}>
-              {children}
-            </main>
 
-            <Footer
-              copyright={settings?.copyrightLine}
-              strapline={settings?.strapline}
-              legal={legalNavigation}
-              contactButtonLabel={settings?.contactDialogButtonLabel}
-              contactDialog={settings?.contactFormDialog}
-              social={social}
-            />
+              <Footer
+                copyright={settings?.copyrightLine}
+                strapline={settings?.strapline}
+                legal={legalNavigation}
+                contactButtonLabel={settings?.contactDialogButtonLabel}
+                contactDialog={settings?.contactFormDialog}
+                social={social}
+              />
+            </PageTransition>
 
             <Suspense>
               <CookieBanner />
@@ -145,6 +148,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
             </Suspense>
         </ThemeProvider>
+
       </body>
     </html>
 
