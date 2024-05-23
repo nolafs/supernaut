@@ -75,11 +75,13 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       <div className={cn('relative video')}>
         <div
           className={cn('w-full h-full overflow-hidden z-20')}>
+
           <AdvancedVideo
             ref={ref}
             muted={(autoplay) ? true : false}
             plugins={[lazyload()]}
             cldVid={videoSource}
+            cldPoster={videoSource.format('webp').resize(fill().width(width).height(height))}
             controls={controls}
             playsInline={true}
             autoPlay={false}
