@@ -83,7 +83,7 @@ export function Section({
             'mb-0': !marginBottom,
           },
           {
-            'items-center mx-auto': align === 'center',
+            'mx-auto': align === 'center',
             'items-start': align === 'left',
             'items-end': align === 'right',
             'h-auto': height === 'auto',

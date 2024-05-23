@@ -138,12 +138,11 @@ fragment ContentVideoComponentFields on ContentVideoComponent {
   type
   src
   videoUpload
+  width
+  height
   controls
   autoplay
   frame
-  poster {
-    ...AssetFields
-  }
 }
 
 fragment SectionFields on Section {

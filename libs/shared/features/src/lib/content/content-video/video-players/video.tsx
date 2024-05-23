@@ -4,11 +4,10 @@ import {Cloudinary} from '@cloudinary/url-gen';
 import {fill} from "@cloudinary/url-gen/actions/resize";
 import cn from 'classnames';
 import Image from 'next/image';
-import {useRef, useState} from 'react';
-import placeholder_white from '../../../assets/placeholder-white.webp';
-import placeholder from '../../../assets/placeholder.webp';
+import {useRef} from 'react';
 import ContentVideoAnimation from '../content-video-animation';
-
+import {CldVideoPlayer} from 'next-cloudinary';
+import 'next-cloudinary/dist/cld-video-player.css';
 
 export interface VideoProps {
   id: string;
@@ -27,30 +26,29 @@ export interface VideoProps {
 export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, loop = false, width = 1920, height = 1200}: VideoProps) {
 
   const ref = useRef<any>(null);
+  const posterFormat:any = {format: 'webp'};
 
-  const cld = new Cloudinary({
-    cloud: {
-      cloudName: process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME || 'biff-new-media'
-    }
-  });
+  if(!width){
+    width = 1920;
+  }
 
-  const videoSource = cld.video(src);
-
-  videoSource.resize(fill().width(width).height(height));
+  if(!height){
+    height = 1200
+  }
 
   const handlePlay = (pause = false) => {
-    console.log('handlePlay', pause, videoSource)
-    if (autoplay) {
-      ref.current.videoRef.current.play();
-    }
+
+    //if (autoplay) {
+      //ref.current.videoRef.current.play();
+   // }
   }
 
   const handleReplay = (pause = false) => {
-    console.log('handlePlay', pause, videoSource)
-    if (autoplay) {
-      ref.current.videoRef.current.currentTime = 0
-      ref.current.videoRef.current.play();
-    }
+
+    //if (autoplay) {
+    //  ref.current.videoRef.current.currentTime = 0
+    //  ref.current.videoRef.current.play();
+    //}
   }
 
   const handlePause = (pause = false) => {
@@ -71,36 +69,39 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       handleReplay={handleReplay}
       handlePlay={handlePlay}
     >
-    <div className={cn('', frame && 'wrapper relative p-4 md:p-10')}>
-      <div className={cn('relative video')}>
-        <div
-          className={cn('w-full h-full overflow-hidden z-20')}>
 
-          <AdvancedVideo
-            ref={ref}
-            muted={(autoplay) ? true : false}
-            plugins={[lazyload()]}
-            cldVid={videoSource}
-            cldPoster={videoSource.format('webp').resize(fill().width(width).height(height))}
-            controls={controls}
-            playsInline={true}
-            autoPlay={false}
-            loop={loop}
-            onPlay={handlePlaying}
-            onEnded={handleEnded}
+      <div className={cn('relative', frame && 'wrapper p-4 md:p-10')}>
 
-          />
+            {(src) &&
+            <CldVideoPlayer
+              videoRef={ref}
+              width={width}
+              height={height}
+              id={id}
+              autoplay={autoplay}
+              playsinline={true}
+              controls={controls}
+              loop={loop}
+              fluid={true}
+              //poster='auto'
+              muted={(autoplay) ? true : false}
+              className={'w-full h-full object-cover bg-transparent' }
+              src={src}
+              sourceTypes={[ 'webm', 'mp4' , 'ogv' ]}
+
+              poster={posterFormat}
+              transformation={{
+                width: width,
+                height: height,
+                crop: 'fill',
+                gravity: 'auto'
+              }}
+            />
+            }
+
+
         </div>
 
-        { (poster) &&
-          <Image width={width} height={height} loading={'lazy'}
-                            className={'z-10'}
-                            src={poster}
-                            quality={60}
-                            alt={title}/>
-        }
-      </div>
-    </div>
     </ContentVideoAnimation>
   );
 }

@@ -74,10 +74,7 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentImageGridComponentFieldsFragment
   ) | null };
 
-export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string }, poster?: (
-    { __typename?: 'Asset' }
-    & AssetFieldsFragment
-  ) | null };
+export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, width?: number | null, height?: number | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string } };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, animation?: boolean | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -253,12 +250,11 @@ export const ContentVideoComponentFieldsFragmentDoc = `
   type
   src
   videoUpload
+  width
+  height
   controls
   autoplay
   frame
-  poster {
-    ...AssetFields
-  }
 }
     `;
 export const SectionComponentFieldsFragmentDoc = `

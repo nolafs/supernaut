@@ -174,7 +174,6 @@ export type AssetFilter = {
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
   contentImageGridComponentCollection?: Maybe<ContentImageGridComponentCollection>;
-  contentVideoComponentCollection?: Maybe<ContentVideoComponentCollection>;
   entryCollection?: Maybe<EntryCollection>;
   navigationItemCollection?: Maybe<NavigationItemCollection>;
   profileCollection?: Maybe<ProfileCollection>;
@@ -186,14 +185,6 @@ export type AssetLinkingCollections = {
 
 
 export type AssetLinkingCollectionsContentImageGridComponentCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type AssetLinkingCollectionsContentVideoComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1822,14 +1813,15 @@ export type ContentVideoComponent = Entry & {
   contentfulMetadata: ContentfulMetadata;
   controls?: Maybe<Scalars['Boolean']['output']>;
   frame?: Maybe<Scalars['Boolean']['output']>;
+  height?: Maybe<Scalars['Int']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContentVideoComponentLinkingCollections>;
-  poster?: Maybe<Asset>;
   src?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
   type?: Maybe<Scalars['String']['output']>;
   videoUpload?: Maybe<Scalars['JSON']['output']>;
+  width?: Maybe<Scalars['Int']['output']>;
 };
 
 
@@ -1852,6 +1844,12 @@ export type ContentVideoComponentFrameArgs = {
 
 
 /** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
+export type ContentVideoComponentHeightArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
 export type ContentVideoComponentInternalNameArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
@@ -1860,13 +1858,6 @@ export type ContentVideoComponentInternalNameArgs = {
 /** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
 export type ContentVideoComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-
-/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
-export type ContentVideoComponentPosterArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1893,6 +1884,12 @@ export type ContentVideoComponentVideoUploadArgs = {
   locale?: InputMaybe<Scalars['String']['input']>;
 };
 
+
+/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
+export type ContentVideoComponentWidthArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type ContentVideoComponentCollection = {
   __typename?: 'ContentVideoComponentCollection';
   items: Array<Maybe<ContentVideoComponent>>;
@@ -1914,6 +1911,15 @@ export type ContentVideoComponentFilter = {
   frame?: InputMaybe<Scalars['Boolean']['input']>;
   frame_exists?: InputMaybe<Scalars['Boolean']['input']>;
   frame_not?: InputMaybe<Scalars['Boolean']['input']>;
+  height?: InputMaybe<Scalars['Int']['input']>;
+  height_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  height_gt?: InputMaybe<Scalars['Int']['input']>;
+  height_gte?: InputMaybe<Scalars['Int']['input']>;
+  height_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  height_lt?: InputMaybe<Scalars['Int']['input']>;
+  height_lte?: InputMaybe<Scalars['Int']['input']>;
+  height_not?: InputMaybe<Scalars['Int']['input']>;
+  height_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
   internalName?: InputMaybe<Scalars['String']['input']>;
   internalName_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1921,7 +1927,6 @@ export type ContentVideoComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
   src_contains?: InputMaybe<Scalars['String']['input']>;
   src_exists?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1945,6 +1950,15 @@ export type ContentVideoComponentFilter = {
   type_not_contains?: InputMaybe<Scalars['String']['input']>;
   type_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   videoUpload_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  width?: InputMaybe<Scalars['Int']['input']>;
+  width_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  width_gt?: InputMaybe<Scalars['Int']['input']>;
+  width_gte?: InputMaybe<Scalars['Int']['input']>;
+  width_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
+  width_lt?: InputMaybe<Scalars['Int']['input']>;
+  width_lte?: InputMaybe<Scalars['Int']['input']>;
+  width_not?: InputMaybe<Scalars['Int']['input']>;
+  width_not_in?: InputMaybe<Array<InputMaybe<Scalars['Int']['input']>>>;
 };
 
 export type ContentVideoComponentLinkingCollections = {
@@ -2022,6 +2036,8 @@ export enum ContentVideoComponentOrder {
   ControlsDesc = 'controls_DESC',
   FrameAsc = 'frame_ASC',
   FrameDesc = 'frame_DESC',
+  HeightAsc = 'height_ASC',
+  HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
   SrcAsc = 'src_ASC',
@@ -2037,7 +2053,9 @@ export enum ContentVideoComponentOrder {
   TitleAsc = 'title_ASC',
   TitleDesc = 'title_DESC',
   TypeAsc = 'type_ASC',
-  TypeDesc = 'type_DESC'
+  TypeDesc = 'type_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
 }
 
 export type ContentfulMetadata = {
@@ -6805,10 +6823,7 @@ export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnC
     & ContentImageGridComponentFieldsFragment
   ) | null };
 
-export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string }, poster?: (
-    { __typename?: 'Asset' }
-    & AssetFieldsFragment
-  ) | null };
+export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, width?: number | null, height?: number | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string } };
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, animation?: boolean | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -7280,12 +7295,11 @@ export const ContentVideoComponentFieldsFragmentDoc = gql`
   type
   src
   videoUpload
+  width
+  height
   controls
   autoplay
   frame
-  poster {
-    ...AssetFields
-  }
 }
     `;
 export const SectionComponentFieldsFragmentDoc = gql`

@@ -91,7 +91,6 @@ input AssetFilter {
 
 type AssetLinkingCollections {
   contentImageGridComponentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentImageGridComponentCollection
-  contentVideoComponentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentVideoComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   navigationItemCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationItemCollection
   profileCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProfileCollection
@@ -1218,14 +1217,15 @@ type ContentVideoComponent implements Entry {
   contentfulMetadata: ContentfulMetadata!
   controls(locale: String): Boolean
   frame(locale: String): Boolean
+  height(locale: String): Int
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentVideoComponentLinkingCollections
-  poster(locale: String, preview: Boolean): Asset
   src(locale: String): String
   sys: Sys!
   title(locale: String): String
   type(locale: String): String
   videoUpload(locale: String): JSON
+  width(locale: String): Int
 }
 
 type ContentVideoComponentCollection {
@@ -1248,6 +1248,15 @@ input ContentVideoComponentFilter {
   frame: Boolean
   frame_exists: Boolean
   frame_not: Boolean
+  height: Int
+  height_exists: Boolean
+  height_gt: Int
+  height_gte: Int
+  height_in: [Int]
+  height_lt: Int
+  height_lte: Int
+  height_not: Int
+  height_not_in: [Int]
   internalName: String
   internalName_contains: String
   internalName_exists: Boolean
@@ -1255,7 +1264,6 @@ input ContentVideoComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
-  poster_exists: Boolean
   src: String
   src_contains: String
   src_exists: Boolean
@@ -1279,6 +1287,15 @@ input ContentVideoComponentFilter {
   type_not_contains: String
   type_not_in: [String]
   videoUpload_exists: Boolean
+  width: Int
+  width_exists: Boolean
+  width_gt: Int
+  width_gte: Int
+  width_in: [Int]
+  width_lt: Int
+  width_lte: Int
+  width_not: Int
+  width_not_in: [Int]
 }
 
 type ContentVideoComponentLinkingCollections {
@@ -1338,6 +1355,8 @@ enum ContentVideoComponentOrder {
   controls_DESC
   frame_ASC
   frame_DESC
+  height_ASC
+  height_DESC
   internalName_ASC
   internalName_DESC
   src_ASC
@@ -1354,6 +1373,8 @@ enum ContentVideoComponentOrder {
   title_DESC
   type_ASC
   type_DESC
+  width_ASC
+  width_DESC
 }
 
 type ContentfulMetadata {
