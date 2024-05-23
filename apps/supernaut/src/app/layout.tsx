@@ -11,7 +11,7 @@ import {GoogleAnalytics} from '@supernaut/utils';
 import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
-import {ThemeProvider} from '@supernaut/context';
+import {BlockAnimationProvider, ThemeProvider} from '@supernaut/context';
 import NextTopLoader from 'nextjs-toploader';
 
 export const viewport: Viewport = {
@@ -125,11 +125,13 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                         items={navigation}
                         social={social}
                         contactFormDialog={settings?.contactFormDialog} />
-            <PageTransition title={'Supernaut'} page={'Page Name'}>
+
+
+            <BlockAnimationProvider>
               <main className={'min-h-screen'}>
                 {children}
               </main>
-
+            </BlockAnimationProvider>
 
               <Footer
                 copyright={settings?.copyrightLine}
@@ -139,7 +141,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 contactDialog={settings?.contactFormDialog}
                 social={social}
               />
-            </PageTransition>
+
 
             <Suspense>
               <CookieBanner />

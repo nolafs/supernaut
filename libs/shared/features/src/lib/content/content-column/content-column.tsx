@@ -1,4 +1,4 @@
-import {BlockAnimateOnScroll, BlockAnimationContext, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 import {LinkPrimary, NotificationBlock} from '@supernaut/shared-ui';
 import cn from 'classnames';
 import {ReactNode} from 'react';
@@ -49,7 +49,7 @@ export function ContentColumn({
 
 
   if(type === 'intro' || type === 'text' || !children && component === undefined) {
-    return (<BlockAnimationProvider>
+    return (
         <div
           className={cn(
             'wrapper flex flex-row text-primary',
@@ -81,11 +81,10 @@ export function ContentColumn({
             )}
           </div>
         </div>
-      </BlockAnimationProvider>
     );
   }
   else {
-    return (<BlockAnimationProvider>
+    return (
       <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10 text-primary',
         padding === 'none' && 'px-0',
         padding === 'sm' && 'px-5 md:px-10',
@@ -124,7 +123,6 @@ export function ContentColumn({
           ) : null}
         </div>
       </div>
-      </BlockAnimationProvider>
     )
   }
 }

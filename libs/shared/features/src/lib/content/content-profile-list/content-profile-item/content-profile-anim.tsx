@@ -29,11 +29,9 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
       }
     });
 
-    tl.current.fromTo('.cover', {yPercent: -100}, {yPercent:200, duration: 1, ease: 'ease-out'})
-    tl.current.fromTo('.profile', {scale: 1.2, opacity: 0}, {scale: 1, opacity: 1, duration: 1})
-    tl.current.fromTo('.cover', {yPercent: 200}, {yPercent: -100, duration: 0.5, ease: 'ease-out'}, '-=1')
-    tl.current.fromTo('.bar-1', {yPercent: 0}, {yPercent: -400,  duration: 1}, '-=1')
-    tl.current.fromTo('.bar-2', {yPercent: 0}, {yPercent: -200, duration: 1}, '-=1')
+    tl.current.set('.profile-wrapper', {opacity: 1})
+
+    tl.current.fromTo('.profile', {y:100, scale: 1.1, opacity: 0}, {y:0, stagger:0.2, scale:1, opacity: 1, duration: 1})
 
     tlText.current = gsap.timeline({
       scrollTrigger: {
