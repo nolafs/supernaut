@@ -31,7 +31,7 @@ export function ContentProfileAnim({children}: ContentProfileAnimProps) {
 
     tl.current.set('.profile-wrapper', {opacity: 1})
 
-    tl.current.fromTo('.profile', {y:100, scale: 1.1, opacity: 0}, {y:0, stagger:0.2, scale:1, opacity: 1, duration: 1})
+    tl.current.fromTo('.profile', {y:100, scale: 1.05, opacity: 0}, {y:0, stagger:0.2, scale:1, opacity: 1, duration: 1})
 
     tlText.current = gsap.timeline({
       scrollTrigger: {

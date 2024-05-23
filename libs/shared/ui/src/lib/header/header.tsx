@@ -1,7 +1,7 @@
 /* eslint-disable-next-line */
 import cn from 'classnames';
 import styles from './header.module.scss';
-import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 
 export interface HeaderProps {
   pageName?: string | undefined | null;
@@ -36,7 +36,7 @@ export function Header({
   }
 
 
-  return (<BlockAnimationProvider>
+  return (
       <header>
         <div
           className={cn(
@@ -82,7 +82,6 @@ export function Header({
         </div>
       </div>
     </header>
-    </BlockAnimationProvider>
   );
 }
 
