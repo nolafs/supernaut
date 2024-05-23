@@ -6869,7 +6869,10 @@ export type NavigationItemFieldsFragment = { __typename: 'NavigationItem', inter
         & AssetFieldsFragment
       ) | null } | null> } | null };
 
-export type SettingsFieldsFragment = { __typename: 'Settings', siteTitle?: string | null, strapline?: string | null, metaTitle?: string | null, metaDescription?: string | null, metaKeywords?: string | null, canonicalUrl?: string | null, twitterCardType?: string | null, twitterHandler?: string | null, contactDialogButtonLabel?: string | null, contactFormDialog?: boolean | null, internalName?: string | null, copyrightLine?: string | null, sys: { __typename?: 'Sys', id: string }, ogImage?: (
+export type SettingsFieldsFragment = { __typename: 'Settings', siteTitle?: string | null, strapline?: string | null, metaTitle?: string | null, metaDescription?: string | null, metaKeywords?: string | null, canonicalUrl?: string | null, twitterCardType?: string | null, twitterHandler?: string | null, contactDialogButtonLabel?: string | null, contactFormDialog?: boolean | null, internalName?: string | null, copyrightLine?: string | null, sys: { __typename?: 'Sys', id: string }, logo?: (
+    { __typename?: 'Asset' }
+    & AssetFieldsFragment
+  ) | null, ogImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, mainNavigationCollection?: { __typename?: 'SettingsMainNavigationCollection', items: Array<(
@@ -7422,6 +7425,9 @@ export const SettingsFieldsFragmentDoc = gql`
   __typename
   sys {
     id
+  }
+  logo {
+    ...AssetFields
   }
   siteTitle
   strapline

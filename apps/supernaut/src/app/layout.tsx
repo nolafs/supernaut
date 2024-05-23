@@ -120,7 +120,11 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           />
           <ModalProvider>
 
-            <Navigation items={navigation}  social={social} contactFormDialog={settings?.contactFormDialog} />
+            <Navigation
+                        logo={settings?.logo?.url}
+                        items={navigation}
+                        social={social}
+                        contactFormDialog={settings?.contactFormDialog} />
             <PageTransition title={'Supernaut'} page={'Page Name'}>
               <main className={'min-h-screen'}>
                 {children}

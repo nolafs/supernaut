@@ -14,7 +14,7 @@ gsap.registerPlugin(useGSAP, SplitText);
 
 export interface NavigationMobileProps {
   siteTitle?: string;
-  logo?: string;
+  logo?: string | undefined | null;
   mode?: 'light' | 'dark';
   items: TNavigationItem[];
 }

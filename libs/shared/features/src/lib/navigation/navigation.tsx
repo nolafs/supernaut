@@ -14,7 +14,7 @@ import ThemeSwitchButton from '../theme-switch-button/theme-switch-button';
 /* eslint-disable-next-line */
 export interface NavigationProps {
   siteTitle?: string;
-  logo?: string;
+  logo?: string | undefined | null;
   items: TNavigationItem[];
   mode?: 'light' | 'dark';
   social?: TSocialLinkItemType[];

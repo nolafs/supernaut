@@ -61,6 +61,7 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
   console.log('isTransitionActive', isTransitionActive)
   console.log('pathname', currentPath, pathname)
 
+  /*
   useEffect(() => {
     if ('scrollRestoration' in window.history) {
       window.history.scrollRestoration = 'manual'
@@ -84,6 +85,8 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
     }
   }, [pathname])
 
+   */
+
   useLayoutEffect(() => {
 
     console.log('pathname', currentPath, pathname)
@@ -103,7 +106,9 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
 
   useLayoutEffect(() => {
     const mm = gsap.matchMedia();
-    if (currentRef.current && tempRef.current && !isFirstRender) {
+
+
+    if (currentRef.current && tempRef.current && !isFirstRender && pathname.includes('work/')) {
       mm.add(
         {
           isDesktop: '(min-width: 772px)',
@@ -133,7 +138,7 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
             top: '0',
             left: '0',
             width: '100vw',
-            height: 0,
+            height: '100vh',
             overflow: 'hidden'
           })
 
@@ -153,31 +158,34 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
 
           tl.add(animatePageOut(), '-=1');
 
+
+          tl.add(animatePageIn());
+
           tl.fromTo(currentRef.current,
             {
-              height: 0,
+              yPercent: 100,
             },
             {
-            duration:0.5,
-            height: '100vh',
+            duration:1,
+            yPercent: 0,
             ease: 'power2.inOut',
             onComplete: () => {
               // fire window resize event to fix any layout issues
               window.dispatchEvent(new Event('resize'))
               setCurrentPath(pathname)
               setIsTransitionActive(false)
-              setRoutingPageOffset(0)
+              //setRoutingPageOffset(0)
 
               if (shouldScrollRestore) {
                 setTimeout(() => {
                   restoreScrollPos(pathname)
-                  setShouldScrollRestore(false)
+                  //setShouldScrollRestore(false)
                 }, 500)
               }
             }
-          })
+          }, '-=1.5')
 
-          tl.add(animatePageIn(), '-=0.5');
+
 
           tl.set(currentRef.current, {
             position: 'relative',
