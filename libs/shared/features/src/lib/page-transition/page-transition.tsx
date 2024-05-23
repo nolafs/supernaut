@@ -196,11 +196,13 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
            className={'fixed z-[39] w-full h-screen top-0 inset-0 pointer-events-none overflow-hidden opacity-0'}>
         <div id="section-wrapper"
              className={'absolute z-50 top-1/2 font-bold w-full  -translate-y-1/2 text-neutral text-center mix-blend-difference flex flex-col justify-center items-center'}>
+          <div className={'-translate-y-1/2'}>
           <div id="s-t" className={'text-[150px] overflow-hidden text-white font-bold'}><span id="s-t-i"
                                                                                               className={'block'}>{title}</span>
           </div>
           <div id="s-p" className={'text-[78px] overflow-hidden text-white'}><span id="s-p-i"
                                                                                    className={'block'}>{page}</span>
+          </div>
           </div>
         </div>
         <div className={'bar w-full bg-primary'} style={{height: '5%'}}></div>
