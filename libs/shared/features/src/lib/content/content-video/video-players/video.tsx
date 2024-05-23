@@ -74,7 +74,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
     <div className={cn('', frame && 'wrapper relative p-4 md:p-10')}>
       <div className={cn('relative video')}>
         <div
-          className={cn('w-full h-full overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
+          className={cn('w-full h-full overflow-hidden z-20')}>
           <AdvancedVideo
             ref={ref}
             muted={(autoplay) ? true : false}
