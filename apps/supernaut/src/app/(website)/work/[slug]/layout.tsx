@@ -2,6 +2,7 @@ import {ReactNode} from 'react';
 import {Work} from '../../../../data/work';
 import {Metadata, ResolvingMetadata} from 'next';
 
+
 interface LayoutProps {
   children: ReactNode;
   latest: ReactNode;
@@ -35,9 +36,9 @@ export async function generateMetadata(
 
 export default async function Layout({children, latest}: LayoutProps) {
   return (
-    <>
+      <>
       {children}
       {latest}
-    </>
+      </>
   );
 }

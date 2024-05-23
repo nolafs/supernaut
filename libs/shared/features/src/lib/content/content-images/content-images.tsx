@@ -1,6 +1,6 @@
 /* eslint-disable-next-line */
 import {TImageLink} from '@supernaut/types';
-import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 
 import dynamic from 'next/dynamic';
 
@@ -48,7 +48,7 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
   }
 
 
-  return (<BlockAnimationProvider>
+  return (
       <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 70%" target={'.image'}>
         <GridImages
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
@@ -61,7 +61,6 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
           itemHeight={itemHeight}
         />
       </BlockAnimateOnScroll>
-    </BlockAnimationProvider>
   );
 }
 

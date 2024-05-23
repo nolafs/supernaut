@@ -2,7 +2,7 @@
 import {classNames} from '@headlessui/react/dist/utils/class-names';
 import cn from 'classnames';
 import { ReactNode } from 'react';
-import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 
 export interface SectionProps {
   internalName?: string;
@@ -107,11 +107,11 @@ export function Section({
 
   if(animation){
     return (
-      <BlockAnimationProvider>
+
         <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 80%" >
           {section()}
         </BlockAnimateOnScroll>
-      </BlockAnimationProvider>
+
     )
   } else {
     return section();

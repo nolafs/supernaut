@@ -40,6 +40,9 @@ fragment SettingsFields on Settings {
   sys {
     id
   }
+  logo{
+    ...AssetFields
+  }
   siteTitle
   strapline
   metaTitle,

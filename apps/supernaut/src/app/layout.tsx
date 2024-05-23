@@ -6,12 +6,12 @@ import {Metadata, ResolvingMetadata, Viewport} from 'next';
 import {ReactNode, Suspense} from 'react';
 import i18nConfig from '../../next-i18next.config';
 
-import {CookieBanner, Footer, ModalsContainer, Navigation} from '@supernaut/features';
+import {CookieBanner, Footer, ModalsContainer, Navigation, PageTransition} from '@supernaut/features';
 import {GoogleAnalytics} from '@supernaut/utils';
 import {TNavigationItem, TSocialLinkItemType} from '@supernaut/types';
 import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
-import {ThemeProvider} from '@supernaut/context';
+import {BlockAnimationProvider, ThemeProvider} from '@supernaut/context';
 import NextTopLoader from 'nextjs-toploader';
 
 export const viewport: Viewport = {
@@ -110,6 +110,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
       data-theme="dark"
     >
       <body>
+
         <ThemeProvider >
           <NextTopLoader
             color={'var(--color-primary)'}
@@ -119,20 +120,28 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           />
           <ModalProvider>
 
-            <Navigation items={navigation}  social={social} contactFormDialog={settings?.contactFormDialog} />
+            <Navigation
+                        logo={settings?.logo?.url}
+                        items={navigation}
+                        social={social}
+                        contactFormDialog={settings?.contactFormDialog} />
 
-            <main className={'min-h-screen'}>
-              {children}
-            </main>
 
-            <Footer
-              copyright={settings?.copyrightLine}
-              strapline={settings?.strapline}
-              legal={legalNavigation}
-              contactButtonLabel={settings?.contactDialogButtonLabel}
-              contactDialog={settings?.contactFormDialog}
-              social={social}
-            />
+            <BlockAnimationProvider>
+              <main className={'min-h-screen'}>
+                {children}
+              </main>
+            </BlockAnimationProvider>
+
+              <Footer
+                copyright={settings?.copyrightLine}
+                strapline={settings?.strapline}
+                legal={legalNavigation}
+                contactButtonLabel={settings?.contactDialogButtonLabel}
+                contactDialog={settings?.contactFormDialog}
+                social={social}
+              />
+
 
             <Suspense>
               <CookieBanner />
@@ -145,6 +154,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
               <GoogleAnalytics GA_MEASUREMENT_ID={process.env.NEXT_GOOGLE_ANALYTICS_ID || ''}/>
             </Suspense>
         </ThemeProvider>
+
       </body>
     </html>
 
