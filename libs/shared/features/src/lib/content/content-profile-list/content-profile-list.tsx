@@ -29,7 +29,7 @@ export function ContentProfileList({itemsCollection, mode}: ContentProfileListPr
         )}>
         <div className={'grid grid-cols-1 md:grid-cols-2 gap-10'}>
           {itemsCollection?.items?.map((item) => (
-            <ContentProfileItem key={item.id} item={item} />
+            <ContentProfileItem key={item.sys.id} item={item} id={item.sys.id} />
           ))}
         </div>
       </div>

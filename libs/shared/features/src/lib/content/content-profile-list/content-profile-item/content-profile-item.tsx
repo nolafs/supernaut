@@ -10,31 +10,33 @@ const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod
 
 export interface ContentProfileItemProps {
   item: TProfileItem,
+  id: string;
 }
 
-export function ContentProfileItem({item}: ContentProfileItemProps) {
+export function ContentProfileItem({item, id}: ContentProfileItemProps) {
 
   if(!item) return <NotificationBlock body={'No profile data'} type={'error'} />;
 
-  return (<ContentProfileAnim>
-    <div className={'profile-wrapper flex flex-col space-y-4 md:space-y-7 opacity-0'}>
-      <div className={'relative overflow-hidden'}>
-        <Image className={'profile'} src={item.image.url} alt={item.name} width={735} height={810}/>
-      </div>
-      <div>
-        <h2 className={'name text-primary mb-2 md:mb-3'}>{item.name}</h2>
-        <h3 className={'title text-primary  mb-3 md:mb-4'}>{item.title}</h3>
+  return (
+    <ContentProfileAnim id={id}>
+      <div  className={'profile-wrapper flex flex-col space-y-4 md:space-y-7'}>
+        <div className={'relative overflow-hidden'}>
+          <Image className={'profile opacity-0'} src={item.image.url} alt={item.name} width={735} height={810}/>
+        </div>
+        <div>
+          <h2 className={'name text-primary mb-2 md:mb-3'}>{item.name}</h2>
+          <h3 className={'title text-primary  mb-3 md:mb-4'}>{item.title}</h3>
 
-        {(!item.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary main-text'}
-                                           dangerouslySetInnerHTML={{__html: item.description}}/>}
-        {(item?.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary main-text'}>
-          {documentToReactComponents(item?.description?.json)}
-        </div>}
+          {(!item.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary main-text'}
+                                             dangerouslySetInnerHTML={{__html: item.description}}/>}
+          {(item?.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary main-text'}>
+            {documentToReactComponents(item?.description?.json)}
+          </div>}
+        </div>
+        <div className={'social'}>
+          <SocialList items={item.socialCollection.items} icons={true} variantButton={1} variantList={2}/>
+        </div>
       </div>
-      <div className={'social'}>
-        <SocialList items={item.socialCollection.items} icons={true} variantButton={1} variantList={2}/>
-      </div>
-    </div>
     </ContentProfileAnim>
   );
 }
