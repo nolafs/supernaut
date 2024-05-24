@@ -49,13 +49,9 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
     animationType = 'slideIn';
   } else{
     itemWidth = 1920 / imagesCollection.items.length +1;
+    itemWidth = 1080 / imagesCollection.items.length + 1;
 
   }
-
-
-  console.log('ITEMS', itemWidth, itemHeight)
-
-
 
   return (
       <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 80%" target={'.image'} marker={true}>
