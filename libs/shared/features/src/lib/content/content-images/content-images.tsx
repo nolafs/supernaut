@@ -49,7 +49,7 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
     animationType = 'slideIn';
   } else{
     itemWidth = 1920 / imagesCollection.items.length +1;
-    itemWidth = 1080 / imagesCollection.items.length + 1;
+    itemHeight = 1080 / imagesCollection.items.length + 1;
   }
 
   return (

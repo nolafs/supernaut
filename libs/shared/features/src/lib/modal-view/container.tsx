@@ -38,12 +38,12 @@ export function ModalsContainer() {
           as={Fragment}
           enter="ease-out duration-300"
           enterFrom="opacity-0"
-          enterTo="opacity-100"
+          enterTo="opacity-60"
           leave="ease-in duration-200"
           leaveFrom="opacity-100"
           leaveTo="opacity-0"
         >
-          <div className="fixed inset-0 bg-neutral bg-opacity-50 z-50 transition-opacity"/>
+          <div className="fixed inset-0 bg-neutral  z-50 transition-opacity"/>
         </TransitionChild>
 
         <div className="fixed inset-0 z-50 w-screen overflow-y-auto">
