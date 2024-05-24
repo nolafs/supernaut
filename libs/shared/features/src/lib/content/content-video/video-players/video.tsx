@@ -1,7 +1,7 @@
 /* eslint-disable-next-line */
 'use client';
 import cn from 'classnames';
-import {useRef} from 'react';
+import {useEffect, useRef} from 'react';
 import ContentVideoAnimation from '../content-video-animation';
 import {CldVideoPlayer} from 'next-cloudinary';
 import 'next-cloudinary/dist/cld-video-player.css';
@@ -24,6 +24,12 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
 
   const ref = useRef<any>(null);
   let posterFormat:any = {format: 'webp'};
+
+  useEffect(() => {
+    if(autoplay) {
+      ref.current.pause();
+    }
+  }, [ref]);
 
   if(!width){
     width = 1920;
@@ -72,7 +78,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
               width={width}
               height={height}
               id={id}
-              autoplay={false}
+              autoplay={autoplay}
               playsinline={true}
               controls={controls}
               loop={loop}

@@ -27,7 +27,7 @@ export function VideoControl({poster, handlePlay, width, height, title, mode}: V
 
   return (
     <button onClick={play} className={cn( showPlayer ? 'hidden' : 'block')}>
-      <div className={'absolute bottom-10 left-10 w-full '}>
+      <div className={'absolute bottom-10 left-10 w-full fill-secondary'}>
         <div className={'w-10 h-10'}>
           <svg xmlns="http://www.w3.org/2000/svg"
                viewBox="0 0 384 512" className={'w-full h-auto'}>
