@@ -4,7 +4,7 @@ import {useGSAP} from '@gsap/react';
 import gsap from 'gsap';
 import ScrollTrigger from 'gsap/ScrollTrigger';
 import SplitText from 'gsap/SplitText';
-import React, {useRef, ReactNode, createContext, useContext} from 'react';
+import React, {useRef, ReactNode, createContext, useContext, useEffect} from 'react';
 
 gsap.registerPlugin(ScrollTrigger, SplitText);
 
@@ -16,6 +16,7 @@ export interface AnimateOnScrollProps {
   from?: gsap.TweenVars;
   to?: gsap.TweenVars;
   target?: string;
+  marker?: boolean;
 }
 
 interface AnimationProps {
@@ -23,6 +24,7 @@ interface AnimationProps {
   to?: gsap.TweenVars;
   animProps?: gsap.TweenVars;
   target?: string;
+
 }
 
 interface AnimationProviderProps {
@@ -120,19 +122,21 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
   };
 
 
+
   return (
     <BlockAnimationContext.Provider value={animations}>{children}</BlockAnimationContext.Provider>
   );
 }
 
 
-const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animation = "fadeIn", duration = 1, start = "top 80%", from = {}, to = {}, target}) => {
+const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animation = "fadeIn", duration = 1, start = "top 80%", from = {}, to = {}, target, marker = false}) => {
   const animations = useAnimation();
+  const trigger = useRef<HTMLDivElement>(null);
   const ref = useRef<HTMLDivElement>(null);
 
 
-
   useGSAP(() => {
+
     if (animations[animation]) {
       animations[animation](ref.current, {
         from,
@@ -141,16 +145,25 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
         animProps: {
           duration,
           scrollTrigger: {
-            //markers: true,
-            trigger: ref.current,
+            markers: marker,
+            trigger: trigger.current,
+            immediateRender: true,
             start,
           }
         }
       });
     }
-  }, {dependencies: [animations, animation, duration, start, from, to, target], scope: ref});
 
-  return <div ref={ref}>{children}</div>;
+    //force resize
+
+  }, {dependencies: [animations, animation, duration, start, from, to, target, marker], scope: ref});
+
+
+
+  return (
+  <div ref={trigger} className={'overflow-hidden'}>
+    <div ref={ref}>{children}</div>
+  </div>);
 };
 
 

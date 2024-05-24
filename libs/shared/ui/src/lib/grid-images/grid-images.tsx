@@ -58,13 +58,16 @@ export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, i
 
   if(!items || !items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
+
+  console.log('ITEMS', items)
+
   return (
       <div className={cn('grid', COLUMNS_SM[columnsSm || 0], COLUMNS_MD[columnsMd || 0 ], COLUMNS_LG[columnsLg || 0], girdClass )}>
         {items.map((item, index) => {
           return (
-            <div key={`${item?.sys?.id || item.id}_${index}` } className={cn('relative', imageClass)}>
+            <div key={`${item?.sys?.id || item.id}_${index}` } className={cn('image relative', imageClass)}>
               { (item?.url) &&
-                <Image src={item.url} alt={item.title} width={itemWidth || item?.width} height={itemHeight || item?.height} className={'image object-center object-cover w-full h-full'} />
+                <Image src={`${item.url}`} alt={item.title} width={itemWidth || item?.width} height={itemHeight || item?.height} className={'object-center object-cover w-full h-full'} />
               }
             </div>
           );

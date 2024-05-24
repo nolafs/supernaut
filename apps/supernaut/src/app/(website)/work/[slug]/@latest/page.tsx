@@ -2,22 +2,21 @@
 import {WorkCollection} from '../../../../../data/work';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Card} from '@supernaut/shared-ui';
-import {BlockAnimateOnScroll} from '@supernaut/context';
+
+
 
 
 
 export default async function List() {
   const work = await WorkCollection(3, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
 
+
+
   if(!work?.workCollection?.items.length){
     throw new Error('No projects found')
   }
 
   return (
-
-      <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{
-        ease: 'power2.inOut'
-      }}>
         <div className={'wrapper my-10 md:my-20'}>
           <section>
             <div className={'mb-5 md:mb-16'}>
@@ -39,7 +38,5 @@ export default async function List() {
             </div>
           </section>
         </div>
-      </BlockAnimateOnScroll>
-
   );
 }

@@ -52,7 +52,7 @@ export function Section({
       <section
         id={sectionId}
         className={cn(
-          'relative overflow-hidden',
+          'section relative overflow-hidden',
           'flex',
           'flex-col',
           'justify-center',
@@ -108,7 +108,7 @@ export function Section({
   if(animation){
     return (
 
-        <BlockAnimateOnScroll animation="slideIn" duration={1} start="top 70%" >
+        <BlockAnimateOnScroll animation="slideIn" duration={1}  target={'.section'} marker={false} >
           {section()}
         </BlockAnimateOnScroll>
 

@@ -1,11 +1,8 @@
 /* eslint-disable-next-line */
 import {TImageLink} from '@supernaut/types';
 import {BlockAnimateOnScroll} from '@supernaut/context';
-
-import dynamic from 'next/dynamic';
-
-const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.NotificationBlock));
-const GridImages = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.GridImages));
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {GridImages, NotificationBlock} from '@supernaut/shared-ui';
 
 interface ItemsCollection {
   items: TImageLink[];
@@ -36,20 +33,32 @@ const IMAGE_VARIANTS = [
 ]
 
 
-export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 940, itemHeight = 626}: ContentImagesProps) {
+export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 1920, itemHeight = 1080}: ContentImagesProps) {
 
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
+
+  let animationType: any = 'staggerList';
+
 
   if(imagesCollection.items.length === 1) {
     columnsSm = 0;
     columnsMd = 0;
     columnsLg = 0;
-    itemWidth = 1820;
+    itemWidth = 1920;
+    itemHeight = 1080;
+    animationType = 'slideIn';
+  } else{
+    itemWidth = 1920 / imagesCollection.items.length +1;
+
   }
 
 
+  console.log('ITEMS', itemWidth, itemHeight)
+
+
+
   return (
-      <BlockAnimateOnScroll animation="staggerList" duration={0.5} start="top 70%" target={'.image'}>
+      <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 80%" target={'.image'} marker={true}>
         <GridImages
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
           girdClass={ GRID_VARIANTS[gridVariant || 0]}

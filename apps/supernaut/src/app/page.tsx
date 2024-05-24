@@ -1,6 +1,7 @@
 import {LogoAnimated, SectionResolver, ThemeSwitchServer} from '@supernaut/features';
 import {PageContent} from '../data/pages';
 import {notFound} from 'next/navigation';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header} from '@supernaut/shared-ui';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import {Suspense} from 'react';
