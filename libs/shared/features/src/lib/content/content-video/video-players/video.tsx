@@ -44,7 +44,9 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
 
   const handleReplay = (pause = false) => {
     if (autoplay) {
-      ref.current.currentTime = 0
+      if(ref.current.currentTime === ref.current.duration) {
+        ref.current.currentTime = 0
+      }
      ref.current.play();
     }
   }
