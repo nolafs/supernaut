@@ -1,8 +1,8 @@
 'use client';
 import Image from 'next/image';
 
-import placeholder_white from '../../../assets/placeholder-white.webp';
-import placeholder from '../../../assets/placeholder.webp';
+import placeholder_white from '../../../assets/placeholder-white.png';
+import placeholder from '../../../assets/placeholder.png';
 import {useState} from 'react';
 import cn from 'classnames';
 
@@ -39,12 +39,12 @@ export function VideoControl({poster, handlePlay, width, height, title, mode}: V
       {poster ?
         <Image width={width} height={height} loading={'lazy'}
                src={`${poster}`}
-               quality={60}
+               quality={80}
                alt={title}/>
         :
         <Image width={width} height={height} loading={'lazy'}
                src={(mode === 'light') ? placeholder : placeholder_white}
-               quality={60}
+               quality={80}
                alt={title}/>
       }
     </button>
