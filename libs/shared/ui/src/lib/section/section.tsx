@@ -108,7 +108,7 @@ export function Section({
   if(animation){
     return (
 
-        <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 80%" >
+        <BlockAnimateOnScroll animation="slideIn" duration={1} start="top 70%" >
           {section()}
         </BlockAnimateOnScroll>
 

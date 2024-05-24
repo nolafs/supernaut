@@ -123,10 +123,6 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
 
           const tl = gsap.timeline({});
 
-          console.log('running animation')
-
-
-
           tl.set(tempRef.current, {
             width: '100vw',
             height: '100vh',
