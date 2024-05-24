@@ -44,7 +44,7 @@ export function Navigation({
             }}>
               <div className="sr-only">{siteTitle}</div>
               {logo && isSvg && (
-                <Image src={logo} className={'logo'} alt={'logo'} width={162} height={47}/>
+                <Image src={logo} className={'logo'} alt={'logo'} width={350} height={50} />
               )}
               {logo && !isSvg && (
                 <img src={logo} alt="logo" className={styles['logo']}/>

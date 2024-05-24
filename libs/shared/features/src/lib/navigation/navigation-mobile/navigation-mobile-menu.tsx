@@ -72,7 +72,7 @@ export function NavigationMobileMenu({
                 pathname: `/${item?.slug}`,
               }}
               className={
-                cn('text-2xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
+                cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
               }
             >
               <span

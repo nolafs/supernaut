@@ -34,10 +34,10 @@ export function NavigationMobile({
 
   return (
     <>
-      <div className={cn('fixed z-50 right-0 top-0', styles['menuButton'])}>
+      <div className={cn('fixed z-50 right-0 top-0 h-[80px] md:h-[100px] flex items-center', styles['menuButton'])}>
         <button
           className={cn(
-            'relative px-6 py-6 flex flex-col space-y-3 cursor-pointer bg-transparent pointer-events-auto z-20'
+            'relative px-6 flex flex-col space-y-3 cursor-pointer bg-transparent pointer-events-auto z-20'
           )}
           onClick={handleClick}
         >

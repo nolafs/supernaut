@@ -38,21 +38,19 @@
     @apply bg-neutral text-primary transition-all duration-500 ease-in-out;
   }
 
+  .logo{
+    @apply w-full max-w-[200px] md:max-w-full h-full max-h-[40px];
+  }
+
   html[data-theme="light"] {
     .logo {
-
-        @apply w-auto h-full max-h-[40px] md:max-h-full;
         filter: invert(1);
-
     }
   }
 
   html[data-theme="dark"] {
     .logo {
-
-        @apply w-auto h-full max-h-[40px] md:max-h-full;
         filter: invert(0);
-
     }
   }
 
