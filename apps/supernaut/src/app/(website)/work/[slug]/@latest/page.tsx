@@ -14,7 +14,7 @@ export default async function List() {
   }
 
   return (
-    <BlockAnimationProvider>
+
       <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{
         ease: 'power2.inOut'
       }}>
@@ -40,6 +40,6 @@ export default async function List() {
           </section>
         </div>
       </BlockAnimateOnScroll>
-    </BlockAnimationProvider>
+
   );
 }

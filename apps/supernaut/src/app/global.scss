@@ -89,10 +89,10 @@
   }
 
   .splitTextOverflow {
-    @apply overflow-hidden inline-block tracking-tight;
+    @apply overflow-hidden inline-block tracking-tight align-top ;
     //line-height: 1.1;
     > * {
-      @apply overflow-hidden inline-block tracking-tight;
+      @apply overflow-hidden inline-block tracking-tight align-top ;
     }
   }
 

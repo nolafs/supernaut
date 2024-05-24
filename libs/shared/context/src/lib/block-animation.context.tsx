@@ -57,7 +57,7 @@ export function BlockAnimationProvider({children}: AnimationProviderProps) {
   };
 
   const slideIn = (element: any, props: any) => {
-    gsap.fromTo(element, {opacity: 0, yPercent: 50, ...props.from}, {opacity: 1, yPercent: 0, ...props.to, ...props.animProps});
+    gsap.fromTo(element, {opacity: 0, y: 150, ...props.from}, {opacity: 1, y: 0, ...props.to, ...props.animProps});
   };
 
   const splitText = (element: any, props: any) => {
@@ -150,7 +150,7 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
     }
   }, {dependencies: [animations, animation, duration, start, from, to, target], scope: ref});
 
-  return <div ref={ref} className={'overflow-hidden'}>{children}</div>;
+  return <div ref={ref}>{children}</div>;
 };
 
 
