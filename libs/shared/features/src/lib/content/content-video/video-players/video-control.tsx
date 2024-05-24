@@ -1,3 +1,4 @@
+'use client';
 import Image from 'next/image';
 
 import placeholder_white from '../../../assets/placeholder-white.webp';

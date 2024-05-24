@@ -1,4 +1,5 @@
 /* eslint-disable-next-line */
+'use client';
 import cn from 'classnames';
 import {useReducer, useRef, useState} from 'react';
 import ReactPlayer, {Config} from 'react-player/lazy'

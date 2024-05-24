@@ -1,4 +1,5 @@
 /* eslint-disable-next-line */
+'use client';
 import cn from 'classnames';
 import {useRef} from 'react';
 import ContentVideoAnimation from '../content-video-animation';
