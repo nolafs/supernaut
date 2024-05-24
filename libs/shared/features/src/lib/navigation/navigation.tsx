@@ -71,10 +71,9 @@ export function Navigation({
             </nav>
           </div>
           {social && social.length > 0 && (
-            <div className={styles['desktop']}>
+            <div className={cn(styles['desktop'], 'flex justify-center items-center')}>
               <SocialList items={social}/>
               {(contactFormDialog) && <ContactFormDialogButton label='Contact' isIcon={true} />}
-              <div className={'ml-3'}><ThemeSwitchButton/></div>
             </div>
           )}
         </div>
