@@ -27,13 +27,15 @@ export function VideoControl({poster, handlePlay, width, height, title, mode}: V
 
   return (
     <button onClick={play} className={cn( showPlayer ? 'hidden' : 'block')}>
-      <div className={'absolute bottom-10 left-10 w-full fill-secondary'}>
-        <div className={'w-10 h-10'}>
-          <svg xmlns="http://www.w3.org/2000/svg"
-               viewBox="0 0 384 512" className={'w-full h-auto'}>
-            <path fill="#fff"
-                  d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
-          </svg>
+      <div className={'absolute top-0 left-0 w-full h-full fill-secondary flex flex-col justify-center items-center'}>
+        <div className={'w-[100px] h-[100px]  border border-4 border-primary rounded-full flex flex-col justify-center items-center'}>
+          <div className={'h-9 w-9 mb-2'}>
+            <svg xmlns="http://www.w3.org/2000/svg"
+                 viewBox="0 0 384 512" >
+              <path fill="#fff"
+                    d="M73 39c-14.8-9.1-33.4-9.4-48.5-.9S0 62.6 0 80V432c0 17.4 9.4 33.4 24.5 41.9s33.7 8.1 48.5-.9L361 297c14.3-8.7 23-24.2 23-41s-8.7-32.2-23-41L73 39z"/>
+            </svg>
+          </div>
         </div>
       </div>
       {poster ?
