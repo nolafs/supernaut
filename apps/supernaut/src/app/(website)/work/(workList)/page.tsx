@@ -1,7 +1,7 @@
 import {WorkFeaturedCollection} from '../../../../data/work';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Card} from '@supernaut/shared-ui';
-import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 export default async function Page({searchParams}: {
   searchParams: { page: string, category: string }
 }) {
@@ -10,7 +10,6 @@ export default async function Page({searchParams}: {
   const featuredWork = workFeatured?.workCollection?.items[0];
 
   return ((featuredWork &&
-    <BlockAnimationProvider>
       <BlockAnimateOnScroll animation={'slideIn'} to={{delay: .5}}>
       <section>
         <div className={'wrapper mt-10'}>
@@ -26,6 +25,6 @@ export default async function Page({searchParams}: {
         </div>
       </section>
       </BlockAnimateOnScroll>
-    </BlockAnimationProvider>)
+    )
   )
 }
