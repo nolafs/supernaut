@@ -111,13 +111,15 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
     >
       <body>
 
+      <NextTopLoader
+        color={'var(--color-primary)'}
+        height={5}
+        showSpinner={false}
+        shadow={false}
+      />
+
         <ThemeProvider >
-          <NextTopLoader
-            color={'var(--color-primary)'}
-            height={5}
-            showSpinner={false}
-            shadow={false}
-          />
+
           <ModalProvider>
 
             <Navigation

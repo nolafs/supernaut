@@ -40,39 +40,75 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     console.log('ref', ref.current)
     /*
     const tl = gsap.timeline();
+
     tl.set(ref.current, {
+      width: '100vw',
+      height: '100vh',
+      overflow: 'hidden',
+    })
+
+    tl.set('.ol', {
+      width: '100vw',
+      height: '100vh',
+      overflow: 'hidden',
+      autoAlpha: 1
+    })
+
+    tl.set('.cl', {
+      position: 'absolute',
+      top: '0',
+      left: '0',
       width: '100vw',
       height: '100vh',
       overflow: 'hidden'
     })
 
 
-    tl.set('.ol', {autoAlpha: 1, yPercent: 110})
-    tl.from('.ol', {yPercent: 0, duration: 2, ease: 'power2.out'})
-    tl.from('.ol', {yPercent: -110, duration: 2, ease: 'power2.inOut', delay: 0.5})
+    tl.set('.ol-t', {autoAlpha: 1})
 
-    tl.set('.ol', {autoAlpha: 0, yPercent: 110})
+    tl.fromTo('.ol-t',{yPercent: 100} ,{yPercent: 0, duration: 2, ease: 'power2.out'})
+    tl.fromTo('.ol-t', {yPercent: 0}, {yPercent: -100, duration: 2, ease: 'power2.inOut', delay: 0.5})
+
+    tl.set('.ol-t', {autoAlpha: 0})
 
 
-    tl.set(ref.current, {
+    tl.set( '.ol', {
       position: 'relative',
       width: '100%',
       height: '100%',
-      overflow: 'visible'
+      overflow: 'visible',
+      autoAlpha: 0
+    })
+
+    tl.set(ref.current, {
+      width: '100%',
+      height: '100%',
+      overflow: 'visible',
+    })
+
+    tl.set('.cl', {
+      position: 'absolute',
+      top: '0',
+      left: '0',
+      width: '100vw',
+      height: '100vh',
+      overflow: 'hidden'
     })
 
      */
+
+
 
   }, {dependencies: [theme], scope: ref});
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme, setInitialTheme}}>
-      <div ref={ref} className={'cl relative'}>
-        <div className={'ol block will-change-transform hidden fixed z-50 top-0 left-0 w-full h-full bg-white'}>
-
+      <div ref={ref} >
+        <div className={'ol will-change-transform fixed z-50 top-0 left-0 w-full h-full hidden'}>
+          <div className={'ol-t fixed w-full h-full bg-white top-full left-0'}></div>
         </div>
-        <div>
-        {children}
+        <div className={'cl'}>
+          {children}
         </div>
       </div>
     </ThemeContext.Provider>
