@@ -50,7 +50,7 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
   }, {scope: ref});
 
   return (
-    <div ref={ref}>
+    <div ref={ref} className={'relative'}>
       {children}
     </div>
   );

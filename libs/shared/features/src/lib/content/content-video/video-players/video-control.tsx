@@ -2,6 +2,8 @@ import Image from 'next/image';
 
 import placeholder_white from '../../../assets/placeholder-white.webp';
 import placeholder from '../../../assets/placeholder.webp';
+import {useState} from 'react';
+import cn from 'classnames';
 
 /* eslint-disable-next-line */
 export interface VideoControlProps {
@@ -14,8 +16,16 @@ export interface VideoControlProps {
 }
 
 export function VideoControl({poster, handlePlay, width, height, title, mode}: VideoControlProps) {
+
+  const [showPlayer, setShowPlayer] = useState<boolean>(false);
+
+  const play = () => {
+    setShowPlayer(true);
+    handlePlay();
+  }
+
   return (
-    <button onClick={handlePlay} className={'relative'}>
+    <button onClick={play} className={cn( showPlayer ? 'hidden' : 'block')}>
       <div className={'absolute bottom-10 left-10 w-full '}>
         <div className={'w-10 h-10'}>
           <svg xmlns="http://www.w3.org/2000/svg"
