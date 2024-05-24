@@ -58,7 +58,7 @@ export function Section({
           'justify-center',
           {
             'w-full': width === 'full',
-            'wrapper': width === 'xl',
+            'max-w-9xl': width === 'xl',
             'w-1/2': width === 'sm',
             'w-3/4': width === 'lg',
           },

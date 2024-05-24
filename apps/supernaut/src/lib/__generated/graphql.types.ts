@@ -170,6 +170,7 @@ export type AssetFilter = {
 export type AssetLinkingCollections = {
   __typename?: 'AssetLinkingCollections';
   contentImageGridComponentCollection?: Maybe<ContentImageGridComponentCollection>;
+  contentVideoComponentCollection?: Maybe<ContentVideoComponentCollection>;
   entryCollection?: Maybe<EntryCollection>;
   navigationItemCollection?: Maybe<NavigationItemCollection>;
   profileCollection?: Maybe<ProfileCollection>;
@@ -181,6 +182,14 @@ export type AssetLinkingCollections = {
 
 
 export type AssetLinkingCollectionsContentImageGridComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type AssetLinkingCollectionsContentVideoComponentCollectionArgs = {
   limit?: InputMaybe<Scalars['Int']['input']>;
   locale?: InputMaybe<Scalars['String']['input']>;
   preview?: InputMaybe<Scalars['Boolean']['input']>;
@@ -1812,6 +1821,7 @@ export type ContentVideoComponent = Entry & {
   height?: Maybe<Scalars['Int']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContentVideoComponentLinkingCollections>;
+  poster?: Maybe<Asset>;
   src?: Maybe<Scalars['String']['output']>;
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
@@ -1854,6 +1864,13 @@ export type ContentVideoComponentInternalNameArgs = {
 /** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
 export type ContentVideoComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
+export type ContentVideoComponentPosterArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
 };
 
 
@@ -1923,6 +1940,7 @@ export type ContentVideoComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
   src_contains?: InputMaybe<Scalars['String']['input']>;
   src_exists?: InputMaybe<Scalars['Boolean']['input']>;

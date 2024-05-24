@@ -23,29 +23,28 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
         {
           opacity: 1, y: 0, duration: 1,
           scrollTrigger: {
-            toggleActions: 'play pause resume reset',
-            //markers: true,
+            //toggleActions: 'play pause resume reset',
+            markers: true,
             trigger: ref.current,
-            start: 'top bottom',
-            end: 'bottom top',
+            start: 'top 70%',
+            end: 'bottom 30%',
+            onEnter: () => {
+              console.log('onEnter');
+              setReady(true);
+              handlePlay();
+            },
+            onEnterBack: () => {
+              handleReplay();
+            },
+            onLeave: () => {
+              console.log('onLeave');
+              handlePause();
+            },
+            onLeaveBack: () => {
+              handlePlay();
+            }
           },
-          onEnter: () => {
-            console.log('onEnter')
-            setReady(true);
-            handlePlay();
-          },
-          onEnterBack: () => {
-            console.log('onEnterBack')
-           // handleReplay();
-          },
-          onLeave: () => {
-            console.log('onLeave')
-            handlePause();
-          },
-          onLeaveBack: () => {
-            console.log('onLeaveBack')
-            //handlePlay();
-          }
+
         });
 
   }, {scope: ref});

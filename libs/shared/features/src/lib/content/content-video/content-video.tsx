@@ -1,7 +1,8 @@
 'use client';
 /* eslint-disable-next-line */
 import dynamic from 'next/dynamic';
-const NotificationBlock = dynamic(() => import('@supernaut/shared-ui').then((mod) => mod.NotificationBlock));
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import {NotificationBlock} from '@supernaut/shared-ui';
 
 
 export interface ContentVideoProps {
@@ -10,7 +11,7 @@ export interface ContentVideoProps {
   src: string;
   videoUpload?: any,
   title?: string;
-  poster?: string;
+  poster?: any;
   frame?: boolean;
   mode?: 'light' | 'dark';
   width?: number;
@@ -38,7 +39,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
     const Youtube = dynamic(() => import('./video-players/youtube'));
 
     return (
-        <Youtube id={id} title={title || id} poster={poster} src={src}  />
+        <Youtube id={id} title={title || id} poster={poster?.url} src={src}  />
     );
   }
 
@@ -47,7 +48,7 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
     const Vimeo = dynamic(() => import('./video-players/vimeo'));
 
     return (
-        <Vimeo id={id} title={title || id} poster={poster} src={src}/>
+        <Vimeo id={id} title={title || id} poster={poster?.url} src={src}/>
     );
   }
 
@@ -55,14 +56,11 @@ export function ContentVideo({id, type, title, src, videoUpload, poster, autopla
 
     const CloudinaryVideo = dynamic(() => import('./video-players/video'));
 
-    console.log('width', width)
-    console.log('height', height)
-
     return (
           <CloudinaryVideo
             id={id}
             title={title || id}
-            poster={poster}
+            poster={poster?.url}
             src={videoUpload[0].public_id}
             autoplay={autoplay}
             controls={controls}

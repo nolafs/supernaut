@@ -1,9 +1,5 @@
 /* eslint-disable-next-line */
-import {AdvancedVideo, lazyload} from '@cloudinary/react';
-import {Cloudinary} from '@cloudinary/url-gen';
-import {fill} from "@cloudinary/url-gen/actions/resize";
 import cn from 'classnames';
-import Image from 'next/image';
 import {useRef} from 'react';
 import ContentVideoAnimation from '../content-video-animation';
 import {CldVideoPlayer} from 'next-cloudinary';
@@ -26,7 +22,7 @@ export interface VideoProps {
 export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, loop = false, width = 1920, height = 1200}: VideoProps) {
 
   const ref = useRef<any>(null);
-  const posterFormat:any = {format: 'webp'};
+  let posterFormat:any = {format: 'webp'};
 
   if(!width){
     width = 1920;
@@ -36,31 +32,26 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
     height = 1200
   }
 
-  const handlePlay = (pause = false) => {
+  if (poster) {
+    posterFormat = `${poster}?fm=webp&w=${width}&h=${height}&fit=fill`;
+  }
 
-    //if (autoplay) {
-      //ref.current.videoRef.current.play();
-   // }
+  const handlePlay = (pause = false) => {
+    if (autoplay) {
+      ref.current.play();
+   }
   }
 
   const handleReplay = (pause = false) => {
-
-    //if (autoplay) {
-    //  ref.current.videoRef.current.currentTime = 0
-    //  ref.current.videoRef.current.play();
-    //}
+    if (autoplay) {
+      ref.current.currentTime = 0
+     ref.current.play();
+    }
   }
 
   const handlePause = (pause = false) => {
-     // ref.current.videoRef.current.pause();
-  }
+    ref.current.pause();
 
-  const handlePlaying = (e: any) => {
-    console.log('handlePlaying', e)
-  }
-
-  const handleEnded = (e: any) => {
-    console.log('handleEnded', e)
   }
 
 
@@ -70,7 +61,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       handlePlay={handlePlay}
     >
 
-      <div className={cn('relative', frame && 'wrapper p-4 md:p-10')}>
+      <div className={cn('video','relative', frame && 'wrapper p-4 md:p-10')}>
 
             {(src) &&
             <CldVideoPlayer
@@ -78,7 +69,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
               width={width}
               height={height}
               id={id}
-              autoplay={autoplay}
+              autoplay={false}
               playsinline={true}
               controls={controls}
               loop={loop}

@@ -91,6 +91,7 @@ input AssetFilter {
 
 type AssetLinkingCollections {
   contentImageGridComponentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentImageGridComponentCollection
+  contentVideoComponentCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ContentVideoComponentCollection
   entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
   navigationItemCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): NavigationItemCollection
   profileCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): ProfileCollection
@@ -1220,6 +1221,7 @@ type ContentVideoComponent implements Entry {
   height(locale: String): Int
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentVideoComponentLinkingCollections
+  poster(locale: String, preview: Boolean): Asset
   src(locale: String): String
   sys: Sys!
   title(locale: String): String
@@ -1264,6 +1266,7 @@ input ContentVideoComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  poster_exists: Boolean
   src: String
   src_contains: String
   src_exists: Boolean

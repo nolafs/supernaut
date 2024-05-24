@@ -140,6 +140,9 @@ fragment ContentVideoComponentFields on ContentVideoComponent {
   videoUpload
   width
   height
+  poster {
+    ...AssetFields
+  }
   controls
   autoplay
   frame
