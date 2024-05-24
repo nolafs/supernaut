@@ -9,21 +9,21 @@ import gsap from 'gsap';
 import { useGSAP } from '@gsap/react';
 import { SplitText } from 'gsap/SplitText';
 import NavigationMobileMenu from './navigation-mobile-menu';
+import SocialList from '../../social-list/social-list';
+import ContactFormDialogButton from '../../contact-form/contact-form-dialog-button';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
 export interface NavigationMobileProps {
-  siteTitle?: string;
-  logo?: string | undefined | null;
-  mode?: 'light' | 'dark';
   items: TNavigationItem[];
+  social?: any;
+  contactFormDialog: any;
 }
 
 export function NavigationMobile({
   items,
-  mode,
-  logo,
-  siteTitle,
+  social,
+  contactFormDialog
 }: NavigationMobileProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
@@ -41,7 +41,7 @@ export function NavigationMobile({
           )}
           onClick={handleClick}
         >
-          <div className={cn((mode) && styles[mode], mobileMenuOpen ? styles['open'] : styles['close'])}></div>
+          <div className={cn( mobileMenuOpen ? styles['open'] : styles['close'])}></div>
         </button>
       </div>
 
@@ -75,12 +75,20 @@ export function NavigationMobile({
                     leaveTo="translate-x-full"
                   >
                       <DialogPanel className="pointer-events-none w-screen max-w-md">
-                        <div className="flex h-full flex-col overflow-y-scroll bg-white py-6 shadow-xl">
-                          <div className={'pt-20 px-5'}>
-                            <nav className={'pointer-events-auto'}>
-                              <NavigationMobileMenu items={items} open={mobileMenuOpen} />
+                        <div className="flex h-full flex-col overflow-y-scroll bg-white shadow-xl">
+
+                            <nav className={'h-full'}>
+                              <div className={'flex flex-col justify-items-stretch items-stretch h-full'}>
+                                <div className={'pt-24 px-5  grow'}>
+                                  <NavigationMobileMenu items={items} open={mobileMenuOpen}/>
+                                </div>
+                                <div className={'bg-neutral shrink p-3 flex flex-row justify-center pointer-events-auto'}>
+                                  <SocialList items={social}/>
+                                  {(contactFormDialog) && <ContactFormDialogButton label='Contact' isIcon={true}/>}
+                                </div>
+                              </div>
                             </nav>
-                          </div>
+
                         </div>
                     </DialogPanel>
                   </TransitionChild>

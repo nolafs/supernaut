@@ -88,10 +88,9 @@ export function Navigation({
       </NavigationWrapper>
 
       <NavigationMobile
-        mode={mode}
         items={items}
-        siteTitle={siteTitle}
-        logo={logo}
+        social={social}
+        contactFormDialog={contactFormDialog}
       />
     </>
   )

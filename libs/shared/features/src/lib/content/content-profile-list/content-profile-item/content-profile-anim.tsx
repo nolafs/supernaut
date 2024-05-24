@@ -30,10 +30,8 @@ export function ContentProfileAnim({children, id}: ContentProfileAnimProps) {
       }
     });
 
-
     tl.set('.profile', {opacity: 0, y: 0, scale: 1})
     tl.fromTo('.profile', {y:100, scale: 1.05, opacity: 0}, {y:0, stagger:0.2, scale:1, opacity: 1, duration: 1})
-
     tl.fromTo(['.name', '.title'], {opacity: 0, y: 100}, {opacity: 1, y: 0, stagger: 0.3, duration: 1})
     tl.fromTo('.main-text', {opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.5}, '-=0.5')
     tl.fromTo('.social', {opacity: 0, y: 100}, {opacity: 1, y: 0, duration: 0.5}, '-=0.5')

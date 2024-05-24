@@ -63,7 +63,7 @@ export function NavigationMobileMenu({
   }, [open]);
 
   return (
-    <ul ref={menu} className={' flex flex-col space-y-6'}>
+    <ul ref={menu} className={' flex flex-col space-y-6 pointer-events-auto'}>
       {items.map((item: TNavigationItem, index) => {
         return (
           <li key={item.id} className={'menu-button overflow-hidden'}>
