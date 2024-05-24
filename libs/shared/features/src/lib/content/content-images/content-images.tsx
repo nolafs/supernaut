@@ -50,11 +50,10 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
   } else{
     itemWidth = 1920 / imagesCollection.items.length +1;
     itemWidth = 1080 / imagesCollection.items.length + 1;
-
   }
 
   return (
-      <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 80%" target={'.image'} marker={true}>
+      <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 80%" target={'.image'} marker={false}>
         <GridImages
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
           girdClass={ GRID_VARIANTS[gridVariant || 0]}
