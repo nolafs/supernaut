@@ -26,31 +26,47 @@ export function SliderDescription({
 
   useGSAP(
     () => {
+        const mm = gsap.matchMedia();
+      mm.add(
+        {
+          isDesktop: '(min-width: 772px)',
+          isMobile: '(max-width: 771px)'
+        },
+        (context) => {
 
-        setTimeout(() => {
-          tl.current = gsap.timeline();
-          split.current = new SplitText('.header', {type: 'chars'});
+          const {isMobile} = context.conditions as {
+            isDesktop: boolean
+            isMobile: boolean
+          }
 
-          setShow((prevState) => true);
 
-          tl.current.from(split.current.chars, {
-            opacity: 0,
-            y: '100%',
-            duration: 0.5,
-            ease: 'power3.inOut',
-          });
+          setTimeout(() => {
+            tl.current = gsap.timeline();
+            split.current = new SplitText('.header', {type: 'chars, lines, words'});
 
-          tl.current.fromTo('.body', {
-            opacity: 0,
-            y: '100%',
+            setShow((prevState) => true);
 
-          }, {
-            opacity: 1,
-            y: 0,
-            duration: 0.5,
-            ease: 'power3.inOut'
-          }, '-=0.2');
-        }, 200);
+            tl.current.from(split.current.chars, {
+              opacity: 0,
+              y: '100%',
+              duration: 0.4,
+              stagger: 0.05,
+              ease: 'power3.inOut',
+            });
+
+            !isMobile &&
+            tl.current.fromTo('.body', {
+              opacity: 0,
+              y: '100%',
+
+            }, {
+              opacity: 1,
+              y: 0,
+              duration: 0.5,
+              ease: 'power3.inOut'
+            }, '-=0.2');
+          }, 200);
+        })
 
     },
     { dependencies: [title, description], scope: main, revertOnUpdate: false }
@@ -71,7 +87,7 @@ export function SliderDescription({
     >
       <h2
         className={
-          'header text-3xl md:text-[48px] font-medium tracking-tighter splitTextOverflow'
+          'header text-3xl leading-tight md:text-[48px] font-medium tracking-tighter splitTextOverflow'
         }
       >
         {title}

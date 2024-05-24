@@ -5,7 +5,7 @@ import { useIsFirstRender } from '@supernaut/hooks';
 import {animatePageIn, animatePageOut, useStore} from '@supernaut/utils';
 import gsap from 'gsap';
 import cn from 'classnames';
-import {useGSAP} from '@gsap/react';
+
 
 
 /* eslint-disable-next-line */
