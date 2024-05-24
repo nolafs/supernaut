@@ -35,7 +35,6 @@ export function Header({
     }
   }
 
-
   return (
       <header>
         <div
@@ -53,7 +52,7 @@ export function Header({
             'text-primary'
           )}
         >
-          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full md:w-8/12') }>
+          <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full md:w-8/12', 'mb-5 md:mb-0') }>
             <div className={'sr-only'}>{pageName}</div>
             <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%" to={{delay: delay}}><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
           </div>
