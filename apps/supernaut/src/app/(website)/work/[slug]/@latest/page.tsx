@@ -2,7 +2,7 @@
 import {WorkCollection} from '../../../../../data/work';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Card} from '@supernaut/shared-ui';
-import {BlockAnimateOnScroll, BlockAnimationProvider} from '@supernaut/context';
+import {BlockAnimateOnScroll} from '@supernaut/context';
 
 
 
