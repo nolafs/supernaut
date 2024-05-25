@@ -67,7 +67,7 @@ export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, i
             <div key={`${item?.sys?.id || item.id}_${index}` } className={cn('image relative', imageClass)}>
               { (item?.url) &&
                 <Image
-                  loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
+                  loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
                   src={`${item.url}`}
                   alt={item.title}
                   width={itemWidth || item?.width}

@@ -66,7 +66,7 @@ const SliderItem = forwardRef(
               <Image
                 src={`${image}`}
                 alt={title}
-                loader={(props) => contentfulLoader(props, {fit: 'fill'})}
+                loader={(props) => contentfulLoader(props, {fit: 'fill', fm: 'webp'})}
                 width={1920}
                 height={1000}
                 priority={true}
@@ -76,7 +76,7 @@ const SliderItem = forwardRef(
             <div className={'block md:hidden  w-full h-screen max-h-[400px]'}>
               <Image
                 src={`${image}`}
-                loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
+                loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
                 alt={title}
                 width={390}
                 height={400}
