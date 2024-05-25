@@ -36,6 +36,7 @@ export function NavigationMobile({
     <>
       <div className={cn('fixed z-50 right-0 top-0 h-[80px] md:h-[100px] flex items-center', styles['menuButton'])}>
         <button
+          aria-label="Open/close Menu"
           className={cn(
             'relative px-6 flex flex-col space-y-3 cursor-pointer bg-transparent pointer-events-auto z-20'
           )}
