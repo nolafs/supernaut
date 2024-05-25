@@ -33,7 +33,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
         <Image
                loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
                src={`${image}`}
-               alt={title || ''}  width={1920} height={1150}
+               alt={ `Image: ${title}` || 'image'}  width={1920} height={1150}
                className={'object-cover w-full h-full group-hover:scale-110  transform-gpu transition-all duration-500 ease-in-out'}/>
         {(!image) &&
           <Image src={placeholder} alt={'placeholder'} width={(1920)} height={1150}
@@ -46,7 +46,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
           <div className={cn("relative card-normal overflow-hidden max-w-[890px] max-h-[613px] mb-4")}>
             <Image
               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
-              src={`${image}`} alt={title || ''} width={(890)} height={613}
+              src={`${image}`} alt={`Image: ${title}` || ''} width={(890)} height={613}
                    className={'object-cover w-full h-full group-hover:scale-110 group-hover:brightness-125 transform-gpu transition-all duration-500 ease-in-out'}/>
             {(!image) &&
               <Image src={placeholder} alt={'placeholder'} width={(890)} height={613}
@@ -59,7 +59,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
             <Image
               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
               src={`${image}`}
-              alt={title || ''} width={(580)} height={580}
+              alt={`Image: ${title}` || ''} width={(580)} height={580}
                    className={'relative object-cover w-full h-full group-hover:scale-110 transform-gpu transition-all duration-500 ease-in-out'}/>
 
             {(!image) &&
