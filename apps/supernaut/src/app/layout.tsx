@@ -28,6 +28,10 @@ export async function generateMetadata(
   const settings = await SettingContent('Settings', i18nConfig.defaultLocale, process?.env.NEXT_PUBLIC_PREVIEW === 'true');
   const defaultImages = ['/share.jpg'];
 
+  if(settings?.ogImage?.url){
+    defaultImages[0] = settings?.ogImage?.url
+  }
+
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://supernautstudio.com/'),
     alternates: {
