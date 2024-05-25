@@ -68,6 +68,7 @@ const SliderItem = forwardRef(
                 alt={title}
                 width={1920}
                 height={1000}
+                priority={true}
                 className={'object-cover object-center w-full h-full'}
               />
             </div>
@@ -77,6 +78,7 @@ const SliderItem = forwardRef(
                 alt={title}
                 width={390}
                 height={400}
+                priority={true}
                 className={'object-cover object-center  w-full h-full'}
               />
             </div>
