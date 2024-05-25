@@ -1696,6 +1696,11 @@
     enabled "2.0.x"
     kuler "^2.0.0"
 
+"@delicious-simplicity/next-image-contentful-loader@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@delicious-simplicity/next-image-contentful-loader/-/next-image-contentful-loader-1.0.4.tgz#cdef7a5336baae9d02081b46b5ad44b48c7bb3fa"
+  integrity sha512-C9Mbk91vvdIbl4IotT7C29OrQIcDdvBmh2dZVDrubghG3vHCu7xrCiWjufSOAzjz2Kgo7r2ZAKgZsfOq0Fn2ig==
+
 "@discoveryjs/json-ext@0.5.7", "@discoveryjs/json-ext@^0.5.3":
   version "0.5.7"
   resolved "https://registry.npmjs.org/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz"
