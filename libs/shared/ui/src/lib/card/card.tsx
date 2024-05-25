@@ -33,6 +33,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
         <Image
                loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
                src={`${image}`}
+               priority={true}
                alt={ `Image: ${title}` || 'image'}  width={1920} height={1150}
                className={'object-cover w-full h-full group-hover:scale-110  transform-gpu transition-all duration-500 ease-in-out'}/>
         {(!image) &&
