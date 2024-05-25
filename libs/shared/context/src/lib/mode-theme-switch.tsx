@@ -37,8 +37,9 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   }
 
   useGSAP(() => {
-    console.log('ref', ref.current)
+
     /*
+      console.log('ref', ref.current)
     const tl = gsap.timeline();
 
     tl.set(ref.current, {

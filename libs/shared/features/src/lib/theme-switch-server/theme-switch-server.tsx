@@ -25,10 +25,7 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
 
   }, [mode, setInitialTheme]);
 
-  return (
-    <>
-    </>
-  );
+  return null;
 }
 
 export default ThemeSwitchServer;

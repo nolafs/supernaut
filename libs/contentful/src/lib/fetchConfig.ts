@@ -23,8 +23,6 @@ export function customFetcher<TData, TVariables extends { preview?: boolean | nu
 
   return async (): Promise<TData> => {
 
-    console.log('FETCH CONFIG',fetchConfig)
-
     const res = await fetch(fetchConfig.endpoint as string, {
       method: 'POST',
       ...options,

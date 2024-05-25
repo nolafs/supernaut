@@ -67,9 +67,7 @@ export function PaginationList() {
       {dataList?.pages.map(page =>
         page.map((dataList: any, index: number) => {
           if (page.length == index + 1) {
-          console.log('dataList', dataList)
           return (
-
               <Card key={index}
                           title={dataList?.title}
                           categories={dataList?.serviceCategoryCollection?.items}

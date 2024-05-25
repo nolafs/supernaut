@@ -33,23 +33,26 @@ const IMAGE_VARIANTS = [
 ]
 
 
-export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth = 1920, itemHeight = 1080}: ContentImagesProps) {
+export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight}: ContentImagesProps) {
 
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
   let animationType: any = 'staggerList';
 
-
   if(imagesCollection.items.length === 1) {
     columnsSm = 0;
     columnsMd = 0;
     columnsLg = 0;
-    itemWidth = 1920;
-    itemHeight = 1080;
+    itemWidth = (itemWidth) ? itemWidth : 1920;
+    itemHeight = (itemHeight) ? itemHeight : 1080;
     animationType = 'slideIn';
+
   } else{
-    itemWidth = 1920 / imagesCollection.items.length +1;
-    itemHeight = 1080 / imagesCollection.items.length + 1;
+
+    if(!itemWidth || !itemHeight) {
+      itemWidth = 1920 / imagesCollection.items.length + 1;
+      itemHeight = 1080 / imagesCollection.items.length + 1;
+    }
   }
 
   return (

@@ -9,7 +9,6 @@ gsap.registerPlugin(ScrollTrigger);
 export const  TriggerResizeOnLoad = () => {
   useEffect(() => {
     setTimeout(() => {
-      console.log('trigger resize');
       window.dispatchEvent(new Event('resize'));
       ScrollTrigger.refresh();
     }, 10000);

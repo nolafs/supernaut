@@ -25,8 +25,6 @@ export function NavigationMobileMenu({
 
   useGSAP(
     () => {
-      console.log('setup animation');
-
       tl.current = gsap.timeline();
       gsap.utils.toArray('.label').forEach((item: any, index: number) => {
         const split = new SplitText(item, { type: 'chars, words' });

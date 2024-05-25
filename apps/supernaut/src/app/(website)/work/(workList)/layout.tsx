@@ -28,7 +28,6 @@ export async function generateMetadata(
   const page = await PageContent(PAGE_NAME, i18nConfig.defaultLocale, process?.env.NEXT_PUBLIC_PREVIEW === 'true');
   const p = await parent;
 
-  console.log()
 
   return {
     title: (page?.seo?.title) ? page.seo.title : `${settings?.metaTitle} : ${page?.pageName}` || p.title,

@@ -29,7 +29,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
     const image = (media) ? media : '/assets/placeholder.webp';
 
     if(wide){
-      return (<div className={cn("relative card-wide overflow-hidden bg-gray-200 mb-7")}>
+      return (<div className={cn("relative card-wide overflow-hidden mb-7")}>
         <Image
                loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
                src={`${image}`}
@@ -43,7 +43,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
     } else {
       if(!small) {
         return (
-          <div className={cn("relative card-normal overflow-hidden bg-gray-200  max-w-[890px] max-h-[613px] mb-4")}>
+          <div className={cn("relative card-normal overflow-hidden max-w-[890px] max-h-[613px] mb-4")}>
             <Image
               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
               src={`${image}`} alt={title || ''} width={(890)} height={613}
@@ -55,7 +55,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
           </div>)
       } else {
         return (
-          <div className={cn("relative card-normal overflow-hidden bg-gray-200  max-w-[580px] max-h-[580px] mb-4")}>
+          <div className={cn("relative card-normal overflow-hidden  max-w-[580px] max-h-[580px] mb-4")}>
             <Image
               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center'})}
               src={`${image}`}
@@ -66,6 +66,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
               <Image src={placeholder} alt={'placeholder'} width={(580)} height={580}
                      className={'object-cover w-full h-full'}/>
             }
+
           </div>)
       }
     }

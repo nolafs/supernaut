@@ -29,7 +29,6 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
             start: 'top 70%',
             end: 'bottom 30%',
             onEnter: () => {
-              console.log('onEnter');
               setReady(true);
               handlePlay();
             },
@@ -37,7 +36,6 @@ export function ContentVideoAnimation({children, handlePlay, handlePause, handle
               handleReplay();
             },
             onLeave: () => {
-              console.log('onLeave');
               handlePause();
             },
             onLeaveBack: () => {
