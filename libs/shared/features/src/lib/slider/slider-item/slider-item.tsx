@@ -65,8 +65,18 @@ const SliderItem = forwardRef(
             width={1920}
             height={1000}
             priority={true}
-            className={'object-cover object-center w-full h-full max-h-[1000px]'}
+            className={'object-cover object-center w-full h-full max-h-[1000px] hidden md:block'}
           />
+
+            <Image
+              src={`${image}`}
+              alt={title}
+              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
+              width={390}
+              height={400}
+              priority={true}
+              className={'object-cover object-center w-full  block md:hidden h-screen max-h-[400px]'}
+            />
 
           </div>
         );
