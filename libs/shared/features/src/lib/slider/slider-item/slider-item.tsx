@@ -91,7 +91,7 @@ const SliderItem = forwardRef(
 
 
     return (
-      <div className={'relative flex flex-col w-full h-full  text-primary'} onClick={handleClick}>
+      <div className={'relative flex flex-col w-full  h-screen max-h-[400px] md:max-h-[1000px]  text-primary'} onClick={handleClick}>
         <div className={'sr-only'}>
           <h1>{title}</h1>
           <p>{description}</p>
