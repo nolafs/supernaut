@@ -17,10 +17,12 @@ export interface VideoProps {
   controls?: boolean;
   loop?: boolean;
   frame?: boolean;
+  className?: string;
+  standard?: boolean;
 }
 
 
-export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, loop = false, width = 1920, height = 1200}: VideoProps) {
+export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  controls = true, loop = false, width = 1920, height = 1200, className, standard= true}: VideoProps) {
 
   const ref = useRef<any>(null);
   let posterFormat:any = {format: 'webp'};
@@ -70,7 +72,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       handlePlay={handlePlay}
     >
 
-      <div className={cn('video','relative', frame && 'wrapper p-4 md:p-10')}>
+      <div className={cn('video', standard ? ( 'relative ' + frame && 'wrapper p-4 md:p-10'): 'absolute flex flex-col w-full h-full')}>
 
             {(src) &&
             <CldVideoPlayer
@@ -85,7 +87,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
               fluid={true}
               //poster='auto'
               muted={(autoplay) ? true : false}
-              className={'w-full h-full object-cover bg-transparent' }
+              className={cn('w-full h-full object-cover bg-transparent', className) }
               src={src}
               sourceTypes={[ 'webm', 'mp4' , 'ogv' ]}
 

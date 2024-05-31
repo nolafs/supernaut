@@ -151,3 +151,20 @@
   @apply bg-transparent #{!important};
   border: 3px solid var(--color-primary) !important;
 }
+
+.swiper-slide {
+
+
+  .cld-video-player {
+    position: absolute !important;
+    inset:0;
+    width: 100%;
+    height: 100% !important;
+
+    video {
+      object-fit: cover !important;
+      height: 100% !important;
+      width: 100%;
+    }
+  }
+}

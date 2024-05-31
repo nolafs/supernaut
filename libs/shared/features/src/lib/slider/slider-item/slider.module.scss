@@ -1,0 +1,10 @@
+.video-slide{
+  @apply relative flex flex-col inset-0 w-full h-full;
+  > div {
+    @apply absolute inset-0 w-full h-full;
+  }
+
+  .cld-video-player {
+    @apply absolute flex flex-col justify-center items-center w-full h-full;
+  }
+}
