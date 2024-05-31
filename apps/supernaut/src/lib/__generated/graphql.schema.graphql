@@ -240,6 +240,8 @@ enum CategoryLinkingCollectionsContentServiceListCollectionOrder {
 }
 
 enum CategoryLinkingCollectionsWorkCollectionOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -1221,6 +1223,7 @@ type ContentVideoComponent implements Entry {
   height(locale: String): Int
   internalName(locale: String): String
   linkedFrom(allowedLocales: [String]): ContentVideoComponentLinkingCollections
+  loop(locale: String): Boolean
   poster(locale: String, preview: Boolean): Asset
   src(locale: String): String
   sys: Sys!
@@ -1266,6 +1269,9 @@ input ContentVideoComponentFilter {
   internalName_not: String
   internalName_not_contains: String
   internalName_not_in: [String]
+  loop: Boolean
+  loop_exists: Boolean
+  loop_not: Boolean
   poster_exists: Boolean
   src: String
   src_contains: String
@@ -1362,6 +1368,8 @@ enum ContentVideoComponentOrder {
   height_DESC
   internalName_ASC
   internalName_DESC
+  loop_ASC
+  loop_DESC
   src_ASC
   src_DESC
   sys_firstPublishedAt_ASC
@@ -1550,6 +1558,8 @@ enum HeaderComponentLinkingCollectionsPagesCollectionOrder {
 }
 
 enum HeaderComponentLinkingCollectionsWorkCollectionOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -2725,6 +2735,8 @@ enum SectionLinkingCollectionsPagesCollectionOrder {
 }
 
 enum SectionLinkingCollectionsWorkCollectionOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -2881,6 +2893,8 @@ enum SeoLinkingCollectionsPagesCollectionOrder {
 }
 
 enum SeoLinkingCollectionsWorkCollectionOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -3043,6 +3057,8 @@ enum ServicesLinkingCollectionsCategoryCollectionOrder {
 }
 
 enum ServicesLinkingCollectionsWorkCollectionOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -3827,6 +3843,7 @@ input SysFilter {
 Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work)
 """
 type Work implements Entry {
+  client(locale: String): String
   contentfulMetadata: ContentfulMetadata!
   featureImage(locale: String, preview: Boolean): Asset
   featured(locale: String): Boolean
@@ -3855,6 +3872,13 @@ type WorkCollection {
 input WorkFilter {
   AND: [WorkFilter]
   OR: [WorkFilter]
+  client: String
+  client_contains: String
+  client_exists: Boolean
+  client_in: [String]
+  client_not: String
+  client_not_contains: String
+  client_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   featureImage_exists: Boolean
   featured: Boolean
@@ -3945,6 +3969,8 @@ enum WorkLinkingCollectionsSliderItemCollectionOrder {
 }
 
 enum WorkOrder {
+  client_ASC
+  client_DESC
   featured_ASC
   featured_DESC
   internalName_ASC
@@ -4331,6 +4357,13 @@ input cfSocialMediaItemNestedFilter {
 input cfWorkNestedFilter {
   AND: [cfWorkNestedFilter]
   OR: [cfWorkNestedFilter]
+  client: String
+  client_contains: String
+  client_exists: Boolean
+  client_in: [String]
+  client_not: String
+  client_not_contains: String
+  client_not_in: [String]
   contentfulMetadata: ContentfulMetadataFilter
   featureImage_exists: Boolean
   featured: Boolean

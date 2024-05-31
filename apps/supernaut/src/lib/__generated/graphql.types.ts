@@ -467,6 +467,8 @@ export enum CategoryLinkingCollectionsContentServiceListCollectionOrder {
 }
 
 export enum CategoryLinkingCollectionsWorkCollectionOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -1821,6 +1823,7 @@ export type ContentVideoComponent = Entry & {
   height?: Maybe<Scalars['Int']['output']>;
   internalName?: Maybe<Scalars['String']['output']>;
   linkedFrom?: Maybe<ContentVideoComponentLinkingCollections>;
+  loop?: Maybe<Scalars['Boolean']['output']>;
   poster?: Maybe<Asset>;
   src?: Maybe<Scalars['String']['output']>;
   sys: Sys;
@@ -1864,6 +1867,12 @@ export type ContentVideoComponentInternalNameArgs = {
 /** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
 export type ContentVideoComponentLinkedFromArgs = {
   allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Video content component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentVideoComponent) */
+export type ContentVideoComponentLoopArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -1940,6 +1949,9 @@ export type ContentVideoComponentFilter = {
   internalName_not?: InputMaybe<Scalars['String']['input']>;
   internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
   internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  loop?: InputMaybe<Scalars['Boolean']['input']>;
+  loop_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  loop_not?: InputMaybe<Scalars['Boolean']['input']>;
   poster_exists?: InputMaybe<Scalars['Boolean']['input']>;
   src?: InputMaybe<Scalars['String']['input']>;
   src_contains?: InputMaybe<Scalars['String']['input']>;
@@ -2054,6 +2066,8 @@ export enum ContentVideoComponentOrder {
   HeightDesc = 'height_DESC',
   InternalNameAsc = 'internalName_ASC',
   InternalNameDesc = 'internalName_DESC',
+  LoopAsc = 'loop_ASC',
+  LoopDesc = 'loop_DESC',
   SrcAsc = 'src_ASC',
   SrcDesc = 'src_DESC',
   SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
@@ -2313,6 +2327,8 @@ export enum HeaderComponentLinkingCollectionsPagesCollectionOrder {
 }
 
 export enum HeaderComponentLinkingCollectionsWorkCollectionOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -4334,6 +4350,8 @@ export enum SectionLinkingCollectionsPagesCollectionOrder {
 }
 
 export enum SectionLinkingCollectionsWorkCollectionOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -4560,6 +4578,8 @@ export enum SeoLinkingCollectionsPagesCollectionOrder {
 }
 
 export enum SeoLinkingCollectionsWorkCollectionOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -4787,6 +4807,8 @@ export enum ServicesLinkingCollectionsCategoryCollectionOrder {
 }
 
 export enum ServicesLinkingCollectionsWorkCollectionOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -5903,6 +5925,7 @@ export type SysFilter = {
 /** Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work) */
 export type Work = Entry & {
   __typename?: 'Work';
+  client?: Maybe<Scalars['String']['output']>;
   contentfulMetadata: ContentfulMetadata;
   featureImage?: Maybe<Asset>;
   featured?: Maybe<Scalars['Boolean']['output']>;
@@ -5919,6 +5942,12 @@ export type Work = Entry & {
   sys: Sys;
   title?: Maybe<Scalars['String']['output']>;
   topSectionsCollection?: Maybe<WorkTopSectionsCollection>;
+};
+
+
+/** Work page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/work) */
+export type WorkClientArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
 };
 
 
@@ -6033,6 +6062,13 @@ export type WorkCollection = {
 export type WorkFilter = {
   AND?: InputMaybe<Array<InputMaybe<WorkFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<WorkFilter>>>;
+  client?: InputMaybe<Scalars['String']['input']>;
+  client_contains?: InputMaybe<Scalars['String']['input']>;
+  client_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  client_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  client_not?: InputMaybe<Scalars['String']['input']>;
+  client_not_contains?: InputMaybe<Scalars['String']['input']>;
+  client_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   featureImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;
@@ -6141,6 +6177,8 @@ export enum WorkLinkingCollectionsSliderItemCollectionOrder {
 }
 
 export enum WorkOrder {
+  ClientAsc = 'client_ASC',
+  ClientDesc = 'client_DESC',
   FeaturedAsc = 'featured_ASC',
   FeaturedDesc = 'featured_DESC',
   InternalNameAsc = 'internalName_ASC',
@@ -6530,6 +6568,13 @@ export type CfSocialMediaItemNestedFilter = {
 export type CfWorkNestedFilter = {
   AND?: InputMaybe<Array<InputMaybe<CfWorkNestedFilter>>>;
   OR?: InputMaybe<Array<InputMaybe<CfWorkNestedFilter>>>;
+  client?: InputMaybe<Scalars['String']['input']>;
+  client_contains?: InputMaybe<Scalars['String']['input']>;
+  client_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  client_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  client_not?: InputMaybe<Scalars['String']['input']>;
+  client_not_contains?: InputMaybe<Scalars['String']['input']>;
+  client_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
   featureImage_exists?: InputMaybe<Scalars['Boolean']['input']>;
   featured?: InputMaybe<Scalars['Boolean']['input']>;

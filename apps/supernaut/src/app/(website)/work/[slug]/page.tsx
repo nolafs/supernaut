@@ -31,6 +31,7 @@ export default async function Page({params}: PageProps) {
             columnLayout
             description={servicesList(workData?.servicesCollection?.items)}
             mode="dark"
+            client={workData?.client}
             pageName={workData?.title}
             subtitle={workData?.subtitle}
             title={workData?.title}

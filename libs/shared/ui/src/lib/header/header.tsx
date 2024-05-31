@@ -6,6 +6,7 @@ import {BlockAnimateOnScroll} from '@supernaut/context';
 export interface HeaderProps {
   pageName?: string | undefined | null;
   title?: string | undefined | null;
+  client?: string | undefined | null;
   subtitle?: string | undefined | null;
   description?: string | undefined | null;
   columnLayout?: boolean;
@@ -18,6 +19,7 @@ export interface HeaderProps {
 export function Header({
   pageName,
   title,
+  client,
   subtitle,
   description,
   columnLayout = false,
@@ -69,7 +71,7 @@ export function Header({
               <div className={'overflow-hidden'}>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.8 + delay,
                   ease: 'power2.inOut'}}>
-                <div>{title || pageName}</div>
+                <div>{client || title || pageName}</div>
                 </BlockAnimateOnScroll>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:1.5 + delay,
                   ease: 'power2.inOut'}} >

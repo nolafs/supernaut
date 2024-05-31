@@ -8,7 +8,7 @@ import { CategoryFieldsFragmentDoc } from '../../Category/__generated/categoryCo
 import { ServicesFieldsFragmentDoc } from '../../Service/__generated/servicesCollection.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
-export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, subtitle?: string | null, slug?: string | null, mode?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, featureImage?: (
+export type WorkFieldsFragment = { __typename: 'Work', title?: string | null, subtitle?: string | null, client?: string | null, slug?: string | null, mode?: string | null, publishingDate?: any | null, featured?: boolean | null, sys: { __typename?: 'Sys', id: string }, featureImage?: (
     { __typename?: 'Asset' }
     & AssetFieldsFragment
   ) | null, serviceCategoryCollection?: { __typename?: 'WorkServiceCategoryCollection', items: Array<(
@@ -41,6 +41,7 @@ export const WorkFieldsFragmentDoc = `
   }
   title
   subtitle
+  client
   slug
   mode
   publishingDate

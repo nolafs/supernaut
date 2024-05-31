@@ -5,6 +5,7 @@ fragment workFields on Work {
   }
   title
   subtitle
+  client
   slug
   mode
   publishingDate
