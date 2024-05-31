@@ -23,7 +23,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     console.log('newTheme', newTheme)
-
     //localStorage.setItem('theme', newTheme);
     //document.querySelector("html")?.setAttribute("data-theme", newTheme);
   };
@@ -32,17 +31,26 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     if(!theme) {
       theme = 'dark';
     }
-    setTheme(theme);
 
-    if (!tl.current) {
-      return
-    }
 
-    if(theme === 'dark') {
-        tl?.current.play();
-    } else {
-      (theme === 'light') && tl.current.reverse();
-    }
+
+    console.log('SWITCH', theme);
+
+
+
+    setTheme(prevTheme => {
+      if(prevTheme !== theme){
+        if (!tl.current) {
+          return
+        }
+        if (theme === 'dark') {
+          tl?.current.play();
+        } else {
+          (theme === 'light') && tl.current.reverse();
+        }
+      }
+      return theme;
+    });
     //localStorage.setItem('theme', theme);
     //document.querySelector("html")?.setAttribute("data-theme", theme);
   }
