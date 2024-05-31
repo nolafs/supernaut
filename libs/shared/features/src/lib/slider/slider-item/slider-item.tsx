@@ -1,4 +1,4 @@
-import { forwardRef } from 'react';
+import {forwardRef, useEffect, useRef} from 'react';
 import Image, {ImageLoader} from 'next/image';
 import { useRouter } from 'next/navigation';
 import {contentfulLoader} from "@delicious-simplicity/next-image-contentful-loader";
@@ -14,13 +14,27 @@ export interface SliderItemProps {
   video?: any;
   url?: string;
   work?: any;
+  active?: boolean;
 }
 
 const SliderItem = forwardRef(
-  ({ title, description, image, video, url, work }: SliderItemProps, ref) => {
+  ({ title, description, image, video, url, work, active }: SliderItemProps, ref) => {
     const router = useRouter();
+    const videoRef: any = useRef(null);
 
-    console.log('SLIDER ITEM', video)
+    useEffect(() => {
+      console.log(active)
+      if(!videoRef.current){
+        return;
+      }
+      if(active){
+        videoRef.current.play();
+      } else {
+        videoRef.current.pause();
+      }
+
+    }, [active, videoRef]);
+
 
     if(work) {
       url = `/work/${work.slug}`;
@@ -39,6 +53,7 @@ const SliderItem = forwardRef(
 
         return (<div className={styles['video-slide']}><CldVideoPlayer
           id={id}
+          videoRef={videoRef}
           playsinline={true}
           src={video[0].public_id}
           sourceTypes={['webm', 'mp4', 'ogv']}

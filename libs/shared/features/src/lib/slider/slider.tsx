@@ -103,6 +103,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
                     video={slide?.video}
                     work={slide.work}
                     url={slide.url}
+                    active={currentIndex === index}
                   />
                 </SwiperSlide>
 
