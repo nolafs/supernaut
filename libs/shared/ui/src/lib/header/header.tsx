@@ -41,7 +41,7 @@ export function Header({
       <header>
         <div
           className={cn(
-            'w-full max-w-9xl mx-auto px-5 md:px-10',
+            'w-full max-w-9xl mx-auto px-5 md:px-10 mix-blend-difference',
             marginTop && 'mt-[130px] lg:mt-[220px]',
           marginBottom && 'mb-[110px] lg:mb-[160px]'
         )}

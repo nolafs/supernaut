@@ -17,12 +17,13 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const [theme, setTheme] = useState<Theme>('light');
   const ref = useRef<HTMLDivElement>(null);
-
+  const tl = useRef<gsap.core.Timeline | null>(null);
 
   const toggleTheme = () => {
     const newTheme = theme === 'light' ? 'dark' : 'light';
     setTheme(newTheme);
     console.log('newTheme', newTheme)
+
     //localStorage.setItem('theme', newTheme);
     //document.querySelector("html")?.setAttribute("data-theme", newTheme);
   };
@@ -32,83 +33,109 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       theme = 'dark';
     }
     setTheme(theme);
+
+    if (!tl.current) {
+      return
+    }
+
+    if(theme === 'dark') {
+        tl?.current.play();
+    } else {
+      (theme === 'light') && tl.current.reverse();
+    }
     //localStorage.setItem('theme', theme);
     //document.querySelector("html")?.setAttribute("data-theme", theme);
   }
 
+  const createGrid = () => {
+
+    if(!ref.current) {
+      return;
+    }
+
+    const container = ref.current;
+
+    const containerWidth = window.innerWidth;
+    const containerHeight = window.innerHeight;
+
+    const squareSize = 200; // Base size of the square (width and height)
+
+    const columns = Math.floor(containerWidth / squareSize);
+    const rows = Math.floor(containerHeight / squareSize);
+
+    const finalSquareSize = Math.min(
+      containerWidth / columns,
+      containerHeight / rows,
+    );
+
+    container.style.gridTemplateColumns = `repeat(${columns}, ${finalSquareSize}px)`;
+    container.style.gridTemplateRows = `repeat(${rows}, ${finalSquareSize}px)`;
+
+    container.innerHTML = ""; // Clear existing squares
+
+    for (let i = 0; i < ((columns * (rows+1)) ); i++) {
+      const square = document.createElement("div");
+      square.className = "square";
+      square.style.width = `${finalSquareSize}px`;
+      square.style.height = `${finalSquareSize}px`;
+      container.appendChild(square);
+    }
+  };
+
   useGSAP(() => {
 
-    /*
-      console.log('ref', ref.current)
-    const tl = gsap.timeline();
+    createGrid();
 
-    tl.set(ref.current, {
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden',
-    })
+    const animation = () => {
+      tl.current = gsap.timeline({paused: true});
+      tl.current.fromTo(
+        ".square",
+        {
+          scale: 1.2,
+          backgroundColor: "#ffffff",
+        },
+        {
+          duration: 0.5,
+          scaleY: 0,
+          y: 500,
+          opacity: 1,
+          backgroundColor: "#ffffff",
+          borderRadius: "0",
+          stagger: {
+            from: "center",
+            grid: "auto",
+            axis: "y",
+            amount: 0.2,
+          },
+        },
+        "-=0.5",
+      );
+    };
 
-    tl.set('.ol', {
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden',
-      autoAlpha: 1
-    })
+    animation();
 
-    tl.set('.cl', {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden'
-    })
+    window.addEventListener("resize", () => {
+      createGrid();
+      animation();
+    });
 
+    return () => {
+      window.removeEventListener("resize", () => {
+        createGrid();
+        animation();
+      });
+    };
 
-    tl.set('.ol-t', {autoAlpha: 1})
-
-    tl.fromTo('.ol-t',{yPercent: 100} ,{yPercent: 0, duration: 2, ease: 'power2.out'})
-    tl.fromTo('.ol-t', {yPercent: 0}, {yPercent: -100, duration: 2, ease: 'power2.inOut', delay: 0.5})
-
-    tl.set('.ol-t', {autoAlpha: 0})
-
-
-    tl.set( '.ol', {
-      position: 'relative',
-      width: '100%',
-      height: '100%',
-      overflow: 'visible',
-      autoAlpha: 0
-    })
-
-    tl.set(ref.current, {
-      width: '100%',
-      height: '100%',
-      overflow: 'visible',
-    })
-
-    tl.set('.cl', {
-      position: 'absolute',
-      top: '0',
-      left: '0',
-      width: '100vw',
-      height: '100vh',
-      overflow: 'hidden'
-    })
-
-     */
-
-
-
-  }, {dependencies: [theme], scope: ref});
+  }, {dependencies: [tl], scope: ref});
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme, setInitialTheme}}>
-      <div ref={ref} >
-        <div className={'ol will-change-transform fixed z-50 top-0 left-0 w-full h-full hidden'}>
-          <div className={'ol-t fixed w-full h-full bg-white top-full left-0'}></div>
-        </div>
-        <div className={'cl'}>
+      <div className={'isolated'} >
+        <div
+          ref={ref}
+          className="fixed z-2 top-0 left-0 w-full h-full grid pointer-events-none"
+        ></div>
+        <div className={'cl relative z-1'}>
           {children}
         </div>
       </div>
