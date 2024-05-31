@@ -9,7 +9,7 @@ export interface SliderItemProps {
   title: string;
   description: string;
   image: string;
-  video?: string;
+  video?: any;
   url?: string;
   work?: any;
 }
@@ -17,6 +17,8 @@ export interface SliderItemProps {
 const SliderItem = forwardRef(
   ({ title, description, image, video, url, work }: SliderItemProps, ref) => {
     const router = useRouter();
+
+    console.log('SLIDER ITEM', video)
 
     if(work) {
       url = `/work/${work.slug}`;
@@ -33,15 +35,15 @@ const SliderItem = forwardRef(
 
     const addVideoPlayer = (id: string, title: string,  video: any, poster: string) => {
         const Video = dynamic(() => import('../../content/content-video/video-players/video').then((mod) => mod.CloudinaryVideo));
-        return <Video
+        return (<Video
           id={id}
           title={title || id}
-          poster={poster}
+          poster={poster || image}
           src={video[0]?.public_id}
           autoplay={true}
           controls={true}
           frame={false} />
-
+        );
       };
 
     const handleClick = () => {

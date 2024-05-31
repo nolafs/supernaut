@@ -74,7 +74,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
-            autoplay={(autoplay) ? { delay: slideDuration } : false}
+            autoplay={(autoplay) ? { delay: slideDuration, disableOnInteraction: true } : false}
             effect={'creative'}
             creativeEffect={{
               prev: {
@@ -100,7 +100,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
                     title={slide.title}
                     description={slide.description}
                     image={slide?.image?.url}
-                    video={slide?.video?.url}
+                    video={slide?.video}
                     work={slide.work}
                     url={slide.url}
                   />
