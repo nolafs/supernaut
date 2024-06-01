@@ -75,22 +75,25 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
 
-    const squareSize = 150; // Base size of the square (width and height)
+    const squareSize = 200; // Base size of the square (width and height)
 
-    const columns = Math.floor(containerWidth / squareSize);
-    const rows = Math.floor(containerHeight / squareSize);
+    const columns = Math.ceil(containerWidth / squareSize);
+    const rows = Math.ceil(containerHeight / squareSize);
 
     const finalSquareSize = Math.min(
       containerWidth / columns,
       containerHeight / rows,
     );
 
-    container.style.gridTemplateColumns = `repeat(${columns}, ${finalSquareSize}px)`;
-    container.style.gridTemplateRows = `repeat(${rows}, ${finalSquareSize}px)`;
+    console.log('CREATE GRID', columns, rows, finalSquareSize, containerWidth, containerHeight)
+
+    container.style.display = 'grid';
+    container.style.gridTemplateColumns = `repeat(${columns + 1}, ${finalSquareSize}px)`;
+    container.style.gridTemplateRows = `repeat(${rows + 1}, ${finalSquareSize}px)`;
 
     container.innerHTML = ""; // Clear existing squares
 
-    for (let i = 0; i < ((columns * (rows+1)) ); i++) {
+    for (let i = 0; i < (((columns + 1) * (rows  + 1)) ); i++) {
       const square = document.createElement("div");
       square.className = "square";
       square.style.width = `${finalSquareSize}px`;
