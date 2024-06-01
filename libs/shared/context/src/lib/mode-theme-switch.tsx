@@ -21,10 +21,10 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   let switchTheme: string | null = null;
 
   const toggleTheme = () => {
-    console.log('TOGGLE THEME', theme)
+    console.log('TOGGLE THEME', switchTheme)
     if(ref.current) {
       //gsap.set(ref.current, {autoAlpha: 0})
-      document.querySelector("html")?.setAttribute("data-theme", theme || 'dark');
+      document.querySelector("html")?.setAttribute("data-theme", switchTheme || 'dark');
 
 
     }
