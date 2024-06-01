@@ -2,6 +2,7 @@ import {WorkFeaturedCollection} from '../../../../data/work';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Card} from '@supernaut/shared-ui';
 import {BlockAnimateOnScroll} from '@supernaut/context';
+import {ThemeSwitchServer} from '@supernaut/features';
 export default async function Page({searchParams}: {
   searchParams: { page: string, category: string }
 }) {
@@ -24,6 +25,7 @@ export default async function Page({searchParams}: {
           </div>
         </div>
       </section>
+        <ThemeSwitchServer mode={'dark'}/>
       </BlockAnimateOnScroll>
     )
   )

@@ -15,44 +15,53 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-  const [theme, setTheme] = useState<Theme>('light');
+  const [theme, setTheme] = useState<Theme>('dark');
   const ref = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
+  let switchTheme: string | null = null;
 
   const toggleTheme = () => {
-    const newTheme = theme === 'light' ? 'dark' : 'light';
-    setTheme(newTheme);
-    console.log('newTheme', newTheme)
-    //localStorage.setItem('theme', newTheme);
-    //document.querySelector("html")?.setAttribute("data-theme", newTheme);
-  };
+    console.log('TOGGLE THEME', theme)
+    if(ref.current) {
+      //gsap.set(ref.current, {autoAlpha: 0})
+      document.querySelector("html")?.setAttribute("data-theme", theme || 'dark');
 
-  const setInitialTheme = (theme: Theme) => {
-    if(!theme) {
-      theme = 'dark';
+
+    }
+  }
+
+  const setInitialTheme = (mode: Theme) => {
+
+    if(!mode) {
+      mode = 'dark';
     }
 
 
+    if (!tl.current) {
+      return
+    }
 
-    console.log('SWITCH', theme);
+    switchTheme = mode;
+
+    if(theme === mode) {
+      return;
+    }
+
+    console.log('SET INITIAL THEME', switchTheme, mode)
+
+    //check if timeline is at end
+    if(mode === 'light' && theme === 'dark') {
+      console.log('PLAY')
+      tl.current.play(0);
+    }
+
+    if (mode === 'dark' && theme === 'light') {
+      console.log('REVERSE')
+      tl.current.reverse();
+    }
 
 
-
-    setTheme(prevTheme => {
-      if(prevTheme !== theme){
-        if (!tl.current) {
-          return
-        }
-        if (theme === 'dark') {
-          tl?.current.play();
-        } else {
-          (theme === 'light') && tl.current.reverse();
-        }
-      }
-      return theme;
-    });
-    //localStorage.setItem('theme', theme);
-    //document.querySelector("html")?.setAttribute("data-theme", theme);
+    setTheme(prevState => mode);
   }
 
   const createGrid = () => {
@@ -66,7 +75,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
 
-    const squareSize = 200; // Base size of the square (width and height)
+    const squareSize = 150; // Base size of the square (width and height)
 
     const columns = Math.floor(containerWidth / squareSize);
     const rows = Math.floor(containerHeight / squareSize);
@@ -92,22 +101,28 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
   useGSAP(() => {
 
+    console.log('USE GSAP', theme)
+
     createGrid();
 
     const animation = () => {
+
       tl.current = gsap.timeline({paused: true});
+
+      tl.current.set(ref.current, {autoAlpha: 1})
       tl.current.fromTo(
         ".square",
         {
-          scale: 1.2,
-          backgroundColor: "#ffffff",
+          scaleY: 0,
+          y: 500,
+          backgroundColor: "#fff",
         },
         {
           duration: 0.5,
-          scaleY: 0,
-          y: 500,
-          opacity: 1,
-          backgroundColor: "#ffffff",
+          scaleY: 1.2,
+          y: 0,
+
+          backgroundColor: "#fff",
           borderRadius: "0",
           stagger: {
             from: "center",
@@ -115,9 +130,20 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
             axis: "y",
             amount: 0.2,
           },
+          onComplete: () => {
+            console.log('COMPLETE', switchTheme)
+            //toggleTheme();
+          },
+          onReverseComplete: () => {
+            console.log('Reverse', switchTheme)
+            //toggleTheme();
+          }
         },
         "-=0.5",
       );
+      //tl.current.set(ref.current, {autoAlpha: 0})
+
+
     };
 
     animation();
@@ -134,7 +160,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       });
     };
 
-  }, {dependencies: [tl], scope: ref});
+  }, {dependencies: [], scope: ref});
 
   return (
     <ThemeContext.Provider value={{theme, toggleTheme, setInitialTheme}}>

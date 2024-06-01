@@ -42,7 +42,6 @@ export default async function Page({params}: PageProps) {
           }
         </article>
         <ThemeSwitchServer mode={workData?.mode} />
-        <TriggerResizeOnLoad />
       </>
     );
 }
