@@ -34,7 +34,7 @@ export function NavigationWrapper({
         'w-full h-[80px]  md:h-[100px] inset-0 z-40 overflow-hidden flex items-center',
         (mode) && styles[mode],
         state ? styles['scrolled'] : '',
-        state ? '': 'mix-blend-difference'
+        state ? '': 'switch-difference'
       )}
     >
       {children}

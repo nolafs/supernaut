@@ -3,12 +3,13 @@
 import React, {createContext, useContext, useState, ReactNode, useEffect, useRef} from 'react';
 import {useGSAP} from '@gsap/react';
 import gsap from 'gsap';
+// eslint-disable-next-line @nx/enforce-module-boundaries
+import useIsFirstRender from '../../../hooks/src/lib/is-first-render';
 
 type Theme = 'light' | 'dark' | undefined | null | string
 
 interface ThemeContextType {
   theme: Theme;
-  toggleTheme: () => void;
   setInitialTheme: (theme: Theme) => void;
 }
 
@@ -16,51 +17,62 @@ const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   const [theme, setTheme] = useState<Theme>('dark');
+  const [prevTheme, setPrevTheme] = useState<Theme>('dark');
   const ref = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
-  let switchTheme: string | null = null;
-
-  const toggleTheme = () => {
-    console.log('TOGGLE THEME', switchTheme)
-    if(ref.current) {
-      //gsap.set(ref.current, {autoAlpha: 0})
-      document.querySelector("html")?.setAttribute("data-theme", switchTheme || 'dark');
+  const isFirstRender = useIsFirstRender();
 
 
-    }
-  }
 
-  const setInitialTheme = (mode: Theme) => {
-
-    if(!mode) {
-      mode = 'dark';
+  useEffect(() => {
+    if (isFirstRender) {
+      return;
     }
 
+    if (theme === prevTheme) {
+      return;
+    }
 
     if (!tl.current) {
       return
     }
 
-    switchTheme = mode;
+    console.log('TOGGLE THEME', theme)
 
-    if(theme === mode) {
+    document.querySelector("html")?.setAttribute("data-theme-switch", 'active');
+
+    //check if timeline is at end
+    if (theme === 'light' && prevTheme === 'dark') {
+      console.log('PLAY')
+
+      tl.current.play(0).then(() => {
+        document.querySelector("html")?.setAttribute("data-theme", theme);
+        document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
+
+      });
+    }
+
+    if (theme === 'dark' && prevTheme === 'light') {
+      console.log('REVERSE')
+      tl.current.reverse().then(() => {
+        document.querySelector("html")?.setAttribute("data-theme", theme);
+        document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
+      });
+    }
+
+    setPrevTheme(theme);
+
+  }, [theme]);
+
+  const setInitialTheme = (mode: Theme) => {
+    if(!mode) {
+      mode = 'dark';
+    }
+    if (mode === theme) {
       return;
     }
 
-    console.log('SET INITIAL THEME', switchTheme, mode)
-
-    //check if timeline is at end
-    if(mode === 'light' && theme === 'dark') {
-      console.log('PLAY')
-      tl.current.play(0);
-    }
-
-    if (mode === 'dark' && theme === 'light') {
-      console.log('REVERSE')
-      tl.current.reverse();
-    }
-
-
+    console.log('SET THEME', mode, theme)
     setTheme(prevState => mode);
   }
 
@@ -85,8 +97,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       containerHeight / rows,
     );
 
-    console.log('CREATE GRID', columns, rows, finalSquareSize, containerWidth, containerHeight)
-
     container.style.display = 'grid';
     container.style.gridTemplateColumns = `repeat(${columns + 1}, ${finalSquareSize}px)`;
     container.style.gridTemplateRows = `repeat(${rows + 1}, ${finalSquareSize}px)`;
@@ -103,11 +113,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   };
 
   useGSAP(() => {
-
-    console.log('USE GSAP', theme)
-
     createGrid();
-
     const animation = () => {
 
       tl.current = gsap.timeline({paused: true});
@@ -118,14 +124,14 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         {
           scaleY: 0,
           y: 500,
-          backgroundColor: "#fff",
+          backgroundColor:  '#fff'// 'var(--color-primary)',
         },
         {
           duration: 0.5,
           scaleY: 1.2,
           y: 0,
 
-          backgroundColor: "#fff",
+          backgroundColor: '#fff', // 'var(--color-primary)',
           borderRadius: "0",
           stagger: {
             from: "center",
@@ -133,20 +139,9 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
             axis: "y",
             amount: 0.2,
           },
-          onComplete: () => {
-            console.log('COMPLETE', switchTheme)
-            //toggleTheme();
-          },
-          onReverseComplete: () => {
-            console.log('Reverse', switchTheme)
-            //toggleTheme();
-          }
-        },
-        "-=0.5",
+        }
       );
       //tl.current.set(ref.current, {autoAlpha: 0})
-
-
     };
 
     animation();
@@ -166,7 +161,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   }, {dependencies: [], scope: ref});
 
   return (
-    <ThemeContext.Provider value={{theme, toggleTheme, setInitialTheme}}>
+    <ThemeContext.Provider value={{theme, setInitialTheme}}>
       <div className={'isolated'} >
         <div
           ref={ref}

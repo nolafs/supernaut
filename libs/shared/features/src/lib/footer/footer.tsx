@@ -30,7 +30,7 @@ export function Footer({
 
   return (
     <footer>
-      <div className={cn('max-w-9xl mx-auto px-8 lg:px-12 pt-16 mb:pt-24 pb-10 text-primary mix-blend-difference')}>
+      <div className={cn('max-w-9xl mx-auto px-8 lg:px-12 pt-16 mb:pt-24 pb-10 text-primary difference')}>
         <div className={'flex flex-col'}>
           <div className={'mb-8'}>
             <h1 className={'font-normal text-4xl  md:text-6xl'}>{strapline}</h1>

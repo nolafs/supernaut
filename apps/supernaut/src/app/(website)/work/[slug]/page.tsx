@@ -5,7 +5,7 @@ import {Header} from '@supernaut/shared-ui';
 import {SectionResolver, ThemeSwitchServer} from '@supernaut/features';
 import {Work} from '../../../../data/work';
 import {ServicesFieldsFragment} from '../../../../lib/__generated/sdk';
-import {TriggerResizeOnLoad} from '@supernaut/utils';
+
 
 
 

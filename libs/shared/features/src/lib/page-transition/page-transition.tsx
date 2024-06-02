@@ -199,7 +199,7 @@ export function PageTransition({children, page, title}: PageTransitionProps) {
       <div  id={'page-transition'}
            className={'fixed z-[39] w-full h-screen top-0 inset-0 pointer-events-none overflow-hidden opacity-0'}>
         <div id="section-wrapper"
-             className={'absolute z-50 top-1/2 font-bold w-full  -translate-y-1/2 text-neutral text-center mix-blend-difference flex flex-col justify-center items-center'}>
+             className={'absolute z-50 top-1/2 font-bold w-full  -translate-y-1/2 text-neutral text-center difference flex flex-col justify-center items-center'}>
           <div className={'-translate-y-1/2'}>
           <div id="s-t" className={'text-[150px] overflow-hidden text-white font-bold'}><span id="s-t-i"
                                                                                               className={'block'}>{title}</span>

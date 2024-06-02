@@ -52,7 +52,7 @@ export function ContentColumn({
     return (
         <div
           className={cn(
-            'wrapper flex flex-row text-primary mix-blend-difference',
+            'wrapper flex flex-row text-primary difference',
             align === 'left' && 'justify-start',
             align === 'right' && 'justify-end',
             padding === 'none' && 'px-0',

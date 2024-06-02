@@ -14,6 +14,7 @@
     --color-base: #000000;
   }
 
+  /*
   html[data-theme="dark"] {
     --color-lines: #606060;
     --color-primary: #ffffff;
@@ -32,16 +33,19 @@
     --color-base: #FFFFFF;
   }
 
+   */
+
 
   html,
   body {
-    @apply bg-neutral text-primary transition-all duration-500 ease-in-out;
+    @apply bg-neutral text-primary;
   }
 
   .logo{
     @apply w-full max-w-[200px] md:max-w-full h-full max-h-[40px];
   }
 
+  /*
   html[data-theme="light"] {
     .logo {
         filter: invert(1);
@@ -51,6 +55,51 @@
   html[data-theme="dark"] {
     .logo {
         filter: invert(0);
+    }
+  }
+
+   */
+  html[data-theme="light"] {
+    &[data-theme-switch="active"] {
+      .difference {
+        @apply mix-blend-difference
+      }
+
+      .switch-difference {
+        @apply mix-blend-difference
+      }
+    }
+
+    &[data-theme-switch="inactive"] {
+      .difference {
+        @apply mix-blend-difference
+      }
+
+      .switch-difference {
+        @apply mix-blend-difference
+      }
+    }
+  }
+
+  html[data-theme="dark"] {
+    &[data-theme-switch="active"] {
+      .difference {
+        @apply mix-blend-difference
+      }
+
+      .switch-difference {
+        @apply mix-blend-difference
+      }
+    }
+
+    &[data-theme-switch="inactive"] {
+      .difference {
+        @apply mix-blend-difference
+      }
+
+      .switch-difference {
+        //@apply mix-blend-difference
+      }
     }
   }
 

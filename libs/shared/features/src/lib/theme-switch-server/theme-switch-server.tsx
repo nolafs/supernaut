@@ -12,9 +12,12 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
   const {theme, setInitialTheme} = useTheme();
 
   useEffect(() => {
+    console.log('ThemeSwitchServer', mode, theme)
+    if(mode === theme) {
+      return;
+    }
     setInitialTheme(mode);
-
-  }, [mode, setInitialTheme]);
+  }, []);
 
   return null;
 }

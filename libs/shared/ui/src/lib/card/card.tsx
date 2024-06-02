@@ -77,7 +77,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
     <TransitionLink href={ (prefix) ? `/${prefix}/${url}` : `/${url}` || '/'}>
       <div id={id} ref={innerRef} className={cn("group cursor-pointer relative text-primary", wide ? 'max-w-9xl' : (!small) ? 'max-w-[890px]' : 'max-w-[580px]')}>
         {(image) && imageComp(image)}
-        <div className={'mix-blend-difference'}>
+        <div className={'difference'}>
           <h2 className={'mb-2'}>{title}</h2>
           {(wide) ? <p className={'text-xl md:text-2xl lg:text-4xl font-normal'}>{description}</p> :
             (showCategories) ?
