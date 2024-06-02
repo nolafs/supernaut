@@ -8,7 +8,7 @@ import 'swiper/css/navigation';
 import 'swiper/css/pagination';
 import { useState } from 'react';
 import SliderControls from './slider-controls/slider-controls';
-import { CursorContextProvider } from '@supernaut/context';
+import {BlockAnimateOnScroll, CursorContextProvider} from '@supernaut/context';
 import SliderDescription from './slider-description/slider-description';
 import SliderStrapline from './slider-strapline/slider-strapline';
 
@@ -60,13 +60,10 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
   }
 
   return (
+    <BlockAnimateOnScroll animation={'fadeIn'} duration={1} start="top 80%" marker={false}>
     <CursorContextProvider>
       <SliderControls currentIndex={currentIndex} numberSlides={numberSlides}>
-        <div
-          className={
-            'relative container max-w-[1920px] mx-auto p-0 m-0 overflow-hidden'
-          }
-        >
+
           {strapline && <SliderStrapline strapline={strapline} />}
           <Swiper
             modules={[Navigation, Autoplay, EffectCreative]}
@@ -123,9 +120,10 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
             title={currentSlide?.title || currentSlide?.work?.title}
             description={currentSlide?.description || currentSlide?.work?.subtitle}
           />
-        </div>
+
       </SliderControls>
     </CursorContextProvider>
+    </BlockAnimateOnScroll>
   );
 }
 
