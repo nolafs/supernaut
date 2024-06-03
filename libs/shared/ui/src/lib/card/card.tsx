@@ -31,7 +31,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
     if(wide){
       return (<div className={cn("relative card-wide overflow-hidden mb-7")}>
         <Image
-               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
+               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp', w: 1920, h: 1150})}
                src={`${image}`}
                priority={true}
                alt={ `Image: ${title}` || 'image'}  width={1920} height={1150}
@@ -46,7 +46,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
         return (
           <div className={cn("relative card-normal overflow-hidden max-w-[890px] max-h-[500px] mb-4")}>
             <Image
-              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
+              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp', w: 890, h: 500})}
               src={`${image}`} alt={`Image: ${title}` || ''} width={(890)} height={500}
                    className={'object-cover w-full h-full group-hover:scale-110 group-hover:brightness-125 transform-gpu transition-all duration-500 ease-in-out'}/>
             {(!image) &&
@@ -58,7 +58,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
         return (
           <div className={cn("relative card-normal overflow-hidden  max-w-[580px] max-h-[580px] mb-4")}>
             <Image
-              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
+              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp' , w: 580, h: 580})}
               src={`${image}`}
               alt={`Image: ${title}` || ''} width={(580)} height={580}
                    className={'relative object-cover w-full h-full group-hover:scale-110 transform-gpu transition-all duration-500 ease-in-out'}/>
