@@ -25,8 +25,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
 
   useEffect(() => {
-
-    console.log('THEME', theme, prevTheme, isFirstRender)
     if(!theme && !prevTheme) {
       return;
     }
@@ -36,9 +34,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     }
 
     if (theme && !prevTheme) {
-      console.log('FIRST RENDER', theme)
       if(theme === 'light') {
-
         document.querySelector("html")?.setAttribute("data-theme", 'dark');
         document.querySelector("html")?.setAttribute("data-theme-switch", 'active');
         tl.current.play(0).then(() => {
@@ -57,13 +53,10 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       return;
     }
 
-    console.log('TOGGLE THEME', theme)
-
     document.querySelector("html")?.setAttribute("data-theme-switch", 'active');
 
     //check if timeline is at end
     if (theme === 'light' && prevTheme === 'dark') {
-      console.log('PLAY')
       tl.current.play(0).then(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme);
         document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
@@ -72,7 +65,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     }
 
     if (theme === 'dark' && prevTheme === 'light') {
-      console.log('REVERSE')
       tl.current.reverse().then(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme);
         document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
