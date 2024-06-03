@@ -44,13 +44,13 @@ export function Card({id, title = 'title',categories, description, image, url, p
     } else {
       if(!small) {
         return (
-          <div className={cn("relative card-normal overflow-hidden max-w-[890px] max-h-[613px] mb-4")}>
+          <div className={cn("relative card-normal overflow-hidden max-w-[890px] max-h-[500px] mb-4")}>
             <Image
               loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
-              src={`${image}`} alt={`Image: ${title}` || ''} width={(890)} height={613}
+              src={`${image}`} alt={`Image: ${title}` || ''} width={(890)} height={500}
                    className={'object-cover w-full h-full group-hover:scale-110 group-hover:brightness-125 transform-gpu transition-all duration-500 ease-in-out'}/>
             {(!image) &&
-              <Image src={placeholder} alt={'placeholder'} width={(890)} height={613}
+              <Image src={placeholder} alt={'placeholder'} width={(890)} height={500}
                    className={'object-cover w-full h-full'}/>
             }
           </div>)
