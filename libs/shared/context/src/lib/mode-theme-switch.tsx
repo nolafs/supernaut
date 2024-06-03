@@ -25,6 +25,9 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
 
   useEffect(() => {
+
+    console.log('THEME', theme, prevTheme, isFirstRender)
+
     if (isFirstRender) {
       console.log('FIRST RENDER', theme)
       document.querySelector("html")?.setAttribute("data-theme", `first-${theme}`);
@@ -73,8 +76,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     if (mode === theme) {
       return;
     }
-
-    console.log('SET THEME', mode, theme)
     setTheme(prevState => mode);
   }
 
