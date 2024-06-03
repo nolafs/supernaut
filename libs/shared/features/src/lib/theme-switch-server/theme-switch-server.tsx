@@ -3,6 +3,7 @@
 import {useEffect, useRef} from 'react';
 import {useTheme} from '@supernaut/context';
 
+
 export interface ThemeSwitchServerProps {
   mode: 'light' | 'dark'  | undefined | null | string;
 }
@@ -14,6 +15,8 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
 
   useEffect(() => {
     console.log('ThemeSwitchServer', mode, theme)
+    setInitialTheme(mode);
+    /*
     if (didMountRef.current) {
       console.log('ThemeSwitchServer Mounted', mode, theme)
       if (mode === theme) {
@@ -23,6 +26,8 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
     } else {
       didMountRef.current = true;
     }
+
+     */
   }, [mode]);
   return null;
 }
