@@ -1,6 +1,6 @@
 'use client';
 /* eslint-disable-next-line */
-import {useEffect} from 'react';
+import {useEffect, useRef} from 'react';
 import {useTheme} from '@supernaut/context';
 
 export interface ThemeSwitchServerProps {
@@ -10,15 +10,19 @@ export interface ThemeSwitchServerProps {
 export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
 
   const {theme, setInitialTheme} = useTheme();
+  const didMountRef = useRef(false);
 
   useEffect(() => {
-    console.log('ThemeSwitchServer', mode, theme)
-    if(mode === theme) {
-      return;
+    if (didMountRef.current) {
+      console.log('ThemeSwitchServer', mode, theme)
+      if (mode === theme) {
+        return;
+      }
+      setInitialTheme(mode);
+    } else {
+      didMountRef.current = true;
     }
-    setInitialTheme(mode);
-  }, []);
-
+  }, [mode]);
   return null;
 }
 

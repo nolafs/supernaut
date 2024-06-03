@@ -26,6 +26,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
   useEffect(() => {
     if (isFirstRender) {
+      console.log('FIRST RENDER', theme)
       return;
     }
 

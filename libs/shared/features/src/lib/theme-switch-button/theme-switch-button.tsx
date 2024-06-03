@@ -7,10 +7,10 @@ import {MoonIcon, SunIcon} from '@heroicons/react/16/solid';
 
 export function ThemeSwitchButton() {
 
-  const {theme, toggleTheme} = useTheme();
+  const {theme, setInitialTheme} = useTheme();
 
   return (
-    <button onClick={toggleTheme}>
+    <button onClick={() => setInitialTheme(theme === 'dark' ? 'light' : 'dark')}>
       {theme === 'light' && <SunIcon className={'h-6 w-6'}/> }
       {theme === 'dark' && <MoonIcon className={'h-6 w-6'}/> }
     </button>
