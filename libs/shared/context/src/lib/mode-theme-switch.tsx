@@ -16,8 +16,8 @@ interface ThemeContextType {
 const ThemeContext = createContext<ThemeContextType | undefined>(undefined);
 
 const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
-  const [theme, setTheme] = useState<Theme>('dark');
-  const [prevTheme, setPrevTheme] = useState<Theme>('dark');
+  const [theme, setTheme] = useState<Theme>();
+  const [prevTheme, setPrevTheme] = useState<Theme>();
   const ref = useRef<HTMLDivElement>(null);
   const tl = useRef<gsap.core.Timeline | null>(null);
   const isFirstRender = useIsFirstRender();
@@ -27,10 +27,24 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   useEffect(() => {
 
     console.log('THEME', theme, prevTheme, isFirstRender)
+    if(!theme && !prevTheme) {
+      return;
+    }
 
-    if (isFirstRender) {
+    if (!tl.current) {
+      return
+    }
+
+    if (theme && !prevTheme) {
       console.log('FIRST RENDER', theme)
-      document.querySelector("html")?.setAttribute("data-theme", `first-${theme}`);
+      if(theme === 'light') {
+        document.querySelector("html")?.setAttribute("data-theme-switch", 'active');
+        tl.current.play(0).then(() => {
+          document.querySelector("html")?.setAttribute("data-theme", theme);
+          document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
+
+        });
+      }
       setPrevTheme(theme);
       return;
     }
@@ -39,17 +53,12 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       return;
     }
 
-    if (!tl.current) {
-      return
-    }
-
     console.log('TOGGLE THEME', theme)
 
     document.querySelector("html")?.setAttribute("data-theme-switch", 'active');
 
     //check if timeline is at end
     if (theme === 'light' && prevTheme === 'dark') {
-
       console.log('PLAY')
       tl.current.play(0).then(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme);
