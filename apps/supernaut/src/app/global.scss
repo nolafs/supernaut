@@ -14,8 +14,8 @@
     --color-base: #000000;
   }
 
-  /*
-  html[data-theme="dark"] {
+
+  html[data-theme="first-dark"] {
     --color-lines: #606060;
     --color-primary: #ffffff;
     --color-secondary: #999999;
@@ -24,7 +24,7 @@
     --color-base: #000000;
   }
 
-  html[data-theme="light"] {
+  html[data-theme="first-light"] {
     --color-lines: #606060;
     --color-primary: #000000;
     --color-secondary: #999999;
@@ -33,7 +33,7 @@
     --color-base: #FFFFFF;
   }
 
-   */
+
 
 
   html,

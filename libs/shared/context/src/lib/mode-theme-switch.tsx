@@ -27,6 +27,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
   useEffect(() => {
     if (isFirstRender) {
       console.log('FIRST RENDER', theme)
+      document.querySelector("html")?.setAttribute("data-theme", `first-${theme}`);
       return;
     }
 
