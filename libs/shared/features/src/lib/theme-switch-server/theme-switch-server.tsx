@@ -13,8 +13,9 @@ export function ThemeSwitchServer({mode}: ThemeSwitchServerProps) {
   const didMountRef = useRef(false);
 
   useEffect(() => {
+    console.log('ThemeSwitchServer', mode, theme)
     if (didMountRef.current) {
-      console.log('ThemeSwitchServer', mode, theme)
+      console.log('ThemeSwitchServer Mounted', mode, theme)
       if (mode === theme) {
         return;
       }
