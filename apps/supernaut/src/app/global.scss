@@ -78,6 +78,10 @@
       .switch-difference {
         @apply mix-blend-difference
       }
+
+      .cookies-banner {
+        @apply bg-neutral text-primary;
+      }
     }
   }
 
@@ -90,15 +94,20 @@
       .switch-difference {
         @apply mix-blend-difference
       }
+
+
     }
 
     &[data-theme-switch="inactive"] {
       .difference {
         @apply mix-blend-difference
       }
-
       .switch-difference {
         //@apply mix-blend-difference
+      }
+
+      .cookies-banner {
+        @apply bg-primary text-secondary;
       }
     }
   }

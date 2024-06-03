@@ -44,8 +44,8 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
     //check if timeline is at end
     if (theme === 'light' && prevTheme === 'dark') {
-      console.log('PLAY')
 
+      console.log('PLAY')
       tl.current.play(0).then(() => {
         document.querySelector("html")?.setAttribute("data-theme", theme);
         document.querySelector("html")?.setAttribute("data-theme-switch", 'inactive');
@@ -99,15 +99,15 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     );
 
     container.style.display = 'grid';
-    container.style.gridTemplateColumns = `repeat(${columns + 1}, ${finalSquareSize}px)`;
+    container.style.gridTemplateColumns = `repeat( 1, ${window.innerWidth}px)`;
     container.style.gridTemplateRows = `repeat(${rows + 1}, ${finalSquareSize}px)`;
 
     container.innerHTML = ""; // Clear existing squares
 
-    for (let i = 0; i < (((columns + 1) * (rows  + 1)) ); i++) {
+    for (let i = 0; i < (((rows  + 1)) ); i++) {
       const square = document.createElement("div");
       square.className = "square";
-      square.style.width = `${finalSquareSize}px`;
+      square.style.width = `${window.innerWidth}px`;
       square.style.height = `${finalSquareSize}px`;
       container.appendChild(square);
     }
