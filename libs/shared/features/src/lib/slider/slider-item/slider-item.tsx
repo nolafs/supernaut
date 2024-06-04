@@ -23,7 +23,6 @@ const SliderItem = forwardRef(
     const videoRef: any = useRef(null);
 
     useEffect(() => {
-      console.log(active)
       if(!videoRef.current){
         return;
       }

@@ -10,7 +10,7 @@ const nextConfig = {
     // See: https://github.com/gregberge/svgr
     svgr: true,
   },
-  //headers,
+  headers,
   images: {
     formats: ['image/webp'],
     minimumCacheTTL: 60,

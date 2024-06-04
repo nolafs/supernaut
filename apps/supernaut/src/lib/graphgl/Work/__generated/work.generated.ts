@@ -108,7 +108,7 @@ export const useWorkQuery = <
       variables: WorkQueryVariables,
       options?: Omit<UseQueryOptions<WorkQuery, TError, TData>, 'queryKey'> & { queryKey?: UseQueryOptions<WorkQuery, TError, TData>['queryKey'] }
     ) => {
-    
+
     return useQuery<WorkQuery, TError, TData>(
       {
     queryKey: ['work', variables],
@@ -118,6 +118,4 @@ export const useWorkQuery = <
     )};
 
 useWorkQuery.getKey = (variables: WorkQueryVariables) => ['work', variables];
-
-
 useWorkQuery.fetcher = (variables: WorkQueryVariables, options?: RequestInit['headers']) => customFetcher<WorkQuery, WorkQueryVariables>(WorkDocument, variables, options);
