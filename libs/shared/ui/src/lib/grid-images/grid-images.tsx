@@ -3,7 +3,8 @@ import {TImageLink} from '@supernaut/types';
 import cn from 'classnames';
 import Image from 'next/image';
 import NotificationBlock from '../notification/notification-block';
-import {contentfulLoader} from '@delicious-simplicity/next-image-contentful-loader';
+import {contentfulLoader} from '@supernaut/utils';
+
 /* eslint-disable-next-line */
 export interface GridImagesProps {
  items: TImageLink[];

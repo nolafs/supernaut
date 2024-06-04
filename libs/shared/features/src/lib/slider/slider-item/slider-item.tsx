@@ -1,10 +1,10 @@
 import {forwardRef, useEffect, useRef} from 'react';
 import Image, {ImageLoader} from 'next/image';
 import { useRouter } from 'next/navigation';
-import {contentfulLoader} from "@delicious-simplicity/next-image-contentful-loader";
 import {CldVideoPlayer} from 'next-cloudinary';
 import 'next-cloudinary/dist/cld-video-player.css';
 import styles from './slider.module.scss';
+import {contentfulLoader} from '@supernaut/utils';
 
 /* eslint-disable-next-line */
 export interface SliderItemProps {

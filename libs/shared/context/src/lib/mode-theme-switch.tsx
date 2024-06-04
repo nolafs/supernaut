@@ -73,6 +73,31 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
     setPrevTheme(theme);
 
+    console.log('setup resize', theme)
+
+
+
+  }, [theme]);
+
+  useEffect(() => {
+
+    if(!theme){
+      return;
+    }
+
+    if(!tl?.current){
+      return ;
+    }
+
+    window.addEventListener("resize", () => {
+      createGrid();
+    });
+
+    return () => {
+      window.removeEventListener("resize", () => {
+        createGrid();
+      });
+    };
   }, [theme]);
 
   const setInitialTheme = (mode: Theme) => {
@@ -117,6 +142,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       square.className = "square";
       square.style.width = `${window.innerWidth}px`;
       square.style.height = `${finalSquareSize}px`;
+      square.style.backgroundColor = '#fff'; // 'var(--color-primary)';
       container.appendChild(square);
     }
   };
@@ -133,14 +159,14 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         {
           scaleY: 0,
           y: 500,
-          backgroundColor:  '#fff'// 'var(--color-primary)',
+          //backgroundColor:  '#fff'// 'var(--color-primary)',
         },
         {
           duration: 0.5,
           scaleY: 1.2,
           y: 0,
 
-          backgroundColor: '#fff', // 'var(--color-primary)',
+          //backgroundColor: '#fff', // 'var(--color-primary)',
           borderRadius: "0",
           stagger: {
             from: "center",
@@ -154,18 +180,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     };
 
     animation();
-
-    window.addEventListener("resize", () => {
-      createGrid();
-      animation();
-    });
-
-    return () => {
-      window.removeEventListener("resize", () => {
-        createGrid();
-        animation();
-      });
-    };
 
   }, {dependencies: [], scope: ref});
 
