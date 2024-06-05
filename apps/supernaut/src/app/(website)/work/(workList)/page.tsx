@@ -12,19 +12,19 @@ export default async function Page({searchParams}: {
 
   return ((featuredWork &&
       <BlockAnimateOnScroll animation={'slideIn'} to={{delay: .5}}>
-      <section>
-        <div className={'wrapper mt-10'}>
-          <div className={'border-t-2 border-lines pt-5 md:pt-10'}>
-            <Card
-              title={featuredWork?.title}
-              description={featuredWork?.subtitle}
-              url={featuredWork?.slug}
-              prefix={'work'}
-              image={featuredWork?.featureImage?.url}
-              wide={true}/>
-          </div>
-        </div>
-      </section>
+          <section>
+            <div className={'wrapper mt-10'}>
+              <div className={'border-t-2 border-lines pt-5 md:pt-10'}>
+                <Card
+                  title={featuredWork?.title}
+                  description={featuredWork?.subtitle}
+                  url={featuredWork?.slug}
+                  prefix={'work'}
+                  image={featuredWork?.featureImage?.url}
+                  wide={true}/>
+              </div>
+            </div>
+          </section>
         <ThemeSwitchServer mode={'dark'}/>
       </BlockAnimateOnScroll>
     )

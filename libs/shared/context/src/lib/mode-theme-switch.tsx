@@ -117,17 +117,13 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
     }
 
     const container = ref.current;
-
-    const containerWidth = window.innerWidth;
     const containerHeight = window.innerHeight;
 
-    const squareSize = 200; // Base size of the square (width and height)
+    const squareSize = containerHeight / 3; // Base size of the square (width and height)
 
-    const columns = Math.ceil(containerWidth / squareSize);
     const rows = Math.ceil(containerHeight / squareSize);
 
     const finalSquareSize = Math.min(
-      containerWidth / columns,
       containerHeight / rows,
     );
 
@@ -158,21 +154,19 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         ".square",
         {
           scaleY: 0,
-          y: 500,
-          //backgroundColor:  '#fff'// 'var(--color-primary)',
+          yPercent: -100,
         },
         {
           duration: 0.5,
           scaleY: 1.2,
-          y: 0,
-
-          //backgroundColor: '#fff', // 'var(--color-primary)',
-          borderRadius: "0",
+          yPercent: 0,
+          //ease: "power4.inOut",
           stagger: {
             from: "center",
             grid: "auto",
             axis: "y",
             amount: 0.2,
+            ease: "power4.inOut",
           },
         }
       );

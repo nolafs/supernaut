@@ -8,7 +8,7 @@ export function Page() {
   return (<div className={'wrapper mt-10'}>
 
     <QueryProvider>
-      <BlockAnimateOnScroll animation="slideIn" duration={1} start="top 90%">
+      <BlockAnimateOnScroll animation="slideIn" duration={1} start="top 90%" to={{delay: 1}}>
         <PaginationList  />
       </BlockAnimateOnScroll>
     </QueryProvider>
