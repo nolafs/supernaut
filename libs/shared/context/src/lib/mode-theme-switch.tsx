@@ -157,12 +157,12 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
           yPercent: -100,
         },
         {
-          duration: 0.5,
+          duration: 1,
           scaleY: 1.2,
           yPercent: 0,
-          //ease: "power4.inOut",
+          //ease: "power2.in",
           stagger: {
-            from: "center",
+            from: "start",
             grid: "auto",
             axis: "y",
             amount: 0.2,
