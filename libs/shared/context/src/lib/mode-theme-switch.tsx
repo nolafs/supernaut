@@ -149,6 +149,7 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
 
       tl.current = gsap.timeline({paused: true});
 
+
       tl.current.set(ref.current, {autoAlpha: 1})
       tl.current.fromTo(
         ".square",
@@ -170,7 +171,6 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
           },
         }
       );
-      //tl.current.set(ref.current, {autoAlpha: 0})
     };
 
     animation();

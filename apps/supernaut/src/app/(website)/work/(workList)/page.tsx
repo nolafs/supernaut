@@ -11,7 +11,7 @@ export default async function Page({searchParams}: {
   const featuredWork = workFeatured?.workCollection?.items[0];
 
   return ((featuredWork &&
-      <BlockAnimateOnScroll animation={'slideIn'} to={{delay: .5}}>
+      <BlockAnimateOnScroll animation={'slideIn'}  to={{delay: .5}}>
           <section>
             <div className={'wrapper mt-10'}>
               <div className={'border-t-2 border-lines pt-5 md:pt-10'}>
