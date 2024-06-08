@@ -110,19 +110,14 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
 
             ))}
           </Swiper>
-          <div
-            className={
-              'absolute bottom-14 right-0 text-primary text-xl md:text-2xl z-20 mr-6 md:mr-12'
-            }
-          >
-            {currentIndex + 1 >= 10 ? currentIndex + 1 : `0${currentIndex + 1}`}
-            /{numberSlides >= 10 ? numberSlides : `0${numberSlides}`}
-          </div>
+
 
           <SliderDescription
             id={currentIndex}
             title={currentSlide?.title || currentSlide?.work?.title}
             description={currentSlide?.description || currentSlide?.work?.subtitle}
+            currentIndex={currentIndex}
+            numberSlides={numberSlides}
           />
 
       </SliderControls>
