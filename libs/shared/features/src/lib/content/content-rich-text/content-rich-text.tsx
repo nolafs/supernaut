@@ -79,8 +79,8 @@ export function ContentRichText({richContent, containerWidth, align}: ContentRic
         scrollTrigger: {
           trigger: target,
           start: 'top 80%',
-          end: 'bottom 20%',
-          toggleActions: 'play none none reverse',
+         // end: 'bottom 20%',
+          toggleActions: 'play none none none',
         }
       });
     })
