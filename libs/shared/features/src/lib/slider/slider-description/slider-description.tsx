@@ -92,7 +92,7 @@ export function SliderDescription({
       <div className={'relative w-full max-w-[1920px] mx-auto'}>
         <div
           className={
-            'absolute bottom-14 right-0 text-primary text-xl md:text-2xl z-20 mr-6 md:mr-12'
+            'absolute bottom-0 md:bottom-14 right-0 text-primary text-xl md:text-2xl z-20 mr-6 md:mr-12'
           }
         >
           {currentIndex + 1 >= 10 ? currentIndex + 1 : `0${currentIndex + 1}`}
