@@ -1760,6 +1760,7 @@ type NavigationItem implements Entry {
   slug(locale: String): String
   subsectionCollection(limit: Int = 100, locale: String, order: [NavigationItemSubsectionCollectionOrder], preview: Boolean, skip: Int = 0, where: NavigationItemFilter): NavigationItemSubsectionCollection
   sys: Sys!
+  url(locale: String): String
 }
 
 type NavigationItemCollection {
@@ -1805,6 +1806,13 @@ input NavigationItemFilter {
   subsection: cfNavigationItemNestedFilter
   subsectionCollection_exists: Boolean
   sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
 }
 
 type NavigationItemLinkingCollections {
@@ -1830,6 +1838,8 @@ enum NavigationItemLinkingCollectionsNavigationItemCollectionOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
 }
 
 enum NavigationItemLinkingCollectionsSettingsCollectionOrder {
@@ -1884,6 +1894,8 @@ enum NavigationItemOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
 }
 
 type NavigationItemSubsectionCollection {
@@ -1910,6 +1922,8 @@ enum NavigationItemSubsectionCollectionOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+  url_ASC
+  url_DESC
 }
 
 """
@@ -3797,6 +3811,9 @@ type Sys {
   environmentId: String!
   firstPublishedAt: DateTime
   id: String!
+
+  """The locale that was requested."""
+  locale: String
   publishedAt: DateTime
   publishedVersion: Int
   spaceId: String!
@@ -4145,6 +4162,13 @@ input cfNavigationItemNestedFilter {
   slug_not_in: [String]
   subsectionCollection_exists: Boolean
   sys: SysFilter
+  url: String
+  url_contains: String
+  url_exists: Boolean
+  url_in: [String]
+  url_not: String
+  url_not_contains: String
+  url_not_in: [String]
 }
 
 input cfProfileNestedFilter {

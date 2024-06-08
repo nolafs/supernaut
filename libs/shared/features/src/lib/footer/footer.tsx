@@ -48,7 +48,7 @@ export function Footer({
                 {navigation?.map((item) => {
                   return (
                     <li key={item.id} className={'flex'}>
-                        <NavigationButton item={item} className={'underline'}/>
+                        <NavigationButton item={item} className={'flex item-center space-x-2 group text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl '}/>
 
                     </li>
                   );

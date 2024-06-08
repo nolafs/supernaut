@@ -14,13 +14,13 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
   const pathname = usePathname();
   const isActive = (path: string) => path === pathname;
 
-  return (
-    <Link
+  return (<>
+    {(item?.slug) && <Link
       href={{
         pathname: `/${item?.slug}`,
       }}
       className={cn(
-        'cursor-pointer font-medium',
+        'cursor-pointer font-normal',
         isActive(`/${item.slug}`)
           ? 'text-secondary'
           : 'text-primary',
@@ -30,6 +30,9 @@ export function NavigationButton({ item, className }: NavigationButtonProps) {
     >
       {item.pageName}
     </Link>
+    }
+    {(item?.url) && <a className={cn(className ? className : 'cursor-pointer text-primary hover:text-secondary font-normal')} href={item.url}>{item.pageName}</a>}
+    </>
   );
 }
 

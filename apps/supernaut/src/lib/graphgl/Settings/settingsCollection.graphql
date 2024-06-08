@@ -15,6 +15,7 @@ fragment NavigationItemFields on NavigationItem {
   }
   internalName
   slug
+  url
   pageName
   subsectionCollection(limit: 10) {
     items {

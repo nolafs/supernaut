@@ -78,8 +78,8 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   const settings = await SettingContent('Settings', i18nConfig.defaultLocale, process?.env.NEXT_PUBLIC_PREVIEW === 'true');
 
-  const navigation = settings?.mainNavigationCollection?.items.map(
-    (item) => {
+  const navigation: TNavigationItem[] = settings?.mainNavigationCollection?.items.map(
+    (item: any) => {
       if(!item?.sys){
         return
       }
@@ -87,6 +87,22 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
         id: item?.sys.id,
         pageName: item?.pageName,
         slug: item?.slug,
+        url: item?.url,
+      };
+    }
+  ) as TNavigationItem[];
+
+
+  const footerNavigation: TNavigationItem[] = settings?.footerNavigationCollection?.items.map(
+    (item: any) => {
+      if (!item?.sys) {
+        return
+      }
+      return {
+        id: item?.sys.id,
+        pageName: item?.pageName,
+        slug: item?.slug,
+        url: item?.url,
       };
     }
   ) as TNavigationItem[];
@@ -143,6 +159,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
                 copyright={settings?.copyrightLine}
                 strapline={settings?.strapline}
                 legal={legalNavigation}
+                navigation={footerNavigation}
                 contactButtonLabel={settings?.contactDialogButtonLabel}
                 contactDialog={settings?.contactFormDialog}
                 social={social}

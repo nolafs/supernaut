@@ -2487,6 +2487,7 @@ export type NavigationItem = Entry & {
   slug?: Maybe<Scalars['String']['output']>;
   subsectionCollection?: Maybe<NavigationItemSubsectionCollection>;
   sys: Sys;
+  url?: Maybe<Scalars['String']['output']>;
 };
 
 
@@ -2537,6 +2538,12 @@ export type NavigationItemSubsectionCollectionArgs = {
   where?: InputMaybe<NavigationItemFilter>;
 };
 
+
+/** Navigation Item [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/navigationItem) */
+export type NavigationItemUrlArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type NavigationItemCollection = {
   __typename?: 'NavigationItemCollection';
   items: Array<Maybe<NavigationItem>>;
@@ -2581,6 +2588,13 @@ export type NavigationItemFilter = {
   subsection?: InputMaybe<CfNavigationItemNestedFilter>;
   subsectionCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  url_contains?: InputMaybe<Scalars['String']['input']>;
+  url_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  url_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  url_not?: InputMaybe<Scalars['String']['input']>;
+  url_not_contains?: InputMaybe<Scalars['String']['input']>;
+  url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type NavigationItemLinkingCollections = {
@@ -2632,7 +2646,9 @@ export enum NavigationItemLinkingCollectionsNavigationItemCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
 }
 
 export enum NavigationItemLinkingCollectionsSettingsCollectionOrder {
@@ -2686,7 +2702,9 @@ export enum NavigationItemOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
 }
 
 export type NavigationItemSubsectionCollection = {
@@ -2713,7 +2731,9 @@ export enum NavigationItemSubsectionCollectionOrder {
   SysPublishedAtAsc = 'sys_publishedAt_ASC',
   SysPublishedAtDesc = 'sys_publishedAt_DESC',
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
 }
 
 /** Top Level Page [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/pages) */
@@ -5880,6 +5900,8 @@ export type Sys = {
   environmentId: Scalars['String']['output'];
   firstPublishedAt?: Maybe<Scalars['DateTime']['output']>;
   id: Scalars['String']['output'];
+  /** The locale that was requested. */
+  locale?: Maybe<Scalars['String']['output']>;
   publishedAt?: Maybe<Scalars['DateTime']['output']>;
   publishedVersion?: Maybe<Scalars['Int']['output']>;
   spaceId: Scalars['String']['output'];
@@ -6356,6 +6378,13 @@ export type CfNavigationItemNestedFilter = {
   slug_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
   subsectionCollection_exists?: InputMaybe<Scalars['Boolean']['input']>;
   sys?: InputMaybe<SysFilter>;
+  url?: InputMaybe<Scalars['String']['input']>;
+  url_contains?: InputMaybe<Scalars['String']['input']>;
+  url_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  url_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  url_not?: InputMaybe<Scalars['String']['input']>;
+  url_not_contains?: InputMaybe<Scalars['String']['input']>;
+  url_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
 };
 
 export type CfProfileNestedFilter = {
