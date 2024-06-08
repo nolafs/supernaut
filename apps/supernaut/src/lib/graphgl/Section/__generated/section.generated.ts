@@ -1,13 +1,45 @@
 import * as Types from '../../../__generated/graphql.types';
 
+import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
 import { QuoteComponentFieldsFragment, QuoteFieldsFragment } from '../../Quotes/__generated/quoteComponent.generated';
 import { SliderFieldsFragment, SliderItemFragment } from '../../Slider/__generated/slider.generated';
-import { AssetFieldsFragment } from '../../Assets/__generated/assets.generated';
+import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { QuoteComponentFieldsFragmentDoc, QuoteFieldsFragmentDoc } from '../../Quotes/__generated/quoteComponent.generated';
 import { SliderFieldsFragmentDoc, SliderItemFragmentDoc } from '../../Slider/__generated/slider.generated';
-import { AssetFieldsFragmentDoc } from '../../Assets/__generated/assets.generated';
 import { useQuery, UseQueryOptions } from '@tanstack/react-query';
 import { customFetcher } from '@supernaut/contentful';
+export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
+    { __typename?: 'Asset' }
+    & AssetFieldsFragment
+  ) | null, socialCollection?: { __typename?: 'ProfileSocialCollection', items: Array<{ __typename: 'SocialMediaItem', type?: string | null, name?: string | null, internalName?: string | null, url?: string | null, id: { __typename?: 'Sys', id: string } } | null> } | null };
+
+export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfileComponent', mode?: string | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'ContentProfileComponentItemsCollection', items: Array<(
+      { __typename?: 'Profile' }
+      & ProfileFieldsFragment
+    ) | null> } | null };
+
+export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
+
+export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, imageVariant?: number | null, gridVariant?: number | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
+      { __typename?: 'Asset' }
+      & AssetFieldsFragment
+    ) | null> } | null };
+
+export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, animationType?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
+    { __typename: 'ContentImageGridComponent' }
+    & ContentImageGridComponentFieldsFragment
+  ) | (
+    { __typename: 'ContentRichText' }
+    & ContentRichTextFieldsFragment
+  ) | null };
+
+export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, width?: number | null, height?: number | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string }, poster?: (
+    { __typename?: 'Asset' }
+    & AssetFieldsFragment
+  ) | null };
+
+export type ContentRichTextFieldsFragment = { __typename: 'ContentRichText', internalName?: string | null, align?: string | null, containerWidth?: string | null, sys: { __typename?: 'Sys', id: string }, richContent?: { __typename?: 'ContentRichTextRichContent', json: any } | null };
+
 export type SectionComponentFields_ContentColumnComponent_Fragment = (
   { __typename?: 'ContentColumnComponent' }
   & ContentColumnComponentFieldsFragment
@@ -23,6 +55,11 @@ export type SectionComponentFields_ContentListComponent_Fragment = { __typename?
 export type SectionComponentFields_ContentProfileComponent_Fragment = (
   { __typename?: 'ContentProfileComponent' }
   & ContentProfileComponentFieldsFragment
+);
+
+export type SectionComponentFields_ContentRichText_Fragment = (
+  { __typename?: 'ContentRichText' }
+  & ContentRichTextFieldsFragment
 );
 
 export type SectionComponentFields_ContentServiceList_Fragment = (
@@ -45,39 +82,7 @@ export type SectionComponentFields_Slider_Fragment = (
   & SliderFieldsFragment
 );
 
-export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_ContentVideoComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
-
-export type ProfileFieldsFragment = { __typename: 'Profile', internalName?: string | null, name?: string | null, title?: string | null, sys: { __typename?: 'Sys', id: string }, description?: { __typename?: 'ProfileDescription', json: any } | null, image?: (
-    { __typename?: 'Asset' }
-    & AssetFieldsFragment
-  ) | null, socialCollection?: { __typename?: 'ProfileSocialCollection', items: Array<{ __typename: 'SocialMediaItem', type?: string | null, name?: string | null, internalName?: string | null, url?: string | null, id: { __typename?: 'Sys', id: string } } | null> } | null };
-
-export type ContentProfileComponentFieldsFragment = { __typename: 'ContentProfileComponent', mode?: string | null, sys: { __typename?: 'Sys', id: string }, itemsCollection?: { __typename?: 'ContentProfileComponentItemsCollection', items: Array<(
-      { __typename?: 'Profile' }
-      & ProfileFieldsFragment
-    ) | null> } | null };
-
-export type ContentServiceListFieldsFragment = { __typename: 'ContentServiceList', title?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'ContentServiceListServicesCollection', items: Array<{ __typename: 'Category', name?: string | null, sys: { __typename?: 'Sys', id: string }, servicesCollection?: { __typename?: 'CategoryServicesCollection', items: Array<{ __typename: 'Services', name?: string | null, slug?: string | null, sys: { __typename?: 'Sys', id: string } } | null> } | null } | null> } | null };
-
-export type ContentImageGridComponentFieldsFragment = { __typename: 'ContentImageGridComponent', columnsLg?: number | null, columnsMd?: number | null, columnsSm?: number | null, internalName?: string | null, imageVariant?: number | null, gridVariant?: number | null, itemHeight?: number | null, itemWidth?: number | null, sys: { __typename?: 'Sys', id: string }, imagesCollection?: { __typename?: 'AssetCollection', items: Array<(
-      { __typename?: 'Asset' }
-      & AssetFieldsFragment
-    ) | null> } | null };
-
-export type ContentBodyTextFieldsFragment = { __typename: 'ContentBodyText', internalName?: string | null, body?: { __typename?: 'ContentBodyTextBody', json: any } | null };
-
-export type ContentColumnComponentFieldsFragment = { __typename: 'ContentColumnComponent', type?: string | null, title?: string | null, body?: string | null, hTag?: string | null, label?: string | null, url?: string | null, align?: string | null, padding?: string | null, animationType?: string | null, sys: { __typename?: 'Sys', id: string }, component?: (
-    { __typename: 'ContentBodyText' }
-    & ContentBodyTextFieldsFragment
-  ) | (
-    { __typename: 'ContentImageGridComponent' }
-    & ContentImageGridComponentFieldsFragment
-  ) | null };
-
-export type ContentVideoComponentFieldsFragment = { __typename: 'ContentVideoComponent', title?: string | null, type?: string | null, src?: string | null, videoUpload?: any | null, width?: number | null, height?: number | null, controls?: boolean | null, autoplay?: boolean | null, frame?: boolean | null, sys: { __typename?: 'Sys', id: string }, poster?: (
-    { __typename?: 'Asset' }
-    & AssetFieldsFragment
-  ) | null };
+export type SectionComponentFieldsFragment = SectionComponentFields_ContentColumnComponent_Fragment | SectionComponentFields_ContentImageGridComponent_Fragment | SectionComponentFields_ContentListComponent_Fragment | SectionComponentFields_ContentProfileComponent_Fragment | SectionComponentFields_ContentRichText_Fragment | SectionComponentFields_ContentServiceList_Fragment | SectionComponentFields_ContentVideoComponent_Fragment | SectionComponentFields_QuoteComponent_Fragment | SectionComponentFields_Slider_Fragment;
 
 export type SectionFieldsFragment = { __typename: 'Section', internalName?: string | null, sectionId?: string | null, marginSize?: string | null, paddingSize?: string | null, marginTop?: boolean | null, marginBottom?: boolean | null, paddingTop?: boolean | null, paddingBottom?: boolean | null, backgroundColor?: string | null, textColor?: string | null, align?: string | null, width?: string | null, height?: string | null, lineTop?: boolean | null, lineBottom?: boolean | null, className?: string | null, animation?: boolean | null, sys: { __typename?: 'Sys', id: string }, component?: (
     { __typename: 'ContentColumnComponent' }
@@ -91,6 +96,9 @@ export type SectionFieldsFragment = { __typename: 'Section', internalName?: stri
   ) | (
     { __typename: 'ContentProfileComponent' }
     & SectionComponentFields_ContentProfileComponent_Fragment
+  ) | (
+    { __typename: 'ContentRichText' }
+    & SectionComponentFields_ContentRichText_Fragment
   ) | (
     { __typename: 'ContentServiceList' }
     & SectionComponentFields_ContentServiceList_Fragment
@@ -184,13 +192,18 @@ export const ContentImageGridComponentFieldsFragmentDoc = `
   itemWidth
 }
     `;
-export const ContentBodyTextFieldsFragmentDoc = `
-    fragment ContentBodyTextFields on ContentBodyText {
+export const ContentRichTextFieldsFragmentDoc = `
+    fragment ContentRichTextFields on ContentRichText {
   __typename
+  sys {
+    id
+  }
   internalName
-  body {
+  richContent {
     json
   }
+  align
+  containerWidth
 }
     `;
 export const ContentColumnComponentFieldsFragmentDoc = `
@@ -211,7 +224,7 @@ export const ContentColumnComponentFieldsFragmentDoc = `
   component {
     __typename
     ...ContentImageGridComponentFields
-    ...ContentBodyTextFields
+    ...ContentRichTextFields
   }
 }
     `;
@@ -272,6 +285,7 @@ export const SectionComponentFieldsFragmentDoc = `
   ...ContentServiceListFields
   ...ContentVideoComponentFields
   ...ContentImageGridComponentFields
+  ...ContentRichTextFields
 }
     `;
 export const SectionFieldsFragmentDoc = `
@@ -320,7 +334,7 @@ ${ContentProfileComponentFieldsFragmentDoc}
 ${ProfileFieldsFragmentDoc}
 ${ContentColumnComponentFieldsFragmentDoc}
 ${ContentImageGridComponentFieldsFragmentDoc}
-${ContentBodyTextFieldsFragmentDoc}
+${ContentRichTextFieldsFragmentDoc}
 ${ContentServiceListFieldsFragmentDoc}
 ${ContentVideoComponentFieldsFragmentDoc}`;
 

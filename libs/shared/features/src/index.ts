@@ -1,3 +1,4 @@
+export * from './lib/content/content-rich-text/content-rich-text';
 export { PageTransition } from './lib/page-transition/page-transition';
 export { ThemeSwitchServer } from './lib/theme-switch-server/theme-switch-server';
 export { ThemeSwitchButton } from './lib/theme-switch-button/theme-switch-button';

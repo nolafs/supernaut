@@ -537,172 +537,6 @@ export enum CategoryServicesCollectionOrder {
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
 
-/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
-export type ContentBodyText = Entry & {
-  __typename?: 'ContentBodyText';
-  body?: Maybe<ContentBodyTextBody>;
-  contentfulMetadata: ContentfulMetadata;
-  internalName?: Maybe<Scalars['String']['output']>;
-  linkedFrom?: Maybe<ContentBodyTextLinkingCollections>;
-  sys: Sys;
-};
-
-
-/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
-export type ContentBodyTextBodyArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
-export type ContentBodyTextInternalNameArgs = {
-  locale?: InputMaybe<Scalars['String']['input']>;
-};
-
-
-/** Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText) */
-export type ContentBodyTextLinkedFromArgs = {
-  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-};
-
-export type ContentBodyTextBody = {
-  __typename?: 'ContentBodyTextBody';
-  json: Scalars['JSON']['output'];
-  links: ContentBodyTextBodyLinks;
-};
-
-export type ContentBodyTextBodyAssets = {
-  __typename?: 'ContentBodyTextBodyAssets';
-  block: Array<Maybe<Asset>>;
-  hyperlink: Array<Maybe<Asset>>;
-};
-
-export type ContentBodyTextBodyEntries = {
-  __typename?: 'ContentBodyTextBodyEntries';
-  block: Array<Maybe<Entry>>;
-  hyperlink: Array<Maybe<Entry>>;
-  inline: Array<Maybe<Entry>>;
-};
-
-export type ContentBodyTextBodyLinks = {
-  __typename?: 'ContentBodyTextBodyLinks';
-  assets: ContentBodyTextBodyAssets;
-  entries: ContentBodyTextBodyEntries;
-  resources: ContentBodyTextBodyResources;
-};
-
-export type ContentBodyTextBodyResources = {
-  __typename?: 'ContentBodyTextBodyResources';
-  block: Array<ContentBodyTextBodyResourcesBlock>;
-  hyperlink: Array<ContentBodyTextBodyResourcesHyperlink>;
-  inline: Array<ContentBodyTextBodyResourcesInline>;
-};
-
-export type ContentBodyTextBodyResourcesBlock = ResourceLink & {
-  __typename?: 'ContentBodyTextBodyResourcesBlock';
-  sys: ResourceSys;
-};
-
-export type ContentBodyTextBodyResourcesHyperlink = ResourceLink & {
-  __typename?: 'ContentBodyTextBodyResourcesHyperlink';
-  sys: ResourceSys;
-};
-
-export type ContentBodyTextBodyResourcesInline = ResourceLink & {
-  __typename?: 'ContentBodyTextBodyResourcesInline';
-  sys: ResourceSys;
-};
-
-export type ContentBodyTextCollection = {
-  __typename?: 'ContentBodyTextCollection';
-  items: Array<Maybe<ContentBodyText>>;
-  limit: Scalars['Int']['output'];
-  skip: Scalars['Int']['output'];
-  total: Scalars['Int']['output'];
-};
-
-export type ContentBodyTextFilter = {
-  AND?: InputMaybe<Array<InputMaybe<ContentBodyTextFilter>>>;
-  OR?: InputMaybe<Array<InputMaybe<ContentBodyTextFilter>>>;
-  body_contains?: InputMaybe<Scalars['String']['input']>;
-  body_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  body_not_contains?: InputMaybe<Scalars['String']['input']>;
-  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
-  internalName?: InputMaybe<Scalars['String']['input']>;
-  internalName_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
-  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  internalName_not?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
-  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
-  sys?: InputMaybe<SysFilter>;
-};
-
-export type ContentBodyTextLinkingCollections = {
-  __typename?: 'ContentBodyTextLinkingCollections';
-  contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
-  entryCollection?: Maybe<EntryCollection>;
-};
-
-
-export type ContentBodyTextLinkingCollectionsContentColumnComponentCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-
-export type ContentBodyTextLinkingCollectionsEntryCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-};
-
-export enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
-  AlignAsc = 'align_ASC',
-  AlignDesc = 'align_DESC',
-  AnimationTypeAsc = 'animationType_ASC',
-  AnimationTypeDesc = 'animationType_DESC',
-  HTagAsc = 'hTag_ASC',
-  HTagDesc = 'hTag_DESC',
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  LabelAsc = 'label_ASC',
-  LabelDesc = 'label_DESC',
-  PaddingAsc = 'padding_ASC',
-  PaddingDesc = 'padding_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
-  TitleAsc = 'title_ASC',
-  TitleDesc = 'title_DESC',
-  TypeAsc = 'type_ASC',
-  TypeDesc = 'type_DESC',
-  UrlAsc = 'url_ASC',
-  UrlDesc = 'url_DESC'
-}
-
-export enum ContentBodyTextOrder {
-  InternalNameAsc = 'internalName_ASC',
-  InternalNameDesc = 'internalName_DESC',
-  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
-  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
-  SysIdAsc = 'sys_id_ASC',
-  SysIdDesc = 'sys_id_DESC',
-  SysPublishedAtAsc = 'sys_publishedAt_ASC',
-  SysPublishedAtDesc = 'sys_publishedAt_DESC',
-  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
-  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
-}
-
 /** 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent) */
 export type ContentColumnComponent = Entry & {
   __typename?: 'ContentColumnComponent';
@@ -803,7 +637,7 @@ export type ContentColumnComponentCollection = {
   total: Scalars['Int']['output'];
 };
 
-export type ContentColumnComponentComponent = ContentBodyText | ContentImageGridComponent;
+export type ContentColumnComponentComponent = ContentImageGridComponent | ContentRichText;
 
 export type ContentColumnComponentFilter = {
   AND?: InputMaybe<Array<InputMaybe<ContentColumnComponentFilter>>>;
@@ -1633,6 +1467,259 @@ export enum ContentProfileComponentOrder {
   SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
   SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
 }
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichText = Entry & {
+  __typename?: 'ContentRichText';
+  align?: Maybe<Scalars['String']['output']>;
+  containerWidth?: Maybe<Scalars['String']['output']>;
+  contentfulMetadata: ContentfulMetadata;
+  internalName?: Maybe<Scalars['String']['output']>;
+  linkedFrom?: Maybe<ContentRichTextLinkingCollections>;
+  richContent?: Maybe<ContentRichTextRichContent>;
+  sys: Sys;
+};
+
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichTextAlignArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichTextContainerWidthArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichTextInternalNameArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichTextLinkedFromArgs = {
+  allowedLocales?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+};
+
+
+/** Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText) */
+export type ContentRichTextRichContentArgs = {
+  locale?: InputMaybe<Scalars['String']['input']>;
+};
+
+export type ContentRichTextCollection = {
+  __typename?: 'ContentRichTextCollection';
+  items: Array<Maybe<ContentRichText>>;
+  limit: Scalars['Int']['output'];
+  skip: Scalars['Int']['output'];
+  total: Scalars['Int']['output'];
+};
+
+export type ContentRichTextFilter = {
+  AND?: InputMaybe<Array<InputMaybe<ContentRichTextFilter>>>;
+  OR?: InputMaybe<Array<InputMaybe<ContentRichTextFilter>>>;
+  align?: InputMaybe<Scalars['String']['input']>;
+  align_contains?: InputMaybe<Scalars['String']['input']>;
+  align_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  align_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  align_not?: InputMaybe<Scalars['String']['input']>;
+  align_not_contains?: InputMaybe<Scalars['String']['input']>;
+  align_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  containerWidth?: InputMaybe<Scalars['String']['input']>;
+  containerWidth_contains?: InputMaybe<Scalars['String']['input']>;
+  containerWidth_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  containerWidth_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  containerWidth_not?: InputMaybe<Scalars['String']['input']>;
+  containerWidth_not_contains?: InputMaybe<Scalars['String']['input']>;
+  containerWidth_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  contentfulMetadata?: InputMaybe<ContentfulMetadataFilter>;
+  internalName?: InputMaybe<Scalars['String']['input']>;
+  internalName_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  internalName_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  internalName_not?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_contains?: InputMaybe<Scalars['String']['input']>;
+  internalName_not_in?: InputMaybe<Array<InputMaybe<Scalars['String']['input']>>>;
+  richContent_contains?: InputMaybe<Scalars['String']['input']>;
+  richContent_exists?: InputMaybe<Scalars['Boolean']['input']>;
+  richContent_not_contains?: InputMaybe<Scalars['String']['input']>;
+  sys?: InputMaybe<SysFilter>;
+};
+
+export type ContentRichTextLinkingCollections = {
+  __typename?: 'ContentRichTextLinkingCollections';
+  contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
+  entryCollection?: Maybe<EntryCollection>;
+  sectionCollection?: Maybe<SectionCollection>;
+};
+
+
+export type ContentRichTextLinkingCollectionsContentColumnComponentCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentRichTextLinkingCollectionsContentColumnComponentCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ContentRichTextLinkingCollectionsEntryCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+
+export type ContentRichTextLinkingCollectionsSectionCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentRichTextLinkingCollectionsSectionCollectionOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+};
+
+export enum ContentRichTextLinkingCollectionsContentColumnComponentCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  AnimationTypeAsc = 'animationType_ASC',
+  AnimationTypeDesc = 'animationType_DESC',
+  HTagAsc = 'hTag_ASC',
+  HTagDesc = 'hTag_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LabelAsc = 'label_ASC',
+  LabelDesc = 'label_DESC',
+  PaddingAsc = 'padding_ASC',
+  PaddingDesc = 'padding_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TitleAsc = 'title_ASC',
+  TitleDesc = 'title_DESC',
+  TypeAsc = 'type_ASC',
+  TypeDesc = 'type_DESC',
+  UrlAsc = 'url_ASC',
+  UrlDesc = 'url_DESC'
+}
+
+export enum ContentRichTextLinkingCollectionsSectionCollectionOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  AnimationAsc = 'animation_ASC',
+  AnimationDesc = 'animation_DESC',
+  BackgroundColorAsc = 'backgroundColor_ASC',
+  BackgroundColorDesc = 'backgroundColor_DESC',
+  ClassNameAsc = 'className_ASC',
+  ClassNameDesc = 'className_DESC',
+  HeightAsc = 'height_ASC',
+  HeightDesc = 'height_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  LineBottomAsc = 'lineBottom_ASC',
+  LineBottomDesc = 'lineBottom_DESC',
+  LineTopAsc = 'lineTop_ASC',
+  LineTopDesc = 'lineTop_DESC',
+  MarginBottomAsc = 'marginBottom_ASC',
+  MarginBottomDesc = 'marginBottom_DESC',
+  MarginSizeAsc = 'marginSize_ASC',
+  MarginSizeDesc = 'marginSize_DESC',
+  MarginTopAsc = 'marginTop_ASC',
+  MarginTopDesc = 'marginTop_DESC',
+  PaddingBottomAsc = 'paddingBottom_ASC',
+  PaddingBottomDesc = 'paddingBottom_DESC',
+  PaddingSizeAsc = 'paddingSize_ASC',
+  PaddingSizeDesc = 'paddingSize_DESC',
+  PaddingTopAsc = 'paddingTop_ASC',
+  PaddingTopDesc = 'paddingTop_DESC',
+  SectionIdAsc = 'sectionId_ASC',
+  SectionIdDesc = 'sectionId_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC',
+  TextColorAsc = 'textColor_ASC',
+  TextColorDesc = 'textColor_DESC',
+  WidthAsc = 'width_ASC',
+  WidthDesc = 'width_DESC'
+}
+
+export enum ContentRichTextOrder {
+  AlignAsc = 'align_ASC',
+  AlignDesc = 'align_DESC',
+  ContainerWidthAsc = 'containerWidth_ASC',
+  ContainerWidthDesc = 'containerWidth_DESC',
+  InternalNameAsc = 'internalName_ASC',
+  InternalNameDesc = 'internalName_DESC',
+  SysFirstPublishedAtAsc = 'sys_firstPublishedAt_ASC',
+  SysFirstPublishedAtDesc = 'sys_firstPublishedAt_DESC',
+  SysIdAsc = 'sys_id_ASC',
+  SysIdDesc = 'sys_id_DESC',
+  SysPublishedAtAsc = 'sys_publishedAt_ASC',
+  SysPublishedAtDesc = 'sys_publishedAt_DESC',
+  SysPublishedVersionAsc = 'sys_publishedVersion_ASC',
+  SysPublishedVersionDesc = 'sys_publishedVersion_DESC'
+}
+
+export type ContentRichTextRichContent = {
+  __typename?: 'ContentRichTextRichContent';
+  json: Scalars['JSON']['output'];
+  links: ContentRichTextRichContentLinks;
+};
+
+export type ContentRichTextRichContentAssets = {
+  __typename?: 'ContentRichTextRichContentAssets';
+  block: Array<Maybe<Asset>>;
+  hyperlink: Array<Maybe<Asset>>;
+};
+
+export type ContentRichTextRichContentEntries = {
+  __typename?: 'ContentRichTextRichContentEntries';
+  block: Array<Maybe<Entry>>;
+  hyperlink: Array<Maybe<Entry>>;
+  inline: Array<Maybe<Entry>>;
+};
+
+export type ContentRichTextRichContentLinks = {
+  __typename?: 'ContentRichTextRichContentLinks';
+  assets: ContentRichTextRichContentAssets;
+  entries: ContentRichTextRichContentEntries;
+  resources: ContentRichTextRichContentResources;
+};
+
+export type ContentRichTextRichContentResources = {
+  __typename?: 'ContentRichTextRichContentResources';
+  block: Array<ContentRichTextRichContentResourcesBlock>;
+  hyperlink: Array<ContentRichTextRichContentResourcesHyperlink>;
+  inline: Array<ContentRichTextRichContentResourcesInline>;
+};
+
+export type ContentRichTextRichContentResourcesBlock = ResourceLink & {
+  __typename?: 'ContentRichTextRichContentResourcesBlock';
+  sys: ResourceSys;
+};
+
+export type ContentRichTextRichContentResourcesHyperlink = ResourceLink & {
+  __typename?: 'ContentRichTextRichContentResourcesHyperlink';
+  sys: ResourceSys;
+};
+
+export type ContentRichTextRichContentResourcesInline = ResourceLink & {
+  __typename?: 'ContentRichTextRichContentResourcesInline';
+  sys: ResourceSys;
+};
 
 /** List of all services [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentServiceList) */
 export type ContentServiceList = Entry & {
@@ -3267,8 +3354,6 @@ export type Query = {
   assetCollection?: Maybe<AssetCollection>;
   category?: Maybe<Category>;
   categoryCollection?: Maybe<CategoryCollection>;
-  contentBodyText?: Maybe<ContentBodyText>;
-  contentBodyTextCollection?: Maybe<ContentBodyTextCollection>;
   contentColumnComponent?: Maybe<ContentColumnComponent>;
   contentColumnComponentCollection?: Maybe<ContentColumnComponentCollection>;
   contentImageGridComponent?: Maybe<ContentImageGridComponent>;
@@ -3277,6 +3362,8 @@ export type Query = {
   contentListComponentCollection?: Maybe<ContentListComponentCollection>;
   contentProfileComponent?: Maybe<ContentProfileComponent>;
   contentProfileComponentCollection?: Maybe<ContentProfileComponentCollection>;
+  contentRichText?: Maybe<ContentRichText>;
+  contentRichTextCollection?: Maybe<ContentRichTextCollection>;
   contentServiceList?: Maybe<ContentServiceList>;
   contentServiceListCollection?: Maybe<ContentServiceListCollection>;
   contentVideoComponent?: Maybe<ContentVideoComponent>;
@@ -3354,23 +3441,6 @@ export type QueryCategoryCollectionArgs = {
 };
 
 
-export type QueryContentBodyTextArgs = {
-  id: Scalars['String']['input'];
-  locale?: InputMaybe<Scalars['String']['input']>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-};
-
-
-export type QueryContentBodyTextCollectionArgs = {
-  limit?: InputMaybe<Scalars['Int']['input']>;
-  locale?: InputMaybe<Scalars['String']['input']>;
-  order?: InputMaybe<Array<InputMaybe<ContentBodyTextOrder>>>;
-  preview?: InputMaybe<Scalars['Boolean']['input']>;
-  skip?: InputMaybe<Scalars['Int']['input']>;
-  where?: InputMaybe<ContentBodyTextFilter>;
-};
-
-
 export type QueryContentColumnComponentArgs = {
   id: Scalars['String']['input'];
   locale?: InputMaybe<Scalars['String']['input']>;
@@ -3436,6 +3506,23 @@ export type QueryContentProfileComponentCollectionArgs = {
   preview?: InputMaybe<Scalars['Boolean']['input']>;
   skip?: InputMaybe<Scalars['Int']['input']>;
   where?: InputMaybe<ContentProfileComponentFilter>;
+};
+
+
+export type QueryContentRichTextArgs = {
+  id: Scalars['String']['input'];
+  locale?: InputMaybe<Scalars['String']['input']>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+};
+
+
+export type QueryContentRichTextCollectionArgs = {
+  limit?: InputMaybe<Scalars['Int']['input']>;
+  locale?: InputMaybe<Scalars['String']['input']>;
+  order?: InputMaybe<Array<InputMaybe<ContentRichTextOrder>>>;
+  preview?: InputMaybe<Scalars['Boolean']['input']>;
+  skip?: InputMaybe<Scalars['Int']['input']>;
+  where?: InputMaybe<ContentRichTextFilter>;
 };
 
 
@@ -4214,7 +4301,7 @@ export type SectionCollection = {
   total: Scalars['Int']['output'];
 };
 
-export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider;
+export type SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentRichText | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider;
 
 export type SectionFilter = {
   AND?: InputMaybe<Array<InputMaybe<SectionFilter>>>;

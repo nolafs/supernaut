@@ -8,6 +8,7 @@ export const componentMap = {
     import('../../slider/slider').then(module => module.Slider),
   ),
   HeaderComponent: dynamic(() =>
+    // eslint-disable-next-line @nx/enforce-module-boundaries
     import('@supernaut/shared-ui').then(module => module.Header),
   ),
   ContentProfileComponent: dynamic(() =>
@@ -24,5 +25,8 @@ export const componentMap = {
   ),
   ContentVideoComponent: dynamic(() =>
     import('../../content/content-video/content-video').then(module => module.ContentVideo),
+  ),
+  ContentRichText: dynamic(() =>
+    import('../../content/content-rich-text/content-rich-text').then(module => module.ContentRichText),
   ),
 };

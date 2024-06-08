@@ -19,21 +19,8 @@ export function SectionResolver({sections, pageMode}: SectionResolverProps) {
     return null;
   }
 
-  console.log('SECTION',sections.map((entry: any) => entry.internalName));
-
   const mergeComponentProps = (componentProps: any) => {
     return componentProps;
-    /*
-    if(!componentProps){
-      return null
-    }
-    if(componentProps?.mode){
-      return {...componentProps, mode: pageMode}
-    } else {
-      return componentProps
-    }
-
-     */
   }
 
 

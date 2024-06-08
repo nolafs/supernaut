@@ -310,128 +310,6 @@ enum CategoryServicesCollectionOrder {
 }
 
 """
-Body rich text [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentBodyText)
-"""
-type ContentBodyText implements Entry {
-  body(locale: String): ContentBodyTextBody
-  contentfulMetadata: ContentfulMetadata!
-  internalName(locale: String): String
-  linkedFrom(allowedLocales: [String]): ContentBodyTextLinkingCollections
-  sys: Sys!
-}
-
-type ContentBodyTextBody {
-  json: JSON!
-  links: ContentBodyTextBodyLinks!
-}
-
-type ContentBodyTextBodyAssets {
-  block: [Asset]!
-  hyperlink: [Asset]!
-}
-
-type ContentBodyTextBodyEntries {
-  block: [Entry]!
-  hyperlink: [Entry]!
-  inline: [Entry]!
-}
-
-type ContentBodyTextBodyLinks {
-  assets: ContentBodyTextBodyAssets!
-  entries: ContentBodyTextBodyEntries!
-  resources: ContentBodyTextBodyResources!
-}
-
-type ContentBodyTextBodyResources {
-  block: [ContentBodyTextBodyResourcesBlock!]!
-  hyperlink: [ContentBodyTextBodyResourcesHyperlink!]!
-  inline: [ContentBodyTextBodyResourcesInline!]!
-}
-
-type ContentBodyTextBodyResourcesBlock implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ContentBodyTextBodyResourcesHyperlink implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ContentBodyTextBodyResourcesInline implements ResourceLink {
-  sys: ResourceSys!
-}
-
-type ContentBodyTextCollection {
-  items: [ContentBodyText]!
-  limit: Int!
-  skip: Int!
-  total: Int!
-}
-
-input ContentBodyTextFilter {
-  AND: [ContentBodyTextFilter]
-  OR: [ContentBodyTextFilter]
-  body_contains: String
-  body_exists: Boolean
-  body_not_contains: String
-  contentfulMetadata: ContentfulMetadataFilter
-  internalName: String
-  internalName_contains: String
-  internalName_exists: Boolean
-  internalName_in: [String]
-  internalName_not: String
-  internalName_not_contains: String
-  internalName_not_in: [String]
-  sys: SysFilter
-}
-
-type ContentBodyTextLinkingCollections {
-  contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentColumnComponentCollection
-  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
-}
-
-enum ContentBodyTextLinkingCollectionsContentColumnComponentCollectionOrder {
-  align_ASC
-  align_DESC
-  animationType_ASC
-  animationType_DESC
-  hTag_ASC
-  hTag_DESC
-  internalName_ASC
-  internalName_DESC
-  label_ASC
-  label_DESC
-  padding_ASC
-  padding_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-  title_ASC
-  title_DESC
-  type_ASC
-  type_DESC
-  url_ASC
-  url_DESC
-}
-
-enum ContentBodyTextOrder {
-  internalName_ASC
-  internalName_DESC
-  sys_firstPublishedAt_ASC
-  sys_firstPublishedAt_DESC
-  sys_id_ASC
-  sys_id_DESC
-  sys_publishedAt_ASC
-  sys_publishedAt_DESC
-  sys_publishedVersion_ASC
-  sys_publishedVersion_DESC
-}
-
-"""
 2 column content for Text, Intro and Components. Align text left or right within the two column grid  [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentColumnComponent)
 """
 type ContentColumnComponent implements Entry {
@@ -458,7 +336,7 @@ type ContentColumnComponentCollection {
   total: Int!
 }
 
-union ContentColumnComponentComponent = ContentBodyText | ContentImageGridComponent
+union ContentColumnComponentComponent = ContentImageGridComponent | ContentRichText
 
 input ContentColumnComponentFilter {
   AND: [ContentColumnComponentFilter]
@@ -1079,6 +957,194 @@ enum ContentProfileComponentOrder {
   sys_publishedAt_DESC
   sys_publishedVersion_ASC
   sys_publishedVersion_DESC
+}
+
+"""
+Rich Text Component [See type definition](https://app.contentful.com/spaces/njzagoag3ndp/content_types/contentRichText)
+"""
+type ContentRichText implements Entry {
+  align(locale: String): String
+  containerWidth(locale: String): String
+  contentfulMetadata: ContentfulMetadata!
+  internalName(locale: String): String
+  linkedFrom(allowedLocales: [String]): ContentRichTextLinkingCollections
+  richContent(locale: String): ContentRichTextRichContent
+  sys: Sys!
+}
+
+type ContentRichTextCollection {
+  items: [ContentRichText]!
+  limit: Int!
+  skip: Int!
+  total: Int!
+}
+
+input ContentRichTextFilter {
+  AND: [ContentRichTextFilter]
+  OR: [ContentRichTextFilter]
+  align: String
+  align_contains: String
+  align_exists: Boolean
+  align_in: [String]
+  align_not: String
+  align_not_contains: String
+  align_not_in: [String]
+  containerWidth: String
+  containerWidth_contains: String
+  containerWidth_exists: Boolean
+  containerWidth_in: [String]
+  containerWidth_not: String
+  containerWidth_not_contains: String
+  containerWidth_not_in: [String]
+  contentfulMetadata: ContentfulMetadataFilter
+  internalName: String
+  internalName_contains: String
+  internalName_exists: Boolean
+  internalName_in: [String]
+  internalName_not: String
+  internalName_not_contains: String
+  internalName_not_in: [String]
+  richContent_contains: String
+  richContent_exists: Boolean
+  richContent_not_contains: String
+  sys: SysFilter
+}
+
+type ContentRichTextLinkingCollections {
+  contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentRichTextLinkingCollectionsContentColumnComponentCollectionOrder], preview: Boolean, skip: Int = 0): ContentColumnComponentCollection
+  entryCollection(limit: Int = 100, locale: String, preview: Boolean, skip: Int = 0): EntryCollection
+  sectionCollection(limit: Int = 100, locale: String, order: [ContentRichTextLinkingCollectionsSectionCollectionOrder], preview: Boolean, skip: Int = 0): SectionCollection
+}
+
+enum ContentRichTextLinkingCollectionsContentColumnComponentCollectionOrder {
+  align_ASC
+  align_DESC
+  animationType_ASC
+  animationType_DESC
+  hTag_ASC
+  hTag_DESC
+  internalName_ASC
+  internalName_DESC
+  label_ASC
+  label_DESC
+  padding_ASC
+  padding_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  title_ASC
+  title_DESC
+  type_ASC
+  type_DESC
+  url_ASC
+  url_DESC
+}
+
+enum ContentRichTextLinkingCollectionsSectionCollectionOrder {
+  align_ASC
+  align_DESC
+  animation_ASC
+  animation_DESC
+  backgroundColor_ASC
+  backgroundColor_DESC
+  className_ASC
+  className_DESC
+  height_ASC
+  height_DESC
+  internalName_ASC
+  internalName_DESC
+  lineBottom_ASC
+  lineBottom_DESC
+  lineTop_ASC
+  lineTop_DESC
+  marginBottom_ASC
+  marginBottom_DESC
+  marginSize_ASC
+  marginSize_DESC
+  marginTop_ASC
+  marginTop_DESC
+  paddingBottom_ASC
+  paddingBottom_DESC
+  paddingSize_ASC
+  paddingSize_DESC
+  paddingTop_ASC
+  paddingTop_DESC
+  sectionId_ASC
+  sectionId_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+  textColor_ASC
+  textColor_DESC
+  width_ASC
+  width_DESC
+}
+
+enum ContentRichTextOrder {
+  align_ASC
+  align_DESC
+  containerWidth_ASC
+  containerWidth_DESC
+  internalName_ASC
+  internalName_DESC
+  sys_firstPublishedAt_ASC
+  sys_firstPublishedAt_DESC
+  sys_id_ASC
+  sys_id_DESC
+  sys_publishedAt_ASC
+  sys_publishedAt_DESC
+  sys_publishedVersion_ASC
+  sys_publishedVersion_DESC
+}
+
+type ContentRichTextRichContent {
+  json: JSON!
+  links: ContentRichTextRichContentLinks!
+}
+
+type ContentRichTextRichContentAssets {
+  block: [Asset]!
+  hyperlink: [Asset]!
+}
+
+type ContentRichTextRichContentEntries {
+  block: [Entry]!
+  hyperlink: [Entry]!
+  inline: [Entry]!
+}
+
+type ContentRichTextRichContentLinks {
+  assets: ContentRichTextRichContentAssets!
+  entries: ContentRichTextRichContentEntries!
+  resources: ContentRichTextRichContentResources!
+}
+
+type ContentRichTextRichContentResources {
+  block: [ContentRichTextRichContentResourcesBlock!]!
+  hyperlink: [ContentRichTextRichContentResourcesHyperlink!]!
+  inline: [ContentRichTextRichContentResourcesInline!]!
+}
+
+type ContentRichTextRichContentResourcesBlock implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ContentRichTextRichContentResourcesHyperlink implements ResourceLink {
+  sys: ResourceSys!
+}
+
+type ContentRichTextRichContentResourcesInline implements ResourceLink {
+  sys: ResourceSys!
 }
 
 """
@@ -2299,8 +2365,6 @@ type Query {
   assetCollection(limit: Int = 100, locale: String, order: [AssetOrder], preview: Boolean, skip: Int = 0, where: AssetFilter): AssetCollection
   category(id: String!, locale: String, preview: Boolean): Category
   categoryCollection(limit: Int = 100, locale: String, order: [CategoryOrder], preview: Boolean, skip: Int = 0, where: CategoryFilter): CategoryCollection
-  contentBodyText(id: String!, locale: String, preview: Boolean): ContentBodyText
-  contentBodyTextCollection(limit: Int = 100, locale: String, order: [ContentBodyTextOrder], preview: Boolean, skip: Int = 0, where: ContentBodyTextFilter): ContentBodyTextCollection
   contentColumnComponent(id: String!, locale: String, preview: Boolean): ContentColumnComponent
   contentColumnComponentCollection(limit: Int = 100, locale: String, order: [ContentColumnComponentOrder], preview: Boolean, skip: Int = 0, where: ContentColumnComponentFilter): ContentColumnComponentCollection
   contentImageGridComponent(id: String!, locale: String, preview: Boolean): ContentImageGridComponent
@@ -2309,6 +2373,8 @@ type Query {
   contentListComponentCollection(limit: Int = 100, locale: String, order: [ContentListComponentOrder], preview: Boolean, skip: Int = 0, where: ContentListComponentFilter): ContentListComponentCollection
   contentProfileComponent(id: String!, locale: String, preview: Boolean): ContentProfileComponent
   contentProfileComponentCollection(limit: Int = 100, locale: String, order: [ContentProfileComponentOrder], preview: Boolean, skip: Int = 0, where: ContentProfileComponentFilter): ContentProfileComponentCollection
+  contentRichText(id: String!, locale: String, preview: Boolean): ContentRichText
+  contentRichTextCollection(limit: Int = 100, locale: String, order: [ContentRichTextOrder], preview: Boolean, skip: Int = 0, where: ContentRichTextFilter): ContentRichTextCollection
   contentServiceList(id: String!, locale: String, preview: Boolean): ContentServiceList
   contentServiceListCollection(limit: Int = 100, locale: String, order: [ContentServiceListOrder], preview: Boolean, skip: Int = 0, where: ContentServiceListFilter): ContentServiceListCollection
   contentVideoComponent(id: String!, locale: String, preview: Boolean): ContentVideoComponent
@@ -2620,7 +2686,7 @@ type SectionCollection {
   total: Int!
 }
 
-union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider
+union SectionComponent = ContentColumnComponent | ContentImageGridComponent | ContentListComponent | ContentProfileComponent | ContentRichText | ContentServiceList | ContentVideoComponent | QuoteComponent | Slider
 
 input SectionFilter {
   AND: [SectionFilter]

@@ -1,12 +1,3 @@
-fragment SectionComponentFields on SectionComponent {
-  ...QuoteComponentFields
-  ...SliderFields
-  ...ContentProfileComponentFields
-  ...ContentColumnComponentFields
-  ...ContentServiceListFields
-  ...ContentVideoComponentFields
-  ...ContentImageGridComponentFields
-}
 
 fragment ProfileFields on Profile {
   __typename
@@ -100,13 +91,6 @@ fragment ContentImageGridComponentFields on ContentImageGridComponent {
   itemWidth
 }
 
-fragment ContentBodyTextFields on ContentBodyText {
-  __typename
-  internalName
-  body {
-    json
-  }
-}
 
 fragment ContentColumnComponentFields on ContentColumnComponent {
   __typename
@@ -125,7 +109,7 @@ fragment ContentColumnComponentFields on ContentColumnComponent {
   component {
     __typename
     ...ContentImageGridComponentFields
-    ...ContentBodyTextFields
+    ...ContentRichTextFields
   }
 }
 
@@ -147,6 +131,31 @@ fragment ContentVideoComponentFields on ContentVideoComponent {
   autoplay
   frame
 }
+
+fragment ContentRichTextFields on ContentRichText {
+  __typename
+  sys {
+    id
+  }
+  internalName
+  richContent {
+    json
+  }
+  align
+  containerWidth
+}
+
+fragment SectionComponentFields on SectionComponent {
+  ...QuoteComponentFields
+  ...SliderFields
+  ...ContentProfileComponentFields
+  ...ContentColumnComponentFields
+  ...ContentServiceListFields
+  ...ContentVideoComponentFields
+  ...ContentImageGridComponentFields
+  ...ContentRichTextFields
+}
+
 
 fragment SectionFields on Section {
   __typename
