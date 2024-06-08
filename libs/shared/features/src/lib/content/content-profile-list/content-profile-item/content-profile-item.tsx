@@ -27,9 +27,9 @@ export function ContentProfileItem({item, id}: ContentProfileItemProps) {
           <h2 className={'name text-primary mb-2 md:mb-3'}>{item.name}</h2>
           <h3 className={'title text-primary  mb-3 md:mb-4'}>{item.title}</h3>
 
-          {(!item.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light'}
+          {(!item.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}
                                              dangerouslySetInnerHTML={{__html: item.description}}/>}
-          {(item?.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light'}>
+          {(item?.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}>
             {documentToReactComponents(item?.description?.json)}
           </div>}
         </div>

@@ -47,7 +47,7 @@ export function NavigationMobile({
       </div>
 
       <Transition show={mobileMenuOpen} as={Fragment}>
-          <Dialog className="relative z-[45]" onClose={setMobileMenuOpen}>
+          <Dialog className="relative z-[45]"  onClose={setMobileMenuOpen}>
             <div className="fixed inset-0"/>
 
             <TransitionChild
