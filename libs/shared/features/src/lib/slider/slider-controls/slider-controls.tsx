@@ -63,7 +63,7 @@ export function SliderControls({ children, currentIndex, numberSlides }: SliderC
       <div
         ref={ref}
         className={cn(
-          'relative container max-w-[1920px] mx-auto p-0 m-0',
+          '',
           styles['container'],
 
         )}
