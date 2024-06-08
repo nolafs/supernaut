@@ -138,8 +138,8 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
       square.className = "square";
       square.style.width = `${window.innerWidth}px`;
       square.style.height = `${finalSquareSize}px`;
-      //square.style.backgroundColor = '#fff'; // 'var(--color-primary)';
-      square.style.scale = '0 1'
+      square.style.backgroundColor = theme === 'light' ?  'rgba(255, 255, 255, 1)' : 'rgba(255, 255, 255, 0)'; // 'var(--color-primary)';
+      square.style.scale = ''
       container.appendChild(square);
     }
   };
@@ -157,13 +157,13 @@ const ThemeProvider: React.FC<{ children: ReactNode }> = ({children}) => {
         {
           scaleY: 0,
           yPercent: -100,
-          backgroundColor: 'var(--color-primary)',
+          backgroundColor: '#fff',
         },
         {
           duration: 1,
           scaleY: 1.2,
           yPercent: 0,
-          backgroundColor: 'var(--color-primary)',
+          backgroundColor: '#fff',
           //ease: "power2.in",
           stagger: {
             from: "start",
