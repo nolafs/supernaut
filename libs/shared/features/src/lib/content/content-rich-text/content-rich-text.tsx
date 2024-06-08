@@ -1,8 +1,15 @@
 /* eslint-disable-next-line */
+'use client';
 import cn from 'classnames';
 import {documentToReactComponents} from '@contentful/rich-text-react-renderer';
 import Image from "next/image";
 import {BLOCKS} from "@contentful/rich-text-types";
+import {useGSAP} from '@gsap/react';
+import gsap from 'gsap';
+import ScrollTrigger from 'gsap/ScrollTrigger';
+import {useRef} from 'react';
+
+gsap.registerPlugin(ScrollTrigger);
 
 export interface ContentRichTextProps {
   richContent: any;
@@ -57,6 +64,31 @@ function renderOptions(links: any | undefined) {
 
 
 export function ContentRichText({richContent, containerWidth, align}: ContentRichTextProps) {
+
+  const ref = useRef<HTMLDivElement>(null);
+
+  useGSAP(() => {
+    const targets = gsap.utils.toArray(["p", "h1", "h2", "h3", "h4", "h5", "h6"]);
+
+    targets.forEach((target: any) => {
+      gsap.fromTo(target, {opacity: 0, y: '100%'}, {
+        opacity: 1,
+        y: 0,
+        stagger: 0.2,
+        ease: 'power2.inOut',
+        scrollTrigger: {
+          trigger: target,
+          start: 'top 80%',
+          end: 'bottom 20%',
+          toggleActions: 'play none none reverse',
+        }
+      });
+    })
+
+
+  }, {dependencies: [richContent], scope: ref})
+
+
   return (<div className={cn(
     'container w-full flex',
       align === 'center' && 'justify-center',
@@ -69,7 +101,7 @@ export function ContentRichText({richContent, containerWidth, align}: ContentRic
           containerWidth === 'full' && 'w-full',
           containerWidth === 'w-1/2' && 'w-1/2',
         )}>
-          <div className={'prose lg:prose-lg w-full'} >
+          <div className={'prose lg:prose-lg w-full'} ref={ref}>
             {documentToReactComponents(richContent?.json, renderOptions(richContent?.links))}
           </div>
         </div>
