@@ -91,20 +91,6 @@ export function Quotes({
               </div>
             </SwiperSlide>
           ))}
-          <div
-            className={
-              'absolute bottom-0 left-0 w-full text-white text-xl md:text-2xl  z-20'
-            }
-          >
-            <div
-              className={'container mx-auto flex justify-end items-center pb-1'}
-            >
-              {currentIndex + 1 >= 10
-                ? currentIndex + 1
-                : `0${currentIndex + 1}`}
-              /{numberSlides >= 10 ? numberSlides : `0${numberSlides}`}
-            </div>
-          </div>
         </Swiper>
       </div>
     </div>

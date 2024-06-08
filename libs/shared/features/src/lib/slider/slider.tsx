@@ -60,7 +60,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
   }
 
   return (
-    <BlockAnimateOnScroll animation={'fadeIn'} duration={1} start="top 80%" marker={false}>
+
     <CursorContextProvider>
       <SliderControls currentIndex={currentIndex} numberSlides={numberSlides}>
 
@@ -68,10 +68,12 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
           <Swiper
             modules={[Navigation, Autoplay, EffectCreative]}
             onSlideChange={(e) => {
+              console.log(e.realIndex)
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
             autoplay={(autoplay) ? { delay: slideDuration, disableOnInteraction: true } : false}
+
             effect={'creative'}
             creativeEffect={{
               prev: {
@@ -82,9 +84,11 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
                 translate: ['100%', 0, 0],
               },
             }}
+
+
             spaceBetween={50}
             slidesPerView={1}
-            loop={false}
+            loop={true}
             navigation={{
               nextEl: '.swiper-button-next-custom',
               prevEl: '.swiper-button-prev-custom',
@@ -108,7 +112,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
           </Swiper>
           <div
             className={
-              'absolute bottom-14 right-0 text-primary text-xl md:text-4xl z-20 mr-6 md:mr-12'
+              'absolute bottom-14 right-0 text-primary text-xl md:text-2xl z-20 mr-6 md:mr-12'
             }
           >
             {currentIndex + 1 >= 10 ? currentIndex + 1 : `0${currentIndex + 1}`}
@@ -123,7 +127,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
 
       </SliderControls>
     </CursorContextProvider>
-    </BlockAnimateOnScroll>
+
   );
 }
 

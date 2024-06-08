@@ -31,7 +31,7 @@ export function Header({
   const descriptionContent = () => {
     if(description) {
       return (<div
-        className={cn(styles['header-body'], 'text-secondary text-lg ')}
+        className={cn(styles['header-body'], 'text-secondary text-lg font-light')}
         dangerouslySetInnerHTML={{__html: description || ''}}
       ></div>)
     }
@@ -71,7 +71,7 @@ export function Header({
               <div className={'overflow-hidden'}>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.8 + delay,
                   ease: 'power2.inOut'}}>
-                <div>{client || title || pageName}</div>
+                <div className={'font-light'}>{client || title || pageName}</div>
                 </BlockAnimateOnScroll>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:1.5 + delay,
                   ease: 'power2.inOut'}} >
