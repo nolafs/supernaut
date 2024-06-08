@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
+import {LinkPrimary} from '@supernaut/shared-ui';
 
 
 export interface FooterProps {
@@ -48,8 +49,7 @@ export function Footer({
                 {navigation?.map((item) => {
                   return (
                     <li key={item.id} className={'flex'}>
-                        <NavigationButton item={item} className={'flex item-center space-x-2 group text-primary text-2xl sm:text-3xl md:text-4xl lg:text-5xl '}/>
-
+                      <LinkPrimary size={'lg'} url={ item?.url ? item?.url : `/${item.slug}`}>{item.pageName}</LinkPrimary>
                     </li>
                   );
                 })}
