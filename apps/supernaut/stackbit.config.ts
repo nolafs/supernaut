@@ -5,6 +5,7 @@ export default defineStackbitConfig({
   stackbitVersion: "~0.6.0",
   nodeVersion: "20",
   ssgName: "nextjs",
+  devCommand: "./node_modules/.bin/nx run supernaut:dev",
   contentSources: [
     new ContentfulContentSource({
       spaceId: process.env.CONTENTFUL_SPACE_ID!,
