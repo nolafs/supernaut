@@ -28,6 +28,7 @@ export default async function Page({params}: PageProps) {
     return (<>
         <article>
           <Header
+            sys={workData?.sys}
             columnLayout
             description={servicesList(workData?.servicesCollection?.items)}
             mode="dark"

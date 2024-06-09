@@ -143,6 +143,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
           <ModalProvider>
 
             <Navigation
+                        sys={settings?.sys}
                         logo={settings?.logo?.url}
                         items={navigation}
                         social={social}

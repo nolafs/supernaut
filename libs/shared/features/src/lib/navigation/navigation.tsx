@@ -8,11 +8,11 @@ import styles from './navigation.module.scss';
 import SocialList from '../social-list/social-list';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
 import Link from 'next/link';
-import ThemeSwitchButton from '../theme-switch-button/theme-switch-button';
 
 
 /* eslint-disable-next-line */
 export interface NavigationProps {
+  sys?: any;
   siteTitle?: string;
   logo?: string | undefined | null;
   items: TNavigationItem[];
@@ -23,6 +23,7 @@ export interface NavigationProps {
 }
 
 export function Navigation({
+  sys,
   siteTitle,
   items,
   logo = '/images/logo.svg',
@@ -36,7 +37,7 @@ export function Navigation({
 
   const navigation = () => {
     return (
-      <div className={cn('wrapper', styles['navbar'])}>
+      <div className={cn('wrapper', styles['navbar'])} data-sb-object-id={sys.id}>
         <div className="navbar-start">
           <h1 className={'text-primary'}>
             <Link href={{
@@ -44,10 +45,10 @@ export function Navigation({
             }}>
               <div className="sr-only">{siteTitle}</div>
               {logo && isSvg && (
-                <Image src={logo} className={'logo'} alt={'logo'} width={350} height={50} />
+                <Image data-sb-field-path="logo" src={logo} className={'logo'} alt={'logo'} width={350} height={50} />
               )}
               {logo && !isSvg && (
-                <img src={logo} alt="logo" className={styles['logo']}/>
+                <img data-sb-field-path="logo" src={logo} alt="logo" className={styles['logo']}/>
               )}
             </Link>
           </h1>

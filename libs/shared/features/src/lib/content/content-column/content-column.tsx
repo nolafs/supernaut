@@ -7,6 +7,7 @@ import ComponentResolver from '../../section-resolver/component-resolver/compone
 
 /* eslint-disable-next-line */
 export interface ContentColumnProps {
+  sys?: any;
   align?: 'left' | 'right';
   type?: 'text' | 'intro' | '1/2' | '3/9';
   hTag?: 'h1' | 'h2' | 'h3' | 'h4' | 'h5' | 'h6';
@@ -26,6 +27,7 @@ function generateRandomKey() {
 
 
 export function ContentColumn({
+  sys,
   type = '1/2',
   hTag = 'h1',
   title,
@@ -51,6 +53,7 @@ export function ContentColumn({
   if(type === 'intro' || type === 'text' || !children && component === undefined) {
     return (
         <div
+          data-sb-object-id={sys?.id}
           className={cn(
             'wrapper flex flex-row text-primary difference',
             align === 'left' && 'justify-start',
@@ -62,9 +65,11 @@ export function ContentColumn({
           )}
         >
           <div className={'w-full md:w-9/12 lg:w-1/2'}>
-            {title && <BlockAnimateOnScroll animation={animationType || 'splitText'} duration={0.5} start="top 90%"><h1 className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
+            {title && <BlockAnimateOnScroll animation={animationType || 'splitText'} duration={0.5} start="top 90%">
+              <h1 data-sb-field-path="title" className={'mb-12 md:mb-16 splitTextOverflow'}>{title}</h1></BlockAnimateOnScroll>}
             {body && (<BlockAnimateOnScroll animation={animationType || 'splitText'} duration={0.5} start="top 90%">
               <div
+                data-sb-field-path="body"
                 className={'text-[28px] md:text-3xl lg:text-[40px] font-medium leading-[28px] lg:leading-[46px]  splitTextOverflow'}
                 dangerouslySetInnerHTML={{__html: body}}
               />
@@ -85,7 +90,7 @@ export function ContentColumn({
   }
   else {
     return (
-      <div className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10 text-primary',
+      <div data-sb-object-id={sys?.id} className={cn('w-full max-w-9xl mx-auto flex flex-col md:flex-row gap-10 text-primary',
         padding === 'none' && 'px-0',
         padding === 'sm' && 'px-5 md:px-10',
         padding === 'md' && 'px-10 md:px-20',
@@ -96,12 +101,12 @@ export function ContentColumn({
       )}>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-3/12')}>
           <BlockAnimateOnScroll animation="splitText" duration={0.5}  start="top 90%">
-          { hTag === 'h1' && <h1 className={'splitTextOverflow'}>{title}</h1>}
+          { hTag === 'h1' && <h1 className={'splitTextOverflow'} data-sb-field-path="title">{title}</h1>}
           { hTag === 'h2' && <h2>{title}</h2>}
-          { hTag === 'h3' && <h3 className={'splitTextOverflow'}>{title}</h3>}
-          { hTag === 'h4' && <h4 className={'splitTextOverflow'}>{title}</h4>}
-          { hTag === 'h5' && <h5 className={'splitTextOverflow'}>{title}</h5>}
-          { hTag === 'h6' && <h6 className={'splitTextOverflow'}>{title}</h6>}
+          { hTag === 'h3' && <h3 className={'splitTextOverflow'} data-sb-field-path="title">{title}</h3>}
+          { hTag === 'h4' && <h4 className={'splitTextOverflow'} data-sb-field-path="title">{title}</h4>}
+          { hTag === 'h5' && <h5 className={'splitTextOverflow'} data-sb-field-path="title">{title}</h5>}
+          { hTag === 'h6' && <h6 className={'splitTextOverflow'} data-sb-field-path="title">{title}</h6>}
           </BlockAnimateOnScroll>
         </div>
         <div className={cn('w-full', (type === '1/2') && 'md:w-6/12', (type === '3/9') && 'md:w-9/12')}>

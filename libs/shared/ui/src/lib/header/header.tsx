@@ -4,6 +4,7 @@ import styles from './header.module.scss';
 import {BlockAnimateOnScroll} from '@supernaut/context';
 
 export interface HeaderProps {
+  sys?: any;
   pageName?: string | undefined | null;
   title?: string | undefined | null;
   client?: string | undefined | null;
@@ -17,6 +18,7 @@ export interface HeaderProps {
 }
 
 export function Header({
+  sys,
   pageName,
   title,
   client,
@@ -30,7 +32,7 @@ export function Header({
 
   const descriptionContent = () => {
     if(description) {
-      return (<div
+      return (<div data-sb-field-path="description"
         className={cn(styles['header-body'], 'text-secondary text-lg font-light')}
         dangerouslySetInnerHTML={{__html: description || ''}}
       ></div>)
@@ -38,7 +40,7 @@ export function Header({
   }
 
   return (
-      <header>
+      <header data-sb-object-id={sys?.id}>
         <div
           className={cn(
             'w-full max-w-9xl mx-auto px-5 md:px-10 difference',
@@ -56,7 +58,9 @@ export function Header({
         >
           <div className={cn(columnLayout ? 'w-full md:w-4/12' : 'w-full md:w-8/12', 'mb-5 md:mb-0') }>
             <div className={'sr-only'}>{pageName}</div>
-            <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%" to={{delay: delay}}><h1 className={'splitTextOverflow'}>{title || pageName}</h1></BlockAnimateOnScroll>
+            <BlockAnimateOnScroll animation="splitText" duration={0.5} start="top 90%" to={{delay: delay}} >
+              <h1 className={'splitTextOverflow'} data-sb-field-path="title">{title || pageName}</h1>
+            </BlockAnimateOnScroll>
           </div>
           {columnLayout && (
             <div
@@ -66,12 +70,12 @@ export function Header({
             >
               <div>
                 <BlockAnimateOnScroll animation="splitTextByWords" duration={0.5} start="top 90%" to={{delay: 0.3 + delay}}><h2
-                  className={'splitTextOverflow lg:text-[46px] lg:leading-[48px]'}>{subtitle}</h2></BlockAnimateOnScroll>
+                  className={'splitTextOverflow lg:text-[46px] lg:leading-[48px]'} data-sb-field-path="subtitle">{subtitle}</h2></BlockAnimateOnScroll>
               </div>
               <div className={'overflow-hidden'}>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay: 0.8 + delay,
                   ease: 'power2.inOut'}}>
-                <div className={'font-light'}>{client || title || pageName}</div>
+                <div className={'font-light'} data-sb-field-path="client">{client || title || pageName}</div>
                 </BlockAnimateOnScroll>
                 <BlockAnimateOnScroll animation="slideIn" duration={0.5} start="top 100%" to={{delay:1.5 + delay,
                   ease: 'power2.inOut'}} >

@@ -68,7 +68,6 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
           <Swiper
             modules={[Navigation, Autoplay, EffectCreative]}
             onSlideChange={(e) => {
-              console.log(e.realIndex)
               setCurrentIndex(e.realIndex);
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}

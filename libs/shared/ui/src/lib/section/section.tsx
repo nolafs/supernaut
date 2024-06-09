@@ -6,6 +6,7 @@ import {BlockAnimateOnScroll} from '@supernaut/context';
 
 export interface SectionProps {
   internalName?: string;
+  sys?: any;
   sectionId?: string;
   children: ReactNode;
   marginSize?: 'sm' | 'md' | 'lg';
@@ -28,6 +29,7 @@ export interface SectionProps {
 
 export function Section({
   internalName,
+  sys,
   sectionId,
   children,
   color,
@@ -47,9 +49,12 @@ export function Section({
   animation = false,
 }: SectionProps) {
 
+  console.log(internalName, sys)
+
   const section = () => {
     return (
       <section
+        data-sb-object-id={sys.id}
         id={sectionId}
         className={cn(
           'section relative overflow-hidden',

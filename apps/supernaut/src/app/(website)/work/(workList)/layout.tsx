@@ -44,6 +44,7 @@ export default async function Layout({children, list}: LayoutProps) {
   return (
     <>
       <Header
+        sys={pageData?.sys}
         pageName={pageData?.pageName}
         title={pageData?.title}
       />
