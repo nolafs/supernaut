@@ -11,6 +11,7 @@ import { SplitText } from 'gsap/SplitText';
 import NavigationMobileMenu from './navigation-mobile-menu';
 import SocialList from '../../social-list/social-list';
 import ContactFormDialogButton from '../../contact-form/contact-form-dialog-button';
+import {useRouter} from 'next/navigation';
 
 gsap.registerPlugin(useGSAP, SplitText);
 
@@ -26,10 +27,16 @@ export function NavigationMobile({
   contactFormDialog
 }: NavigationMobileProps) {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const router = useRouter();
 
 
   const handleClick = () => {
     setMobileMenuOpen((prev) => !prev);
+  };
+
+  const handleLinkClick = (url: string) => {
+    setMobileMenuOpen(false);
+    router.push(url);
   };
 
   return (
@@ -46,20 +53,19 @@ export function NavigationMobile({
         </button>
       </div>
 
-      <Transition show={mobileMenuOpen} as={Fragment}>
-          <Dialog className="relative z-[45]" unmount={true}  onClose={setMobileMenuOpen}>
+     <Transition show={mobileMenuOpen} as={Fragment}>
+          <Dialog className="relative z-[45] lg:hidden"   onClose={setMobileMenuOpen}>
             <div className="fixed inset-0"/>
 
             <TransitionChild
-              as={Fragment}
-              enter="ease-in-out duration-500"
+              enter="transition-opacity ease-linear duration-300"
               enterFrom="opacity-0"
               enterTo="opacity-100"
-              leave="ease-in-out duration-500"
+              leave="transition-opacity ease-linear duration-300"
               leaveFrom="opacity-100"
               leaveTo="opacity-0"
             >
-              <div className="fixed inset-0 bg-neutral/40 bg-opacity-75 transition-opacity"/>
+              <div className="fixed inset-0 bg-black/60"/>
             </TransitionChild>
 
 
@@ -81,7 +87,7 @@ export function NavigationMobile({
                             <nav className={'h-full'}>
                               <div className={'flex flex-col justify-items-stretch items-stretch h-full'}>
                                 <div className={'pt-24 px-5  grow'}>
-                                  <NavigationMobileMenu items={items} open={mobileMenuOpen}/>
+                                  <NavigationMobileMenu items={items} open={mobileMenuOpen} handleLinkClick={handleLinkClick}/>
                                 </div>
                                 <div className={'bg-neutral shrink p-3 flex flex-row justify-center pointer-events-auto'}>
                                   <SocialList items={social}/>

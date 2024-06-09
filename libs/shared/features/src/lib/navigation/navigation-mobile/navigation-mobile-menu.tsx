@@ -12,11 +12,13 @@ import cn from 'classnames';
 export interface NavigationMobileMenuProps {
   items: TNavigationItem[];
   open: boolean;
+  handleLinkClick?: (url: string) => void;
 }
 
 export function NavigationMobileMenu({
   items,
   open,
+  handleLinkClick,
 }: NavigationMobileMenuProps) {
   const menu = useRef<any>();
   const tl = useRef<any>();
@@ -65,20 +67,36 @@ export function NavigationMobileMenu({
       {items.map((item: TNavigationItem, index) => {
         return (
           <li key={item.id} className={'menu-button overflow-hidden'}>
-            <Link
+            {(item?.slug) && (
+              <button
 
-              href={{
-                pathname: `/${item?.slug}`,
-              }}
-              className={
-                cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
-              }
-            >
-              <span
-                className={'num text-sm font-medium text-secondary mr-3 '}
-              >{`0${index + 1}.`}</span>
-              <span className={'label'}>{item.pageName}</span>
-            </Link>
+                onClick={(e) => handleLinkClick && handleLinkClick(`/${item.slug}`)}
+                className={
+                  cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
+                }
+              >
+                <span
+                  className={'num text-sm font-medium text-secondary mr-3 '}
+                >{`0${index + 1}.`}</span>
+                <span className={'label'}>{item.pageName}</span>
+              </button>
+            )}
+
+            {(item?.url && !item?.slug) && (
+              <a
+                href={item.url}
+                target="_blank"
+                className={
+                  cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
+                } rel="noreferrer"
+              >
+                <span
+                  className={'num text-sm font-medium text-secondary mr-3 '}
+                >{`0${index + 1}.`}</span>
+                <span className={'label'}>{item.pageName}</span>
+              </a>
+            )}
+
           </li>
         );
       })}
