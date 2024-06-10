@@ -1,0 +1,34 @@
+{
+    "model": "contentImageGridComponent",
+    "srcType": "contentful",
+    "srcProjectId": "njzagoag3ndp",
+    "presets": [
+        {
+            "label": "Work Intro Image",
+            "locale": null,
+            "metadata": {
+                "categories": [
+                    "Work Block"
+                ],
+                "canDelete": true
+            },
+            "data": {
+                "internalName": "RBI Image 1",
+                "images": [
+                    {
+                        "$$ref": "5ucbzmqFKkUEnhXoyBHXkd",
+                        "$$type": "__image_model"
+                    }
+                ],
+                "columnsSm": 0,
+                "columnsMd": 1,
+                "columnsLg": 1,
+                "itemWidth": null,
+                "itemHeight": null,
+                "imageVariant": null,
+                "gridVariant": 2
+            },
+            "thumbnail": "images/content-image-grid-component-work-intro-image-06e6.png"
+        }
+    ]
+}
