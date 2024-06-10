@@ -1,0 +1,7 @@
+{
+  "version": 3,
+  "sources": ["../../stackbit.config.ts"],
+  "sourcesContent": ["import {ContentfulContentSource} from \"@stackbit/cms-contentful\";\nimport {defineStackbitConfig} from \"@stackbit/types\";\n\nexport default defineStackbitConfig({\n  stackbitVersion: \"~0.6.0\",\n  nodeVersion: \"20\",\n  ssgName: \"nextjs\",\n  devCommand: \"./node_modules/.bin/nx run supernaut:dev\",\n  contentSources: [\n    new ContentfulContentSource({\n      spaceId: process.env.CONTENTFUL_SPACE_ID!,\n      environment: process.env.CONTENTFUL_ENVIRONMENT!,\n      previewToken: process.env.CONTENTFUL_PREVIEW_ACCESS_TOKEN!,\n      accessToken: process.env.CONTENTFUL_ACCESS_TOKEN_MANAGMENT!\n    })\n  ],\n  modelExtensions: [\n    {name: \"page\", type: \"page\", urlPath: \"/{slug}\"},\n    {name: \"work\", type: \"page\", urlPath: \"/work/{slug}\"}\n  ],\n});\n"],
+  "mappings": ";;;;;;;;;;;;;;;;;;;AAAA;AAAA;AAAA;AAAA;AAAA;AAAA,4BAAsC;AACtC,mBAAmC;AAEnC,IAAO,8BAAQ,mCAAqB;AAAA,EAClC,iBAAiB;AAAA,EACjB,aAAa;AAAA,EACb,SAAS;AAAA,EACT,YAAY;AAAA,EACZ,gBAAgB;AAAA,IACd,IAAI,8CAAwB;AAAA,MAC1B,SAAS,QAAQ,IAAI;AAAA,MACrB,aAAa,QAAQ,IAAI;AAAA,MACzB,cAAc,QAAQ,IAAI;AAAA,MAC1B,aAAa,QAAQ,IAAI;AAAA,IAC3B,CAAC;AAAA,EACH;AAAA,EACA,iBAAiB;AAAA,IACf,EAAC,MAAM,QAAQ,MAAM,QAAQ,SAAS,UAAS;AAAA,IAC/C,EAAC,MAAM,QAAQ,MAAM,QAAQ,SAAS,eAAc;AAAA,EACtD;AACF,CAAC;",
+  "names": []
+}
