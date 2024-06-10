@@ -1,4 +1,3 @@
-"use strict";
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
 var __getOwnPropNames = Object.getOwnPropertyNames;
@@ -29,6 +28,7 @@ var stackbit_config_default = (0, import_types.defineStackbitConfig)({
   stackbitVersion: "~0.6.0",
   nodeVersion: "20",
   ssgName: "nextjs",
+  devCommand: "./node_modules/.bin/nx run supernaut:dev",
   contentSources: [
     new import_cms_contentful.ContentfulContentSource({
       spaceId: process.env.CONTENTFUL_SPACE_ID,
@@ -42,4 +42,4 @@ var stackbit_config_default = (0, import_types.defineStackbitConfig)({
     { name: "work", type: "page", urlPath: "/work/{slug}" }
   ]
 });
-//# sourceMappingURL=stackbit.config.YSK6YZXY.cjs.map
+//# sourceMappingURL=stackbit.config.2BMX2BG4.cjs.map

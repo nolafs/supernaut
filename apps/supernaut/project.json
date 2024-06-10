@@ -9,13 +9,13 @@
     "stackbit": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/supernaut && stackbit dev"
+        "command": "stackbit dev"
       }
     },
     "stackbit:init": {
       "executor": "nx:run-commands",
       "options": {
-        "command": "cd apps/supernaut && stackbit init"
+        "command": "stackbit init"
       }
     },
     "generate": {
