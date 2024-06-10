@@ -54,6 +54,10 @@ out
 .env.test
 **/.env.*
 
+#Stackbit
+stackbit.yaml
+.stackbit
+.stackbit/**/*
 
 storybook-static
 # Local Netlify folder
