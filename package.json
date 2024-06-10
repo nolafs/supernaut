@@ -67,6 +67,7 @@
     "@nx/vite": "18.3.4",
     "@nx/web": "18.3.4",
     "@nx/workspace": "18.3.4",
+    "nx":"*",
     "@stackbit/cms-contentful": "^0.4.56",
     "@stackbit/types": "^1.0.1",
     "@storybook/addon-essentials": "7.6.18",

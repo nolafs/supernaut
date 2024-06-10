@@ -12,6 +12,7 @@ import {useRef} from 'react';
 gsap.registerPlugin(ScrollTrigger);
 
 export interface ContentRichTextProps {
+  sys?: any;
   richContent: any;
   align: 'left' | 'center' | 'right';
   containerWidth: 'full' | 'w-1/2';
@@ -63,7 +64,7 @@ function renderOptions(links: any | undefined) {
 }
 
 
-export function ContentRichText({richContent, containerWidth, align}: ContentRichTextProps) {
+export function ContentRichText({sys, richContent, containerWidth, align}: ContentRichTextProps) {
 
   const ref = useRef<HTMLDivElement>(null);
 
@@ -89,7 +90,7 @@ export function ContentRichText({richContent, containerWidth, align}: ContentRic
   }, {dependencies: [richContent], scope: ref})
 
 
-  return (<div className={cn(
+  return (<div data-sb-object-id={sys?.id} className={cn(
     'container w-full flex',
       align === 'center' && 'justify-center',
       align === 'left' && 'justify-start',
@@ -101,7 +102,7 @@ export function ContentRichText({richContent, containerWidth, align}: ContentRic
           containerWidth === 'full' && 'w-full',
           containerWidth === 'w-1/2' && 'w-1/2',
         )}>
-          <div className={'prose lg:prose-lg w-full'} ref={ref}>
+          <div className={'prose lg:prose-lg w-full'} ref={ref} data-sb-field-path="richContent">
             {documentToReactComponents(richContent?.json, renderOptions(richContent?.links))}
           </div>
         </div>

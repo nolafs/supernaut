@@ -7,6 +7,7 @@ import {contentfulLoader} from '@supernaut/utils';
 
 /* eslint-disable-next-line */
 export interface GridImagesProps {
+ sys?: any;
  items: TImageLink[];
  columnsSm?: number;
  columnsMd?: number;
@@ -57,15 +58,15 @@ const COLUMNS_LG = [
 ];
 
 
-export function GridImages({items, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 pb-5 md:px-10 md:pb-10 lg:px-20 lg:pb-[75px]'}: GridImagesProps) {
+export function GridImages({sys, items, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight, girdClass = 'gap-0', imageClass = 'px-5 pb-5 md:px-10 md:pb-10 lg:px-20 lg:pb-[75px]'}: GridImagesProps) {
 
   if(!items || !items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
   return (
-      <div className={cn('grid', COLUMNS_SM[columnsSm || 0], COLUMNS_MD[columnsMd || 0 ], COLUMNS_LG[columnsLg || 0], girdClass )}>
+      <div data-sb-object-id={sys?.id} data-sb-field-path="itemsCollection" className={cn('grid', COLUMNS_SM[columnsSm || 0], COLUMNS_MD[columnsMd || 0 ], COLUMNS_LG[columnsLg || 0], girdClass )}>
         {items.map((item, index) => {
           return (
-            <div key={`${item?.sys?.id || item.id}_${index}` } className={cn('image relative', imageClass)}>
+            <div data-sb-field-path="items" key={`${item?.sys?.id || item.id}_${index}` } className={cn('image relative', imageClass)}>
               { (item?.url) &&
                 <Image
                   loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}

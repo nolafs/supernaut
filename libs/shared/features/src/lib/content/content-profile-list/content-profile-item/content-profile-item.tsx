@@ -15,21 +15,23 @@ export interface ContentProfileItemProps {
 
 export function ContentProfileItem({item, id}: ContentProfileItemProps) {
 
+
   if(!item) return <NotificationBlock body={'No profile data'} type={'error'} />;
 
   return (
-    <ContentProfileAnim id={id}>
-      <div  className={'profile-wrapper flex flex-col space-y-4 md:space-y-7'}>
-        <div className={'relative overflow-hidden'}>
+    <ContentProfileAnim id={id} >
+      <div data-sb-object-id={item.sys.id}  className={'profile-wrapper flex flex-col space-y-4 md:space-y-7'}>
+        <div className={'relative overflow-hidden'} data-sb-field-path="image">
           <Image className={'profile opacity-0'} src={item.image.url} alt={item.name} width={735} height={810}/>
         </div>
         <div>
-          <h2 className={'name text-primary mb-2 md:mb-3'}>{item.name}</h2>
-          <h3 className={'title text-primary  mb-3 md:mb-4'}>{item.title}</h3>
+          <h2 className={'name text-primary mb-2 md:mb-3'} data-sb-field-path="name">{item.name}</h2>
+          <h3 className={'title text-primary  mb-3 md:mb-4'} data-sb-field-path="title">{item.title}</h3>
 
-          {(!item.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}
+          {(!item.description?.json) && <div data-sb-field-path="description" className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}
                                              dangerouslySetInnerHTML={{__html: item.description}}/>}
-          {(item?.description?.json) && <div className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}>
+          {(item?.description?.json) && <div data-sb-field-path="description"
+                                             className={'prose prose-base lg:prose-lg text-secondary font-light main-text'}>
             {documentToReactComponents(item?.description?.json)}
           </div>}
         </div>

@@ -38,8 +38,8 @@ var stackbit_config_default = (0, import_types.defineStackbitConfig)({
     })
   ],
   modelExtensions: [
-    { name: "page", type: "page", urlPath: "/{slug}" },
+    { name: "pages", type: "page", urlPath: "/{slug}" },
     { name: "work", type: "page", urlPath: "/work/{slug}" }
   ]
 });
-//# sourceMappingURL=stackbit.config.2BMX2BG4.cjs.map
+//# sourceMappingURL=stackbit.config.KVHLAJPE.cjs.map

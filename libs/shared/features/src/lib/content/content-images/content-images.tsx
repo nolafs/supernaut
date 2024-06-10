@@ -9,6 +9,7 @@ interface ItemsCollection {
 }
 
 export interface ContentImagesProps {
+  sys?: any;
   imagesCollection: ItemsCollection
   columnsSm?: number;
   columnsMd?: number;
@@ -33,7 +34,7 @@ const IMAGE_VARIANTS = [
 ]
 
 
-export function ContentImages({imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight}: ContentImagesProps) {
+export function ContentImages({sys, imagesCollection, mode, imageVariant, gridVariant, columnsSm, columnsMd, columnsLg, itemWidth, itemHeight}: ContentImagesProps) {
 
   if(!imagesCollection || !imagesCollection.items.length) return <NotificationBlock body={'No images found'} type={'warning'} />;
 
@@ -57,7 +58,8 @@ export function ContentImages({imagesCollection, mode, imageVariant, gridVariant
 
   return (
       <BlockAnimateOnScroll animation={animationType} duration={0.5} start="top 80%" target={'.image'} marker={false}>
-        <GridImages
+        <GridImages key={sys?.id}
+          sys={sys}
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
           girdClass={ GRID_VARIANTS[gridVariant || 0]}
           items={imagesCollection.items}
