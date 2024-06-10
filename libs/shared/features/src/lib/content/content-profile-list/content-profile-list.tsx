@@ -15,16 +15,16 @@ export interface ItemCollection {
 }
 
 export interface ContentProfileListProps {
+  sys?: any;
   itemsCollection: ItemCollection;
-  mode?: string;
 }
 
-export function ContentProfileList({itemsCollection, mode}: ContentProfileListProps) {
+export function ContentProfileList({sys, itemsCollection}: ContentProfileListProps) {
 
   if(!itemsCollection || !itemsCollection.items.length) return <NotificationBlock body={'No items found'} type={'warning'} />;
 
   return (
-    <div className={'w-full max-w-9xl mx-auto px-5 md:px-10 text-primary'}>
+    <div className={'w-full max-w-9xl mx-auto px-5 md:px-10 text-primary'} data-sb-object-id={sys.id}>
       <div className={cn('flex flex-col md:flex-row w-full md:w-9/12',
         )}>
         <div className={'grid grid-cols-1 md:grid-cols-2 gap-10'}>

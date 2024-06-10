@@ -54,6 +54,7 @@ module.exports = {
       typography: (theme) => ({
         DEFAULT: {
           css:{
+            fontWeight: '300',
             color: theme('colors.primary'),
             h1: {
               color: theme('colors.primary'),
@@ -73,6 +74,9 @@ module.exports = {
             h6: {
               color: theme('colors.primary'),
             },
+            p:{
+              fontWeight: '300',
+            }
           },
         },
         sm: {
