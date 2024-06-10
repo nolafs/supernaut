@@ -100,7 +100,7 @@ export function ContentRichText({sys, richContent, containerWidth, align}: Conte
           'flex',
 
           containerWidth === 'full' && 'w-full',
-          containerWidth === 'w-1/2' && 'w-1/2',
+          containerWidth === 'w-1/2' && 'w-full md:w-1/2',
         )}>
           <div className={'prose lg:prose-lg w-full'} ref={ref} data-sb-field-path="richContent">
             {documentToReactComponents(richContent?.json, renderOptions(richContent?.links))}
