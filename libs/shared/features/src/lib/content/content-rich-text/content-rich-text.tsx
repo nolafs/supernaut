@@ -90,13 +90,13 @@ export function ContentRichText({sys, richContent, containerWidth, align}: Conte
   }, {dependencies: [richContent], scope: ref})
 
 
-  return (<div data-sb-object-id={sys?.id} className={cn(
+  return (<div data-sb-object-id={sys?.id} data-sb-field-path="align" className={cn(
     'container w-full flex',
       align === 'center' && 'justify-center',
       align === 'left' && 'justify-start',
       align === 'right' && 'justify-end',
       )}>
-        <div className={cn(
+        <div data-sb-field-path="containerWidth" className={cn(
           'flex',
 
           containerWidth === 'full' && 'w-full',

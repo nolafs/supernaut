@@ -16,6 +16,14 @@ export default defineStackbitConfig({
   ],
   modelExtensions: [
     {name: "pages", type: "page", urlPath: "/{slug}"},
-    {name: "work", type: "page", urlPath: "/work/{slug}"}
+    {name: "work", type: "page", urlPath: "/work/{slug}"},
+    {
+      name: "contentRichText",
+      fieldGroups: [{name: "styles", label: "Styles", icon: "palette"}],
+      fields: [
+        {name: "align", group: "styles"},
+        {name: "containerWidth", group: "styles"},
+      ]
+    }
   ],
 });
