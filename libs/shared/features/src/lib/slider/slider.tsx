@@ -72,7 +72,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
             autoplay={(autoplay) ? { delay: slideDuration, disableOnInteraction: true } : false}
-
+            /*
             effect={'creative'}
             creativeEffect={{
               prev: {
@@ -84,7 +84,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
               },
             }}
 
-
+            */
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
