@@ -8,6 +8,7 @@ import {PageContent} from '../../../../data/pages';
 // eslint-disable-next-line @nx/enforce-module-boundaries
 import {Header} from '@supernaut/shared-ui';
 import {ThemeSwitchServer} from '@supernaut/features';
+import {extractFirstParagraph} from '@supernaut/utils';
 
 const PAGE_NAME = 'work';
 
@@ -31,7 +32,7 @@ export async function generateMetadata(
 
   return {
     title: (page?.seo?.title) ? page.seo.title : `${settings?.metaTitle} : ${page?.pageName}` || p.title,
-    description: page?.seo?.description || (await parent).description,
+    description: page?.seo?.description || extractFirstParagraph(page?.bodyText?.json) || (await parent).description,
   }
 }
 

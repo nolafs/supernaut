@@ -6,3 +6,4 @@ export * from './lib/googleAnalytics';
 export * from './lib/page-transition';
 export * from './lib/store/transition-store';
 export * from './lib/nextContentFulLoader';
+export * from './lib/extractFirstParagraph'

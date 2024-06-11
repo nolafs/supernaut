@@ -3,9 +3,8 @@ import {WorkFeaturedCollection} from '../../../../data/work';
 import {Card} from '@supernaut/shared-ui';
 import {BlockAnimateOnScroll} from '@supernaut/context';
 import {ThemeSwitchServer} from '@supernaut/features';
-export default async function Page({searchParams}: {
-  searchParams: { page: string, category: string }
-}) {
+
+export default async function Page() {
 
   const workFeatured = await WorkFeaturedCollection(1, 0, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
   const featuredWork = workFeatured?.workCollection?.items[0];

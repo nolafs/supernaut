@@ -1,3 +1,4 @@
+"use server";
 import {client, previewClient} from '../lib/client';
 
 

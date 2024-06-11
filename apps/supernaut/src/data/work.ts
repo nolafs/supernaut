@@ -1,3 +1,4 @@
+"use server";
 import {client, previewClient} from '../lib/client';
 
 export async function WorkCollection( limit: number, skip: number, locale: string, preview: boolean) {

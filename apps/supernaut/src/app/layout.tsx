@@ -22,11 +22,19 @@ export const viewport: Viewport = {
   userScalable: true,
 }
 
+type Props = {
+  params: { id: string }
+  searchParams: { [key: string]: string | string[] | undefined }
+}
+
+
 export async function generateMetadata(
+  {params, searchParams}: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
   const settings = await SettingContent('Settings', i18nConfig.defaultLocale, process?.env.NEXT_PUBLIC_PREVIEW === 'true');
   const defaultImages = ['/share.jpg'];
+
 
   if(settings?.ogImage?.url){
     defaultImages[0] = settings?.ogImage?.url
@@ -35,7 +43,7 @@ export async function generateMetadata(
   return {
     metadataBase: new URL(process.env.NEXT_PUBLIC_SITE_URL || 'https://supernautstudio.com/'),
     alternates: {
-      canonical: settings?.canonicalUrl || '/',
+      canonical:  settings?.canonicalUrl || process.env.NEXT_PUBLIC_BASE_URL || '/',
     },
     title: settings?.metaTitle || (await parent).title || '-= Supernaut Studio =-',
     description: settings?.metaDescription || (await parent).description,

@@ -1,3 +1,4 @@
+'use client';
 import { QueryCache } from '@tanstack/query-core';
 import Router from 'next/router';
 
