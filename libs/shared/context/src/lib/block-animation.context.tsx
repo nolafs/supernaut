@@ -162,7 +162,7 @@ const BlockAnimateOnScroll: React.FC<AnimateOnScrollProps> = ({children, animati
 
   return (
   <div ref={trigger} className={'overflow-hidden'}>
-    <div ref={ref}>{children}</div>
+    <div className={'anim-scope'} ref={ref}>{children}</div>
   </div>);
 };
 

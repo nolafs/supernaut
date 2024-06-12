@@ -100,7 +100,7 @@ export function Section({
         }}
       >
         {lineTop && <div className={'absolute top-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
-        {children}
+          {children}
         {lineBottom &&
           <div className={'absolute bottom-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
       </section>

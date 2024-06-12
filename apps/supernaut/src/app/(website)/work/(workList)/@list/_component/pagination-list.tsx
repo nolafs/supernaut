@@ -63,7 +63,7 @@ export function PaginationList() {
   }, [inView, fetchNextPage, hasNextPage]);
 
   return (
-    <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-3 md:gap-4 lg:gap-5 mt-16 mb:mt-20 mb-10 md:mb-20'}>
+    <div className={'grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-x-3 gap-y-5 md:gap-x-4 md:gap-y-6 lg:gap-x-5 lg:gap-y-7 mt-16 mb:mt-20 mb-10 md:mb-20'}>
       {dataList?.pages.map(page =>
         page.map((dataList: any, index: number) => {
           if (page.length == index + 1) {
