@@ -48,9 +48,6 @@ export function Section({
   className,
   animation = false,
 }: SectionProps) {
-
-  console.log(internalName, sys)
-
   const section = () => {
     return (
       <section

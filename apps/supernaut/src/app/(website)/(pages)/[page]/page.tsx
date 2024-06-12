@@ -26,8 +26,6 @@ export async function generateMetadata(
 ): Promise<Metadata> {
   const pageData = await PageContent(params.page, 'en-US', process.env.NEXT_PUBLIC_PREVIEW === 'true');
 
-  console.log('WORK SLUG', params, searchParams)
-
   const previousImages = (await parent).openGraph?.images || [];
   const images = [];
 

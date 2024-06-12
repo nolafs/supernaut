@@ -5,7 +5,6 @@ import { useEffect, useRef } from 'react';
 import { useGSAP } from '@gsap/react';
 import gsap from 'gsap';
 import { SplitText } from 'gsap/SplitText';
-import Link from 'next/link';
 import {usePathname} from 'next/navigation';
 import cn from 'classnames';
 
@@ -28,7 +27,7 @@ export function NavigationMobileMenu({
   useGSAP(
     () => {
       tl.current = gsap.timeline();
-      gsap.utils.toArray('.label').forEach((item: any, index: number) => {
+      gsap.utils.toArray('.text').forEach((item: any, index: number) => {
         const split = new SplitText(item, { type: 'chars, words' });
         tl.current.from(
           split.chars,
@@ -39,14 +38,6 @@ export function NavigationMobileMenu({
             stagger: 0.05,
             ease: 'power3.inOut',
           },
-          0.2
-        );
-      });
-
-      gsap.utils.toArray('.num').forEach((item: any, index: number) => {
-        tl.current.from(
-          item,
-          { opacity: 0, duration: 0.5, ease: 'power3.inOut' },
           0.2
         );
       });
@@ -72,13 +63,10 @@ export function NavigationMobileMenu({
 
                 onClick={(e) => handleLinkClick && handleLinkClick(`/${item.slug}`)}
                 className={
-                  cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
+                  cn('text-4xl outline-none uppercase border-0  focused:outline-none ', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
                 }
               >
-                <span
-                  className={'num text-sm font-medium text-secondary mr-3 '}
-                >{`0${index + 1}.`}</span>
-                <span className={'label'}>{item.pageName}</span>
+                <span className={'text text-neutral hover:text-secondary transition ease-in-out delay-150'}>{item.pageName}</span>
               </button>
             )}
 
@@ -87,13 +75,10 @@ export function NavigationMobileMenu({
                 href={item.url}
                 target="_blank"
                 className={
-                  cn('text-4xl outline-none  tracking-wider uppercase border-0 hover:text-secondary focused:outline-none transition ease-in-out  delay-150', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
+                  cn('text-4xl outline-none uppercase border-0 focused:outline-none ', isActive(`/${item.slug}`) ? 'text-secondary' : 'text-secondary')
                 } rel="noreferrer"
               >
-                <span
-                  className={'num text-sm font-medium text-secondary mr-3 '}
-                >{`0${index + 1}.`}</span>
-                <span className={'label'}>{item.pageName}</span>
+                <span className={'text text-neutral hover:text-secondary transition ease-in-out  delay-150'}>{item.pageName}</span>
               </a>
             )}
 

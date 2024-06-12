@@ -85,7 +85,7 @@ export function SliderDescription({
     <div
       ref={main}
       className={cn(
-        'absolute w-full text-primary bottom-14 z-10',
+        'absolute w-full text-primary bottom-5 md:bottom-14 z-10',
         !show ? 'opacity-0' : 'opacity-1'
       )}
     >

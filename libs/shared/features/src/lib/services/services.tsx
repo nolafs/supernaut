@@ -42,7 +42,7 @@ export function Services({title, servicesCollection}: ServicesProps) {
               <ul className={'flex flex-col space-y-5'}>
 
                 {item?.servicesCollection?.items.map((subItem, subIndex) => (
-                  <li key={subIndex} className={'text-xl lg:text-2xl font-normal'}>{subItem.name}</li>
+                  <li key={subIndex} className={'text-xl lg:text-2xl font-normal text-secondary'}>{subItem.name}</li>
                 ))}
 
               </ul>
