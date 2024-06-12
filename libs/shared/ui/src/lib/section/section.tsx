@@ -65,10 +65,10 @@ export function Section({
             'w-3/4': width === 'lg',
           },
           {
-            'pt-5 md:pt-10': paddingTop && paddingSize === 'md',
-            'pb-5 md:pb-10': paddingBottom && paddingSize === 'md',
+            'pt-3 md:pt-5': paddingTop && paddingSize === 'md',
+            'pb-3 md:pb-5': paddingBottom && paddingSize === 'md',
             'pt-10 md:pt-20': paddingTop && paddingSize === 'lg',
-            'pb-10 mdLpb-20': paddingBottom && paddingSize === 'lg',
+            'pb-10 md:pb-20': paddingBottom && paddingSize === 'lg',
             'pt-5': paddingTop && paddingSize === 'sm',
             'pb-5': paddingBottom && paddingSize === 'sm',
 

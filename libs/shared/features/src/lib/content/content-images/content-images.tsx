@@ -24,13 +24,13 @@ export interface ContentImagesProps {
 const GRID_VARIANTS = [
   '',
   'wrapper p-0',
-  'wrapper p-0 gap-5 md:gap-10',
-  'wrapper gap-5 md:gap-10',
+  'wrapper p-0 gap-3 md:gap-5',
+  'wrapper gap-3 md:gap-5',
   ]
 
 const IMAGE_VARIANTS = [
   '',
-  'gap-5 md:gap-10 pt-10  max-w-10/12 mx-auto'
+  'gap-3 md:gap-5 pt-5  max-w-10/12 mx-auto'
 ]
 
 
@@ -61,7 +61,7 @@ export function ContentImages({sys, imagesCollection, mode, imageVariant, gridVa
         <GridImages key={sys?.id}
           sys={sys}
           imageClass={IMAGE_VARIANTS[imageVariant || 0]}
-          girdClass={ GRID_VARIANTS[gridVariant || 0]}
+          gridClass={ GRID_VARIANTS[gridVariant || 0]}
           items={imagesCollection.items}
           columnsSm={columnsSm}
           columnsMd={columnsMd}
