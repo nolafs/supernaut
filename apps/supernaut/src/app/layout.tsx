@@ -13,6 +13,8 @@ import SettingContent from '../data/settings';
 import {ModalProvider} from '@supernaut/features';
 import {BlockAnimationProvider, ThemeProvider} from '@supernaut/context';
 import NextTopLoader from 'nextjs-toploader';
+import {ContentfulLivePreviewProvider} from '@contentful/live-preview/react';
+import {ContentFullProvider} from '@supernaut/contentful';
 
 export const viewport: Viewport = {
   themeColor: 'black',
@@ -131,7 +133,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   const social = settings?.socialMediaCollection?.items as unknown as TSocialLinkItemType[];
 
-  return (
+  return ( <ContentFullProvider>
     <html
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`)}
@@ -189,7 +191,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
       </body>
     </html>
-
+    </ContentFullProvider>
   );
 
 }
