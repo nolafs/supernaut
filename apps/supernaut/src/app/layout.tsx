@@ -133,7 +133,7 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
   const social = settings?.socialMediaCollection?.items as unknown as TSocialLinkItemType[];
 
-  return ( <ContentFullProvider>
+  return (
     <html
       lang="en"
       className={cn(`${GeistSans.variable} ${GeistMono.variable}`)}
@@ -191,7 +191,6 @@ export default async function RootLayout({ children }: { children: ReactNode }) 
 
       </body>
     </html>
-    </ContentFullProvider>
   );
 
 }

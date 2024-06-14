@@ -99,15 +99,19 @@ export function Section({
           color: color ? color : undefined,
         }}
       >
-        {lineTop && <div className={'absolute top-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
+        {lineTop && <div className={'absolute top-0 left-1/2 -translate-x-1/2 wrapper'}>
+          <div className={'border-lines border-t-2 w-full'}></div>
+        </div>}
           {children}
         {lineBottom &&
-          <div className={'absolute bottom-0 left-1/2 -translate-x-1/2 wrapper border-lines border-t-2'}></div>}
+          <div className={'absolute bottom-0 left-1/2 -translate-x-1/2 wrapper'}>
+            <div className={'border-lines border-t-2 w-full'}></div>
+          </div>}
       </section>
     );
   }
 
-  if(animation){
+  if (animation) {
     return (
 
         <BlockAnimateOnScroll animation="slideIn" duration={1}  target={'.section'} marker={false} >
