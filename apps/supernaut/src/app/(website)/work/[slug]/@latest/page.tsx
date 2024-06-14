@@ -22,7 +22,7 @@ export default async function List() {
             <div className={'mb-5 md:mb-16 mix-blend-difference'}>
               <h2 className={'overflow-y-visible'}>More Projects</h2>
             </div>
-            <div className={'grid grid-cols-1 md:grid-cols-3 gap-3 md:gap-4 lg:gap-5'}>
+            <div className={'grid grid-cols-1 md:grid-cols-3 gap-x-3 gap-y-5 md:gap-x-4 md:gap-y-7 lg:gap-x-5 lg:gap-y-10'}>
               {work.workCollection?.items.map((item, index) => {
                 return (
                   <Card key={`${index}-${item?.sys.id}`}
