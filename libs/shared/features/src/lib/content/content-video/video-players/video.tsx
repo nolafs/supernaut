@@ -5,6 +5,7 @@ import {useEffect, useRef} from 'react';
 import ContentVideoAnimation from '../content-video-animation';
 import {CldVideoPlayer} from 'next-cloudinary';
 import 'next-cloudinary/dist/cld-video-player.css';
+import VideoFrame from './video-frame';
 
 export interface VideoProps {
   id: string;
@@ -26,6 +27,8 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
 
   const ref = useRef<any>(null);
   let posterFormat:any = {format: 'webp'};
+
+  console.log('id', id, frame);
 
   useEffect(() => {
     if(autoplay) {
@@ -72,8 +75,8 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
       handlePlay={handlePlay}
     >
 
-      <div className={cn('video', standard ? ( 'relative ' + frame && 'wrapper p-4 md:p-10'): 'absolute flex flex-col w-full h-full')}>
-
+      <div className={cn('video cloudinary', standard ?  'relative ' : 'absolute flex flex-col w-full h-full')}>
+        <VideoFrame active={frame} >
             {(src) &&
             <CldVideoPlayer
               videoRef={ref}
@@ -101,7 +104,7 @@ export function CloudinaryVideo({id, src, title, autoplay, poster, frame,  contr
             />
             }
 
-
+        </VideoFrame>
         </div>
 
     </ContentVideoAnimation>

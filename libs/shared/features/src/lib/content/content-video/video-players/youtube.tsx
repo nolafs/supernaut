@@ -5,6 +5,7 @@ import {useReducer, useRef, useState} from 'react';
 import ReactPlayer, {Config} from 'react-player/lazy'
 import ContentVideoAnimation from '../content-video-animation';
 import VideoControl from './video-control';
+import VideoFrame from './video-frame';
 
 export interface YoutubeProps {
   id: string;
@@ -70,6 +71,7 @@ export function Youtube({id, src, title, poster, autoplay, frame, controls = tru
 
       <div
         className={cn('relative overflow-hidden z-20 aspect-w-16 aspect-h-9')}>
+        <VideoFrame active={frame}>
         {(showPlayer) && <ReactPlayer
           width="100%"
           height="100%"
@@ -85,6 +87,7 @@ export function Youtube({id, src, title, poster, autoplay, frame, controls = tru
         {!autoplay &&
         <VideoControl handlePlay={play} title={title} poster={ (poster) && `${poster}?fm=webp&w=${width}&h=${height}&fit=fill` } width={width} height={height}/>
         }
+        </VideoFrame>
       </div>
 
     </ContentVideoAnimation>
