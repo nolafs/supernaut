@@ -81,7 +81,7 @@ export function Card({id, title = 'title',categories, description, image, url, p
       <div id={id} ref={innerRef} className={cn("group cursor-pointer relative text-primary", wide ? 'max-w-9xl' : (!small) ? 'max-w-[890px]' : 'max-w-[580px]')}>
         {(image) && imageComp(image)}
         <div className={'difference group-hover:text-secondary transform-gpu transition-all duration-500 ease-in-out'}>
-          <h2 className={'mb-2'}>{title}</h2>
+          <h2 className={cn('mb-2', (!wide) && 'text-xl md:text-xl lg:text-2xl font-normal')}>{title}</h2>
           {(wide) ? <p className={'text-xl md:text-xl lg:text-2xl font-normal'}>{description}</p> :
             (showCategories) ?
             <ul className={cn( (!small) ? 'text-xl md:text-2xl lg:text-4xl' : 'text-normal md:text-xl lg:text-2xl' ,' font-normal flex flex-col xl:flex-row')}>

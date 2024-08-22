@@ -1,6 +1,7 @@
 import React from "react";
 
 
+
 const Page404 = () => (<>
       <main className="relative isolate w-full h-screen  mb-52 text-primary">
         <div className="absolute inset-0 w-full h-screen z-20 flex flex-col justify-center">

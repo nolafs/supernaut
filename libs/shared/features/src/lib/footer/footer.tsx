@@ -4,6 +4,7 @@ import cn from 'classnames';
 import { SocialList } from '../social-list/social-list';
 import NavigationButton from '../navigation/navigation-button';
 import ContactFormDialogButton from '../contact-form/contact-form-dialog-button';
+// eslint-disable-next-line @nx/enforce-module-boundaries
 import {LinkPrimary} from '@supernaut/shared-ui';
 
 
@@ -38,14 +39,14 @@ export function Footer({
           </div>
           <div
             className={
-              'flex flex-col md:flex-row space-y-10 md:space-y-0  md:space-x-10'
+              'flex flex-col md:flex-row space-y-5 md:space-y-0  md:space-x-10'
             }
           >
             {(contactButtonLabel && contactButtonLabel.length > 0 && contactDialog) && (
             <ContactFormDialogButton label={contactButtonLabel} />) }
 
             {(navigation && navigation.length > 0) && (
-              <ul className={cn('flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10')}>
+              <ul className={cn('flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-10')}>
                 {navigation?.map((item) => {
                   return (
                     <li key={item.id} className={'flex'}>

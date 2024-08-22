@@ -20,7 +20,7 @@ const VARIANTS_BUTTON = [
 
 const VARIANTS_LIST = [
   'flex space-x-6 justify-center items-center',
-  'flex flex-col md:flex-row space-y-10 md:space-y-0 md:space-x-10',
+  'flex flex-col md:flex-row space-y-5 md:space-y-0 md:space-x-10',
   'flex gap-4',
 ];
 

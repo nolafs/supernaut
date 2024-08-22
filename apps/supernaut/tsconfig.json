@@ -16,9 +16,14 @@
         "name": "next"
       }
     ],
-    "types": ["jest", "node"],
+    "types": ["jest", "node"]
   },
-  "include": [
+  "paths": {
+    "@assets/*": [
+      "src/assets/*"
+    ]
+  },
+    "include": [
     "**/*.ts",
     "**/*.tsx",
     "**/*.js",
