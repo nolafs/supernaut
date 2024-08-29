@@ -1,6 +1,6 @@
 # Supernaut
 
-[![Netlify Status](https://api.netlify.com/api/v1/badges/d882ba4d-9e7c-40c4-9bab-dec956c4ca07/deploy-status)](https://app.netlify.com/sites/supernaut-storybook/deploys)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/55d0029e-78e1-499a-a44a-b8809619764d/deploy-status)](https://app.netlify.com/sites/supernaut/deploys)
 
 <a alt="Nx logo" href="https://nx.dev" target="_blank" rel="noreferrer"><img src="https://raw.githubusercontent.com/nrwl/nx/master/images/nx-logo.png" width="45"></a>
 
