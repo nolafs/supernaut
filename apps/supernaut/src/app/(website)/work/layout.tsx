@@ -1,4 +1,4 @@
-import {ReactNode, Suspense} from 'react';
+import {ReactNode} from 'react';
 import {QueryProvider} from '@supernaut/contentful';
 
 interface LayoutProps {

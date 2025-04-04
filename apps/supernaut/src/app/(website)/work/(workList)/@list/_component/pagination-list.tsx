@@ -40,11 +40,8 @@ export function PaginationList() {
 
   const {
     data: dataList,
-    error,
     fetchNextPage,
     hasNextPage,
-    isFetchingNextPage,
-    status,
   } = useInfiniteQuery({
     queryKey: ['work'],
     queryFn: getWork,
