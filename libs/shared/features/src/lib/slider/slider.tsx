@@ -59,6 +59,8 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
     return;
   }
 
+
+
   return (
 
     <CursorContextProvider>
@@ -72,19 +74,6 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
               setCurrentSlide(slidesCollection?.items[e.realIndex]);
             }}
             autoplay={(autoplay) ? { delay: slideDuration, disableOnInteraction: true } : false}
-            /*
-            effect={'creative'}
-            creativeEffect={{
-              prev: {
-                shadow: true,
-                translate: [0, 0, -400],
-              },
-              next: {
-                translate: ['100%', 0, 0],
-              },
-            }}
-
-            */
             spaceBetween={50}
             slidesPerView={1}
             loop={true}
@@ -105,6 +94,7 @@ export function Slider({slidesCollection, strapline, autoplay, slideDuration=300
                     url={slide.url}
                     active={currentIndex === index}
                   />
+
                 </SwiperSlide>
 
             ))}

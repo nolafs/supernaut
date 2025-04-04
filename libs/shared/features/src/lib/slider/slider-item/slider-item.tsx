@@ -1,5 +1,5 @@
 import {forwardRef, useEffect, useRef} from 'react';
-import Image, {ImageLoader} from 'next/image';
+import Image  from 'next/image';
 import { useRouter } from 'next/navigation';
 import {CldVideoPlayer} from 'next-cloudinary';
 import 'next-cloudinary/dist/cld-video-player.css';
@@ -38,7 +38,12 @@ const SliderItem = forwardRef(
     if(work) {
       url = `/work/${work.slug}`;
       if(!image){
+
         image = work.featureImage.url;
+
+        if(video){
+          image =`https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/video/upload/so_0/f_jpg/${video[0].public_id}.webp`;
+        }
       }
       if(!title){
         title = work.title;
@@ -48,7 +53,11 @@ const SliderItem = forwardRef(
       }
     }
 
-    const addVideoPlayer = (id: string, title: string,  video: any, poster: string) => {
+
+
+    const addVideoPlayer = (id: string, title: string,  video: any, poster: string  ) => {
+
+      console.log('VIDEO',image);
 
         return (<div className={styles['video-slide']}><CldVideoPlayer
           id={id}
@@ -73,7 +82,7 @@ const SliderItem = forwardRef(
           />
 
           <Image
-            src={`${image}`}
+            src={`${poster}`}
             alt={title}
             loader={(props) => contentfulLoader(props, {fit: 'fill', fm: 'webp'})}
             width={1920}
@@ -81,16 +90,6 @@ const SliderItem = forwardRef(
             priority={true}
             className={'object-cover object-center w-full h-full max-h-[1000px] hidden md:block'}
           />
-
-            <Image
-              src={`${image}`}
-              alt={title}
-              loader={(props) => contentfulLoader(props, {fit: 'fill', f: 'center', fm: 'webp'})}
-              width={390}
-              height={400}
-              priority={true}
-              className={'object-cover object-center w-full  block md:hidden h-screen max-h-[400px]'}
-            />
 
           </div>
         );
