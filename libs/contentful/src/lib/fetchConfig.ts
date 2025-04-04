@@ -5,6 +5,7 @@ export const fetchConfig = {
       'Content-Type': 'application/json',
       Authorization: `Bearer ${process.env.NEXT_PUBLIC_CONTENTFUL_ACCESS_TOKEN}`,
     },
+
   },
   previewParams: {
     headers: {
@@ -28,6 +29,7 @@ export function customFetcher<TData, TVariables extends { preview?: boolean | nu
       ...options,
       ...(variables?.preview ? fetchConfig.previewParams : fetchConfig.params),
       body: JSON.stringify({ query, variables }),
+      //next: {revalidate: 60},
     });
 
     const json = await res.json();
